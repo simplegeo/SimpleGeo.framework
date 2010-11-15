@@ -47,15 +47,17 @@
 			// this class represents a single feature, so if it gets passed an NSArray, that's
 			// just wrong
 			if (! [data isKindOfClass:[NSDictionary class]]) {
-				NSLog(@"Invalid data type.");
-
-				// TODO throw an exception?	NSInvalidArgumentException ???
-				return nil;
+				@throw [NSException exceptionWithName:NSInvalidArgumentException
+											   reason:[NSString stringWithFormat:@"Invalid data type: %@",
+													   [data class]]
+											 userInfo:nil];
 			}
 
 			if (! [[data objectForKey:@"type"] isEqual:@"Feature"]) {
-				// TODO throw an exception?
-				NSLog(@"Input struct is not a Feature; is %@ instead.", [data objectForKey:@"type"]);
+				@throw [NSException exceptionWithName:NSInvalidArgumentException
+											   reason:[NSString stringWithFormat:@"Unsupported type: %@",
+													   [data objectForKey:@"type"]]
+											 userInfo:nil];
 			}
 
 			for (NSString *key in data) {

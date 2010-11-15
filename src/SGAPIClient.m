@@ -11,6 +11,7 @@
 
 NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 
+
 @implementation SGAPIClient
 
 @synthesize delegate;
@@ -41,23 +42,6 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 	[super dealloc];
 }
 
-#pragma mark ASIHTTPRequest Delegate Methods
-
-- (void)requestFinished:(ASIHTTPRequest *)request
-{
-	NSString *response = [request responseString];
-	NSLog(@"Received response: %@", response);
-	NSLog(@"UserInfo: %@", [request userInfo]);
-	
-	// TODO figure out what kind of request this was and send it to an appropriate delegate
-	NSString *featureId = [[request userInfo] objectForKey:@"featureId"];
-	SGFeature *feature = [SGFeature featureWithId:featureId];
-	[feature setRawBody:response];
-	
-	[delegate didLoadFeature:feature withId:featureId];
-}
-
-
 #pragma mark Common API Calls
 
 - (void)getFeatureWithId:(NSString *)featureId
@@ -67,7 +51,11 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 	
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:endpoint];
 	[request setDelegate:self];
-	[request setUserInfo:[NSDictionary dictionaryWithObject:featureId forKey:@"featureId"]];
+	[request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+							@"didLoadFeatureJSON:", @"targetSelector",
+							featureId, @"featureId",
+							nil
+						  ]];
 	[request startAsynchronous];
 }
 
@@ -86,6 +74,33 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 - (NSArray *)getPlacesNear:(SGPoint *)point matching:(NSString *)query inCategory:(NSString *)category
 {
 	return nil;
+}
+
+#pragma mark ASIHTTPRequest Delegate Methods
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+	NSLog(@"UserInfo: %@", [request userInfo]);
+
+	// assume that "targetSelector" was set on the request and use that to dispatch appropriately
+	SEL targetSelector = NSSelectorFromString([[request userInfo] objectForKey:@"targetSelector"]);
+	[self performSelector:targetSelector withObject:request];
+}
+
+#pragma mark Dispatcher Methods
+
+- (void)didLoadFeatureJSON:(ASIHTTPRequest *)request
+{
+	NSLog(@"didLoadFeature!");
+
+	NSString *response = [request responseString];
+	NSLog(@"Received response: %@", response);
+
+	NSString *featureId = [[request userInfo] objectForKey:@"featureId"];
+	SGFeature *feature = [SGFeature featureWithId:featureId];
+	[feature setRawBody:response];
+
+	[delegate didLoadFeature:feature withId:featureId];
 }
 
 @end

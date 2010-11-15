@@ -11,10 +11,10 @@
 
 @interface SGFeature : NSObject
 {
-	NSString* featureId;
-	SGPoint* geometry;
-	NSDictionary* properties;
-	NSString* rawBody;
+    NSString* featureId;
+    SGPoint* geometry;
+    NSDictionary* properties;
+    NSString* rawBody;
 }
 
 @property (retain) NSString* featureId;

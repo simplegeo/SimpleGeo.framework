@@ -29,8 +29,8 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 
 @interface SGAPIClient : NSObject
 {
-	id<SGAPIClientDelegate> delegate;
-	NSURL* url;
+    id<SGAPIClientDelegate> delegate;
+    NSURL* url;
 }
 
 @property (retain) id<SGAPIClientDelegate> delegate;

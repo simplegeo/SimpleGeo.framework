@@ -17,17 +17,17 @@
 
 - (BOOL)shouldRunOnMainThread
 {
-	return NO;
+    return NO;
 }
 
 - (void)testLatitudeAndLongitude
 {
-	NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"40.0"];
-	NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-105.0"];
-	SGPoint *point = [SGPoint pointWithLatitude: latitude longitude: longitude];
+    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"40.0"];
+    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-105.0"];
+    SGPoint *point = [SGPoint pointWithLatitude: latitude longitude: longitude];
 
-	GHAssertEqualObjects(latitude, [point latitude], @"Latitudes don't match.");
-	GHAssertEqualObjects(longitude, [point longitude], @"Longitudes don't match.");
+    GHAssertEqualObjects(latitude, [point latitude], @"Latitudes don't match.");
+    GHAssertEqualObjects(longitude, [point longitude], @"Longitudes don't match.");
 }
 
 @end

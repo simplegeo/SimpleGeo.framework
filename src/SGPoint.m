@@ -16,18 +16,18 @@
 
 + (SGPoint *)pointWithLatitude:(NSDecimalNumber *)latitude longitude:(NSDecimalNumber *)longitude
 {
-	SGPoint *point = [[SGPoint alloc] init];
-	[point setLatitude:latitude];
-	[point setLongitude:longitude];
-	
-	return point;
+    SGPoint *point = [[SGPoint alloc] init];
+    [point setLatitude:latitude];
+    [point setLongitude:longitude];
+
+    return point;
 }
 
 - (void)dealloc
 {
-	[latitude release];
-	[longitude release];
-	[super dealloc];
+    [latitude release];
+    [longitude release];
+    [super dealloc];
 }
 
 @end

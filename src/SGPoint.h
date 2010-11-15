@@ -9,8 +9,8 @@
 
 @interface SGPoint : NSObject
 {
-	NSDecimalNumber* latitude;
-	NSDecimalNumber* longitude;
+    NSDecimalNumber* latitude;
+    NSDecimalNumber* longitude;
 }
 
 @property (retain) NSDecimalNumber* latitude;

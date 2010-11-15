@@ -21,53 +21,53 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 - (BOOL)shouldRunOnMainThread
 {
-	return NO;
+    return NO;
 }
 
 - (NSString *)consumerKey
 {
-	return @"";
+    return @"";
 }
 
 - (NSString *)consumerSecret
 {
-	return @"";
+    return @"";
 }
 
 - (void)testCreateWithDefaultURL
 {
-	NSURL *url = [NSURL URLWithString:SIMPLEGEO_URL_PREFIX];
-	GHTestLog(@"SimpleGeo URL prefix: %@", SIMPLEGEO_URL_PREFIX);
-	SGAPIClient *client = [SGAPIClient clientWithDelegate:self];
-	
-	GHAssertEqualObjects(url, [client url], @"URLs don't match.");
+    NSURL *url = [NSURL URLWithString:SIMPLEGEO_URL_PREFIX];
+    GHTestLog(@"SimpleGeo URL prefix: %@", SIMPLEGEO_URL_PREFIX);
+    SGAPIClient *client = [SGAPIClient clientWithDelegate:self];
+
+    GHAssertEqualObjects(url, [client url], @"URLs don't match.");
 }
 
 - (void)testCreateWithURL
 {
-	NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
-	SGAPIClient *client = [SGAPIClient clientWithDelegate:self URL:url];
-	
-	GHAssertEqualObjects(url, [client url], @"URLs don't match.");
+    NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
+    SGAPIClient *client = [SGAPIClient clientWithDelegate:self URL:url];
+
+    GHAssertEqualObjects(url, [client url], @"URLs don't match.");
 }
 
 - (void)testGetFeatureWithId
 {
-	[self prepare];
-	
-	NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
-	SGAPIClient *client = [SGAPIClient clientWithDelegate:self URL:url];
+    [self prepare];
 
-	[client getFeatureWithId:@"foo"];
-	
-	[self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+    NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
+    SGAPIClient *client = [SGAPIClient clientWithDelegate:self URL:url];
+
+    [client getFeatureWithId:@"foo"];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
 }
 
 - (void)didLoadFeature:(SGFeature *)feature withId:(NSString *)featureId
 {
-	GHTestLog(@"Feature was loaded: %@", [feature description]);
-	
-	[self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testGetFeatureWithId)];
+    GHTestLog(@"Feature was loaded: %@", [feature description]);
+
+    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testGetFeatureWithId)];
 }
 
 @end

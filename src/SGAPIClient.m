@@ -6,6 +6,7 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
+#import <YAJL/YAJL.h>
 #import "SGAPIClient.h"
 
 
@@ -95,6 +96,9 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 
 	NSString *response = [request responseString];
 	NSLog(@"Received response: %@", response);
+
+	NSArray *jsonResponse = [[request responseData] yajl_JSON];
+	NSLog(@"JSON response: %@", jsonResponse);
 
 	NSString *featureId = [[request userInfo] objectForKey:@"featureId"];
 	SGFeature *feature = [SGFeature featureWithId:featureId];

@@ -69,13 +69,13 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
     GHAssertEqualObjects(featureId, @"foo", nil);
 
-    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString:@"37.079"];
-    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString:@"-122.938"];
+    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString:@"37.77241"];
+    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString:@"-122.40593"];
 
     GHAssertEqualObjects([[feature geometry] latitude], latitude, nil);
     GHAssertEqualObjects([[feature geometry] longitude], longitude, nil);
 
-    GHAssertEqualObjects([[feature properties] objectForKey:@"type"], @"place", nil);
+    GHAssertEqualObjects([[feature properties] objectForKey:@"name"], @"SimpleGeo San Francisco", nil);
 
     [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testGetFeatureWithId)];
 }

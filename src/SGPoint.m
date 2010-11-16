@@ -19,8 +19,14 @@
     if ([[input objectForKey:@"type"] isEqual:@"Point"]) {
         NSArray *coordinates = [input objectForKey:@"coordinates"];
 
-        return [SGPoint pointWithLatitude:[coordinates objectAtIndex:1]
-                                longitude:[coordinates objectAtIndex:0]];
+        // coerce input coordinates to NSDecimalNumbers to avoid float errors
+        NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString:
+                                     [[coordinates objectAtIndex:1] stringValue]];
+        NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString:
+                                      [[coordinates objectAtIndex:0] stringValue]];
+
+        return [SGPoint pointWithLatitude:latitude
+                                longitude:longitude];
     } else {
         @throw [NSException exceptionWithName:NSInvalidArgumentException
                                        reason:@"Non-Point geometries aren't currently supported."

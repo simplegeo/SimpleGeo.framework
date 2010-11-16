@@ -45,6 +45,25 @@
     GHAssertEqualObjects([[feature geometry] longitude], longitude, @"Longitudes don't match.");
 }
 
+- (void)testFeatureWithDataAndRawBody
+{
+    // this is how SGFeatures will be created in the wild
+    NSString *jsonData = @"{\"type\":\"Feature\",\"geometry\":{\"coordinates\":[-122.938,37.079],\"type\":\"Point\"},\"properties\":{\"type\":\"place\"}}";
+    NSDictionary *featureData = [jsonData yajl_JSON];
+
+    SGFeature *feature = [SGFeature featureWithId:@"SG_asdf"
+                                             data:featureData
+                                          rawBody:jsonData];
+
+    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"37.079"];
+    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-122.938"];
+
+    GHAssertEqualObjects([[feature properties] objectForKey:@"type"], @"place", @"'type' should be 'place'");
+    GHAssertEqualObjects([[feature geometry] latitude], latitude, @"Latitudes don't match.");
+    GHAssertEqualObjects([[feature geometry] longitude], longitude, @"Longitudes don't match.");
+    GHAssertEqualObjects([feature rawBody], jsonData, nil);
+}
+
 - (void)testFeatureWithDataWithAnArray
 {
     // JSON array w/ 1+ Features

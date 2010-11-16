@@ -24,7 +24,9 @@
 
 + (SGFeature *)featureWithId:(NSString *)id;
 + (SGFeature *)featureWithId:(NSString *)id data:(NSDictionary *)data;
++ (SGFeature *)featureWithId:(NSString *)id data:(NSDictionary *)data rawBody:(NSString *)rawBody;
 - (id)initWithId:(NSString *)id;
 - (id)initWithId:(NSString *)id data:(NSDictionary *)data;
+- (id)initWithId:(NSString *)id data:(NSDictionary *)data rawBody:(NSString *)rawBody;
 
 @end

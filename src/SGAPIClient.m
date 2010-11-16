@@ -81,7 +81,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    NSLog(@"UserInfo: %@", [request userInfo]);
+    // TODO check response status code
 
     // assume that "targetSelector" was set on the request and use that to dispatch appropriately
     SEL targetSelector = NSSelectorFromString([[request userInfo] objectForKey:@"targetSelector"]);
@@ -92,17 +92,12 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 
 - (void)didLoadFeatureJSON:(ASIHTTPRequest *)request
 {
-    NSLog(@"didLoadFeature!");
-
-    NSString *response = [request responseString];
-    NSLog(@"Received response: %@", response);
-
-    NSArray *jsonResponse = [[request responseData] yajl_JSON];
-    NSLog(@"JSON response: %@", jsonResponse);
-
+    NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
     NSString *featureId = [[request userInfo] objectForKey:@"featureId"];
-    SGFeature *feature = [SGFeature featureWithId:featureId];
-    [feature setRawBody:response];
+
+    SGFeature *feature = [SGFeature featureWithId:featureId
+                                             data:jsonResponse
+                                          rawBody:[request responseString]];
 
     [delegate didLoadFeature:feature withId:featureId];
 }

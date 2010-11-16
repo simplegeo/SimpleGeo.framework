@@ -22,7 +22,16 @@
 
 + (SGFeature *)featureWithId:(NSString *)id data:(NSDictionary *)data
 {
-    return [[SGFeature alloc] initWithId:id data:data];
+    return [[SGFeature alloc] initWithId:id
+                                    data:data
+                                 rawBody:nil];
+}
+
++ (SGFeature *)featureWithId:(NSString *)id data:(NSDictionary *)data rawBody:(NSString *)rawBody
+{
+    return [[SGFeature alloc] initWithId:id
+                                    data:data
+                                 rawBody:rawBody];
 }
 
 - (id)init
@@ -32,10 +41,18 @@
 
 - (id)initWithId:(NSString *)id
 {
-    return [self initWithId:id data:nil];
+    return [self initWithId:id
+                       data:nil];
 }
 
 - (id)initWithId:(NSString *)id data:(NSDictionary *)data
+{
+    return [self initWithId:id
+                       data:data
+                    rawBody:nil];
+}
+
+- (id)initWithId:(NSString *)id data:(NSDictionary *)data rawBody:(NSString *)body
 {
     self = [super init];
 
@@ -71,6 +88,8 @@
                 }
             }
         }
+
+        [self setRawBody:body];
     }
 
     return self;

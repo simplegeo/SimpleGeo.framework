@@ -27,6 +27,4 @@
 - (id)initWithId:(NSString *)id;
 - (id)initWithId:(NSString *)id data:(NSDictionary *)data;
 
-- (void)setGeometryWithDictionary:(NSDictionary *)dictionary;
-
 @end

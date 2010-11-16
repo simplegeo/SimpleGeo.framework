@@ -27,15 +27,15 @@
 
 - (id)init
 {
-    return [self initWithId:NULL];
+    return [self initWithId:nil];
 }
 
 - (id)initWithId:(NSString *)id
 {
-    return [self initWithId:id data:NULL];
+    return [self initWithId:id data:nil];
 }
 
-- (id)initWithId:(NSString *)id data:(NSDictionary *) data
+- (id)initWithId:(NSString *)id data:(NSDictionary *)data
 {
     self = [super init];
 
@@ -97,30 +97,8 @@
 
 - (void)setGeometry:(id)input
 {
-    if ([input isKindOfClass:[SGPoint class]]) {
-        [geometry autorelease];
-        geometry = [input retain];
-    } else if ([input isKindOfClass:[NSDictionary class]]) {
-        // TODO this probably belongs in an SGPoint constructor like "pointForGeometry:"
-        // (accepting both SGPoints and NSDictionaries) (or "geometryForGeometry:")
-        [self setGeometryWithDictionary:input];
-    } else {
-        NSLog(@"Unrecognized geometry input: %@ (%@)", [input description], [input class]);
-        // TODO throw an NSInvalidArgumentException???
-    }
-}
-
-- (void)setGeometryWithDictionary:(NSDictionary *)input
-{
-    NSLog(@"geometry from dictionary: %@", input);
-
-    if ([[input objectForKey:@"type"] isEqual:@"Point"]) {
-        NSArray *coordinates = [input objectForKey:@"coordinates"];
-        NSLog(@"Coordinates class: %@", [coordinates class]);
-        [self setGeometry:[SGPoint pointWithLatitude:[coordinates objectAtIndex:1] longitude:[coordinates objectAtIndex:0]]];
-    } else {
-        NSLog(@"Non-Point geometries aren't currently supported.");
-    }
+    [geometry autorelease];
+    geometry = [SGPoint pointForGeometry:input];
 }
 
 @end

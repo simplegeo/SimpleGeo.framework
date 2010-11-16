@@ -16,6 +16,12 @@
 @property (retain) NSDecimalNumber* latitude;
 @property (retain) NSDecimalNumber* longitude;
 
+/**
+ * Suitable for "creating" SGPoints from other SGPoints or from NSDictionaries (such as those
+ * present in a GeoJSON document).
+ */
++ (SGPoint *)pointForGeometry:(id)point;
 + (SGPoint *)pointWithLatitude:(NSDecimalNumber *)latitude longitude:(NSDecimalNumber *) longitude;
+- (id)initWithLatitude:(NSDecimalNumber *)latitude longitude:(NSDecimalNumber *)longitude;
 
 @end

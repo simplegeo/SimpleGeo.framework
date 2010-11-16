@@ -22,9 +22,9 @@
         return [SGPoint pointWithLatitude:[coordinates objectAtIndex:1]
                                 longitude:[coordinates objectAtIndex:0]];
     } else {
-        NSLog(@"Non-Point geometries aren't currently supported.");
-            // TODO raise an exception
-        return nil;
+        @throw [NSException exceptionWithName:NSInvalidArgumentException
+                                       reason:@"Non-Point geometries aren't currently supported."
+                                     userInfo:nil];
     }
 }
 

@@ -56,7 +56,64 @@
 
 - (void)testPointForGeometryWithDictionaryContainingPolygon
 {
-    GHFail(@"Not implemented.");
+    NSArray *coordinates = [NSArray arrayWithObjects:
+                            [NSArray arrayWithObjects:
+                             [NSDecimalNumber decimalNumberWithString:@"100.0"],
+                             [NSDecimalNumber decimalNumberWithString:@"0.0"],
+                             nil],
+                            [NSArray arrayWithObjects:
+                             [NSDecimalNumber decimalNumberWithString:@"101.0"],
+                             [NSDecimalNumber decimalNumberWithString:@"0.0"],
+                             nil],
+                            [NSArray arrayWithObjects:
+                             [NSDecimalNumber decimalNumberWithString:@"101.0"],
+                             [NSDecimalNumber decimalNumberWithString:@"1.0"],
+                             nil],
+                            [NSArray arrayWithObjects:
+                             [NSDecimalNumber decimalNumberWithString:@"100.0"],
+                             [NSDecimalNumber decimalNumberWithString:@"1.0"],
+                             nil],
+                            [NSArray arrayWithObjects:
+                             [NSDecimalNumber decimalNumberWithString:@"100.0"],
+                             [NSDecimalNumber decimalNumberWithString:@"0.0"],
+                             nil],
+                            nil];
+    NSDictionary *geometry = [NSDictionary dictionaryWithObjectsAndKeys:@"Polygon", @"type",
+                              coordinates, @"coordinates", nil];
+
+    GHAssertThrowsSpecificNamed([SGPoint pointForGeometry:geometry],
+                                NSException,
+                                NSInvalidArgumentException,
+                                @"NSInvalidArgumentException should have been thrown.");
+}
+
+- (void)testPointForGeometryWithDictionaryContainingLineString
+{
+    NSArray *coordinates = [NSArray arrayWithObjects:
+                            [NSArray arrayWithObjects:
+                             [NSDecimalNumber decimalNumberWithString:@"102.0"],
+                             [NSDecimalNumber decimalNumberWithString:@"0.0"],
+                             nil],
+                            [NSArray arrayWithObjects:
+                             [NSDecimalNumber decimalNumberWithString:@"103.0"],
+                             [NSDecimalNumber decimalNumberWithString:@"1.0"],
+                             nil],
+                            [NSArray arrayWithObjects:
+                             [NSDecimalNumber decimalNumberWithString:@"104.0"],
+                             [NSDecimalNumber decimalNumberWithString:@"0.0"],
+                             nil],
+                            [NSArray arrayWithObjects:
+                             [NSDecimalNumber decimalNumberWithString:@"105.0"],
+                             [NSDecimalNumber decimalNumberWithString:@"1.0"],
+                             nil],
+                            nil];
+    NSDictionary *geometry = [NSDictionary dictionaryWithObjectsAndKeys:@"LineString", @"type",
+                              coordinates, @"coordinates", nil];
+
+    GHAssertThrowsSpecificNamed([SGPoint pointForGeometry:geometry],
+                                NSException,
+                                NSInvalidArgumentException,
+                                @"NSInvalidArgumentException should have been thrown.");
 }
 
 @end

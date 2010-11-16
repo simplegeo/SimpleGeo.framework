@@ -56,7 +56,10 @@ get '/0.1/features/:id.json' do
 end
 
 get '/0.1/places/:lat,:lon/search.json' do
-  if params[:q] == 'one'
+  case params[:q]
+  when "zero"
+    "[]"
+  when "one"
     <<-EOS
     [
 #{SG_BOULDER}

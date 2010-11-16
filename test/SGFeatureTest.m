@@ -26,7 +26,7 @@
     NSString *featureId = @"SG_asdf";
     SGFeature *feature = [SGFeature featureWithId: featureId];
 
-    GHAssertEqualObjects(featureId, [feature featureId], @"Feature ids don't match.");
+    GHAssertEqualObjects([feature featureId], featureId, @"Feature ids don't match.");
 }
 
 - (void)testFeatureWithData
@@ -40,9 +40,9 @@
     NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"37.079"];
     NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-122.938"];
 
-    GHAssertEqualObjects(@"place", [[feature properties] objectForKey:@"type"], @"'type' should be 'place'");
-    GHAssertEqualObjects(latitude, [[feature geometry] latitude], @"Latitudes don't match.");
-    GHAssertEqualObjects(longitude, [[feature geometry] longitude], @"Longitudes don't match.");
+    GHAssertEqualObjects([[feature properties] objectForKey:@"type"], @"place", @"'type' should be 'place'");
+    GHAssertEqualObjects([[feature geometry] latitude], latitude, @"Latitudes don't match.");
+    GHAssertEqualObjects([[feature geometry] longitude], longitude, @"Longitudes don't match.");
 }
 
 - (void)testFeatureWithDataWithAnArray

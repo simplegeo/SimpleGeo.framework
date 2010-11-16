@@ -40,7 +40,7 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     GHTestLog(@"SimpleGeo URL prefix: %@", SIMPLEGEO_URL_PREFIX);
     SGAPIClient *client = [SGAPIClient clientWithDelegate:self];
 
-    GHAssertEqualObjects(url, [client url], @"URLs don't match.");
+    GHAssertEqualObjects([client url], url, @"URLs don't match.");
 }
 
 - (void)testCreateWithURL
@@ -48,7 +48,7 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
     SGAPIClient *client = [SGAPIClient clientWithDelegate:self URL:url];
 
-    GHAssertEqualObjects(url, [client url], @"URLs don't match.");
+    GHAssertEqualObjects([client url], url, @"URLs don't match.");
 }
 
 - (void)testGetFeatureWithId

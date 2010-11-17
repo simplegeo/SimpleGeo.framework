@@ -11,6 +11,9 @@
 		5D5B036F1291BD4500399A50 /* SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B036E1291BD4500399A50 /* SGFeature.m */; };
 		5D5B03701291BD4500399A50 /* SGFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5B036D1291BD4500399A50 /* SGFeature.h */; };
 		5D5B03711291BD4500399A50 /* SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B036E1291BD4500399A50 /* SGFeature.m */; };
+		5D5B05D012934A9D00399A50 /* NSArray+SGFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */; };
+		5D5B05D112934A9D00399A50 /* NSArray+SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B05CF12934A9D00399A50 /* NSArray+SGFeature.m */; };
+		5D5B05D212934A9D00399A50 /* NSArray+SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B05CF12934A9D00399A50 /* NSArray+SGFeature.m */; };
 		5D7673E9128E4BC5006B7D51 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA3C359128E449B00E128DC /* GHUnit.framework */; };
 		5D76741E12908B53006B7D51 /* SGPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3C344128E427C00E128DC /* SGPoint.m */; };
 		5D7674B712909AAB006B7D51 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674B612909AAB006B7D51 /* SystemConfiguration.framework */; };
@@ -77,6 +80,8 @@
 		5D5B02C61291A37700399A50 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = Library/Frameworks/YAJL.framework; sourceTree = SDKROOT; };
 		5D5B036D1291BD4500399A50 /* SGFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGFeature.h; path = src/SGFeature.h; sourceTree = "<group>"; };
 		5D5B036E1291BD4500399A50 /* SGFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGFeature.m; path = src/SGFeature.m; sourceTree = "<group>"; };
+		5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+SGFeature.h"; path = "src/NSArray+SGFeature.h"; sourceTree = "<group>"; };
+		5D5B05CF12934A9D00399A50 /* NSArray+SGFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+SGFeature.m"; path = "src/NSArray+SGFeature.m"; sourceTree = "<group>"; };
 		5D7674B612909AAB006B7D51 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5D7674BA12909ABA006B7D51 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5D7674BC12909ACB006B7D51 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
@@ -198,6 +203,8 @@
 				5D5B036E1291BD4500399A50 /* SGFeature.m */,
 				5DA3C343128E427C00E128DC /* SGPoint.h */,
 				5DA3C344128E427C00E128DC /* SGPoint.m */,
+				5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */,
+				5D5B05CF12934A9D00399A50 /* NSArray+SGFeature.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -293,6 +300,7 @@
 				5D76764F1290EE9F006B7D51 /* ASIFormDataRequest.h in Headers */,
 				5D7676501290EE9F006B7D51 /* ASIDownloadCache.h in Headers */,
 				5D5B03701291BD4500399A50 /* SGFeature.h in Headers */,
+				5D5B05D012934A9D00399A50 /* NSArray+SGFeature.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +407,7 @@
 				5D76763D1290EE9F006B7D51 /* ASIDataCompressor.m in Sources */,
 				5D76763E1290EE9F006B7D51 /* ASIFormDataRequest.m in Sources */,
 				5D5B036F1291BD4500399A50 /* SGFeature.m in Sources */,
+				5D5B05D212934A9D00399A50 /* NSArray+SGFeature.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +425,7 @@
 				5D7676481290EE9F006B7D51 /* ASIDataCompressor.m in Sources */,
 				5D76764E1290EE9F006B7D51 /* ASIFormDataRequest.m in Sources */,
 				5D5B03711291BD4500399A50 /* SGFeature.m in Sources */,
+				5D5B05D112934A9D00399A50 /* NSArray+SGFeature.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

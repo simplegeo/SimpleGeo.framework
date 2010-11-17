@@ -20,11 +20,34 @@
     return NO;
 }
 
-- (void)testPointWithLatitudeAndLongitude
+- (void)testPointWithLatitudeAndLongitudeWithNSDecimalNumber
 {
     NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"40.0"];
     NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-105.0"];
-    SGPoint *point = [SGPoint pointWithLatitude: latitude longitude: longitude];
+    SGPoint *point = [SGPoint pointWithLatitude:latitude longitude:longitude];
+
+    GHAssertEqualObjects([point latitude], latitude, @"Latitudes don't match.");
+    GHAssertEqualObjects([point longitude], longitude, @"Longitudes don't match.");
+}
+
+- (void)testPointWithLatitudeAndLongitudeWithString
+{
+    SGPoint *point = [SGPoint pointWithLatitude:@"40.0" longitude:@"-105.0"];
+
+    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"40.0"];
+    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-105.0"];
+
+    GHAssertEqualObjects([point latitude], latitude, @"Latitudes don't match.");
+    GHAssertEqualObjects([point longitude], longitude, @"Longitudes don't match.");
+}
+
+- (void)testPointWithLatitudeAndLongitudeWithNSNumber
+{
+    SGPoint *point = [SGPoint pointWithLatitude:[NSNumber numberWithFloat:40.0]
+                                      longitude:[NSNumber numberWithFloat:-105.0]];
+
+    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"40.0"];
+    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-105.0"];
 
     GHAssertEqualObjects([point latitude], latitude, @"Latitudes don't match.");
     GHAssertEqualObjects([point longitude], longitude, @"Longitudes don't match.");
@@ -34,7 +57,7 @@
 {
     NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"40.0"];
     NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-105.0"];
-    SGPoint *input = [SGPoint pointWithLatitude: latitude longitude: longitude];
+    SGPoint *input = [SGPoint pointWithLatitude:latitude longitude:longitude];
 
     SGPoint *point = [SGPoint pointForGeometry:input];
 

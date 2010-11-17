@@ -48,7 +48,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 - (void)getFeatureWithId:(NSString *)featureId
 {
     NSString *path = [NSString stringWithFormat:@"/0.1/features/%@.json", featureId];
-    NSURL *endpoint = [NSURL URLWithString:path relativeToURL: url];
+    NSURL *endpoint = [NSURL URLWithString:path relativeToURL:url];
 
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:endpoint];
     [request setDelegate:self];
@@ -62,19 +62,28 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 
 #pragma mark Places API Calls
 
-- (NSArray *)getPlacesNear:(SGPoint *)point
+- (void)getPlacesNear:(SGPoint *)point
 {
-    return nil;
+    NSString *path = [NSString stringWithFormat:@"/0.1/places/%@,%@/search.json",
+                      [point latitude], [point longitude]];
+    NSURL *endpoint = [NSURL URLWithString:path relativeToURL:url];
+
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:endpoint];
+    [request setDelegate:self];
+    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                            @"didLoadPlacesJSON:", @"targetSelector",
+                            point, @"point",
+                            nil
+                          ]];
+    [request startAsynchronous];
 }
 
-- (NSArray *)getPlacesNear:(SGPoint *)point matching:(NSString *)query
+- (void)getPlacesNear:(SGPoint *)point matching:(NSString *)query
 {
-    return nil;
 }
 
-- (NSArray *)getPlacesNear:(SGPoint *)point matching:(NSString *)query inCategory:(NSString *)category
+- (void)getPlacesNear:(SGPoint *)point matching:(NSString *)query inCategory:(NSString *)category
 {
-    return nil;
 }
 
 #pragma mark ASIHTTPRequest Delegate Methods
@@ -100,6 +109,16 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
                                           rawBody:[request responseString]];
 
     [delegate didLoadFeature:feature withId:featureId];
+}
+
+- (void)didLoadPlacesJSON:(ASIHTTPRequest *)request
+{
+    NSArray *jsonResponse = [[request responseData] yajl_JSON];
+    SGPoint *point = [[request userInfo] objectForKey:@"point"];
+
+    NSArray *places = [NSArray arrayWithFeatures:jsonResponse];
+
+    [delegate didLoadPlaces:places near:point];
 }
 
 @end

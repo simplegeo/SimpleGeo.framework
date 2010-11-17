@@ -19,14 +19,8 @@
     if ([[input objectForKey:@"type"] isEqual:@"Point"]) {
         NSArray *coordinates = [input objectForKey:@"coordinates"];
 
-        // coerce input coordinates to NSDecimalNumbers to avoid float errors
-        NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString:
-                                     [[coordinates objectAtIndex:1] stringValue]];
-        NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString:
-                                      [[coordinates objectAtIndex:0] stringValue]];
-
-        return [SGPoint pointWithLatitude:latitude
-                                longitude:longitude];
+        return [SGPoint pointWithLatitude:[coordinates objectAtIndex:1]
+                                longitude:[coordinates objectAtIndex:0]];
     } else {
         @throw [NSException exceptionWithName:NSInvalidArgumentException
                                        reason:@"Non-Point geometries aren't currently supported."
@@ -48,9 +42,29 @@
     }
 }
 
-+ (SGPoint *)pointWithLatitude:(NSDecimalNumber *)latitude longitude:(NSDecimalNumber *)longitude
++ (SGPoint *)pointWithLatitude:(id)latitude longitude:(id)longitude
 {
-    return [[SGPoint alloc]initWithLatitude:latitude longitude:longitude];
+    if ([latitude isKindOfClass:[NSDecimalNumber class]] &&
+        [longitude isKindOfClass:[NSDecimalNumber class]]) {
+
+        return [[SGPoint alloc]initWithLatitude:latitude longitude:longitude];
+    } else if ([latitude isKindOfClass:[NSNumber class]] &&
+        [longitude isKindOfClass:[NSNumber class]]) {
+
+        return [[SGPoint alloc]initWithLatitude:[NSDecimalNumber decimalNumberWithString:
+                                                 [latitude stringValue]]
+                                      longitude:[NSDecimalNumber decimalNumberWithString:
+                                                 [longitude stringValue]]];
+    } else if ([latitude isKindOfClass:[NSString class]] &&
+               [longitude isKindOfClass:[NSString class]]) {
+
+        return [[SGPoint alloc]initWithLatitude:[NSDecimalNumber decimalNumberWithString:latitude]
+                                      longitude:[NSDecimalNumber decimalNumberWithString:longitude]];
+    } else {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException
+                                       reason:@"Input couldn't be converted to a number."
+                                     userInfo:nil];
+    }
 }
 
 - (id)init
@@ -75,6 +89,23 @@
     [latitude release];
     [longitude release];
     [super dealloc];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<SGPoint: %@, %@>",
+            [latitude stringValue],
+            [longitude stringValue]];
+}
+
+- (BOOL) isEqual:(id)object
+{
+    return [latitude isEqual:[object latitude]] && [longitude isEqual:[object longitude]];
+}
+
+- (NSUInteger)hash
+{
+    return [latitude hash] + [longitude hash];
 }
 
 @end

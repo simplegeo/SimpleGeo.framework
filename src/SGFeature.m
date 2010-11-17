@@ -34,6 +34,12 @@
                                  rawBody:rawBody];
 }
 
++ (SGFeature *)featureWithData:(NSDictionary *)data
+{
+    return [[SGFeature alloc] initWithId:nil
+                                    data:data];
+}
+
 - (id)init
 {
     return [self initWithId:nil];
@@ -106,7 +112,14 @@
 
 - (NSString *)description
 {
-    return rawBody;
+    if (rawBody) {
+        return rawBody;
+    } else {
+        return [[NSDictionary dictionaryWithObjectsAndKeys:featureId, @"id",
+                geometry, @"geometry",
+                properties, @"properties",
+                nil] description];
+    }
 }
 
 - (SGPoint *)geometry
@@ -118,6 +131,15 @@
 {
     [geometry autorelease];
     geometry = [SGPoint pointForGeometry:input];
+}
+
+/**
+ * This method exists to allow the magic setting-by-selector mechanism to set
+ * ids properly.
+ */
+- (void)setId:(NSString *)id
+{
+    [self setFeatureId:id];
 }
 
 @end

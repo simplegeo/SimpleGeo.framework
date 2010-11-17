@@ -21,7 +21,7 @@
  * present in a GeoJSON document).
  */
 + (SGPoint *)pointForGeometry:(id)point;
-+ (SGPoint *)pointWithLatitude:(NSDecimalNumber *)latitude longitude:(NSDecimalNumber *) longitude;
++ (SGPoint *)pointWithLatitude:(id)latitude longitude:(id) longitude;
 - (id)initWithLatitude:(NSDecimalNumber *)latitude longitude:(NSDecimalNumber *)longitude;
 
 @end

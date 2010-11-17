@@ -9,6 +9,7 @@
 #import "ASIHTTPRequest.h"
 #import "SGFeature.h"
 #import "SGPoint.h"
+#import "NSArray+SGFeature.h"
 
 
 extern NSString * const SIMPLEGEO_URL_PREFIX;
@@ -23,6 +24,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 - (void)requestDidFinish:(ASIHTTPRequest *)request;
 - (void)requestDidFail:(ASIHTTPRequest *)request;
 - (void)didLoadFeature:(SGFeature *)feature withId:(NSString *)featureId;
+- (void)didLoadPlaces:(NSArray *)places near:(SGPoint *)point;
 
 @end
 
@@ -42,8 +44,8 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 // TODO extract these into appropriate categories
 - (void)getFeatureWithId:(NSString *)featureId;
 
-- (NSArray *)getPlacesNear:(SGPoint *)point;
-- (NSArray *)getPlacesNear:(SGPoint *)point matching:(NSString *)query;
-- (NSArray *)getPlacesNear:(SGPoint *)point matching:(NSString *)query inCategory:(NSString *)category;
+- (void)getPlacesNear:(SGPoint *)point;
+- (void)getPlacesNear:(SGPoint *)point matching:(NSString *)query;
+- (void)getPlacesNear:(SGPoint *)point matching:(NSString *)query inCategory:(NSString *)category;
 
 @end

@@ -43,12 +43,19 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
     [super dealloc];
 }
 
+#pragma mark Utility Methods
+
+-(NSURL *)endpointForString:(NSString *)path
+{
+    return [NSURL URLWithString:path relativeToURL:url];
+}
+
 #pragma mark Common API Calls
 
 - (void)getFeatureWithId:(NSString *)featureId
 {
-    NSString *path = [NSString stringWithFormat:@"/0.1/features/%@.json", featureId];
-    NSURL *endpoint = [NSURL URLWithString:path relativeToURL:url];
+    NSURL *endpoint = [self endpointForString:
+                       [NSString stringWithFormat:@"/0.1/features/%@.json", featureId]];
 
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:endpoint];
     [request setDelegate:self];
@@ -64,22 +71,29 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 
 - (void)getPlacesNear:(SGPoint *)point
 {
-    NSString *path = [NSString stringWithFormat:@"/0.1/places/%@,%@/search.json",
-                      [point latitude], [point longitude]];
-    NSURL *endpoint = [NSURL URLWithString:path relativeToURL:url];
-
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:endpoint];
-    [request setDelegate:self];
-    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                            @"didLoadPlacesJSON:", @"targetSelector",
-                            point, @"point",
-                            nil
-                          ]];
-    [request startAsynchronous];
+    [self getPlacesNear:point matching:nil];
 }
 
 - (void)getPlacesNear:(SGPoint *)point matching:(NSString *)query
 {
+    // TODO omit q= if query is nil
+    NSURL *endpoint = [self endpointForString:
+                       [NSString stringWithFormat:@"/0.1/places/%@,%@/search.json?q=%@",
+                        [point latitude], [point longitude],
+                        [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]
+                       ];
+
+    NSLog(@"Endpoint: %@", endpoint);
+
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:endpoint];
+    [request setDelegate:self];
+    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                          @"didLoadPlacesJSON:", @"targetSelector",
+                          point, @"point",
+                          query, @"matching",
+                          nil
+                          ]];
+    [request startAsynchronous];
 }
 
 - (void)getPlacesNear:(SGPoint *)point matching:(NSString *)query inCategory:(NSString *)category
@@ -115,10 +129,15 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 {
     NSArray *jsonResponse = [[request responseData] yajl_JSON];
     SGPoint *point = [[request userInfo] objectForKey:@"point"];
+    NSString *matching = [[request userInfo] objectForKey:@"matching"];
 
     NSArray *places = [NSArray arrayWithFeatures:jsonResponse];
 
-    [delegate didLoadPlaces:places near:point];
+    if (matching) {
+        [delegate didLoadPlaces:places near:point matching:matching];
+    } else {
+        [delegate didLoadPlaces:places near:point];
+    }
 }
 
 @end

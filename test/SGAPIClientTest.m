@@ -24,15 +24,20 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     return NO;
 }
 
-- (NSString *)consumerKey
+#pragma mark Utility Methods
+
+- (SGAPIClient *)createClient
 {
-    return @"";
+    NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
+    return [SGAPIClient clientWithDelegate:self URL:url];
 }
 
-- (NSString *)consumerSecret
+- (SGPoint *)point
 {
-    return @"";
+    return [SGPoint pointWithLatitude:@"40.0" longitude:@"-105.0"];
 }
+
+#pragma mark Tests
 
 - (void)testCreateWithDefaultURL
 {
@@ -51,20 +56,52 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     GHAssertEqualObjects([client url], url, @"URLs don't match.");
 }
 
+#pragma mark Async Tests
+
 - (void)testGetFeatureWithId
 {
     [self prepare];
 
-    NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
-    SGAPIClient *client = [SGAPIClient clientWithDelegate:self URL:url];
+    SGAPIClient *client = [self createClient];
 
     [client getFeatureWithId:@"foo"];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
 }
 
+- (void)testGetPlacesNearWithMultipleResults
+{
+    [self prepare];
+
+    [[self createClient] getPlacesNear:[self point]];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+}
+
+- (void)testGetPlacesNearMatchingWithASingleResult
+{
+    [self prepare];
+
+    [[self createClient] getPlacesNear:[self point] matching:@"one"];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+}
+
+#pragma mark SGAPIClientDelegate Methods
+
+- (NSString *)consumerKey
+{
+    return @"";
+}
+
+- (NSString *)consumerSecret
+{
+    return @"";
+}
+
 - (void)didLoadFeature:(SGFeature *)feature withId:(NSString *)featureId
 {
+    // TODO currently expects to only be triggered by testGetFeatureWithId
     GHAssertEqualObjects(featureId, @"foo", nil);
 
     NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString:@"37.77241"];
@@ -78,24 +115,10 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testGetFeatureWithId)];
 }
 
-- (void)testGetPlacesNearWithMultipleResults
-{
-    [self prepare];
-
-    NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
-    SGAPIClient *client = [SGAPIClient clientWithDelegate:self URL:url];
-
-    SGPoint *point = [SGPoint pointWithLatitude:@"40.0" longitude:@"-105.0"];
-
-    [client getPlacesNear:point];
-
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
-}
-
 - (void)didLoadPlaces:(NSArray *)places near:(SGPoint *)point
 {
-    GHAssertEqualObjects(point, [SGPoint pointWithLatitude:@"40.0" longitude:@"-105.0"],
-                         @"Reference point didn't match");
+    // TODO currently expects to only be triggered by testGetPlacesNearWithMultipleResults
+    GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
     GHAssertEquals([places count], (NSUInteger) 2, @"Should have been 2 places.");
     GHAssertEqualObjects([[[places objectAtIndex:0] properties] objectForKey:@"name"],
                          @"SimpleGeo Boulder", nil);
@@ -104,6 +127,17 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
     [self notify:kGHUnitWaitStatusSuccess
      forSelector:@selector(testGetPlacesNearWithMultipleResults)];
+}
+
+- (void)didLoadPlaces:(NSArray *)places near:(SGPoint *)point matching:(NSString *)query;
+{
+    // TODO currently expects to only be triggered by testGetPlacesNearMatchingWithASingleResult
+    GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
+    GHAssertEqualObjects([[[places objectAtIndex:0] properties] objectForKey:@"name"],
+                         @"SimpleGeo Boulder", nil);
+
+    [self notify:kGHUnitWaitStatusSuccess
+     forSelector:@selector(testGetPlacesNearMatchingWithASingleResult)];
 }
 
 @end

@@ -70,10 +70,7 @@
     NSString *jsonData = @"[{\"type\":\"Feature\",\"geometry\":{\"coordinates\":[-122.938,37.079],\"type\":\"Point\"},\"properties\":{\"type\":\"place\"}}]";
     id featureData = [jsonData yajl_JSON];
 
-    GHAssertThrowsSpecificNamed([SGFeature featureWithId:@"SG_asdf" data:featureData],
-                                NSException,
-                                NSInvalidArgumentException,
-                                @"NSInvalidArgumentException should have been thrown.");
+    GHAssertThrows([SGFeature featureWithId:@"SG_asdf" data:featureData], nil);
 }
 
 - (void)testFeatureWithDataWithAFeatureCollection
@@ -82,10 +79,7 @@
     NSString *jsonData = @"{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"coordinates\":[-122.938,37.079],\"type\":\"Point\"},\"properties\":{\"type\":\"place\"}}]}";
     NSDictionary *featureData = [jsonData yajl_JSON];
 
-    GHAssertThrowsSpecificNamed([SGFeature featureWithId:@"SG_asdf" data:featureData],
-                                NSException,
-                                NSInvalidArgumentException,
-                                @"NSInvalidArgumentException should have been thrown.");
+    GHAssertNil([SGFeature featureWithId:@"SG_asdf" data:featureData], nil);
 }
 
 @end

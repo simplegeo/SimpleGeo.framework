@@ -63,21 +63,9 @@
         [self setFeatureId:id];
 
         if (data) {
-            // data will either be an NSDictionary or an NSArray depending on the input JSON;
-            // this class represents a single feature, so if it gets passed an NSArray, that's
-            // just wrong
-            if (! [data isKindOfClass:[NSDictionary class]]) {
-                @throw [NSException exceptionWithName:NSInvalidArgumentException
-                                               reason:[NSString stringWithFormat:@"Invalid data type: %@",
-                                                       [data class]]
-                                             userInfo:nil];
-            }
-
             if (! [[data objectForKey:@"type"] isEqual:@"Feature"]) {
-                @throw [NSException exceptionWithName:NSInvalidArgumentException
-                                               reason:[NSString stringWithFormat:@"Unsupported type: %@",
-                                                       [data objectForKey:@"type"]]
-                                             userInfo:nil];
+                NSLog(@"Unsupported geometry type: %@", [data objectForKey:@"type"]);
+                return nil;
             }
 
             for (NSString *key in data) {
@@ -86,6 +74,8 @@
 
                 // properties with well-known names are defined as @properties;
                 // anything else is ignored
+                // accessor methods shouldn't be used in an init... method (so say the docs), but
+                // there's no other way to achieve this otherwise
                 if ([self respondsToSelector:selector]) {
                     [self performSelector:selector withObject:[data objectForKey:key]];
                 }

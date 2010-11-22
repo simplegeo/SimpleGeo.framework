@@ -104,10 +104,7 @@
     NSDictionary *geometry = [NSDictionary dictionaryWithObjectsAndKeys:@"Polygon", @"type",
                               coordinates, @"coordinates", nil];
 
-    GHAssertThrowsSpecificNamed([SGPoint pointForGeometry:geometry],
-                                NSException,
-                                NSInvalidArgumentException,
-                                @"NSInvalidArgumentException should have been thrown.");
+    GHAssertNil([SGPoint pointForGeometry:geometry], nil);
 }
 
 - (void)testPointForGeometryWithDictionaryContainingLineString
@@ -133,10 +130,7 @@
     NSDictionary *geometry = [NSDictionary dictionaryWithObjectsAndKeys:@"LineString", @"type",
                               coordinates, @"coordinates", nil];
 
-    GHAssertThrowsSpecificNamed([SGPoint pointForGeometry:geometry],
-                                NSException,
-                                NSInvalidArgumentException,
-                                @"NSInvalidArgumentException should have been thrown.");
+    GHAssertNil([SGPoint pointForGeometry:geometry], nil);
 }
 
 @end

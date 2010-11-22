@@ -23,6 +23,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 @optional
 - (void)requestDidFinish:(ASIHTTPRequest *)request;
 - (void)requestDidFail:(ASIHTTPRequest *)request;
+
 - (void)didLoadFeature:(SGFeature *)feature withId:(NSString *)featureId;
 - (void)didLoadPlaces:(NSArray *)places near:(SGPoint *)point;
 - (void)didLoadPlaces:(NSArray *)places near:(SGPoint *)point matching:(NSString *)query;

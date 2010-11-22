@@ -22,9 +22,7 @@
         return [SGPoint pointWithLatitude:[coordinates objectAtIndex:1]
                                 longitude:[coordinates objectAtIndex:0]];
     } else {
-        @throw [NSException exceptionWithName:NSInvalidArgumentException
-                                       reason:@"Non-Point geometries aren't currently supported."
-                                     userInfo:nil];
+        return nil;
     }
 }
 
@@ -35,10 +33,7 @@
     } else if ([geometry isKindOfClass:[NSDictionary class]]) {
         return [SGPoint pointForDictionary:geometry];
     } else {
-        @throw [NSException exceptionWithName:NSInvalidArgumentException
-                                       reason:[NSString stringWithFormat:@"Unrecognized geometry input: %@ (%@)",
-                                               [geometry description], [geometry class]]
-                                     userInfo:nil];
+        return nil;
     }
 }
 
@@ -63,9 +58,7 @@
         return [[[SGPoint alloc] initWithLatitude:[NSDecimalNumber decimalNumberWithString:latitude]
                                       longitude:[NSDecimalNumber decimalNumberWithString:longitude]] autorelease];
     } else {
-        @throw [NSException exceptionWithName:NSInvalidArgumentException
-                                       reason:@"Input couldn't be converted to a number."
-                                     userInfo:nil];
+        return nil;
     }
 }
 

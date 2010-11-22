@@ -29,12 +29,12 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 - (SGAPIClient *)createClient
 {
     NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
-    return [SGAPIClient clientWithDelegate:self URL:url];
+    return [[SGAPIClient clientWithDelegate:self URL:url] retain];
 }
 
 - (SGPoint *)point
 {
-    return [SGPoint pointWithLatitude:@"40.0" longitude:@"-105.0"];
+    return [[SGPoint pointWithLatitude:@"40.0" longitude:@"-105.0"] retain];
 }
 
 #pragma mark Tests
@@ -99,8 +99,13 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     return @"";
 }
 
+#pragma mark Delegated Methods
+
 - (void)didLoadFeature:(SGFeature *)feature withId:(NSString *)featureId
 {
+    [feature retain];
+    [featureId retain];
+
     // TODO currently expects to only be triggered by testGetFeatureWithId
     GHAssertEqualObjects(featureId, @"foo", nil);
 
@@ -117,6 +122,9 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 - (void)didLoadPlaces:(NSArray *)places near:(SGPoint *)point
 {
+    [places retain];
+    [point retain];
+
     // TODO currently expects to only be triggered by testGetPlacesNearWithMultipleResults
     GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
     GHAssertEquals([places count], (NSUInteger) 2, @"Should have been 2 places.");
@@ -131,6 +139,10 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 - (void)didLoadPlaces:(NSArray *)places near:(SGPoint *)point matching:(NSString *)query;
 {
+    [places retain];
+    [point retain];
+    [query retain];
+
     // TODO currently expects to only be triggered by testGetPlacesNearMatchingWithASingleResult
     GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
     GHAssertEqualObjects([[[places objectAtIndex:0] properties] objectForKey:@"name"],

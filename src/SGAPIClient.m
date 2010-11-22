@@ -27,7 +27,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 
 + (SGAPIClient *)clientWithDelegate:(id<SGAPIClientDelegate>)delegate URL:(NSURL *)url
 {
-    SGAPIClient *client = [[SGAPIClient alloc] init];
+    SGAPIClient *client = [[[SGAPIClient alloc] init] autorelease];
     [client setDelegate:delegate];
     [client setUrl:url];
 

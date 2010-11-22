@@ -47,19 +47,21 @@
     if ([latitude isKindOfClass:[NSDecimalNumber class]] &&
         [longitude isKindOfClass:[NSDecimalNumber class]]) {
 
-        return [[SGPoint alloc]initWithLatitude:latitude longitude:longitude];
+        return [[[SGPoint alloc] initWithLatitude:latitude longitude:longitude] autorelease];
     } else if ([latitude isKindOfClass:[NSNumber class]] &&
         [longitude isKindOfClass:[NSNumber class]]) {
 
-        return [[SGPoint alloc]initWithLatitude:[NSDecimalNumber decimalNumberWithString:
+        // TODO create and use pointWithStringLatitude:longitude:
+        return [[[SGPoint alloc] initWithLatitude:[NSDecimalNumber decimalNumberWithString:
                                                  [latitude stringValue]]
                                       longitude:[NSDecimalNumber decimalNumberWithString:
-                                                 [longitude stringValue]]];
+                                                 [longitude stringValue]]] autorelease];
     } else if ([latitude isKindOfClass:[NSString class]] &&
                [longitude isKindOfClass:[NSString class]]) {
 
-        return [[SGPoint alloc]initWithLatitude:[NSDecimalNumber decimalNumberWithString:latitude]
-                                      longitude:[NSDecimalNumber decimalNumberWithString:longitude]];
+        // TODO create and use pointWithStringLatitude:longitude:
+        return [[[SGPoint alloc] initWithLatitude:[NSDecimalNumber decimalNumberWithString:latitude]
+                                      longitude:[NSDecimalNumber decimalNumberWithString:longitude]] autorelease];
     } else {
         @throw [NSException exceptionWithName:NSInvalidArgumentException
                                        reason:@"Input couldn't be converted to a number."

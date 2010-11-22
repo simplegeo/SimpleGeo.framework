@@ -17,27 +17,24 @@
 
 + (SGFeature *)featureWithId:(NSString *)id
 {
-    return [[SGFeature alloc] initWithId:id];
+    return [SGFeature featureWithId:id data:nil];
 }
 
 + (SGFeature *)featureWithId:(NSString *)id data:(NSDictionary *)data
 {
-    return [[SGFeature alloc] initWithId:id
-                                    data:data
-                                 rawBody:nil];
+    return [SGFeature featureWithId:id data:data rawBody:nil];
 }
 
 + (SGFeature *)featureWithId:(NSString *)id data:(NSDictionary *)data rawBody:(NSString *)rawBody
 {
-    return [[SGFeature alloc] initWithId:id
+    return [[[SGFeature alloc] initWithId:id
                                     data:data
-                                 rawBody:rawBody];
+                                 rawBody:rawBody] autorelease];
 }
 
 + (SGFeature *)featureWithData:(NSDictionary *)data
 {
-    return [[SGFeature alloc] initWithId:nil
-                                    data:data];
+    return [SGFeature featureWithId:nil data:data];
 }
 
 - (id)init
@@ -95,7 +92,7 @@
             }
         }
 
-        [self setRawBody:body];
+        rawBody = [body retain];
     }
 
     return self;
@@ -130,7 +127,7 @@
 - (void)setGeometry:(id)input
 {
     [geometry autorelease];
-    geometry = [SGPoint pointForGeometry:input];
+    geometry = [[SGPoint pointForGeometry:input] retain];
 }
 
 /**

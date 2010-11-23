@@ -122,12 +122,20 @@ NSString * const SIMPLEGEO_API_VERSION = @"0.1";
 
 - (void)getPlacesNear:(SGPoint *)point matching:(NSString *)query
 {
-    // TODO omit q= if query is nil
-    NSURL *endpoint = [self endpointForString:
-                       [NSString stringWithFormat:@"/%@/places/%f,%f/search.json?q=%@",
-                        SIMPLEGEO_API_VERSION, [point latitude], [point longitude],
-                        [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]
-                       ];
+    NSURL *endpoint;
+
+    if (query) {
+        endpoint = [self endpointForString:
+                    [NSString stringWithFormat:@"/%@/places/%f,%f/search.json?q=%@",
+                     SIMPLEGEO_API_VERSION, [point latitude], [point longitude],
+                     [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]
+                    ];
+    } else {
+        endpoint = [self endpointForString:
+                    [NSString stringWithFormat:@"/%@/places/%f,%f/search.json",
+                     SIMPLEGEO_API_VERSION, [point latitude], [point longitude]]
+                    ];
+    }
 
     NSLog(@"Endpoint: %@", endpoint);
 

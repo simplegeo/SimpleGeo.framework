@@ -78,7 +78,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 {
     // TODO omit q= if query is nil
     NSURL *endpoint = [self endpointForString:
-                       [NSString stringWithFormat:@"/0.1/places/%@,%@/search.json?q=%@",
+                       [NSString stringWithFormat:@"/0.1/places/%f,%f/search.json?q=%@",
                         [point latitude], [point longitude],
                         [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]
                        ];

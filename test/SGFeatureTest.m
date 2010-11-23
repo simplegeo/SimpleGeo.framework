@@ -37,12 +37,9 @@
 
     SGFeature *feature = [SGFeature featureWithId:@"SG_asdf" data:featureData];
 
-    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"37.079"];
-    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-122.938"];
-
     GHAssertEqualObjects([[feature properties] objectForKey:@"type"], @"place", @"'type' should be 'place'");
-    GHAssertEqualObjects([[feature geometry] latitude], latitude, @"Latitudes don't match.");
-    GHAssertEqualObjects([[feature geometry] longitude], longitude, @"Longitudes don't match.");
+    GHAssertEquals([[feature geometry] latitude], 37.079, @"Latitudes don't match.");
+    GHAssertEquals([[feature geometry] longitude], -122.938, @"Longitudes don't match.");
 }
 
 - (void)testFeatureWithDataAndRawBody
@@ -55,12 +52,9 @@
                                              data:featureData
                                           rawBody:jsonData];
 
-    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"37.079"];
-    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-122.938"];
-
     GHAssertEqualObjects([[feature properties] objectForKey:@"type"], @"place", @"'type' should be 'place'");
-    GHAssertEqualObjects([[feature geometry] latitude], latitude, @"Latitudes don't match.");
-    GHAssertEqualObjects([[feature geometry] longitude], longitude, @"Longitudes don't match.");
+    GHAssertEquals([[feature geometry] latitude], 37.079, @"Latitudes don't match.");
+    GHAssertEquals([[feature geometry] longitude], -122.938, @"Longitudes don't match.");
     GHAssertEqualObjects([feature rawBody], jsonData, nil);
 }
 

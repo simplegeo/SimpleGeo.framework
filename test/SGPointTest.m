@@ -20,45 +20,19 @@
     return NO;
 }
 
-- (void)testPointWithLatitudeAndLongitudeWithNSDecimalNumber
+- (void)testPointWithLatitudeAndLongitude
 {
-    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"40.0"];
-    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-105.0"];
+    double latitude = 40.0;
+    double longitude = -105.0;
     SGPoint *point = [SGPoint pointWithLatitude:latitude longitude:longitude];
 
-    GHAssertEqualObjects([point latitude], latitude, @"Latitudes don't match.");
-    GHAssertEqualObjects([point longitude], longitude, @"Longitudes don't match.");
-}
-
-- (void)testPointWithLatitudeAndLongitudeWithString
-{
-    SGPoint *point = [SGPoint pointWithLatitude:@"40.0" longitude:@"-105.0"];
-
-    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"40.0"];
-    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-105.0"];
-
-    GHAssertEqualObjects([point latitude], latitude, @"Latitudes don't match.");
-    GHAssertEqualObjects([point longitude], longitude, @"Longitudes don't match.");
-}
-
-- (void)testPointWithLatitudeAndLongitudeWithNSNumber
-{
-    SGPoint *point = [SGPoint pointWithLatitude:[NSNumber numberWithFloat:40.0]
-                                      longitude:[NSNumber numberWithFloat:-105.0]];
-
-    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"40.0"];
-    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-105.0"];
-
-    GHAssertEqualObjects([point latitude], latitude, @"Latitudes don't match.");
-    GHAssertEqualObjects([point longitude], longitude, @"Longitudes don't match.");
+    GHAssertEquals([point latitude], latitude, @"Latitudes don't match.");
+    GHAssertEquals([point longitude], longitude, @"Longitudes don't match.");
 }
 
 - (void)testPointForGeometryWithSGPoint
 {
-    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"40.0"];
-    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-105.0"];
-    SGPoint *input = [SGPoint pointWithLatitude:latitude longitude:longitude];
-
+    SGPoint *input = [SGPoint pointWithLatitude:40.0 longitude:-105.0];
     SGPoint *point = [SGPoint pointForGeometry:input];
 
     GHAssertEqualObjects(point, input, nil);
@@ -66,15 +40,16 @@
 
 - (void)testPointForGeometryWithDictionaryContainingPoint
 {
-    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString: @"40.0"];
-    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString: @"-105.0"];
-    NSArray *coordinates = [NSArray arrayWithObjects:longitude, latitude, nil];
+    double latitude = 40.0;
+    double longitude = -105.0;
+    NSArray *coordinates = [NSArray arrayWithObjects:[NSNumber numberWithDouble:longitude],
+                            [NSNumber numberWithDouble:latitude], nil];
     NSDictionary *geometry = [NSDictionary dictionaryWithObjectsAndKeys:@"Point", @"type",
                               coordinates, @"coordinates", nil];
 
     SGPoint *point = [SGPoint pointForGeometry:geometry];
-    GHAssertEqualObjects([point latitude], latitude, @"Latitudes don't match.");
-    GHAssertEqualObjects([point longitude], longitude, @"Longitudes don't match.");
+    GHAssertEquals([point latitude], latitude, @"Latitudes don't match.");
+    GHAssertEquals([point longitude], longitude, @"Longitudes don't match.");
 }
 
 - (void)testPointForGeometryWithDictionaryContainingPolygon

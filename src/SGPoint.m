@@ -19,8 +19,8 @@
     if ([[input objectForKey:@"type"] isEqual:@"Point"]) {
         NSArray *coordinates = [input objectForKey:@"coordinates"];
 
-        return [SGPoint pointWithLatitude:[coordinates objectAtIndex:1]
-                                longitude:[coordinates objectAtIndex:0]];
+        return [SGPoint pointWithLatitude:[[coordinates objectAtIndex:1] doubleValue]
+                                longitude:[[coordinates objectAtIndex:0] doubleValue]];
     } else {
         return nil;
     }
@@ -37,43 +37,24 @@
     }
 }
 
-+ (SGPoint *)pointWithLatitude:(id)latitude longitude:(id)longitude
++ (SGPoint *)pointWithLatitude:(double)latitude longitude:(double)longitude
 {
-    if ([latitude isKindOfClass:[NSDecimalNumber class]] &&
-        [longitude isKindOfClass:[NSDecimalNumber class]]) {
-
-        return [[[SGPoint alloc] initWithLatitude:latitude longitude:longitude] autorelease];
-    } else if ([latitude isKindOfClass:[NSNumber class]] &&
-        [longitude isKindOfClass:[NSNumber class]]) {
-
-        // TODO create and use pointWithStringLatitude:longitude:
-        return [[[SGPoint alloc] initWithLatitude:[NSDecimalNumber decimalNumberWithString:
-                                                 [latitude stringValue]]
-                                      longitude:[NSDecimalNumber decimalNumberWithString:
-                                                 [longitude stringValue]]] autorelease];
-    } else if ([latitude isKindOfClass:[NSString class]] &&
-               [longitude isKindOfClass:[NSString class]]) {
-
-        // TODO create and use pointWithStringLatitude:longitude:
-        return [[[SGPoint alloc] initWithLatitude:[NSDecimalNumber decimalNumberWithString:latitude]
-                                      longitude:[NSDecimalNumber decimalNumberWithString:longitude]] autorelease];
-    } else {
-        return nil;
-    }
+    return [[[SGPoint alloc] initWithLatitude:latitude
+                                    longitude:longitude] autorelease];
 }
 
 - (id)init
 {
-    return [self initWithLatitude:nil longitude:nil];
+    return [self initWithLatitude:0 longitude:0];
 }
 
-- (id)initWithLatitude:(NSDecimalNumber *)lat longitude:(NSDecimalNumber *)lon
+- (id)initWithLatitude:(double)lat longitude:(double)lon
 {
     self = [super init];
 
     if (self) {
-        [self setLatitude:lat];
-        [self setLongitude:lon];
+        latitude = lat;
+        longitude = lon;
     }
 
     return self;
@@ -81,26 +62,23 @@
 
 - (void)dealloc
 {
-    [latitude release];
-    [longitude release];
     [super dealloc];
 }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<SGPoint: %@, %@>",
-            [latitude stringValue],
-            [longitude stringValue]];
+    return [NSString stringWithFormat:@"<SGPoint: %f, %f>", latitude, longitude];
 }
 
 - (BOOL) isEqual:(id)object
 {
-    return [latitude isEqual:[object latitude]] && [longitude isEqual:[object longitude]];
+    return latitude == [object latitude] && longitude == [object longitude];
 }
 
 - (NSUInteger)hash
 {
-    return [latitude hash] + [longitude hash];
+    return [[NSNumber numberWithDouble:latitude] hash] +
+           [[NSNumber numberWithDouble:longitude] hash];
 }
 
 @end

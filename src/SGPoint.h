@@ -9,19 +9,19 @@
 
 @interface SGPoint : NSObject
 {
-    NSDecimalNumber* latitude;
-    NSDecimalNumber* longitude;
+    double latitude;
+    double longitude;
 }
 
-@property (retain) NSDecimalNumber* latitude;
-@property (retain) NSDecimalNumber* longitude;
+@property double latitude;
+@property double longitude;
 
 /**
  * Suitable for "creating" SGPoints from other SGPoints or from NSDictionaries (such as those
  * present in a GeoJSON document).
  */
 + (SGPoint *)pointForGeometry:(id)point;
-+ (SGPoint *)pointWithLatitude:(id)latitude longitude:(id) longitude;
-- (id)initWithLatitude:(NSDecimalNumber *)latitude longitude:(NSDecimalNumber *)longitude;
++ (SGPoint *)pointWithLatitude:(double)latitude longitude:(double) longitude;
+- (id)initWithLatitude:(double)latitude longitude:(double)longitude;
 
 @end

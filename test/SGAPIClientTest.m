@@ -34,7 +34,7 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 - (SGPoint *)point
 {
-    return [[SGPoint pointWithLatitude:@"40.0" longitude:@"-105.0"] retain];
+    return [[SGPoint pointWithLatitude:40.0 longitude:-105.0] retain];
 }
 
 #pragma mark Tests
@@ -106,11 +106,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     // TODO currently expects to only be triggered by testGetFeatureWithId
     GHAssertEqualObjects(featureId, @"foo", nil);
 
-    NSDecimalNumber *latitude = [NSDecimalNumber decimalNumberWithString:@"37.77241"];
-    NSDecimalNumber *longitude = [NSDecimalNumber decimalNumberWithString:@"-122.40593"];
-
-    GHAssertEqualObjects([[feature geometry] latitude], latitude, nil);
-    GHAssertEqualObjects([[feature geometry] longitude], longitude, nil);
+    GHAssertEquals([[feature geometry] latitude], 37.77241, nil);
+    GHAssertEquals([[feature geometry] longitude], -122.40593, nil);
 
     GHAssertEqualObjects([[feature properties] objectForKey:@"name"], @"SimpleGeo San Francisco", nil);
 

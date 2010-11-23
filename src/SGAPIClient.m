@@ -162,6 +162,9 @@ NSString * const SIMPLEGEO_API_VERSION = @"0.1";
 {
     // TODO check response status code
 
+    // call requestDidFinish first
+    [delegate requestDidFinish:[[request retain] autorelease]];
+
     // assume that "targetSelector" was set on the request and use that to dispatch appropriately
     SEL targetSelector = NSSelectorFromString([[request userInfo] objectForKey:@"targetSelector"]);
     [self performSelector:targetSelector withObject:request];

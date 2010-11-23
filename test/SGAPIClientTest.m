@@ -77,6 +77,17 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
 }
 
+- (void)testGetFeatureWithIdShouldCallRequestDidFinish
+{
+    [self prepare];
+
+    SGAPIClient *client = [self createClient];
+
+    [client getFeatureWithId:@"requestDidFinish"];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+}
+
 - (void)testGetPlacesNearWithMultipleResults
 {
     [self prepare];
@@ -97,18 +108,29 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 #pragma mark SGAPIClientDelegate Methods
 
+- (void)requestDidFinish:(ASIHTTPRequest *)request
+{
+    NSLog(@"requestDidFinish: %@", [request userInfo]);
+    if ([[[request userInfo] objectForKey:@"featureId"] isEqual:@"requestDidFinish"]) {
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetFeatureWithIdShouldCallRequestDidFinish)];
+    }
+}
+
 - (void)didLoadFeature:(SGFeature *)feature
                 withId:(NSString *)featureId
 {
-    // TODO currently expects to only be triggered by testGetFeatureWithId
-    GHAssertEqualObjects(featureId, @"foo", nil);
+    if ([featureId isEqual:@"foo"]) {
+        GHAssertEqualObjects(featureId, @"foo", nil);
 
-    GHAssertEquals([[feature geometry] latitude], 37.77241, nil);
-    GHAssertEquals([[feature geometry] longitude], -122.40593, nil);
+        GHAssertEquals([[feature geometry] latitude], 37.77241, nil);
+        GHAssertEquals([[feature geometry] longitude], -122.40593, nil);
 
-    GHAssertEqualObjects([[feature properties] objectForKey:@"name"], @"SimpleGeo San Francisco", nil);
+        GHAssertEqualObjects([[feature properties] objectForKey:@"name"], @"SimpleGeo San Francisco", nil);
 
-    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testGetFeatureWithId)];
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetFeatureWithId)];
+    }
 }
 
 - (void)didLoadPlaces:(NSArray *)places

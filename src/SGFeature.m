@@ -20,12 +20,17 @@
     return [SGFeature featureWithId:id data:nil];
 }
 
-+ (SGFeature *)featureWithId:(NSString *)id data:(NSDictionary *)data
++ (SGFeature *)featureWithId:(NSString *)id
+                        data:(NSDictionary *)data
 {
-    return [SGFeature featureWithId:id data:data rawBody:nil];
+    return [SGFeature featureWithId:id
+                               data:data
+                            rawBody:nil];
 }
 
-+ (SGFeature *)featureWithId:(NSString *)id data:(NSDictionary *)data rawBody:(NSString *)rawBody
++ (SGFeature *)featureWithId:(NSString *)id
+                        data:(NSDictionary *)data
+                     rawBody:(NSString *)rawBody
 {
     return [[[SGFeature alloc] initWithId:id
                                     data:data
@@ -34,7 +39,8 @@
 
 + (SGFeature *)featureWithData:(NSDictionary *)data
 {
-    return [SGFeature featureWithId:nil data:data];
+    return [SGFeature featureWithId:nil
+                               data:data];
 }
 
 - (id)init
@@ -48,14 +54,17 @@
                        data:nil];
 }
 
-- (id)initWithId:(NSString *)id data:(NSDictionary *)data
+- (id)initWithId:(NSString *)id
+            data:(NSDictionary *)data
 {
     return [self initWithId:id
                        data:data
                     rawBody:nil];
 }
 
-- (id)initWithId:(NSString *)id data:(NSDictionary *)data rawBody:(NSString *)body
+- (id)initWithId:(NSString *)id
+            data:(NSDictionary *)data
+         rawBody:(NSString *)body
 {
     self = [super init];
 
@@ -77,7 +86,8 @@
                 // accessor methods shouldn't be used in an init... method (so say the docs), but
                 // there's no other way to achieve this otherwise
                 if ([self respondsToSelector:selector]) {
-                    [self performSelector:selector withObject:[data objectForKey:key]];
+                    [self performSelector:selector
+                               withObject:[data objectForKey:key]];
                 }
             }
         }

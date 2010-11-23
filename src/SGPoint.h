@@ -21,7 +21,9 @@
  * present in a GeoJSON document).
  */
 + (SGPoint *)pointForGeometry:(id)point;
-+ (SGPoint *)pointWithLatitude:(double)latitude longitude:(double) longitude;
-- (id)initWithLatitude:(double)latitude longitude:(double)longitude;
++ (SGPoint *)pointWithLatitude:(double)latitude
+                     longitude:(double) longitude;
+- (id)initWithLatitude:(double)latitude
+             longitude:(double)longitude;
 
 @end

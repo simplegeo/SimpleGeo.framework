@@ -97,7 +97,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 #pragma mark SGAPIClientDelegate Methods
 
-- (void)didLoadFeature:(SGFeature *)feature withId:(NSString *)featureId
+- (void)didLoadFeature:(SGFeature *)feature
+                withId:(NSString *)featureId
 {
     // TODO currently expects to only be triggered by testGetFeatureWithId
     GHAssertEqualObjects(featureId, @"foo", nil);
@@ -110,7 +111,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testGetFeatureWithId)];
 }
 
-- (void)didLoadPlaces:(NSArray *)places near:(SGPoint *)point
+- (void)didLoadPlaces:(NSArray *)places
+                 near:(SGPoint *)point
 {
     // TODO currently expects to only be triggered by testGetPlacesNearWithMultipleResults
     GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
@@ -124,7 +126,9 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
      forSelector:@selector(testGetPlacesNearWithMultipleResults)];
 }
 
-- (void)didLoadPlaces:(NSArray *)places near:(SGPoint *)point matching:(NSString *)query;
+- (void)didLoadPlaces:(NSArray *)places
+                 near:(SGPoint *)point
+             matching:(NSString *)query;
 {
     // TODO currently expects to only be triggered by testGetPlacesNearMatchingWithASingleResult
     GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");

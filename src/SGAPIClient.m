@@ -142,7 +142,9 @@ NSString * const SIMPLEGEO_API_VERSION = @"0.1";
     [request startAsynchronous];
 }
 
-- (void)getPlacesNear:(SGPoint *)point matching:(NSString *)query inCategory:(NSString *)category
+- (void)getPlacesNear:(SGPoint *)point
+             matching:(NSString *)query
+           inCategory:(NSString *)category
 {
 }
 

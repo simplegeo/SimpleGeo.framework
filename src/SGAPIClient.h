@@ -21,9 +21,13 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 - (void)requestDidFinish:(ASIHTTPRequest *)request;
 - (void)requestDidFail:(ASIHTTPRequest *)request;
 
-- (void)didLoadFeature:(SGFeature *)feature withId:(NSString *)featureId;
-- (void)didLoadPlaces:(NSArray *)places near:(SGPoint *)point;
-- (void)didLoadPlaces:(NSArray *)places near:(SGPoint *)point matching:(NSString *)query;
+- (void)didLoadFeature:(SGFeature *)feature
+                withId:(NSString *)featureId;
+- (void)didLoadPlaces:(NSArray *)places
+                 near:(SGPoint *)point;
+- (void)didLoadPlaces:(NSArray *)places
+                 near:(SGPoint *)point
+             matching:(NSString *)query;
 
 @end
 
@@ -61,7 +65,10 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 - (void)getFeatureWithId:(NSString *)featureId;
 
 - (void)getPlacesNear:(SGPoint *)point;
-- (void)getPlacesNear:(SGPoint *)point matching:(NSString *)query;
-- (void)getPlacesNear:(SGPoint *)point matching:(NSString *)query inCategory:(NSString *)category;
+- (void)getPlacesNear:(SGPoint *)point
+             matching:(NSString *)query;
+- (void)getPlacesNear:(SGPoint *)point
+             matching:(NSString *)query
+           inCategory:(NSString *)category;
 
 @end

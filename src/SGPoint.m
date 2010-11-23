@@ -37,7 +37,8 @@
     }
 }
 
-+ (SGPoint *)pointWithLatitude:(double)latitude longitude:(double)longitude
++ (SGPoint *)pointWithLatitude:(double)latitude
+                     longitude:(double)longitude
 {
     return [[[SGPoint alloc] initWithLatitude:latitude
                                     longitude:longitude] autorelease];
@@ -45,10 +46,12 @@
 
 - (id)init
 {
-    return [self initWithLatitude:0 longitude:0];
+    return [self initWithLatitude:0
+                        longitude:0];
 }
 
-- (id)initWithLatitude:(double)lat longitude:(double)lon
+- (id)initWithLatitude:(double)lat
+             longitude:(double)lon
 {
     self = [super init];
 

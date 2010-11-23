@@ -11,6 +11,7 @@
 
 
 NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
+NSString * const SIMPLEGEO_API_VERSION = @"0.1";
 
 
 @implementation SGAPIClient
@@ -99,7 +100,8 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 - (void)getFeatureWithId:(NSString *)featureId
 {
     NSURL *endpoint = [self endpointForString:
-                       [NSString stringWithFormat:@"/0.1/features/%@.json", featureId]];
+                       [NSString stringWithFormat:@"/%@/features/%@.json",
+                        SIMPLEGEO_API_VERSION, featureId]];
 
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:endpoint];
     [request setDelegate:self];
@@ -122,8 +124,8 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 {
     // TODO omit q= if query is nil
     NSURL *endpoint = [self endpointForString:
-                       [NSString stringWithFormat:@"/0.1/places/%f,%f/search.json?q=%@",
-                        [point latitude], [point longitude],
+                       [NSString stringWithFormat:@"/%@/places/%f,%f/search.json?q=%@",
+                        SIMPLEGEO_API_VERSION, [point latitude], [point longitude],
                         [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]
                        ];
 

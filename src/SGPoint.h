@@ -13,8 +13,8 @@
     double longitude;
 }
 
-@property double latitude;
-@property double longitude;
+@property (readonly) double latitude;
+@property (readonly) double longitude;
 
 /**
  * Suitable for "creating" SGPoints from other SGPoints or from NSDictionaries (such as those

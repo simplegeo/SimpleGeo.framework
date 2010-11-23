@@ -40,10 +40,10 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
     NSURL* url;
 }
 
-@property (retain) id<SGAPIClientDelegate> delegate;
-@property (retain) NSString* consumerKey;
-@property (retain) NSString* consumerSecret;
-@property (retain) NSURL* url;
+@property (retain,readonly) id<SGAPIClientDelegate> delegate;
+@property (retain,readonly) NSString* consumerKey;
+@property (retain,readonly) NSString* consumerSecret;
+@property (retain,readonly) NSURL* url;
 
 + (SGAPIClient *)clientWithDelegate:(id<SGAPIClientDelegate>)delegate
                         consumerKey:(NSString *)consumerKey

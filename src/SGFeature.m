@@ -9,6 +9,17 @@
 #import "SGFeature.h"
 
 
+// trigger @synthesize in SGFeature to create readwrite accessors
+@interface SGFeature ()
+
+@property (retain) NSString* featureId;
+@property (retain) SGPoint* geometry;
+@property (retain) NSDictionary* properties;
+@property (retain) NSString* rawBody;
+
+@end
+
+
 @implementation SGFeature
 
 @synthesize featureId;
@@ -69,7 +80,7 @@
     self = [super init];
 
     if (self) {
-        [self setFeatureId:id];
+        featureId = [id retain];
 
         if (data) {
             if (! [[data objectForKey:@"type"] isEqual:@"Feature"]) {

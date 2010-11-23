@@ -91,7 +91,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 
 -(NSURL *)endpointForString:(NSString *)path
 {
-    return [NSURL URLWithString:path relativeToURL:url];
+    return [[[NSURL alloc] initWithString:path relativeToURL:url] autorelease];
 }
 
 #pragma mark Common API Calls

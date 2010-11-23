@@ -12,6 +12,7 @@
 
 NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 NSString * const SIMPLEGEO_API_VERSION = @"0.1";
+NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
 
 
 @implementation SGAPIClient
@@ -105,6 +106,7 @@ NSString * const SIMPLEGEO_API_VERSION = @"0.1";
 
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:endpoint];
     [request setDelegate:self];
+    [request addRequestHeader:@"User-Agent" value:USER_AGENT];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                             @"didLoadFeatureJSON:", @"targetSelector",
                             featureId, @"featureId",
@@ -141,6 +143,7 @@ NSString * const SIMPLEGEO_API_VERSION = @"0.1";
 
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:endpoint];
     [request setDelegate:self];
+    [request addRequestHeader:@"User-Agent" value:USER_AGENT];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                           @"didLoadPlacesJSON:", @"targetSelector",
                           point, @"point",

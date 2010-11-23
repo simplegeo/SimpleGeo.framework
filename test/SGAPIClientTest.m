@@ -29,7 +29,10 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 - (SGAPIClient *)createClient
 {
     NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
-    return [[SGAPIClient clientWithDelegate:self URL:url] retain];
+    return [[SGAPIClient clientWithDelegate:self
+                                consumerKey:@""
+                             consumerSecret:@""
+                                        URL:url] retain];
 }
 
 - (SGPoint *)point
@@ -43,7 +46,9 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 {
     NSURL *url = [NSURL URLWithString:SIMPLEGEO_URL_PREFIX];
     GHTestLog(@"SimpleGeo URL prefix: %@", SIMPLEGEO_URL_PREFIX);
-    SGAPIClient *client = [SGAPIClient clientWithDelegate:self];
+    SGAPIClient *client = [SGAPIClient clientWithDelegate:self
+                                              consumerKey:@""
+                                           consumerSecret:@""];
 
     GHAssertEqualObjects([client url], url, @"URLs don't match.");
 }
@@ -51,7 +56,10 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 - (void)testCreateWithURL
 {
     NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
-    SGAPIClient *client = [SGAPIClient clientWithDelegate:self URL:url];
+    SGAPIClient *client = [SGAPIClient clientWithDelegate:self
+                                              consumerKey:@""
+                                           consumerSecret:@""
+                                                      URL:url];
 
     GHAssertEqualObjects([client url], url, @"URLs don't match.");
 }
@@ -88,18 +96,6 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 }
 
 #pragma mark SGAPIClientDelegate Methods
-
-- (NSString *)consumerKey
-{
-    return @"";
-}
-
-- (NSString *)consumerSecret
-{
-    return @"";
-}
-
-#pragma mark Delegated Methods
 
 - (void)didLoadFeature:(SGFeature *)feature withId:(NSString *)featureId
 {

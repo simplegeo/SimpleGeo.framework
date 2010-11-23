@@ -15,26 +15,70 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 
 @implementation SGAPIClient
 
+@synthesize consumerKey;
+@synthesize consumerSecret;
 @synthesize delegate;
 @synthesize url;
 
 #pragma mark Class Methods
 
 + (SGAPIClient *)clientWithDelegate:(id<SGAPIClientDelegate>)delegate
+                        consumerKey:(NSString *)consumerKey
+                     consumerSecret:(NSString *)consumerSecret
 {
-    return [SGAPIClient clientWithDelegate:delegate URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];
+    return [SGAPIClient clientWithDelegate:delegate
+                               consumerKey:consumerKey
+                            consumerSecret:consumerSecret
+                                       URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];
 }
 
-+ (SGAPIClient *)clientWithDelegate:(id<SGAPIClientDelegate>)delegate URL:(NSURL *)url
++ (SGAPIClient *)clientWithDelegate:(id<SGAPIClientDelegate>)delegate
+                        consumerKey:(NSString *)consumerKey
+                     consumerSecret:(NSString *)consumerSecret
+                                URL:(NSURL *)url
 {
-    SGAPIClient *client = [[[SGAPIClient alloc] init] autorelease];
-    [client setDelegate:delegate];
-    [client setUrl:url];
-
-    return client;
+    return [[[SGAPIClient alloc] initWithDelegate:delegate
+                                      consumerKey:consumerKey
+                                   consumerSecret:consumerSecret
+                                              URL:url] autorelease];
 }
 
 #pragma mark Generic Instance Methods
+
+- (id)init
+{
+    return [self initWithDelegate:nil
+                      consumerKey:nil
+                   consumerSecret:nil];
+}
+
+- (id)initWithDelegate:(id<SGAPIClientDelegate>)_delegate
+           consumerKey:(NSString *)key
+        consumerSecret:(NSString *)secret
+{
+    return [self initWithDelegate:_delegate
+                      consumerKey:key
+                   consumerSecret:secret
+                              URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];
+}
+
+- (id)initWithDelegate:(id<SGAPIClientDelegate>)_delegate
+           consumerKey:(NSString *)key
+        consumerSecret:(NSString *)secret
+                   URL:(NSURL *)_url
+{
+    self = [super init];
+
+    if (self) {
+        delegate = [_delegate retain];
+        consumerKey = [key retain];
+        consumerSecret = [secret retain];
+        url = [_url retain];
+    }
+
+    return self;
+}
+
 
 - (void) dealloc
 {

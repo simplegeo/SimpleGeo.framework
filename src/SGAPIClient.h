@@ -17,9 +17,6 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 
 @protocol SGAPIClientDelegate <NSObject>
 
-- (NSString *)consumerKey;
-- (NSString *)consumerSecret;
-
 @optional
 - (void)requestDidFinish:(ASIHTTPRequest *)request;
 - (void)requestDidFail:(ASIHTTPRequest *)request;
@@ -34,14 +31,31 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 @interface SGAPIClient : NSObject
 {
     id<SGAPIClientDelegate> delegate;
+    NSString* consumerKey;
+    NSString* consumerSecret;
     NSURL* url;
 }
 
 @property (retain) id<SGAPIClientDelegate> delegate;
+@property (retain) NSString* consumerKey;
+@property (retain) NSString* consumerSecret;
 @property (retain) NSURL* url;
 
-+ (SGAPIClient *)clientWithDelegate:(id<SGAPIClientDelegate>)delegate;
-+ (SGAPIClient *)clientWithDelegate:(id<SGAPIClientDelegate>)delegate URL:(NSURL *)url;
++ (SGAPIClient *)clientWithDelegate:(id<SGAPIClientDelegate>)delegate
+                        consumerKey:(NSString *)consumerKey
+                     consumerSecret:(NSString *)consumerSecret;
++ (SGAPIClient *)clientWithDelegate:(id<SGAPIClientDelegate>)delegate
+                        consumerKey:(NSString *)consumerKey
+                     consumerSecret:(NSString *)consumerSecret
+                                URL:(NSURL *)url;
+
+- (id)initWithDelegate:(id<SGAPIClientDelegate>)delegate
+           consumerKey:(NSString *)consumerKey
+        consumerSecret:(NSString *)consumerSecret;
+- (id)initWithDelegate:(id<SGAPIClientDelegate>)delegate
+           consumerKey:(NSString *)consumerKey
+        consumerSecret:(NSString *)consumerSecret
+                   URL:(NSURL *)url;
 
 // TODO extract these into appropriate categories
 - (void)getFeatureWithId:(NSString *)featureId;

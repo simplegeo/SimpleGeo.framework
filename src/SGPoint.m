@@ -63,11 +63,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
-
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"<SGPoint: %f, %f>", latitude, longitude];

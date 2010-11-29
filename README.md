@@ -23,9 +23,9 @@ If it worked, it should say something like:
 
     == Sinatra/1.1.0 has taken the stage on 4567 for development with backup from Mongrel
 
-If it failed, install Sinatra and try again:
+If it failed, install the dependencies and try again:
 
-    $ sudo gem install sinatra
+    $ sudo gem install oauth json sinatra
 
 To actually run the tests, choose "Tests" as the *Active Target* (via the
 *Project* menu) and click "Build and Run".

@@ -17,10 +17,10 @@
     NSString* rawBody;
 }
 
-@property (retain,readonly) NSString* featureId;
-@property (retain,readonly) SGPoint* geometry;
-@property (retain,readonly) NSDictionary* properties;
-@property (retain,readonly) NSString* rawBody;
+@property (readonly) NSString* featureId;
+@property (readonly) SGPoint* geometry;
+@property (readonly) NSDictionary* properties;
+@property (readonly) NSString* rawBody;
 
 + (SGFeature *)featureWithId:(NSString *)id;
 + (SGFeature *)featureWithId:(NSString *)id

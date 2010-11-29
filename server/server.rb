@@ -1,79 +1,40 @@
 require 'json'
 require 'sinatra'
+require File.dirname(__FILE__) + '/examples'
 require File.dirname(__FILE__) + '/lib/rack_oauth_provider'
-
-SG_BOULDER = <<-EOS
-{
-  "id": "SG_qwerty",
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [
-      -105.27739,
-      40.01705
-    ]
-  },
-  "properties": {
-    "name": "SimpleGeo Boulder",
-    "address": "1360 Walnut St. Suite 110",
-    "city": "Boulder",
-    "province": "CO",
-    "postcode": "80302",
-    "type": "Business",
-    "categories": [
-      "Internet"
-    ]
-  }
-}
-EOS
-
-SG_SF = <<-EOS
-{
-  "id": "SG_asdf",
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [
-      -122.40593,
-      37.77241
-    ]
-  },
-  "properties": {
-    "name": "SimpleGeo San Francisco",
-    "address": "41 Decatur St.",
-    "city": "San Francisco",
-    "province": "CA",
-    "postcode": "94102",
-    "type": "Business",
-    "categories": [
-      "Internet"
-    ]
-  }
-}
-EOS
 
 use RackOAuthProvider
 
 get '/0.1/features/:id.json' do
-  SG_SF
+  case params[:id]
+  when /^SG_4CsrE4oNy1gl8hCLdwu0F0/
+    BURGER_MASTER
+  else
+    404
+  end
 end
 
 get '/0.1/places/:lat,:lon/search.json' do
   case params[:q]
   when "zero"
-    "[]"
+    <<-EOS
+{
+    "total": 0,
+    "type": "FeatureCollection",
+    "features": []
+}
+    EOS
   when "one"
     <<-EOS
-    [
-#{SG_BOULDER}
+{
+    "total": 1, 
+    "type": "FeatureCollection", 
+    "features": [
+#{BURGER_MASTER}
     ]
+}
     EOS
   else
-    <<-EOS
-    [
-#{SG_BOULDER},
-#{SG_SF}
-    ]
-    EOS
+    BURGERS
   end
 end

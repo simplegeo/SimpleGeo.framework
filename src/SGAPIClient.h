@@ -9,7 +9,6 @@
 #import "ASIHTTPRequest.h"
 #import "SGFeature.h"
 #import "SGPoint.h"
-#import "NSArray+SGFeature.h"
 
 
 extern NSString * const SIMPLEGEO_URL_PREFIX;

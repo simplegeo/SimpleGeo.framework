@@ -54,6 +54,17 @@
 		5D76764E1290EE9F006B7D51 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7676351290EE9F006B7D51 /* ASIFormDataRequest.m */; };
 		5D76764F1290EE9F006B7D51 /* ASIFormDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7676361290EE9F006B7D51 /* ASIFormDataRequest.h */; };
 		5D7676501290EE9F006B7D51 /* ASIDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7676371290EE9F006B7D51 /* ASIDownloadCache.h */; };
+		5D8C148F129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8C148D129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h */; };
+		5D8C1568129DE193002F8C01 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1566129DE193002F8C01 /* Base64Transcoder.c */; };
+		5D8C1569129DE193002F8C01 /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8C1567129DE193002F8C01 /* Base64Transcoder.h */; };
+		5D8C158B129DE515002F8C01 /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C148E129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.m */; };
+		5D8C15D3129DE755002F8C01 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1566129DE193002F8C01 /* Base64Transcoder.c */; };
+		5D8C15D6129DE763002F8C01 /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C148E129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.m */; };
+		5D8C15D9129DE7BB002F8C01 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5B02C61291A37700399A50 /* YAJL.framework */; };
+		5D8C15E7129DE86E002F8C01 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8C15E6129DE86E002F8C01 /* AppKit.framework */; };
+		5D8C1614129DED38002F8C01 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1613129DED38002F8C01 /* NSString+URLEncoding.m */; };
+		5D8C1615129DED38002F8C01 /* NSString+URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8C1612129DED38002F8C01 /* NSString+URLEncoding.h */; };
+		5D8C1616129DED38002F8C01 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1613129DED38002F8C01 /* NSString+URLEncoding.m */; };
 		5DA3C345128E427C00E128DC /* SGPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA3C343128E427C00E128DC /* SGPoint.h */; };
 		5DA3C346128E427C00E128DC /* SGPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3C344128E427C00E128DC /* SGPoint.m */; };
 		5DA3C35A128E449B00E128DC /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA3C359128E449B00E128DC /* GHUnit.framework */; };
@@ -109,6 +120,14 @@
 		5D7676351290EE9F006B7D51 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIFormDataRequest.m; path = "ext/asi-http-request/ASIFormDataRequest.m"; sourceTree = "<group>"; };
 		5D7676361290EE9F006B7D51 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIFormDataRequest.h; path = "ext/asi-http-request/ASIFormDataRequest.h"; sourceTree = "<group>"; };
 		5D7676371290EE9F006B7D51 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDownloadCache.h; path = "ext/asi-http-request/ASIDownloadCache.h"; sourceTree = "<group>"; };
+		5D8C148D129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ASIHTTPRequest+OAuth.h"; path = "src/ASIHTTPRequest+OAuth.h"; sourceTree = "<group>"; };
+		5D8C148E129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ASIHTTPRequest+OAuth.m"; path = "src/ASIHTTPRequest+OAuth.m"; sourceTree = "<group>"; };
+		5D8C1566129DE193002F8C01 /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Base64Transcoder.c; path = ext/TouchFoundation/Base64Transcoder.c; sourceTree = "<group>"; };
+		5D8C1567129DE193002F8C01 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64Transcoder.h; path = ext/TouchFoundation/Base64Transcoder.h; sourceTree = "<group>"; };
+		5D8C15DA129DE7C4002F8C01 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		5D8C15E6129DE86E002F8C01 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		5D8C1612129DED38002F8C01 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+URLEncoding.h"; path = "src/NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		5D8C1613129DED38002F8C01 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+URLEncoding.m"; path = "src/NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		5DA3C343128E427C00E128DC /* SGPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGPoint.h; path = src/SGPoint.h; sourceTree = "<group>"; };
 		5DA3C344128E427C00E128DC /* SGPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGPoint.m; path = src/SGPoint.m; sourceTree = "<group>"; };
 		5DA3C353128E448800E128DC /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +148,7 @@
 				5D7674BB12909ABA006B7D51 /* libz.dylib in Frameworks */,
 				5D7674BD12909ACB006B7D51 /* CoreServices.framework in Frameworks */,
 				5D5B02C71291A37700399A50 /* YAJL.framework in Frameworks */,
+				5D8C15E7129DE86E002F8C01 /* AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +161,7 @@
 				5D7674D112909E49006B7D51 /* CoreServices.framework in Frameworks */,
 				5D7674D212909E51006B7D51 /* SystemConfiguration.framework in Frameworks */,
 				5D7674D312909E58006B7D51 /* libz.dylib in Frameworks */,
+				5D8C15D9129DE7BB002F8C01 /* YAJL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +192,8 @@
 				5D7674BA12909ABA006B7D51 /* libz.dylib */,
 				5D7674BC12909ACB006B7D51 /* CoreServices.framework */,
 				5D5B02C61291A37700399A50 /* YAJL.framework */,
+				5D8C15DA129DE7C4002F8C01 /* Cocoa.framework */,
+				5D8C15E6129DE86E002F8C01 /* AppKit.framework */,
 			);
 			name = SimpleGeo;
 			sourceTree = "<group>";
@@ -205,6 +228,10 @@
 				5DA3C344128E427C00E128DC /* SGPoint.m */,
 				5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */,
 				5D5B05CF12934A9D00399A50 /* NSArray+SGFeature.m */,
+				5D8C148D129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h */,
+				5D8C148E129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.m */,
+				5D8C1612129DED38002F8C01 /* NSString+URLEncoding.h */,
+				5D8C1613129DED38002F8C01 /* NSString+URLEncoding.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -239,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				5D7674AC12909A5C006B7D51 /* ASIHTTPRequest */,
+				5D8C1562129DE17B002F8C01 /* TouchFoundation */,
 			);
 			name = "Imported Libraries";
 			sourceTree = "<group>";
@@ -266,6 +294,15 @@
 				5D7676371290EE9F006B7D51 /* ASIDownloadCache.h */,
 			);
 			name = ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		5D8C1562129DE17B002F8C01 /* TouchFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				5D8C1567129DE193002F8C01 /* Base64Transcoder.h */,
+				5D8C1566129DE193002F8C01 /* Base64Transcoder.c */,
+			);
+			name = TouchFoundation;
 			sourceTree = "<group>";
 		};
 		5DA3C348128E42C600E128DC /* Tests */ = {
@@ -301,6 +338,9 @@
 				5D7676501290EE9F006B7D51 /* ASIDownloadCache.h in Headers */,
 				5D5B03701291BD4500399A50 /* SGFeature.h in Headers */,
 				5D5B05D012934A9D00399A50 /* NSArray+SGFeature.h in Headers */,
+				5D8C148F129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h in Headers */,
+				5D8C1569129DE193002F8C01 /* Base64Transcoder.h in Headers */,
+				5D8C1615129DED38002F8C01 /* NSString+URLEncoding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +448,9 @@
 				5D76763E1290EE9F006B7D51 /* ASIFormDataRequest.m in Sources */,
 				5D5B036F1291BD4500399A50 /* SGFeature.m in Sources */,
 				5D5B05D212934A9D00399A50 /* NSArray+SGFeature.m in Sources */,
+				5D8C15D6129DE763002F8C01 /* ASIHTTPRequest+OAuth.m in Sources */,
+				5D8C15D3129DE755002F8C01 /* Base64Transcoder.c in Sources */,
+				5D8C1614129DED38002F8C01 /* NSString+URLEncoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +469,9 @@
 				5D76764E1290EE9F006B7D51 /* ASIFormDataRequest.m in Sources */,
 				5D5B03711291BD4500399A50 /* SGFeature.m in Sources */,
 				5D5B05D112934A9D00399A50 /* NSArray+SGFeature.m in Sources */,
+				5D8C158B129DE515002F8C01 /* ASIHTTPRequest+OAuth.m in Sources */,
+				5D8C1568129DE193002F8C01 /* Base64Transcoder.c in Sources */,
+				5D8C1616129DED38002F8C01 /* NSString+URLEncoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,7 +572,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_PREFIX_HEADER = SimpleGeo_Prefix.pch;
 				INFOPLIST_FILE = "Tests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (

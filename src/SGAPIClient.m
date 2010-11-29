@@ -8,6 +8,8 @@
 
 #import <YAJL/YAJL.h>
 #import "SGAPIClient.h"
+#import "NSArray+SGFeature.h"
+#import "ASIHTTPRequest+OAuth.h"
 
 
 NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
@@ -104,7 +106,9 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
                        [NSString stringWithFormat:@"/%@/features/%@.json",
                         SIMPLEGEO_API_VERSION, featureId]];
 
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:endpoint];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:endpoint
+                                                 consumerKey:consumerKey
+                                              consumerSecret:consumerSecret];
     [request setDelegate:self];
     [request addRequestHeader:@"User-Agent" value:USER_AGENT];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:

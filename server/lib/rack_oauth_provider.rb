@@ -3,7 +3,7 @@ require 'oauth'
 require 'oauth/request_proxy/rack_request'
 
 class RackOAuthProvider < Sinatra::Base
-  error 505 do
+  error 404 do
     @app.call(env)
   end
 

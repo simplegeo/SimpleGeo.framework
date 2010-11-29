@@ -72,6 +72,17 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
     SGAPIClient *client = [self createClient];
 
+    [client getFeatureWithId:@"SG_4CsrE4oNy1gl8hCLdwu0F0"];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+}
+
+- (void)testGetFeatureWithIdAndNonExistentResult
+{
+    [self prepare];
+
+    SGAPIClient *client = [self createClient];
+
     [client getFeatureWithId:@"foo"];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
@@ -120,42 +131,48 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 - (void)didLoadFeature:(SGFeature *)feature
                 withId:(NSString *)featureId
 {
-    if ([featureId isEqual:@"foo"]) {
-        GHAssertEqualObjects(featureId, @"foo", nil);
+    if ([featureId isEqual:@"SG_4CsrE4oNy1gl8hCLdwu0F0"]) {
+        GHAssertEqualObjects([feature featureId], @"SG_4CsrE4oNy1gl8hCLdwu0F0_47.046962_-122.937467@1290636830", nil);
 
-        GHAssertEquals([[feature geometry] latitude], 37.77241, nil);
-        GHAssertEquals([[feature geometry] longitude], -122.40593, nil);
+        GHAssertEquals([[feature geometry] latitude], 47.046962, nil);
+        GHAssertEquals([[feature geometry] longitude], -122.937467, nil);
 
-        GHAssertEqualObjects([[feature properties] objectForKey:@"name"], @"SimpleGeo San Francisco", nil);
+        GHAssertEqualObjects([[feature properties] objectForKey:@"name"], @"Burger Master West Olympia", nil);
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetFeatureWithId)];
+    } else if ([featureId isEqual:@"foo"]) {
+        GHAssertNil(feature, nil);
+
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetFeatureWithIdAndNonExistentResult)];
     }
 }
 
-- (void)didLoadPlaces:(NSArray *)places
+- (void)didLoadPlaces:(SGFeatureCollection *)places
                  near:(SGPoint *)point
 {
     // TODO currently expects to only be triggered by testGetPlacesNearWithMultipleResults
     GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
-    GHAssertEquals([places count], (NSUInteger) 2, @"Should have been 2 places.");
-    GHAssertEqualObjects([[[places objectAtIndex:0] properties] objectForKey:@"name"],
-                         @"SimpleGeo Boulder", nil);
-    GHAssertEqualObjects([[[places objectAtIndex:1] properties] objectForKey:@"name"],
-                         @"SimpleGeo San Francisco", nil);
+    GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 2 places.");
+    GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
+                         @"Burger Master West Olympia", nil);
+    GHAssertEqualObjects([[[[places features] objectAtIndex:1] properties] objectForKey:@"name"],
+                         @"Red Robin Gourmet Burgers", nil);
 
     [self notify:kGHUnitWaitStatusSuccess
      forSelector:@selector(testGetPlacesNearWithMultipleResults)];
 }
 
-- (void)didLoadPlaces:(NSArray *)places
+- (void)didLoadPlaces:(SGFeatureCollection *)places
                  near:(SGPoint *)point
              matching:(NSString *)query;
 {
     // TODO currently expects to only be triggered by testGetPlacesNearMatchingWithASingleResult
     GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
-    GHAssertEqualObjects([[[places objectAtIndex:0] properties] objectForKey:@"name"],
-                         @"SimpleGeo Boulder", nil);
+    NSArray *features = [places features];
+    GHAssertEqualObjects([[[features objectAtIndex:0] properties] objectForKey:@"name"],
+                         @"Burger Master West Olympia", nil);
 
     [self notify:kGHUnitWaitStatusSuccess
      forSelector:@selector(testGetPlacesNearMatchingWithASingleResult)];

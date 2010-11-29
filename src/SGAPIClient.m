@@ -93,9 +93,20 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
 
 #pragma mark Utility Methods
 
--(NSURL *)endpointForString:(NSString *)path
+- (NSURL *)endpointForString:(NSString *)path
 {
     return [[[NSURL alloc] initWithString:path relativeToURL:url] autorelease];
+}
+
+- (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL
+{
+    ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:aURL
+                                                      consumerKey:consumerKey
+                                                   consumerSecret:consumerSecret];
+    [request setDelegate:self];
+    [request addRequestHeader:@"User-Agent" value:USER_AGENT];
+
+    return [request autorelease];
 }
 
 #pragma mark Common API Calls
@@ -106,11 +117,7 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
                        [NSString stringWithFormat:@"/%@/features/%@.json",
                         SIMPLEGEO_API_VERSION, featureId]];
 
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:endpoint
-                                                 consumerKey:consumerKey
-                                              consumerSecret:consumerSecret];
-    [request setDelegate:self];
-    [request addRequestHeader:@"User-Agent" value:USER_AGENT];
+    ASIHTTPRequest *request = [self requestWithURL:endpoint];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                             @"didLoadFeatureJSON:", @"targetSelector",
                             featureId, @"featureId",
@@ -126,7 +133,8 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
     [self getPlacesNear:point matching:nil];
 }
 
-- (void)getPlacesNear:(SGPoint *)point matching:(NSString *)query
+- (void)getPlacesNear:(SGPoint *)point
+             matching:(NSString *)query
 {
     NSURL *endpoint;
 
@@ -145,9 +153,7 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
 
     NSLog(@"Endpoint: %@", endpoint);
 
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:endpoint];
-    [request setDelegate:self];
-    [request addRequestHeader:@"User-Agent" value:USER_AGENT];
+    ASIHTTPRequest *request = [self requestWithURL:endpoint];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                           @"didLoadPlacesJSON:", @"targetSelector",
                           point, @"point",
@@ -167,6 +173,8 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
+    NSLog(@"request finished: %i", [request responseStatusCode]);
+    NSLog(@"body: %@", [request responseString]);
     // TODO check response status code
 
     // call requestDidFinish first
@@ -177,28 +185,38 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
     [self performSelector:targetSelector withObject:request];
 }
 
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    NSLog(@"Request failed: %@", [request error]);
+}
+
 #pragma mark Dispatcher Methods
 
 - (void)didLoadFeatureJSON:(ASIHTTPRequest *)request
 {
-    NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
     NSString *featureId = [[request userInfo] objectForKey:@"featureId"];
 
-    SGFeature *feature = [SGFeature featureWithId:featureId
-                                             data:jsonResponse
-                                          rawBody:[request responseString]];
+    if ([request responseStatusCode] == 404) {
+        [delegate didLoadFeature:nil
+                          withId:[[featureId retain] autorelease]];
+    } else {
+        NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
+        SGFeature *feature = [SGFeature featureWithId:featureId
+                                                 data:jsonResponse
+                                              rawBody:[request responseString]];
 
-    [delegate didLoadFeature:[[feature retain] autorelease]
-                      withId:[[featureId retain] autorelease]];
+        [delegate didLoadFeature:[[feature retain] autorelease]
+                          withId:[[featureId retain] autorelease]];
+    }
 }
 
 - (void)didLoadPlacesJSON:(ASIHTTPRequest *)request
 {
-    NSArray *jsonResponse = [[request responseData] yajl_JSON];
+    NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
     SGPoint *point = [[request userInfo] objectForKey:@"point"];
     NSString *matching = [[request userInfo] objectForKey:@"matching"];
 
-    NSArray *places = [NSArray arrayWithFeatures:jsonResponse];
+    SGFeatureCollection *places = [SGFeatureCollection featureCollectionWithDictionary:jsonResponse];
 
     if (matching) {
         [delegate didLoadPlaces:[[places retain] autorelease]

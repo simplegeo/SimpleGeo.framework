@@ -8,6 +8,7 @@
 
 #import "ASIHTTPRequest.h"
 #import "SGFeature.h"
+#import "SGFeatureCollection.h"
 #import "SGPoint.h"
 
 
@@ -22,9 +23,9 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 
 - (void)didLoadFeature:(SGFeature *)feature
                 withId:(NSString *)featureId;
-- (void)didLoadPlaces:(NSArray *)places
+- (void)didLoadPlaces:(SGFeatureCollection *)places
                  near:(SGPoint *)point;
-- (void)didLoadPlaces:(NSArray *)places
+- (void)didLoadPlaces:(SGFeatureCollection *)places
                  near:(SGPoint *)point
              matching:(NSString *)query;
 

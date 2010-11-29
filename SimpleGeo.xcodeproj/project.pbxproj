@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D3990DF12A4642B00EB7B20 /* SGFeatureCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */; };
+		5D3990E012A4642B00EB7B20 /* SGFeatureCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3990DD12A4642B00EB7B20 /* SGFeatureCollection.h */; };
+		5D3990E112A4642B00EB7B20 /* SGFeatureCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */; };
 		5D5B02C71291A37700399A50 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5B02C61291A37700399A50 /* YAJL.framework */; };
 		5D5B036F1291BD4500399A50 /* SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B036E1291BD4500399A50 /* SGFeature.m */; };
 		5D5B03701291BD4500399A50 /* SGFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5B036D1291BD4500399A50 /* SGFeature.h */; };
@@ -88,6 +91,8 @@
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCF5E0370ADEE00C91783 /* SimpleGeo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleGeo_Prefix.pch; sourceTree = "<group>"; };
+		5D3990DD12A4642B00EB7B20 /* SGFeatureCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGFeatureCollection.h; path = src/SGFeatureCollection.h; sourceTree = "<group>"; };
+		5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGFeatureCollection.m; path = src/SGFeatureCollection.m; sourceTree = "<group>"; };
 		5D5B02C61291A37700399A50 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = Library/Frameworks/YAJL.framework; sourceTree = SDKROOT; };
 		5D5B036D1291BD4500399A50 /* SGFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGFeature.h; path = src/SGFeature.h; sourceTree = "<group>"; };
 		5D5B036E1291BD4500399A50 /* SGFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGFeature.m; path = src/SGFeature.m; sourceTree = "<group>"; };
@@ -224,6 +229,8 @@
 				5D7676131290EAE1006B7D51 /* SGAPIClient.m */,
 				5D5B036D1291BD4500399A50 /* SGFeature.h */,
 				5D5B036E1291BD4500399A50 /* SGFeature.m */,
+				5D3990DD12A4642B00EB7B20 /* SGFeatureCollection.h */,
+				5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */,
 				5DA3C343128E427C00E128DC /* SGPoint.h */,
 				5DA3C344128E427C00E128DC /* SGPoint.m */,
 				5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */,
@@ -341,6 +348,7 @@
 				5D8C148F129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h in Headers */,
 				5D8C1569129DE193002F8C01 /* Base64Transcoder.h in Headers */,
 				5D8C1615129DED38002F8C01 /* NSString+URLEncoding.h in Headers */,
+				5D3990E012A4642B00EB7B20 /* SGFeatureCollection.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +459,7 @@
 				5D8C15D6129DE763002F8C01 /* ASIHTTPRequest+OAuth.m in Sources */,
 				5D8C15D3129DE755002F8C01 /* Base64Transcoder.c in Sources */,
 				5D8C1614129DED38002F8C01 /* NSString+URLEncoding.m in Sources */,
+				5D3990DF12A4642B00EB7B20 /* SGFeatureCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +481,7 @@
 				5D8C158B129DE515002F8C01 /* ASIHTTPRequest+OAuth.m in Sources */,
 				5D8C1568129DE193002F8C01 /* Base64Transcoder.c in Sources */,
 				5D8C1616129DED38002F8C01 /* NSString+URLEncoding.m in Sources */,
+				5D3990E112A4642B00EB7B20 /* SGFeatureCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

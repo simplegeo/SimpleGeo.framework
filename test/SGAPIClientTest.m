@@ -30,8 +30,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 {
     NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
     return [[SGAPIClient clientWithDelegate:self
-                                consumerKey:@""
-                             consumerSecret:@""
+                                consumerKey:@"consumerKey"
+                             consumerSecret:@"consumerSecret"
                                         URL:url] retain];
 }
 

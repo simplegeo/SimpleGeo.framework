@@ -1,5 +1,6 @@
 require 'json'
 require 'sinatra'
+require File.dirname(__FILE__) + '/lib/rack_oauth_provider'
 
 SG_BOULDER = <<-EOS
 {
@@ -50,6 +51,8 @@ SG_SF = <<-EOS
   }
 }
 EOS
+
+use RackOAuthProvider
 
 get '/0.1/features/:id.json' do
   SG_SF

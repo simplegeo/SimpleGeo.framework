@@ -154,7 +154,7 @@
     NSData *secretData = [secret dataUsingEncoding:NSUTF8StringEncoding];
     NSData *clearTextData = [text dataUsingEncoding:NSUTF8StringEncoding];
     unsigned char result[20];
-	CCHmac(kCCHmacAlgSHA1,
+    CCHmac(kCCHmacAlgSHA1,
            [secretData bytes],
            [secretData length],
            [clearTextData bytes],

@@ -175,19 +175,28 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
 {
     NSLog(@"request finished: %i", [request responseStatusCode]);
     NSLog(@"body: %@", [request responseString]);
-    // TODO check response status code
 
-    // call requestDidFinish first
-    [delegate requestDidFinish:[[request retain] autorelease]];
+    if (([request responseStatusCode] >= 200 && [request responseStatusCode < 400]) ||
+        [request responseStatusCode] == 404) {
 
-    // assume that "targetSelector" was set on the request and use that to dispatch appropriately
-    SEL targetSelector = NSSelectorFromString([[request userInfo] objectForKey:@"targetSelector"]);
-    [self performSelector:targetSelector withObject:request];
+        // call requestDidFinish first
+        [delegate requestDidFinish:[[request retain] autorelease]];
+
+        // assume that "targetSelector" was set on the request and use that to dispatch appropriately
+        SEL targetSelector = NSSelectorFromString([[request userInfo] objectForKey:@"targetSelector"]);
+        [self performSelector:targetSelector withObject:request];
+    } else {
+        // consider non-2xx, 3xx, or 404s to be failures
+        [self requestFailed:[[request retain] autorelease]];
+    }
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
     NSLog(@"Request failed: %@", [request error]);
+
+    // TODO how can clients identify which request failed that they queued?
+    [delegate requestDidFail:[[request retain] autorelease]];
 }
 
 #pragma mark Dispatcher Methods

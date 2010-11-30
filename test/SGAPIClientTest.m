@@ -88,6 +88,21 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
 }
 
+- (void)testGetFeatureWithIdAndBadCredentials
+{
+    [self prepare];
+
+    NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
+    SGAPIClient *client = [SGAPIClient clientWithDelegate:self
+                                              consumerKey:@"invalidKey"
+                                           consumerSecret:@"invalidSecret"
+                                                      URL:url];
+
+    [client getFeatureWithId:@"badCredentials"];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+}
+
 - (void)testGetFeatureWithIdShouldCallRequestDidFinish
 {
     [self prepare];
@@ -125,6 +140,15 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     if ([[[request userInfo] objectForKey:@"featureId"] isEqual:@"requestDidFinish"]) {
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetFeatureWithIdShouldCallRequestDidFinish)];
+    }
+}
+
+- (void)requestDidFail:(ASIHTTPRequest *)request
+{
+    NSLog(@"requestDidFail: %@", [request userInfo]);
+    if ([[[request userInfo] objectForKey:@"featureId"] isEqual:@"badCredentials"]) {
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetFeatureWithIdAndBadCredentials)];
     }
 }
 

@@ -29,15 +29,15 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 - (SGAPIClient *)createClient
 {
     NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
-    return [[SGAPIClient clientWithDelegate:self
-                                consumerKey:@"consumerKey"
-                             consumerSecret:@"consumerSecret"
-                                        URL:url] retain];
+    return [[[SGAPIClient clientWithDelegate:self
+                                 consumerKey:@"consumerKey"
+                              consumerSecret:@"consumerSecret"
+                                         URL:url] retain] autorelease];
 }
 
 - (SGPoint *)point
 {
-    return [[SGPoint pointWithLatitude:40.0 longitude:-105.0] retain];
+    return [[[SGPoint pointWithLatitude:40.0 longitude:-105.0] retain] autorelease];
 }
 
 #pragma mark Tests

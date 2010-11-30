@@ -24,10 +24,9 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 - (void)didLoadFeature:(SGFeature *)feature
                 withId:(NSString *)featureId;
 - (void)didLoadPlaces:(SGFeatureCollection *)places
-                 near:(SGPoint *)point;
-- (void)didLoadPlaces:(SGFeatureCollection *)places
                  near:(SGPoint *)point
-             matching:(NSString *)query;
+             matching:(NSString *)query
+           inCategory:(NSString *)category;
 
 @end
 

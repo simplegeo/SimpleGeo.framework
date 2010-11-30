@@ -12,9 +12,16 @@
 #import "ASIHTTPRequest+OAuth.h"
 
 
-NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com/";
 NSString * const SIMPLEGEO_API_VERSION = @"0.1";
+NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
+
+
+@interface SGAPIClient ()
+
+- (void)requestFailed:(ASIHTTPRequest *)request;
+
+@end
 
 
 @implementation SGAPIClient
@@ -136,37 +143,46 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
 {
-    NSURL *endpoint;
-
-    if (query) {
-        endpoint = [self endpointForString:
-                    [NSString stringWithFormat:@"/%@/places/%f,%f/search.json?q=%@",
-                     SIMPLEGEO_API_VERSION, [point latitude], [point longitude],
-                     [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]
-                    ];
-    } else {
-        endpoint = [self endpointForString:
-                    [NSString stringWithFormat:@"/%@/places/%f,%f/search.json",
-                     SIMPLEGEO_API_VERSION, [point latitude], [point longitude]]
-                    ];
-    }
-
-    NSLog(@"Endpoint: %@", endpoint);
-
-    ASIHTTPRequest *request = [self requestWithURL:endpoint];
-    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                          @"didLoadPlacesJSON:", @"targetSelector",
-                          point, @"point",
-                          query, @"matching",
-                          nil
-                          ]];
-    [request startAsynchronous];
+    [self getPlacesNear:point matching:query inCategory:nil];
 }
 
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
            inCategory:(NSString *)category
 {
+
+    NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/places/%f,%f/search.json",
+                                 SIMPLEGEO_API_VERSION, [point latitude], [point longitude]
+                                 ];
+
+    // this is ugly because NSURL doesn't handle setting query parameters well
+    if (query && category) {
+        [endpoint appendFormat:@"?q=%@&category=%@",
+         [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
+         [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
+         ];
+    } else if (category) {
+        [endpoint appendFormat:@"?category=%@",
+         [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
+         ];
+    } else if (query) {
+        [endpoint appendFormat:@"?q=%@",
+         [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
+         ];
+    }
+
+    NSURL *endpointURL = [self endpointForString:endpoint];
+    NSLog(@"Endpoint: %@", endpoint);
+
+    ASIHTTPRequest *request = [self requestWithURL:endpointURL];
+    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                          @"didLoadPlacesJSON:", @"targetSelector",
+                          point, @"point",
+                          query, @"matching",
+                          category, @"category",
+                          nil
+                          ]];
+    [request startAsynchronous];
 }
 
 #pragma mark ASIHTTPRequest Delegate Methods
@@ -176,7 +192,7 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
     NSLog(@"request finished: %i", [request responseStatusCode]);
     NSLog(@"body: %@", [request responseString]);
 
-    if (([request responseStatusCode] >= 200 && [request responseStatusCode < 400]) ||
+    if (([request responseStatusCode] >= 200 && [request responseStatusCode] < 400) ||
         [request responseStatusCode] == 404) {
 
         // call requestDidFinish first
@@ -222,19 +238,12 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
 - (void)didLoadPlacesJSON:(ASIHTTPRequest *)request
 {
     NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
-    SGPoint *point = [[request userInfo] objectForKey:@"point"];
-    NSString *matching = [[request userInfo] objectForKey:@"matching"];
-
     SGFeatureCollection *places = [SGFeatureCollection featureCollectionWithDictionary:jsonResponse];
 
-    if (matching) {
-        [delegate didLoadPlaces:[[places retain] autorelease]
-                           near:[[point retain] autorelease]
-                       matching:[[matching retain] autorelease]];
-    } else {
-        [delegate didLoadPlaces:[[places retain] autorelease]
-                           near:[[point retain] autorelease]];
-    }
+    [delegate didLoadPlaces:[[places retain] autorelease]
+                       near:[[[[request userInfo] objectForKey:@"point"] retain] autorelease]
+                   matching:[[[[request userInfo] objectForKey:@"matching"] retain] autorelease]
+                 inCategory:[[[[request userInfo] objectForKey:@"category"] retain] autorelease]];
 }
 
 @end

@@ -132,6 +132,15 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
 }
 
+- (void)testGetPlacesNearMatchingInCategory
+{
+    [self prepare];
+
+    [[self createClient] getPlacesNear:[self point] matching:@"burgers" inCategory:@"Restaurants"];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+}
+
 #pragma mark SGAPIClientDelegate Methods
 
 - (void)requestDidFinish:(ASIHTTPRequest *)request
@@ -175,31 +184,43 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 - (void)didLoadPlaces:(SGFeatureCollection *)places
                  near:(SGPoint *)point
+             matching:(NSString *)query
+           inCategory:(NSString *)category
 {
-    // TODO currently expects to only be triggered by testGetPlacesNearWithMultipleResults
-    GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
-    GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 2 places.");
-    GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
-                         @"Burger Master West Olympia", nil);
-    GHAssertEqualObjects([[[[places features] objectAtIndex:1] properties] objectForKey:@"name"],
-                         @"Red Robin Gourmet Burgers", nil);
+    if (!query && !category) {
+        GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
+        GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 7 places.");
+        GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
+                             @"Burger Master West Olympia", nil);
+        GHAssertEqualObjects([[[[places features] objectAtIndex:1] properties] objectForKey:@"name"],
+                             @"Red Robin Gourmet Burgers", nil);
 
-    [self notify:kGHUnitWaitStatusSuccess
-     forSelector:@selector(testGetPlacesNearWithMultipleResults)];
-}
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetPlacesNearWithMultipleResults)];
+    } else if ([query isEqual:@"one"]) {
+        GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
+        GHAssertEqualObjects(query, @"one", nil);
+        GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
+        NSArray *features = [places features];
+        GHAssertEqualObjects([[[features objectAtIndex:0] properties] objectForKey:@"name"],
+                             @"Burger Master West Olympia", nil);
 
-- (void)didLoadPlaces:(SGFeatureCollection *)places
-                 near:(SGPoint *)point
-             matching:(NSString *)query;
-{
-    // TODO currently expects to only be triggered by testGetPlacesNearMatchingWithASingleResult
-    GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
-    NSArray *features = [places features];
-    GHAssertEqualObjects([[[features objectAtIndex:0] properties] objectForKey:@"name"],
-                         @"Burger Master West Olympia", nil);
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetPlacesNearMatchingWithASingleResult)];
+    } else if ([query isEqual:@"burgers"]) {
+        GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
+        GHAssertEqualObjects(query, @"burgers", nil);
+        GHAssertEqualObjects(category, @"Restaurants", nil);
+        GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 7 places.");
+        NSArray *features = [places features];
+        GHAssertEqualObjects([[[features objectAtIndex:0] properties] objectForKey:@"name"],
+                             @"Burger Master West Olympia", nil);
+        GHAssertEqualObjects([[[[places features] objectAtIndex:1] properties] objectForKey:@"name"],
+                             @"Red Robin Gourmet Burgers", nil);
 
-    [self notify:kGHUnitWaitStatusSuccess
-     forSelector:@selector(testGetPlacesNearMatchingWithASingleResult)];
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetPlacesNearMatchingInCategory)];
+    }
 }
 
 @end

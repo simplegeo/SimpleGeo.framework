@@ -77,3 +77,15 @@ put '/0.1/places/place.json' do
    "{'token': '596499b4fc2a11dfa39058b035fcf1e5', 'id': #{hash}, 'uri': '/1.0/places/#{hash}.json'}"]
   
 end
+
+get '/0.1/context/:lat,:lon.json' do
+  # sample response for /0.1/context/37.803259,-122.440033.json
+  <<-EOS
+{"weather":{"temperature":"65F","conditions":"light
+haze"},"features":[{"category": "Neighborhood", "source":
+"factle.com", "subcategory": "", "bounds": [-122.451382,
+37.798727999999997, -122.42438199999999, 37.808627999999999], "type":
+"Boundary", "id": "SG_72BK8PRtgDlA7tg4jCgvV5_37.803147_-122.438762",
+"abbr": "", "name": "Marina"}],"demographics":{"metro_score":"9"}}
+  EOS
+end

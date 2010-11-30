@@ -20,6 +20,8 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
 @interface SGAPIClient ()
 
 - (void)requestFailed:(ASIHTTPRequest *)request;
+- (NSURL *)endpointForString:(NSString *)path;
+- (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL;
 
 @end
 
@@ -100,6 +102,7 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
 
 #pragma mark Utility Methods
 
+// TODO categories need access to these methods, but they shouldn't be public...ideas?
 - (NSURL *)endpointForString:(NSString *)path
 {
     return [[[NSURL alloc] initWithString:path relativeToURL:url] autorelease];
@@ -129,58 +132,6 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
                             @"didLoadFeatureJSON:", @"targetSelector",
                             featureId, @"featureId",
                             nil
-                          ]];
-    [request startAsynchronous];
-}
-
-#pragma mark Places API Calls
-
-- (void)getPlacesNear:(SGPoint *)point
-{
-    [self getPlacesNear:point matching:nil];
-}
-
-- (void)getPlacesNear:(SGPoint *)point
-             matching:(NSString *)query
-{
-    [self getPlacesNear:point matching:query inCategory:nil];
-}
-
-- (void)getPlacesNear:(SGPoint *)point
-             matching:(NSString *)query
-           inCategory:(NSString *)category
-{
-
-    NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/places/%f,%f/search.json",
-                                 SIMPLEGEO_API_VERSION, [point latitude], [point longitude]
-                                 ];
-
-    // this is ugly because NSURL doesn't handle setting query parameters well
-    if (query && category) {
-        [endpoint appendFormat:@"?q=%@&category=%@",
-         [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
-         [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
-         ];
-    } else if (category) {
-        [endpoint appendFormat:@"?category=%@",
-         [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
-         ];
-    } else if (query) {
-        [endpoint appendFormat:@"?q=%@",
-         [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
-         ];
-    }
-
-    NSURL *endpointURL = [self endpointForString:endpoint];
-    NSLog(@"Endpoint: %@", endpoint);
-
-    ASIHTTPRequest *request = [self requestWithURL:endpointURL];
-    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                          @"didLoadPlacesJSON:", @"targetSelector",
-                          point, @"point",
-                          query, @"matching",
-                          category, @"category",
-                          nil
                           ]];
     [request startAsynchronous];
 }

@@ -8,6 +8,7 @@
 
 #import <GHUnit/GHUnit.h>
 #import "SGAPIClient.h"
+#import "SGAPIClient+Places.h"
 
 
 NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";

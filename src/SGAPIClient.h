@@ -12,6 +12,7 @@
 #import "SGPoint.h"
 
 
+extern NSString * const SIMPLEGEO_API_VERSION;
 extern NSString * const SIMPLEGEO_URL_PREFIX;
 
 
@@ -23,6 +24,8 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 
 - (void)didLoadFeature:(SGFeature *)feature
                 withId:(NSString *)featureId;
+
+// TODO put this into a different protocol that subclasses this one (does that work)?
 - (void)didLoadPlaces:(SGFeatureCollection *)places
                  near:(SGPoint *)point
              matching:(NSString *)query
@@ -60,14 +63,6 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
         consumerSecret:(NSString *)consumerSecret
                    URL:(NSURL *)url;
 
-// TODO extract these into appropriate categories
 - (void)getFeatureWithId:(NSString *)featureId;
-
-- (void)getPlacesNear:(SGPoint *)point;
-- (void)getPlacesNear:(SGPoint *)point
-             matching:(NSString *)query;
-- (void)getPlacesNear:(SGPoint *)point
-             matching:(NSString *)query
-           inCategory:(NSString *)category;
 
 @end

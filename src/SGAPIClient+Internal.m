@@ -27,6 +27,7 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
                                                    consumerSecret:consumerSecret];
     [request setDelegate:self];
     [request addRequestHeader:@"User-Agent" value:USER_AGENT];
+    [request addRequestHeader:@"Accept" value:@"application/json, application/javascript, */*"];
 
     return [request autorelease];
 }

@@ -74,6 +74,6 @@ put '/0.1/places/place.json' do
   hash = "something"
 
   [202, {'Content-Type' => 'application/json'},
-   "{'token': '596499b4fc2a11dfa39058b035fcf1e5', 'id': #{hash}, 'uri': '/1.0/places/#{hash}.json'}
+   "{'token': '596499b4fc2a11dfa39058b035fcf1e5', 'id': #{hash}, 'uri': '/1.0/places/#{hash}.json'}"]
   
 end

@@ -38,3 +38,42 @@ get '/0.1/places/:lat,:lon/search.json' do
     BURGERS
   end
 end
+
+post '/0.1/places/:id.json' do
+  # Update a record
+  # Requires a partial (or full) GeoJSON object, any fields you set in it
+  # replace the fields of the record with the matching ID.
+  # Returns a status polling token
+
+  # TODO verify input content-type
+  # TODO verify input and throw some sort of error if it's off
+
+  [202, {'Content-Type' => 'application/json'}, "{'token': '79ea18ccfc2911dfa39058b035fcf1e5'}"]
+end
+
+delete '/0.1/places/:id.json' do
+  # Delete a record.
+  # Requires a single SimpleGeo ID
+  # Returns a status polling token
+
+  # TODO verify input content-type
+  # TODO verify input and throw some sort of error if it's off
+
+  [202, {'Content-Type' => 'application/json'}, "{'token': '8fa0d1c4fc2911dfa39058b035fcf1e5'}"]
+end
+
+put '/0.1/places/place.json' do
+  # Create a new record, returns a 301 to the location of the resource.
+  # Requires a GeoJSON object
+  # Returns a JSON blob : {'id': 'record_id', 'uri': 'uri_of_record', 'token':
+  # 'status_polling_token'}
+
+  # TODO verify input content-type
+  # TODO verify input and throw some sort of error if it's off
+  # TODO pull the id from the input and generate a hash
+  hash = "something"
+
+  [202, {'Content-Type' => 'application/json'},
+   "{'token': '596499b4fc2a11dfa39058b035fcf1e5', 'id': #{hash}, 'uri': '/1.0/places/#{hash}.json'}
+  
+end

@@ -13,6 +13,9 @@
 		5D3991E612A489EF00EB7B20 /* SGAPIClient+Places.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3991E512A489EF00EB7B20 /* SGAPIClient+Places.m */; };
 		5D3991E712A489EF00EB7B20 /* SGAPIClient+Places.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3991E412A489EF00EB7B20 /* SGAPIClient+Places.h */; };
 		5D3991E812A489EF00EB7B20 /* SGAPIClient+Places.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3991E512A489EF00EB7B20 /* SGAPIClient+Places.m */; };
+		5D39921C12A48F3F00EB7B20 /* SGAPIClient+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39921B12A48F3F00EB7B20 /* SGAPIClient+Internal.m */; };
+		5D39921D12A48F3F00EB7B20 /* SGAPIClient+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39921A12A48F3F00EB7B20 /* SGAPIClient+Internal.h */; };
+		5D39921E12A48F3F00EB7B20 /* SGAPIClient+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39921B12A48F3F00EB7B20 /* SGAPIClient+Internal.m */; };
 		5D5B02C71291A37700399A50 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5B02C61291A37700399A50 /* YAJL.framework */; };
 		5D5B036F1291BD4500399A50 /* SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B036E1291BD4500399A50 /* SGFeature.m */; };
 		5D5B03701291BD4500399A50 /* SGFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5B036D1291BD4500399A50 /* SGFeature.h */; };
@@ -98,6 +101,8 @@
 		5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGFeatureCollection.m; path = src/SGFeatureCollection.m; sourceTree = "<group>"; };
 		5D3991E412A489EF00EB7B20 /* SGAPIClient+Places.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGAPIClient+Places.h"; path = "src/SGAPIClient+Places.h"; sourceTree = "<group>"; };
 		5D3991E512A489EF00EB7B20 /* SGAPIClient+Places.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SGAPIClient+Places.m"; path = "src/SGAPIClient+Places.m"; sourceTree = "<group>"; };
+		5D39921A12A48F3F00EB7B20 /* SGAPIClient+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGAPIClient+Internal.h"; path = "src/SGAPIClient+Internal.h"; sourceTree = "<group>"; };
+		5D39921B12A48F3F00EB7B20 /* SGAPIClient+Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SGAPIClient+Internal.m"; path = "src/SGAPIClient+Internal.m"; sourceTree = "<group>"; };
 		5D5B02C61291A37700399A50 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = Library/Frameworks/YAJL.framework; sourceTree = SDKROOT; };
 		5D5B036D1291BD4500399A50 /* SGFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGFeature.h; path = src/SGFeature.h; sourceTree = "<group>"; };
 		5D5B036E1291BD4500399A50 /* SGFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGFeature.m; path = src/SGFeature.m; sourceTree = "<group>"; };
@@ -234,6 +239,8 @@
 				5D7676131290EAE1006B7D51 /* SGAPIClient.m */,
 				5D3991E412A489EF00EB7B20 /* SGAPIClient+Places.h */,
 				5D3991E512A489EF00EB7B20 /* SGAPIClient+Places.m */,
+				5D39921A12A48F3F00EB7B20 /* SGAPIClient+Internal.h */,
+				5D39921B12A48F3F00EB7B20 /* SGAPIClient+Internal.m */,
 				5D5B036D1291BD4500399A50 /* SGFeature.h */,
 				5D5B036E1291BD4500399A50 /* SGFeature.m */,
 				5D3990DD12A4642B00EB7B20 /* SGFeatureCollection.h */,
@@ -357,6 +364,7 @@
 				5D8C1615129DED38002F8C01 /* NSString+URLEncoding.h in Headers */,
 				5D3990E012A4642B00EB7B20 /* SGFeatureCollection.h in Headers */,
 				5D3991E712A489EF00EB7B20 /* SGAPIClient+Places.h in Headers */,
+				5D39921D12A48F3F00EB7B20 /* SGAPIClient+Internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +477,7 @@
 				5D8C1614129DED38002F8C01 /* NSString+URLEncoding.m in Sources */,
 				5D3990DF12A4642B00EB7B20 /* SGFeatureCollection.m in Sources */,
 				5D3991E612A489EF00EB7B20 /* SGAPIClient+Places.m in Sources */,
+				5D39921C12A48F3F00EB7B20 /* SGAPIClient+Internal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +501,7 @@
 				5D8C1616129DED38002F8C01 /* NSString+URLEncoding.m in Sources */,
 				5D3990E112A4642B00EB7B20 /* SGFeatureCollection.m in Sources */,
 				5D3991E812A489EF00EB7B20 /* SGAPIClient+Places.m in Sources */,
+				5D39921E12A48F3F00EB7B20 /* SGAPIClient+Internal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

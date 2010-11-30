@@ -7,6 +7,7 @@
 //
 
 #import "SGAPIClient+Places.h"
+#import "SGAPIClient+Internal.h"
 
 
 @implementation SGAPIClient (Places)

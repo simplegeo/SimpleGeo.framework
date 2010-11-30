@@ -7,21 +7,18 @@
 //
 
 #import <YAJL/YAJL.h>
-#import "SGAPIClient.h"
 #import "NSArray+SGFeature.h"
-#import "ASIHTTPRequest+OAuth.h"
+#import "SGAPIClient.h"
+#import "SGAPIClient+Internal.h"
 
 
 NSString * const SIMPLEGEO_API_VERSION = @"0.1";
 NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
-NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
 
 
 @interface SGAPIClient ()
 
 - (void)requestFailed:(ASIHTTPRequest *)request;
-- (NSURL *)endpointForString:(NSString *)path;
-- (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL;
 
 @end
 
@@ -98,25 +95,6 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
     [delegate release];
     [url release];
     [super dealloc];
-}
-
-#pragma mark Utility Methods
-
-// TODO categories need access to these methods, but they shouldn't be public...ideas?
-- (NSURL *)endpointForString:(NSString *)path
-{
-    return [[[NSURL alloc] initWithString:path relativeToURL:url] autorelease];
-}
-
-- (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL
-{
-    ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:aURL
-                                                      consumerKey:consumerKey
-                                                   consumerSecret:consumerSecret];
-    [request setDelegate:self];
-    [request addRequestHeader:@"User-Agent" value:USER_AGENT];
-
-    return [request autorelease];
 }
 
 #pragma mark Common API Calls

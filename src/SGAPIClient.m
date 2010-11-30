@@ -66,18 +66,18 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
                               URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];
 }
 
-- (id)initWithDelegate:(id<SGAPIClientDelegate>)_delegate
+- (id)initWithDelegate:(id<SGAPIClientDelegate>)aDelegate
            consumerKey:(NSString *)key
         consumerSecret:(NSString *)secret
-                   URL:(NSURL *)_url
+                   URL:(NSURL *)aURL
 {
     self = [super init];
 
     if (self) {
-        delegate = [_delegate retain];
+        delegate = [aDelegate retain];
         consumerKey = [key retain];
         consumerSecret = [secret retain];
-        url = [_url retain];
+        url = [aURL retain];
     }
 
     return self;

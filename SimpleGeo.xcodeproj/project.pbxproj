@@ -103,6 +103,7 @@
 		5D3991E512A489EF00EB7B20 /* SGAPIClient+Places.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SGAPIClient+Places.m"; path = "src/SGAPIClient+Places.m"; sourceTree = "<group>"; };
 		5D39921A12A48F3F00EB7B20 /* SGAPIClient+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGAPIClient+Internal.h"; path = "src/SGAPIClient+Internal.h"; sourceTree = "<group>"; };
 		5D39921B12A48F3F00EB7B20 /* SGAPIClient+Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SGAPIClient+Internal.m"; path = "src/SGAPIClient+Internal.m"; sourceTree = "<group>"; };
+		5D39924E12A571C000EB7B20 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = RunTests.sh; path = scripts/RunTests.sh; sourceTree = "<group>"; };
 		5D5B02C61291A37700399A50 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = Library/Frameworks/YAJL.framework; sourceTree = SDKROOT; };
 		5D5B036D1291BD4500399A50 /* SGFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGFeature.h; path = src/SGFeature.h; sourceTree = "<group>"; };
 		5D5B036E1291BD4500399A50 /* SGFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGFeature.m; path = src/SGFeature.m; sourceTree = "<group>"; };
@@ -226,6 +227,7 @@
 		089C1665FE841158C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5D39924E12A571C000EB7B20 /* RunTests.sh */,
 				8DC2EF5A0486A6940098B216 /* Info.plist */,
 				089C1666FE841158C02AAC07 /* InfoPlist.strings */,
 			);
@@ -378,6 +380,7 @@
 				5DA3C34F128E448800E128DC /* Resources */,
 				5DA3C350128E448800E128DC /* Sources */,
 				5DA3C351128E448800E128DC /* Frameworks */,
+				5D39925012A571C700EB7B20 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -451,6 +454,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5D39925012A571C700EB7B20 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sh scripts/RunTests.sh";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5DA3C350128E448800E128DC /* Sources */ = {

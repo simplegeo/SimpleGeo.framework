@@ -150,7 +150,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 {
     [self prepare];
 
-    [[self createClient] getPlacesNear:[self point] matching:@"one"];
+    [[self createClient] getPlacesNear:[self point]
+                              matching:@"one"];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
 }
@@ -159,7 +160,26 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 {
     [self prepare];
 
-    [[self createClient] getPlacesNear:[self point] matching:@"burgers" inCategory:@"Restaurants"];
+    [[self createClient] getPlacesNear:[self point]
+                              matching:@"burgers"
+                            inCategory:@"Restaurants"];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+}
+
+- (void)testUpdatePlace
+{
+    [self prepare];
+
+    NSString *handle = @"SG_4CsrE4oNy1gl8hCLdwu0F0_47.046962_-122.937467@1290636830";
+
+    SGFeature *feature = [SGFeature featureWithId:handle
+                                       properties:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                   @"Mike's Burger Shack", @"name",
+                                                   nil]];
+
+    [[self createClient] updatePlace:handle
+                                with:feature];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
 }
@@ -244,6 +264,16 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearMatchingInCategory)];
     }
+}
+
+- (void)didUpdatePlace:(NSString *)handle
+                 token:(NSString *)token
+{
+    GHAssertEqualObjects(handle, @"SG_4CsrE4oNy1gl8hCLdwu0F0_47.046962_-122.937467@1290636830", nil);
+    GHAssertEqualObjects(token, @"79ea18ccfc2911dfa39058b035fcf1e5", nil);
+
+    [self notify:kGHUnitWaitStatusSuccess
+     forSelector:@selector(testUpdatePlace)];
 }
 
 @end

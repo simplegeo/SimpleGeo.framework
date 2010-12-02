@@ -84,6 +84,23 @@
     [request startAsynchronous];
 }
 
+- (void)updatePlace:(NSString *)handle
+               with:(SGFeature *)feature
+{
+    NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/places/%@.json",
+                                                  SIMPLEGEO_API_VERSION, handle]];
+
+    ASIHTTPRequest *request = [self requestWithURL:endpointURL];
+    [request appendPostData:[[feature yajl_JSONString] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setRequestMethod:@"POST"];
+    [request addRequestHeader:@"Content-Type" value:@"application/json"];
+    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                          @"didUpdatePlace:", @"targetSelector",
+                          handle, @"handle",
+                          nil]];
+    [request startAsynchronous];
+}
+
 #pragma mark Dispatcher Methods
 
 - (void)didLoadPlacesJSON:(ASIHTTPRequest *)request
@@ -95,6 +112,15 @@
                        near:[[[[request userInfo] objectForKey:@"point"] retain] autorelease]
                    matching:[[[[request userInfo] objectForKey:@"matching"] retain] autorelease]
                  inCategory:[[[[request userInfo] objectForKey:@"category"] retain] autorelease]];
+}
+
+- (void)didUpdatePlace:(ASIHTTPRequest *)request
+{
+    NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
+    NSString *token = [jsonResponse objectForKey:@"token"];
+
+    [delegate didUpdatePlace:[[[[request userInfo] objectForKey:@"handle"] retain] autorelease]
+                       token:[[token retain] autorelease]];
 }
 
 @end

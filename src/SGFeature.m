@@ -200,10 +200,18 @@
 
 - (NSDictionary *)asDictionary
 {
-    return [NSDictionary dictionaryWithObjectsAndKeys:featureId, @"id",
-             geometry, @"geometry",
-             properties, @"properties",
-             nil];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:3];
+    [dict setObject:featureId forKey:@"id"];
+
+    if (geometry) {
+        [dict setObject:geometry forKey:@"geometry"];
+    }
+
+    if (properties) {
+        [dict setObject:properties forKey:@"properties"];
+    }
+
+    return [NSDictionary dictionaryWithDictionary:dict];
 }
 
 - (NSString *)description

@@ -39,5 +39,7 @@
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
            inCategory:(NSString *)category;
+- (void)updatePlace:(NSString *)handle
+               with:(SGFeature *)data;
 
 @end

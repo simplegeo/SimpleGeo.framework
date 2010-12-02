@@ -45,10 +45,13 @@ post '/1.0/places/:id.json' do
   # replace the fields of the record with the matching ID.
   # Returns a status polling token
 
-  # TODO verify input content-type
-  # TODO verify input and throw some sort of error if it's off
+  input = JSON.parse(env['rack.input'].read)
 
-  [202, {'Content-Type' => 'application/json'}, "{'token': '79ea18ccfc2911dfa39058b035fcf1e5'}"]
+  if env['CONTENT_TYPE'] == 'application/json' && input['properties']
+    [202, {'Content-Type' => 'application/json'}, '{"token": "79ea18ccfc2911dfa39058b035fcf1e5"}']
+  else
+    500
+  end
 end
 
 # TODO does this move to /1.0/features?
@@ -60,7 +63,7 @@ delete '/1.0/places/:id.json' do
   # TODO verify input content-type
   # TODO verify input and throw some sort of error if it's off
 
-  [202, {'Content-Type' => 'application/json'}, "{'token': '8fa0d1c4fc2911dfa39058b035fcf1e5'}"]
+  [202, {'Content-Type' => 'application/json'}, '{"token": "8fa0d1c4fc2911dfa39058b035fcf1e5"}']
 end
 
 post '/1.0/places' do

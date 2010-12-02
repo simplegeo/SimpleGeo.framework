@@ -260,7 +260,7 @@ BURGERS = <<-EOS
 }
 EOS
 
-CONTEXT = -<<EOS
+CONTEXT = <<-EOS
 {
     "demographics": {
         "metro_score": "9"

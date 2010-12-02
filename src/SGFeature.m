@@ -77,6 +77,31 @@
                          dictionary:data];
 }
 
++ (SGFeature *)featureWithId:(NSString *)id
+                  properties:(NSDictionary *)properties
+{
+    return [SGFeature featureWithId:id
+                           geometry:nil
+                         properties:properties];
+}
+
++ (SGFeature *)featureWithId:(NSString *)id
+                    geometry:(SGPoint *)geometry
+{
+    return [SGFeature featureWithId:id
+                           geometry:geometry
+                         properties:nil];
+}
+
++ (SGFeature *)featureWithId:(NSString *)id
+                    geometry:(SGPoint *)geometry
+                  properties:(NSDictionary *)properties
+{
+    return [[[SGFeature alloc] initWithId:id
+                                 geometry:geometry
+                               properties:properties] autorelease];
+}
+
 - (id)init
 {
     return [self initWithId:nil];
@@ -94,6 +119,37 @@
     return [self initWithId:id
                  dictionary:data
                     rawBody:nil];
+}
+
+- (id)initWithId:(NSString *)id
+      properties:(NSDictionary *)someProperties
+{
+    return [self initWithId:id
+                   geometry:nil
+                 properties:someProperties];
+}
+
+- (id)initWithId:(NSString *)id
+        geometry:(SGPoint *)aGeometry
+{
+    return [self initWithId:id
+                   geometry:aGeometry
+                 properties:nil];
+}
+
+- (id)initWithId:(NSString *)id
+        geometry:(SGPoint *)aGeometry
+      properties:(NSDictionary *)someProperties
+{
+    self = [super init];
+
+    if (self) {
+        featureId = [id retain];
+        geometry = [aGeometry retain];
+        properties = [someProperties retain];
+    }
+
+    return self;
 }
 
 - (id)initWithId:(NSString *)id
@@ -141,15 +197,20 @@
     [super dealloc];
 }
 
+- (NSDictionary *)asDictionary
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:featureId, @"id",
+             geometry, @"geometry",
+             properties, @"properties",
+             nil];
+}
+
 - (NSString *)description
 {
     if (rawBody) {
         return rawBody;
     } else {
-        return [[NSDictionary dictionaryWithObjectsAndKeys:featureId, @"id",
-                geometry, @"geometry",
-                properties, @"properties",
-                nil] description];
+        return [[self asDictionary] description];
     }
 }
 

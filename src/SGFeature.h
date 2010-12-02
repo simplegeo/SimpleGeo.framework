@@ -72,4 +72,6 @@
       dictionary:(NSDictionary *)data
          rawBody:(NSString *)rawBody;
 
+- (NSString *)yajl_JSONString;
+
 @end

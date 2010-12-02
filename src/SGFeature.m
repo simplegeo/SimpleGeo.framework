@@ -28,6 +28,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import <YAJL/YAJL.h>
 #import "SGFeature.h"
 
 
@@ -212,6 +213,11 @@
     } else {
         return [[self asDictionary] description];
     }
+}
+
+- (NSString *)yajl_JSONString
+{
+    return [[self asDictionary] yajl_JSONString];
 }
 
 - (SGPoint *)geometry

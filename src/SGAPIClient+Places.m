@@ -35,6 +35,20 @@
 
 @implementation SGAPIClient (Places)
 
+- (void)deletePlace:(NSString *)handle
+{
+    NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/places/%@.json",
+                                                  SIMPLEGEO_API_VERSION, handle]];
+
+    ASIHTTPRequest *request = [self requestWithURL:endpointURL];
+    [request setRequestMethod:@"DELETE"];
+    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                          @"didDeletePlace:", @"targetSelector",
+                          handle, @"handle",
+                          nil]];
+    [request startAsynchronous];
+}
+
 - (void)getPlacesNear:(SGPoint *)point
 {
     [self getPlacesNear:point matching:nil];
@@ -102,6 +116,15 @@
 }
 
 #pragma mark Dispatcher Methods
+
+- (void)didDeletePlace:(ASIHTTPRequest *)request
+{
+    NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
+    NSString *token = [jsonResponse objectForKey:@"token"];
+
+    [delegate didDeletePlace:[[[[request userInfo] objectForKey:@"handle"] retain] autorelease]
+                       token:[[token retain] autorelease]];
+}
 
 - (void)didLoadPlaces:(ASIHTTPRequest *)request
 {

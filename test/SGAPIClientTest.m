@@ -192,6 +192,16 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
                 timeout:0.25];
 }
 
+- (void)testDeletePlace
+{
+    [self prepare];
+
+    [[self createClient] deletePlace:@"SG_4CsrE4oNy1gl8hCLdwu0F0_47.046962_-122.937467@1290636830"];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
 #pragma mark SGAPIClientDelegate Methods
 
 - (void)requestDidFinish:(ASIHTTPRequest *)request
@@ -210,6 +220,16 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetFeatureWithIdAndBadCredentials)];
     }
+}
+
+- (void)didDeletePlace:(NSString *)handle
+                 token:(NSString *)token
+{
+    GHAssertEqualObjects(handle, @"SG_4CsrE4oNy1gl8hCLdwu0F0_47.046962_-122.937467@1290636830", nil);
+    GHAssertEqualObjects(token, @"8fa0d1c4fc2911dfa39058b035fcf1e5", nil);
+
+    [self notify:kGHUnitWaitStatusSuccess
+     forSelector:@selector(testDeletePlace)];
 }
 
 - (void)didLoadFeature:(SGFeature *)feature

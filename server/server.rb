@@ -60,9 +60,6 @@ delete '/1.0/places/:id.json' do
   # Requires a single SimpleGeo ID
   # Returns a status polling token
 
-  # TODO verify input content-type
-  # TODO verify input and throw some sort of error if it's off
-
   [202, {'Content-Type' => 'application/json'}, '{"token": "8fa0d1c4fc2911dfa39058b035fcf1e5"}']
 end
 

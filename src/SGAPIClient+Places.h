@@ -33,6 +33,7 @@
 
 @interface SGAPIClient (Places)
 
+- (void)deletePlace:(NSString *)handle;
 - (void)getPlacesNear:(SGPoint *)point;
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query;

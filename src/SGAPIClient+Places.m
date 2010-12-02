@@ -49,7 +49,7 @@
              matching:(NSString *)query
            inCategory:(NSString *)category
 {
-    NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/places/%f,%f/search.json",
+    NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/places/%f,%f.json",
                                  SIMPLEGEO_API_VERSION, [point latitude], [point longitude]
                                  ];
 

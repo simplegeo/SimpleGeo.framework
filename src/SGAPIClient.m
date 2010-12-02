@@ -34,7 +34,7 @@
 #import "SGAPIClient+Internal.h"
 
 
-NSString * const SIMPLEGEO_API_VERSION = @"0.1";
+NSString * const SIMPLEGEO_API_VERSION = @"1.0";
 NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
 

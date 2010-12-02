@@ -97,7 +97,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
     [client getFeatureWithId:@"SG_4CsrE4oNy1gl8hCLdwu0F0"];
 
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
 }
 
 - (void)testGetFeatureWithIdAndNonExistentResult
@@ -108,7 +109,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
     [client getFeatureWithId:@"foo"];
 
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
 }
 
 - (void)testGetFeatureWithIdAndBadCredentials
@@ -123,7 +125,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
     [client getFeatureWithId:@"badCredentials"];
 
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
 }
 
 - (void)testGetFeatureWithIdShouldCallRequestDidFinish
@@ -134,7 +137,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
     [client getFeatureWithId:@"requestDidFinish"];
 
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
 }
 
 - (void)testGetPlacesNearWithMultipleResults
@@ -143,7 +147,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
     [[self createClient] getPlacesNear:[self point]];
 
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
 }
 
 - (void)testGetPlacesNearMatchingWithASingleResult
@@ -153,7 +158,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     [[self createClient] getPlacesNear:[self point]
                               matching:@"one"];
 
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
 }
 
 - (void)testGetPlacesNearMatchingInCategory
@@ -164,7 +170,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
                               matching:@"burgers"
                             inCategory:@"Restaurants"];
 
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
 }
 
 - (void)testUpdatePlace
@@ -181,7 +188,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     [[self createClient] updatePlace:handle
                                 with:feature];
 
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.25];
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
 }
 
 #pragma mark SGAPIClientDelegate Methods

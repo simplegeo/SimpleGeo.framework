@@ -75,7 +75,7 @@
 
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                          @"didLoadPlacesJSON:", @"targetSelector",
+                          @"didLoadPlaces:", @"targetSelector",
                           point, @"point",
                           query, @"matching",
                           category, @"category",
@@ -103,7 +103,7 @@
 
 #pragma mark Dispatcher Methods
 
-- (void)didLoadPlacesJSON:(ASIHTTPRequest *)request
+- (void)didLoadPlaces:(ASIHTTPRequest *)request
 {
     NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
     SGFeatureCollection *places = [SGFeatureCollection featureCollectionWithDictionary:jsonResponse];

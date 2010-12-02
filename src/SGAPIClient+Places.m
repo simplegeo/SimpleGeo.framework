@@ -28,6 +28,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import <YAJL/YAJL.h>
 #import "SGAPIClient+Places.h"
 #import "SGAPIClient+Internal.h"
 
@@ -81,6 +82,19 @@
                           nil
                           ]];
     [request startAsynchronous];
+}
+
+#pragma mark Dispatcher Methods
+
+- (void)didLoadPlacesJSON:(ASIHTTPRequest *)request
+{
+    NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
+    SGFeatureCollection *places = [SGFeatureCollection featureCollectionWithDictionary:jsonResponse];
+
+    [delegate didLoadPlaces:[[places retain] autorelease]
+                       near:[[[[request userInfo] objectForKey:@"point"] retain] autorelease]
+                   matching:[[[[request userInfo] objectForKey:@"matching"] retain] autorelease]
+                 inCategory:[[[[request userInfo] objectForKey:@"category"] retain] autorelease]];
 }
 
 @end

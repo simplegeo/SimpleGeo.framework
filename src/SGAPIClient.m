@@ -178,23 +178,12 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     } else {
         NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
         SGFeature *feature = [SGFeature featureWithId:featureId
-                                                 data:jsonResponse
+                                           dictionary:jsonResponse
                                               rawBody:[request responseString]];
 
         [delegate didLoadFeature:[[feature retain] autorelease]
                           withId:[[featureId retain] autorelease]];
     }
-}
-
-- (void)didLoadPlacesJSON:(ASIHTTPRequest *)request
-{
-    NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
-    SGFeatureCollection *places = [SGFeatureCollection featureCollectionWithDictionary:jsonResponse];
-
-    [delegate didLoadPlaces:[[places retain] autorelease]
-                       near:[[[[request userInfo] objectForKey:@"point"] retain] autorelease]
-                   matching:[[[[request userInfo] objectForKey:@"matching"] retain] autorelease]
-                 inCategory:[[[[request userInfo] objectForKey:@"category"] retain] autorelease]];
 }
 
 @end

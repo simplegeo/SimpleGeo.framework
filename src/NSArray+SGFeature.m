@@ -41,7 +41,7 @@
     // Assumption: features is an NSArray containing a set of NSDictionary
     // objects that are actually features
     for (NSDictionary *feature in input) {
-        [features addObject:[SGFeature featureWithData:feature]];
+        [features addObject:[SGFeature featureWithDictionary:feature]];
     }
     
     return features;

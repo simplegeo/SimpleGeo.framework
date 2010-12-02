@@ -46,16 +46,16 @@
 
 + (SGFeature *)featureWithId:(NSString *)id;
 + (SGFeature *)featureWithId:(NSString *)id
-                        data:(NSDictionary *)data;
+                  dictionary:(NSDictionary *)data;
 + (SGFeature *)featureWithId:(NSString *)id
-                        data:(NSDictionary *)data
+                  dictionary:(NSDictionary *)data
                      rawBody:(NSString *)rawBody;
-+ (SGFeature *)featureWithData:(NSDictionary *)data;
++ (SGFeature *)featureWithDictionary:(NSDictionary *)data;
 - (id)initWithId:(NSString *)id;
 - (id)initWithId:(NSString *)id
-            data:(NSDictionary *)data;
+      dictionary:(NSDictionary *)data;
 - (id)initWithId:(NSString *)id
-            data:(NSDictionary *)data
+      dictionary:(NSDictionary *)data
          rawBody:(NSString *)rawBody;
 
 @end

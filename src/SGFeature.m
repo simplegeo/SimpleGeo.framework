@@ -50,30 +50,31 @@
 
 + (SGFeature *)featureWithId:(NSString *)id
 {
-    return [SGFeature featureWithId:id data:nil];
+    return [SGFeature featureWithId:id
+                         dictionary:nil];
 }
 
 + (SGFeature *)featureWithId:(NSString *)id
-                        data:(NSDictionary *)data
+                  dictionary:(NSDictionary *)data
 {
     return [SGFeature featureWithId:id
-                               data:data
+                         dictionary:data
                             rawBody:nil];
 }
 
 + (SGFeature *)featureWithId:(NSString *)id
-                        data:(NSDictionary *)data
+                  dictionary:(NSDictionary *)data
                      rawBody:(NSString *)rawBody
 {
     return [[[SGFeature alloc] initWithId:id
-                                    data:data
-                                 rawBody:rawBody] autorelease];
+                               dictionary:data
+                                  rawBody:rawBody] autorelease];
 }
 
-+ (SGFeature *)featureWithData:(NSDictionary *)data
++ (SGFeature *)featureWithDictionary:(NSDictionary *)data
 {
     return [SGFeature featureWithId:nil
-                               data:data];
+                         dictionary:data];
 }
 
 - (id)init
@@ -84,19 +85,19 @@
 - (id)initWithId:(NSString *)id
 {
     return [self initWithId:id
-                       data:nil];
+                 dictionary:nil];
 }
 
 - (id)initWithId:(NSString *)id
-            data:(NSDictionary *)data
+      dictionary:(NSDictionary *)data
 {
     return [self initWithId:id
-                       data:data
+                 dictionary:data
                     rawBody:nil];
 }
 
 - (id)initWithId:(NSString *)id
-            data:(NSDictionary *)data
+      dictionary:(NSDictionary *)data
          rawBody:(NSString *)body
 {
     self = [super init];

@@ -51,27 +51,28 @@
     GHAssertEqualObjects([feature featureId], featureId, @"Feature ids don't match.");
 }
 
-- (void)testFeatureWithData
-{
-    // this is how SGFeatures will be created in the wild
-    NSString *jsonData = @"{\"type\":\"Feature\",\"geometry\":{\"coordinates\":[-122.938,37.079],\"type\":\"Point\"},\"properties\":{\"type\":\"place\"}}";
-    NSDictionary *featureData = [jsonData yajl_JSON];
-
-    SGFeature *feature = [SGFeature featureWithId:@"SG_asdf" data:featureData];
-
-    GHAssertEqualObjects([[feature properties] objectForKey:@"type"], @"place", @"'type' should be 'place'");
-    GHAssertEquals([[feature geometry] latitude], 37.079, @"Latitudes don't match.");
-    GHAssertEquals([[feature geometry] longitude], -122.938, @"Longitudes don't match.");
-}
-
-- (void)testFeatureWithDataAndRawBody
+- (void)testFeatureWithDictionary
 {
     // this is how SGFeatures will be created in the wild
     NSString *jsonData = @"{\"type\":\"Feature\",\"geometry\":{\"coordinates\":[-122.938,37.079],\"type\":\"Point\"},\"properties\":{\"type\":\"place\"}}";
     NSDictionary *featureData = [jsonData yajl_JSON];
 
     SGFeature *feature = [SGFeature featureWithId:@"SG_asdf"
-                                             data:featureData
+                                       dictionary:featureData];
+
+    GHAssertEqualObjects([[feature properties] objectForKey:@"type"], @"place", @"'type' should be 'place'");
+    GHAssertEquals([[feature geometry] latitude], 37.079, @"Latitudes don't match.");
+    GHAssertEquals([[feature geometry] longitude], -122.938, @"Longitudes don't match.");
+}
+
+- (void)testFeatureWithDictionaryAndRawBody
+{
+    // this is how SGFeatures will be created in the wild
+    NSString *jsonData = @"{\"type\":\"Feature\",\"geometry\":{\"coordinates\":[-122.938,37.079],\"type\":\"Point\"},\"properties\":{\"type\":\"place\"}}";
+    NSDictionary *featureData = [jsonData yajl_JSON];
+
+    SGFeature *feature = [SGFeature featureWithId:@"SG_asdf"
+                                       dictionary:featureData
                                           rawBody:jsonData];
 
     GHAssertEqualObjects([[feature properties] objectForKey:@"type"], @"place", @"'type' should be 'place'");
@@ -80,22 +81,24 @@
     GHAssertEqualObjects([feature rawBody], jsonData, nil);
 }
 
-- (void)testFeatureWithDataWithAnArray
+- (void)testFeatureWithDictionaryWithAnArray
 {
     // JSON array w/ 1+ Features
     NSString *jsonData = @"[{\"type\":\"Feature\",\"geometry\":{\"coordinates\":[-122.938,37.079],\"type\":\"Point\"},\"properties\":{\"type\":\"place\"}}]";
     id featureData = [jsonData yajl_JSON];
 
-    GHAssertThrows([SGFeature featureWithId:@"SG_asdf" data:featureData], nil);
+    GHAssertThrows([SGFeature featureWithId:@"SG_asdf"
+                                 dictionary:featureData], nil);
 }
 
-- (void)testFeatureWithDataWithAFeatureCollection
+- (void)testFeatureWithDictionaryWithAParsedFeatureCollection
 {
     // GeoJSON FeatureCollection
     NSString *jsonData = @"{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"coordinates\":[-122.938,37.079],\"type\":\"Point\"},\"properties\":{\"type\":\"place\"}}]}";
     NSDictionary *featureData = [jsonData yajl_JSON];
 
-    GHAssertNil([SGFeature featureWithId:@"SG_asdf" data:featureData], nil);
+    GHAssertNil([SGFeature featureWithId:@"SG_asdf"
+                              dictionary:featureData], nil);
 }
 
 @end

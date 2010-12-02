@@ -5,7 +5,7 @@ require File.dirname(__FILE__) + '/lib/rack_oauth_provider'
 
 use RackOAuthProvider
 
-get '/0.1/features/:id.json' do
+get '/1.0/features/:id.json' do
   case params[:id]
   when /^SG_4CsrE4oNy1gl8hCLdwu0F0/
     BURGER_MASTER
@@ -14,7 +14,7 @@ get '/0.1/features/:id.json' do
   end
 end
 
-get '/0.1/places/:lat,:lon/search.json' do
+get '/1.0/places/:lat,:lon.json' do
   case params[:q]
   when "zero"
     <<-EOS
@@ -39,7 +39,7 @@ get '/0.1/places/:lat,:lon/search.json' do
   end
 end
 
-post '/0.1/places/:id.json' do
+post '/1.0/places/:id.json' do
   # Update a record
   # Requires a partial (or full) GeoJSON object, any fields you set in it
   # replace the fields of the record with the matching ID.
@@ -51,7 +51,8 @@ post '/0.1/places/:id.json' do
   [202, {'Content-Type' => 'application/json'}, "{'token': '79ea18ccfc2911dfa39058b035fcf1e5'}"]
 end
 
-delete '/0.1/places/:id.json' do
+# TODO does this move to /1.0/features?
+delete '/1.0/places/:id.json' do
   # Delete a record.
   # Requires a single SimpleGeo ID
   # Returns a status polling token
@@ -62,7 +63,7 @@ delete '/0.1/places/:id.json' do
   [202, {'Content-Type' => 'application/json'}, "{'token': '8fa0d1c4fc2911dfa39058b035fcf1e5'}"]
 end
 
-put '/0.1/places/place.json' do
+post '/1.0/places' do
   # Create a new record, returns a 301 to the location of the resource.
   # Requires a GeoJSON object
   # Returns a JSON blob : {'id': 'record_id', 'uri': 'uri_of_record', 'token':
@@ -73,13 +74,14 @@ put '/0.1/places/place.json' do
   # TODO pull the id from the input and generate a hash
   hash = "something"
 
-  [202, {'Content-Type' => 'application/json'},
+  # TODO include a 'Location' header
+  [301, {'Content-Type' => 'application/json'},
    "{'token': '596499b4fc2a11dfa39058b035fcf1e5', 'id': #{hash}, 'uri': '/1.0/places/#{hash}.json'}"]
   
 end
 
-get '/0.1/context/:lat,:lon.json' do
-  # sample response for /0.1/context/37.803259,-122.440033.json
+get '/1.0/context/:lat,:lon.json' do
+  # sample response for /1.0/context/37.803259,-122.440033.json
   <<-EOS
 {"weather":{"temperature":"65F","conditions":"light
 haze"},"features":[{"category": "Neighborhood", "source":

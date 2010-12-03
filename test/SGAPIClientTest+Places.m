@@ -31,7 +31,6 @@
 #import "SGAPIClientTest.h"
 #import "SGAPIClient+Places.h"
 
-
 @implementation SGAPIClientTest (Places)
 
 - (void)testAddPlace

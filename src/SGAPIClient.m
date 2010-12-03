@@ -54,7 +54,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
 #pragma mark Class Methods
 
-+ (SGAPIClient *)clientWithDelegate:(id<SGAPIClientDelegate>)delegate
++ (SGAPIClient *)clientWithDelegate:(id)delegate
                         consumerKey:(NSString *)consumerKey
                      consumerSecret:(NSString *)consumerSecret
 {
@@ -64,7 +64,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
                                        URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];
 }
 
-+ (SGAPIClient *)clientWithDelegate:(id<SGAPIClientDelegate>)delegate
++ (SGAPIClient *)clientWithDelegate:(id)delegate
                         consumerKey:(NSString *)consumerKey
                      consumerSecret:(NSString *)consumerSecret
                                 URL:(NSURL *)url
@@ -84,7 +84,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
                    consumerSecret:nil];
 }
 
-- (id)initWithDelegate:(id<SGAPIClientDelegate>)aDelegate
+- (id)initWithDelegate:(id)aDelegate
            consumerKey:(NSString *)key
         consumerSecret:(NSString *)secret
 {
@@ -94,7 +94,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
                               URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];
 }
 
-- (id)initWithDelegate:(id<SGAPIClientDelegate>)aDelegate
+- (id)initWithDelegate:(id)aDelegate
            consumerKey:(NSString *)key
         consumerSecret:(NSString *)secret
                    URL:(NSURL *)aURL
@@ -147,7 +147,9 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
         [request responseStatusCode] == 404) {
 
         // call requestDidFinish first
-        [delegate requestDidFinish:[[request retain] autorelease]];
+        if ([delegate respondsToSelector:@selector(requestDidFinish:)]) {
+            [delegate requestDidFinish:[[request retain] autorelease]];
+        }
 
         // assume that "targetSelector" was set on the request and use that to dispatch appropriately
         SEL targetSelector = NSSelectorFromString([[request userInfo] objectForKey:@"targetSelector"]);
@@ -163,7 +165,9 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     NSLog(@"Request failed: %@", [request error]);
 
     // TODO how can clients identify which request failed that they queued?
-    [delegate requestDidFail:[[request retain] autorelease]];
+    if ([delegate respondsToSelector:@selector(requestDidFail:)]) {
+        [delegate requestDidFail:[[request retain] autorelease]];
+    }
 }
 
 #pragma mark Dispatcher Methods

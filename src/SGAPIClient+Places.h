@@ -30,6 +30,22 @@
 
 #import "SGAPIClient.h"
 
+@interface NSObject (SGAPIClientPlaceDelegate)
+
+- (void)didAddPlace:(SGFeature *)feature
+             handle:(NSString *)handle
+                URL:(NSURL *)url
+              token:(NSString *)token;
+- (void)didDeletePlace:(NSString *)handle
+                 token:(NSString *)token;
+- (void)didLoadPlaces:(SGFeatureCollection *)places
+                 near:(SGPoint *)point
+             matching:(NSString *)query
+           inCategory:(NSString *)category;
+- (void)didUpdatePlace:(NSString *)handle
+                 token:(NSString *)token;
+
+@end
 
 @interface SGAPIClient (Places)
 

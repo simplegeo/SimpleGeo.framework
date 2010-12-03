@@ -38,58 +38,43 @@ extern NSString * const SIMPLEGEO_API_VERSION;
 extern NSString * const SIMPLEGEO_URL_PREFIX;
 
 
-@protocol SGAPIClientDelegate <NSObject>
-
-@optional
-- (void)requestDidFinish:(ASIHTTPRequest *)request;
-- (void)requestDidFail:(ASIHTTPRequest *)request;
+@interface NSObject (SGAPIClientDelegate)
 
 - (void)didLoadFeature:(SGFeature *)feature
                 withId:(NSString *)featureId;
 
-// TODO put this into a different protocol that subclasses this one (does that work)?
-// http://stackoverflow.com/questions/732701/how-to-extend-protocols-delegates-in-objective-c
-- (void)didAddPlace:(SGFeature *)feature
-             handle:(NSString *)handle
-                URL:(NSURL *)url
-              token:(NSString *)token;
-- (void)didDeletePlace:(NSString *)handle
-                 token:(NSString *)token;
-- (void)didLoadPlaces:(SGFeatureCollection *)places
-                 near:(SGPoint *)point
-             matching:(NSString *)query
-           inCategory:(NSString *)category;
-- (void)didUpdatePlace:(NSString *)handle
-                 token:(NSString *)token;
+// optional
+- (void)requestDidFinish:(ASIHTTPRequest *)request;
+- (void)requestDidFail:(ASIHTTPRequest *)request;
 
 @end
 
 
 @interface SGAPIClient : NSObject
 {
-    id<SGAPIClientDelegate> delegate;
+    id delegate;
     NSString* consumerKey;
     NSString* consumerSecret;
     NSURL* url;
 }
 
-@property (retain,readonly) id<SGAPIClientDelegate> delegate;
+@property (retain,readonly) id delegate;
 @property (retain,readonly) NSString* consumerKey;
 @property (retain,readonly) NSString* consumerSecret;
 @property (retain,readonly) NSURL* url;
 
-+ (SGAPIClient *)clientWithDelegate:(id<SGAPIClientDelegate>)delegate
++ (SGAPIClient *)clientWithDelegate:(id)delegate
                         consumerKey:(NSString *)consumerKey
                      consumerSecret:(NSString *)consumerSecret;
-+ (SGAPIClient *)clientWithDelegate:(id<SGAPIClientDelegate>)delegate
++ (SGAPIClient *)clientWithDelegate:(id)delegate
                         consumerKey:(NSString *)consumerKey
                      consumerSecret:(NSString *)consumerSecret
                                 URL:(NSURL *)url;
 
-- (id)initWithDelegate:(id<SGAPIClientDelegate>)delegate
+- (id)initWithDelegate:(id)delegate
            consumerKey:(NSString *)consumerKey
         consumerSecret:(NSString *)consumerSecret;
-- (id)initWithDelegate:(id<SGAPIClientDelegate>)delegate
+- (id)initWithDelegate:(id)delegate
            consumerKey:(NSString *)consumerKey
         consumerSecret:(NSString *)consumerSecret
                    URL:(NSURL *)url;

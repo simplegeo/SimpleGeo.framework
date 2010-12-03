@@ -10,7 +10,7 @@
 #import "SGAPIClient.h"
 
 
-@interface SGAPIClientTest : GHAsyncTestCase <SGAPIClientDelegate>
+@interface SGAPIClientTest : GHAsyncTestCase
 
 - (SGAPIClient *)createClient;
 - (SGPoint *)point;

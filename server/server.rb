@@ -30,8 +30,8 @@ get '/1.0/places/:lat,:lon.json' do
   when "one"
     <<-EOS
 {
-    "total": 1, 
-    "type": "FeatureCollection", 
+    "total": 1,
+    "type": "FeatureCollection",
     "features": [
 #{BURGER_MASTER}
     ]

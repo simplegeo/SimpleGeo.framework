@@ -1,5 +1,6 @@
 require 'json'
 require 'sinatra'
+require 'digest/sha1'
 require File.dirname(__FILE__) + '/examples'
 require File.dirname(__FILE__) + '/lib/rack_oauth_provider'
 
@@ -69,15 +70,21 @@ post '/1.0/places' do
   # Returns a JSON blob : {'id': 'record_id', 'uri': 'uri_of_record', 'token':
   # 'status_polling_token'}
 
-  # TODO verify input content-type
-  # TODO verify input and throw some sort of error if it's off
-  # TODO pull the id from the input and generate a hash
-  hash = "something"
+  input = JSON.parse(env['rack.input'].read)
+  coordinates = input['geometry']['coordinates']
 
-  # TODO include a 'Location' header
-  [301, {'Content-Type' => 'application/json'},
-   "{'token': '596499b4fc2a11dfa39058b035fcf1e5', 'id': #{hash}, 'uri': '/1.0/places/#{hash}.json'}"]
-  
+  hash = Digest::SHA1.hexdigest("com.simplegeo#{input['id']}")
+  handle = "SG_#{hash}_#{coordinates[1]}_#{coordinates[0]}@#{Time.now.to_i}"
+
+  if env['CONTENT_TYPE'] == 'application/json' && input['properties']
+    [301, {
+      'Content-Type' => 'application/json',
+      'Location' => "#{env['rack.url_scheme']}://#{env['SERVER_NAME']}:#{env['SERVER_PORT']}/1.0/features/#{handle}.json"
+     },
+     "{\"token\": \"596499b4fc2a11dfa39058b035fcf1e5\", \"id\": \"#{handle}\", \"uri\": \"/1.0/features/#{handle}.json\"}"]
+  else
+    500
+  end
 end
 
 get '/1.0/context/:lat,:lon.json' do

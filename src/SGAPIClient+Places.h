@@ -33,6 +33,7 @@
 
 @interface SGAPIClient (Places)
 
+- (void)addPlace:(SGFeature *)feature;
 - (void)deletePlace:(NSString *)handle;
 - (void)getPlacesNear:(SGPoint *)point;
 - (void)getPlacesNear:(SGPoint *)point

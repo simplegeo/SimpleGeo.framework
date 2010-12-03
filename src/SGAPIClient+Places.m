@@ -35,6 +35,22 @@
 
 @implementation SGAPIClient (Places)
 
+- (void)addPlace:(SGFeature *)feature
+{
+    NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/places",
+                                                  SIMPLEGEO_API_VERSION]];
+
+    ASIHTTPRequest *request = [self requestWithURL:endpointURL];
+    [request appendPostData:[[feature yajl_JSONString] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setRequestMethod:@"POST"];
+    [request addRequestHeader:@"Content-Type" value:@"application/json"];
+    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                          @"didAddPlace:", @"targetSelector",
+                          feature, @"feature",
+                          nil]];
+    [request startAsynchronous];
+}
+
 - (void)deletePlace:(NSString *)handle
 {
     NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/places/%@.json",
@@ -117,13 +133,25 @@
 
 #pragma mark Dispatcher Methods
 
+- (void)didAddPlace:(ASIHTTPRequest *)request
+{
+    NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
+    NSURL *placeURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",
+                                            SIMPLEGEO_URL_PREFIX,
+                                            [jsonResponse objectForKey:@"uri"]]];
+
+    [delegate didAddPlace:[[[[request userInfo] objectForKey:@"feature"] retain] autorelease]
+                   handle:[[[jsonResponse objectForKey:@"id"] retain] autorelease]
+                      URL:[[placeURL retain] autorelease]
+                    token:[[[jsonResponse objectForKey:@"token"] retain] autorelease]];    
+}
+
 - (void)didDeletePlace:(ASIHTTPRequest *)request
 {
     NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
-    NSString *token = [jsonResponse objectForKey:@"token"];
 
     [delegate didDeletePlace:[[[[request userInfo] objectForKey:@"handle"] retain] autorelease]
-                       token:[[token retain] autorelease]];
+                       token:[[[jsonResponse objectForKey:@"token"] retain] autorelease]];
 }
 
 - (void)didLoadPlaces:(ASIHTTPRequest *)request
@@ -140,10 +168,9 @@
 - (void)didUpdatePlace:(ASIHTTPRequest *)request
 {
     NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
-    NSString *token = [jsonResponse objectForKey:@"token"];
 
     [delegate didUpdatePlace:[[[[request userInfo] objectForKey:@"handle"] retain] autorelease]
-                       token:[[token retain] autorelease]];
+                       token:[[[jsonResponse objectForKey:@"token"] retain] autorelease]];
 }
 
 @end

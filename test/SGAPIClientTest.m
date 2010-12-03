@@ -202,11 +202,27 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
                 timeout:0.25];
 }
 
+- (void)testAddPlace
+{
+    [self prepare];
+
+    SGPoint *geometry = [self point];
+    NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
+                                @"Mike's Burger Shack", @"name",
+                                nil];
+    SGFeature *feature = [SGFeature featureWithGeometry:geometry
+                                             properties:properties];
+
+    [[self createClient] addPlace:feature];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
 #pragma mark SGAPIClientDelegate Methods
 
 - (void)requestDidFinish:(ASIHTTPRequest *)request
 {
-    NSLog(@"requestDidFinish: %@", [request userInfo]);
     if ([[[request userInfo] objectForKey:@"featureId"] isEqual:@"requestDidFinish"]) {
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetFeatureWithIdShouldCallRequestDidFinish)];
@@ -220,6 +236,20 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetFeatureWithIdAndBadCredentials)];
     }
+}
+
+- (void)didAddPlace:(SGFeature *)feature
+             handle:(NSString *)handle
+                URL:(NSURL *)url
+              token:(NSString *)token
+{
+    NSArray *handleComponents = [handle componentsSeparatedByString:@"@"];
+    GHAssertEqualObjects([handleComponents objectAtIndex:0],
+                         @"SG_07624b34159916851f3df2a0657f6ab5b9af962a_40_-105", nil);
+    GHAssertEqualObjects(token, @"596499b4fc2a11dfa39058b035fcf1e5", nil);
+
+    [self notify:kGHUnitWaitStatusSuccess
+     forSelector:@selector(testAddPlace)];
 }
 
 - (void)didDeletePlace:(NSString *)handle

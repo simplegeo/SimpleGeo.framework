@@ -49,6 +49,10 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 
 // TODO put this into a different protocol that subclasses this one (does that work)?
 // http://stackoverflow.com/questions/732701/how-to-extend-protocols-delegates-in-objective-c
+- (void)didAddPlace:(SGFeature *)feature
+             handle:(NSString *)handle
+                URL:(NSURL *)url
+              token:(NSString *)token;
 - (void)didDeletePlace:(NSString *)handle
                  token:(NSString *)token;
 - (void)didLoadPlaces:(SGFeatureCollection *)places

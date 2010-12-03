@@ -101,4 +101,15 @@
            [[NSNumber numberWithDouble:longitude] hash];
 }
 
+- (id)JSON
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+             @"Point", @"type",
+             [NSArray arrayWithObjects:
+              [NSNumber numberWithDouble:longitude],
+              [NSNumber numberWithDouble:latitude],
+              nil], @"coordinates",
+             nil];
+}
+
 @end

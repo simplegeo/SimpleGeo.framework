@@ -58,9 +58,14 @@
 + (SGFeature *)featureWithId:(NSString *)id
                     geometry:(SGPoint *)geometry
                   properties:(NSDictionary *)properties;
++ (SGFeature *)featureWithGeometry:(SGPoint *)geometry
+                        properties:(NSDictionary *)properties;
 - (id)initWithId:(NSString *)id;
 - (id)initWithId:(NSString *)id
       dictionary:(NSDictionary *)data;
+- (id)initWithId:(NSString *)id
+      dictionary:(NSDictionary *)data
+         rawBody:(NSString *)rawBody;
 - (id)initWithId:(NSString *)id
       properties:(NSDictionary *)properties;
 - (id)initWithId:(NSString *)id
@@ -68,10 +73,7 @@
 - (id)initWithId:(NSString *)id
         geometry:(SGPoint *)geometry
       properties:(NSDictionary *)properties;
-- (id)initWithId:(NSString *)id
-      dictionary:(NSDictionary *)data
-         rawBody:(NSString *)rawBody;
-
-- (NSString *)yajl_JSONString;
+- (id)initWithGeometry:(SGPoint *)geometry
+            properties:(NSDictionary *)properties;
 
 @end

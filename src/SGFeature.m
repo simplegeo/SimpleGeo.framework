@@ -28,7 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <YAJL/YAJL.h>
 #import "SGFeature.h"
 
 
@@ -94,6 +93,14 @@
                          properties:nil];
 }
 
++ (SGFeature *)featureWithGeometry:(SGPoint *)geometry
+                        properties:(NSDictionary *)properties
+{
+    return [SGFeature featureWithId:nil
+                           geometry:geometry
+                         properties:properties];
+}
+
 + (SGFeature *)featureWithId:(NSString *)id
                     geometry:(SGPoint *)geometry
                   properties:(NSDictionary *)properties
@@ -136,6 +143,14 @@
     return [self initWithId:id
                    geometry:aGeometry
                  properties:nil];
+}
+
+- (id)initWithGeometry:(SGPoint *)aGeometry
+            properties:(NSDictionary *)someProperties
+{
+    return [self initWithId:nil
+                   geometry:aGeometry
+                 properties:someProperties];
 }
 
 - (id)initWithId:(NSString *)id
@@ -201,7 +216,10 @@
 - (NSDictionary *)asDictionary
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:3];
-    [dict setObject:featureId forKey:@"id"];
+
+    if (featureId) {
+        [dict setObject:featureId forKey:@"id"];
+    }
 
     if (geometry) {
         [dict setObject:geometry forKey:@"geometry"];
@@ -223,9 +241,9 @@
     }
 }
 
-- (NSString *)yajl_JSONString
+- (id)JSON
 {
-    return [[self asDictionary] yajl_JSONString];
+    return [self asDictionary];
 }
 
 - (SGPoint *)geometry

@@ -259,12 +259,9 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5DE3488C12A9B477004E320D /* Optional */,
 				5D7676141290EAE1006B7D51 /* SGAPIClient.h */,
 				5D7676131290EAE1006B7D51 /* SGAPIClient.m */,
-				5D1C1B9A12A9AD1A0055EC91 /* SGAPIClient+Context.h */,
-				5D1C1B9B12A9AD1A0055EC91 /* SGAPIClient+Context.m */,
-				5D3991E412A489EF00EB7B20 /* SGAPIClient+Places.h */,
-				5D3991E512A489EF00EB7B20 /* SGAPIClient+Places.m */,
 				5D39921A12A48F3F00EB7B20 /* SGAPIClient+Internal.h */,
 				5D39921B12A48F3F00EB7B20 /* SGAPIClient+Internal.m */,
 				5D5B036D1291BD4500399A50 /* SGFeature.h */,
@@ -369,6 +366,17 @@
 				5D76761B1290EB2A006B7D51 /* GHUnitTestMain.m */,
 			);
 			name = Tests;
+			sourceTree = "<group>";
+		};
+		5DE3488C12A9B477004E320D /* Optional */ = {
+			isa = PBXGroup;
+			children = (
+				5D1C1B9A12A9AD1A0055EC91 /* SGAPIClient+Context.h */,
+				5D1C1B9B12A9AD1A0055EC91 /* SGAPIClient+Context.m */,
+				5D3991E412A489EF00EB7B20 /* SGAPIClient+Places.h */,
+				5D3991E512A489EF00EB7B20 /* SGAPIClient+Places.m */,
+			);
+			name = Optional;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

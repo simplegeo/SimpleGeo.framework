@@ -37,7 +37,6 @@
 @property (retain) NSString* featureId;
 @property (retain) SGPoint* geometry;
 @property (retain) NSDictionary* properties;
-@property (retain) NSString* rawBody;
 
 @end
 
@@ -46,7 +45,6 @@
 
 @synthesize featureId;
 @synthesize properties;
-@synthesize rawBody;
 
 + (SGFeature *)featureWithId:(NSString *)id
 {
@@ -57,18 +55,8 @@
 + (SGFeature *)featureWithId:(NSString *)id
                   dictionary:(NSDictionary *)data
 {
-    return [SGFeature featureWithId:id
-                         dictionary:data
-                            rawBody:nil];
-}
-
-+ (SGFeature *)featureWithId:(NSString *)id
-                  dictionary:(NSDictionary *)data
-                     rawBody:(NSString *)rawBody
-{
     return [[[SGFeature alloc] initWithId:id
-                               dictionary:data
-                                  rawBody:rawBody] autorelease];
+                               dictionary:data] autorelease];
 }
 
 + (SGFeature *)featureWithDictionary:(NSDictionary *)data
@@ -118,15 +106,7 @@
 - (id)initWithId:(NSString *)id
 {
     return [self initWithId:id
-                 dictionary:nil];
-}
-
-- (id)initWithId:(NSString *)id
-      dictionary:(NSDictionary *)data
-{
-    return [self initWithId:id
-                 dictionary:data
-                    rawBody:nil];
+                   geometry:nil];
 }
 
 - (id)initWithId:(NSString *)id
@@ -170,7 +150,6 @@
 
 - (id)initWithId:(NSString *)id
       dictionary:(NSDictionary *)data
-         rawBody:(NSString *)body
 {
     self = [super init];
 
@@ -197,8 +176,6 @@
                 }
             }
         }
-
-        rawBody = [body retain];
     }
 
     return self;
@@ -209,7 +186,6 @@
     [featureId release];
     [geometry release];
     [properties release];
-    [rawBody release];
     [super dealloc];
 }
 
@@ -234,11 +210,7 @@
 
 - (NSString *)description
 {
-    if (rawBody) {
-        return rawBody;
-    } else {
-        return [[self asDictionary] description];
-    }
+    return [[self asDictionary] description];
 }
 
 - (id)JSON

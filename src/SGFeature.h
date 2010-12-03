@@ -36,20 +36,15 @@
     NSString* featureId;
     SGPoint* geometry;
     NSDictionary* properties;
-    NSString* rawBody;
 }
 
 @property (retain,readonly) NSString* featureId;
 @property (retain,readonly) SGPoint* geometry;
 @property (retain,readonly) NSDictionary* properties;
-@property (retain,readonly) NSString* rawBody;
 
 + (SGFeature *)featureWithId:(NSString *)id;
 + (SGFeature *)featureWithId:(NSString *)id
                   dictionary:(NSDictionary *)data;
-+ (SGFeature *)featureWithId:(NSString *)id
-                  dictionary:(NSDictionary *)data
-                     rawBody:(NSString *)rawBody;
 + (SGFeature *)featureWithDictionary:(NSDictionary *)data;
 + (SGFeature *)featureWithId:(NSString *)id
                   properties:(NSDictionary *)properties;
@@ -63,9 +58,6 @@
 - (id)initWithId:(NSString *)id;
 - (id)initWithId:(NSString *)id
       dictionary:(NSDictionary *)data;
-- (id)initWithId:(NSString *)id
-      dictionary:(NSDictionary *)data
-         rawBody:(NSString *)rawBody;
 - (id)initWithId:(NSString *)id
       properties:(NSDictionary *)properties;
 - (id)initWithId:(NSString *)id

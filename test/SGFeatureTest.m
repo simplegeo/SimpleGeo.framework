@@ -72,13 +72,11 @@
     NSDictionary *featureData = [jsonData yajl_JSON];
 
     SGFeature *feature = [SGFeature featureWithId:@"SG_asdf"
-                                       dictionary:featureData
-                                          rawBody:jsonData];
+                                       dictionary:featureData];
 
     GHAssertEqualObjects([[feature properties] objectForKey:@"type"], @"place", @"'type' should be 'place'");
     GHAssertEquals([[feature geometry] latitude], 37.079, @"Latitudes don't match.");
     GHAssertEquals([[feature geometry] longitude], -122.938, @"Longitudes don't match.");
-    GHAssertEqualObjects([feature rawBody], jsonData, nil);
 }
 
 - (void)testFeatureWithDictionaryWithAnArray

@@ -182,8 +182,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     } else {
         NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
         SGFeature *feature = [SGFeature featureWithId:featureId
-                                           dictionary:jsonResponse
-                                              rawBody:[request responseString]];
+                                           dictionary:jsonResponse];
 
         [delegate didLoadFeature:[[feature retain] autorelease]
                           withId:[[featureId retain] autorelease]];

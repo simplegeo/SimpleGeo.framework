@@ -38,6 +38,7 @@
 
 @end
 
+
 @interface SGAPIClient (Context)
 
 - (void)getContextNear:(SGPoint *)point;

@@ -48,6 +48,7 @@
 
 @end
 
+
 @interface SGAPIClient (Places)
 
 - (void)addPlace:(SGFeature *)feature;

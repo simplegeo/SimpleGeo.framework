@@ -16,6 +16,7 @@
 		5D39921C12A48F3F00EB7B20 /* SGAPIClient+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39921B12A48F3F00EB7B20 /* SGAPIClient+Internal.m */; };
 		5D39921D12A48F3F00EB7B20 /* SGAPIClient+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39921A12A48F3F00EB7B20 /* SGAPIClient+Internal.h */; };
 		5D39921E12A48F3F00EB7B20 /* SGAPIClient+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39921B12A48F3F00EB7B20 /* SGAPIClient+Internal.m */; };
+		5D39940E12A893D500EB7B20 /* SGAPIClientTest+Places.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39940D12A893D500EB7B20 /* SGAPIClientTest+Places.m */; };
 		5D5B02C71291A37700399A50 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5B02C61291A37700399A50 /* YAJL.framework */; };
 		5D5B036F1291BD4500399A50 /* SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B036E1291BD4500399A50 /* SGFeature.m */; };
 		5D5B03701291BD4500399A50 /* SGFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5B036D1291BD4500399A50 /* SGFeature.h */; };
@@ -104,6 +105,8 @@
 		5D39921A12A48F3F00EB7B20 /* SGAPIClient+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGAPIClient+Internal.h"; path = "src/SGAPIClient+Internal.h"; sourceTree = "<group>"; };
 		5D39921B12A48F3F00EB7B20 /* SGAPIClient+Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SGAPIClient+Internal.m"; path = "src/SGAPIClient+Internal.m"; sourceTree = "<group>"; };
 		5D39924E12A571C000EB7B20 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = RunTests.sh; path = scripts/RunTests.sh; sourceTree = "<group>"; };
+		5D39940D12A893D500EB7B20 /* SGAPIClientTest+Places.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SGAPIClientTest+Places.m"; path = "test/SGAPIClientTest+Places.m"; sourceTree = "<group>"; };
+		5D39941112A8947600EB7B20 /* SGAPIClientTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGAPIClientTest.h; path = test/SGAPIClientTest.h; sourceTree = "<group>"; };
 		5D5B02C61291A37700399A50 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = Library/Frameworks/YAJL.framework; sourceTree = SDKROOT; };
 		5D5B036D1291BD4500399A50 /* SGFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGFeature.h; path = src/SGFeature.h; sourceTree = "<group>"; };
 		5D5B036E1291BD4500399A50 /* SGFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGFeature.m; path = src/SGFeature.m; sourceTree = "<group>"; };
@@ -331,7 +334,9 @@
 		5DA3C348128E42C600E128DC /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5D39941112A8947600EB7B20 /* SGAPIClientTest.h */,
 				5D7676181290EB2A006B7D51 /* SGAPIClientTest.m */,
+				5D39940D12A893D500EB7B20 /* SGAPIClientTest+Places.m */,
 				5D7676191290EB2A006B7D51 /* SGFeatureTest.m */,
 				5D76761A1290EB2A006B7D51 /* SGPointTest.m */,
 				5D76761B1290EB2A006B7D51 /* GHUnitTestMain.m */,
@@ -498,6 +503,7 @@
 				5D3990DF12A4642B00EB7B20 /* SGFeatureCollection.m in Sources */,
 				5D3991E612A489EF00EB7B20 /* SGAPIClient+Places.m in Sources */,
 				5D39921C12A48F3F00EB7B20 /* SGAPIClient+Internal.m in Sources */,
+				5D39940E12A893D500EB7B20 /* SGAPIClientTest+Places.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

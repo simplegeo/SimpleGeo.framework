@@ -84,11 +84,11 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
                    consumerSecret:nil];
 }
 
-- (id)initWithDelegate:(id<SGAPIClientDelegate>)_delegate
+- (id)initWithDelegate:(id<SGAPIClientDelegate>)aDelegate
            consumerKey:(NSString *)key
         consumerSecret:(NSString *)secret
 {
-    return [self initWithDelegate:_delegate
+    return [self initWithDelegate:aDelegate
                       consumerKey:key
                    consumerSecret:secret
                               URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];

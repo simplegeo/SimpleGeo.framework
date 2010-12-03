@@ -10,6 +10,8 @@ get '/1.0/features/:id.json' do
   case params[:id]
   when /^SG_4CsrE4oNy1gl8hCLdwu0F0/
     BURGER_MASTER
+  when /^SG_0Bw22I6fWoxnZ4GDc8YlXd/
+    CASTRO
   else
     404
   end

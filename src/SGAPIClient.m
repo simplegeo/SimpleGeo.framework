@@ -129,7 +129,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
     ASIHTTPRequest *request = [self requestWithURL:endpoint];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                            @"didLoadFeatureJSON:", @"targetSelector",
+                            @"didLoadFeature:", @"targetSelector",
                             featureId, @"featureId",
                             nil
                           ]];
@@ -172,7 +172,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
 #pragma mark Dispatcher Methods
 
-- (void)didLoadFeatureJSON:(ASIHTTPRequest *)request
+- (void)didLoadFeature:(ASIHTTPRequest *)request
 {
     NSString *featureId = [[request userInfo] objectForKey:@"featureId"];
 

@@ -89,6 +89,33 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 #pragma mark Async Tests
 
+- (void)testAddPlace
+{
+    [self prepare];
+
+    SGPoint *geometry = [self point];
+    NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
+                                @"Mike's Burger Shack", @"name",
+                                nil];
+    SGFeature *feature = [SGFeature featureWithGeometry:geometry
+                                             properties:properties];
+
+    [[self createClient] addPlace:feature];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
+- (void)testDeletePlace
+{
+    [self prepare];
+
+    [[self createClient] deletePlace:@"SG_4CsrE4oNy1gl8hCLdwu0F0_47.046962_-122.937467@1290636830"];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
 - (void)testGetFeatureWithId
 {
     [self prepare];
@@ -187,33 +214,6 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
     [[self createClient] updatePlace:handle
                                 with:feature];
-
-    [self waitForStatus:kGHUnitWaitStatusSuccess
-                timeout:0.25];
-}
-
-- (void)testDeletePlace
-{
-    [self prepare];
-
-    [[self createClient] deletePlace:@"SG_4CsrE4oNy1gl8hCLdwu0F0_47.046962_-122.937467@1290636830"];
-
-    [self waitForStatus:kGHUnitWaitStatusSuccess
-                timeout:0.25];
-}
-
-- (void)testAddPlace
-{
-    [self prepare];
-
-    SGPoint *geometry = [self point];
-    NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
-                                @"Mike's Burger Shack", @"name",
-                                nil];
-    SGFeature *feature = [SGFeature featureWithGeometry:geometry
-                                             properties:properties];
-
-    [[self createClient] addPlace:feature];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];

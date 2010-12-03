@@ -29,6 +29,7 @@
 //
 
 #import "SGAPIClientTest.h"
+#import "SGPolygon.h"
 
 
 NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
@@ -83,7 +84,19 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 #pragma mark Async Tests
 
-- (void)testGetFeatureWithId
+- (void)testGetPolygonFeatureWithId
+{
+    [self prepare];
+
+    SGAPIClient *client = [self createClient];
+
+    [client getFeatureWithId:@"SG_0Bw22I6fWoxnZ4GDc8YlXd"];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
+- (void)testGetPointFeatureWithId
 {
     [self prepare];
 
@@ -158,15 +171,28 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
                 withId:(NSString *)featureId
 {
     if ([featureId isEqual:@"SG_4CsrE4oNy1gl8hCLdwu0F0"]) {
-        GHAssertEqualObjects([feature featureId], @"SG_4CsrE4oNy1gl8hCLdwu0F0_47.046962_-122.937467@1290636830", nil);
+        GHAssertEqualObjects([feature featureId],
+                             @"SG_4CsrE4oNy1gl8hCLdwu0F0_47.046962_-122.937467@1290636830", nil);
 
-        GHAssertEquals([[feature geometry] latitude], 47.046962, nil);
-        GHAssertEquals([[feature geometry] longitude], -122.937467, nil);
+        SGPoint *geometry = (SGPoint *) [feature geometry];
 
-        GHAssertEqualObjects([[feature properties] objectForKey:@"name"], @"Burger Master West Olympia", nil);
+        GHAssertEquals([geometry latitude], 47.046962, nil);
+        GHAssertEquals([geometry longitude], -122.937467, nil);
+
+        GHAssertEqualObjects([[feature properties] objectForKey:@"name"],
+                             @"Burger Master West Olympia", nil);
 
         [self notify:kGHUnitWaitStatusSuccess
-         forSelector:@selector(testGetFeatureWithId)];
+         forSelector:@selector(testGetPointFeatureWithId)];
+    } else if ([featureId isEqual:@"SG_0Bw22I6fWoxnZ4GDc8YlXd"]) {
+        GHAssertEqualObjects([feature featureId],
+                             @"SG_0Bw22I6fWoxnZ4GDc8YlXd_37.759737_-122.433203", nil);
+        GHAssertTrue([[feature geometry] isKindOfClass:[SGPolygon class]], nil);
+        GHAssertEqualObjects([[feature properties] objectForKey:@"name"],
+                             @"Castro District", nil);
+
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetPolygonFeatureWithId)];
     } else if ([featureId isEqual:@"foo"]) {
         GHAssertNil(feature, nil);
 

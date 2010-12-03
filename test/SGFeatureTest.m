@@ -31,6 +31,7 @@
 #import <GHUnit/GHUnit.h>
 #import <YAJL/YAJL.h>
 #import "SGFeature.h"
+#import "SGPoint.h"
 
 @interface SGFeatureTest : GHTestCase { }
 @end
@@ -61,8 +62,11 @@
                                        dictionary:featureData];
 
     GHAssertEqualObjects([[feature properties] objectForKey:@"type"], @"place", @"'type' should be 'place'");
-    GHAssertEquals([[feature geometry] latitude], 37.079, @"Latitudes don't match.");
-    GHAssertEquals([[feature geometry] longitude], -122.938, @"Longitudes don't match.");
+
+    SGPoint *geometry = (SGPoint *) [feature geometry];
+
+    GHAssertEquals([geometry latitude], 37.079, @"Latitudes don't match.");
+    GHAssertEquals([geometry longitude], -122.938, @"Longitudes don't match.");
 }
 
 - (void)testFeatureWithDictionaryAndRawBody
@@ -75,8 +79,11 @@
                                        dictionary:featureData];
 
     GHAssertEqualObjects([[feature properties] objectForKey:@"type"], @"place", @"'type' should be 'place'");
-    GHAssertEquals([[feature geometry] latitude], 37.079, @"Latitudes don't match.");
-    GHAssertEquals([[feature geometry] longitude], -122.938, @"Longitudes don't match.");
+
+    SGPoint *geometry = (SGPoint *) [feature geometry];
+
+    GHAssertEquals([geometry latitude], 37.079, @"Latitudes don't match.");
+    GHAssertEquals([geometry longitude], -122.938, @"Longitudes don't match.");
 }
 
 - (void)testFeatureWithDictionaryWithAnArray

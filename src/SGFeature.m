@@ -35,7 +35,7 @@
 @interface SGFeature ()
 
 @property (retain) NSString* featureId;
-@property (retain) SGPoint* geometry;
+@property (retain) SGGeometry* geometry;
 @property (retain) NSDictionary* properties;
 
 @end
@@ -74,14 +74,14 @@
 }
 
 + (SGFeature *)featureWithId:(NSString *)id
-                    geometry:(SGPoint *)geometry
+                    geometry:(SGGeometry *)geometry
 {
     return [SGFeature featureWithId:id
                            geometry:geometry
                          properties:nil];
 }
 
-+ (SGFeature *)featureWithGeometry:(SGPoint *)geometry
++ (SGFeature *)featureWithGeometry:(SGGeometry *)geometry
                         properties:(NSDictionary *)properties
 {
     return [SGFeature featureWithId:nil
@@ -90,7 +90,7 @@
 }
 
 + (SGFeature *)featureWithId:(NSString *)id
-                    geometry:(SGPoint *)geometry
+                    geometry:(SGGeometry *)geometry
                   properties:(NSDictionary *)properties
 {
     return [[[SGFeature alloc] initWithId:id
@@ -118,14 +118,14 @@
 }
 
 - (id)initWithId:(NSString *)id
-        geometry:(SGPoint *)aGeometry
+        geometry:(SGGeometry *)aGeometry
 {
     return [self initWithId:id
                    geometry:aGeometry
                  properties:nil];
 }
 
-- (id)initWithGeometry:(SGPoint *)aGeometry
+- (id)initWithGeometry:(SGGeometry *)aGeometry
             properties:(NSDictionary *)someProperties
 {
     return [self initWithId:nil
@@ -134,7 +134,7 @@
 }
 
 - (id)initWithId:(NSString *)id
-        geometry:(SGPoint *)aGeometry
+        geometry:(SGGeometry *)aGeometry
       properties:(NSDictionary *)someProperties
 {
     self = [super init];
@@ -218,7 +218,7 @@
     return [self asDictionary];
 }
 
-- (SGPoint *)geometry
+- (SGGeometry *)geometry
 {
     return geometry;
 }
@@ -226,7 +226,7 @@
 - (void)setGeometry:(id)input
 {
     [geometry autorelease];
-    geometry = [[SGPoint pointWithGeometry:input] retain];
+    geometry = [[SGGeometry geometryWithGeometry:input] retain];
 }
 
 /**

@@ -1,5 +1,5 @@
 //
-//  SGPointTest.m
+//  SGPolygon.m
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,28 +28,75 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <GHUnit/GHUnit.h>
+#import "SGPolygon.h"
 #import "SGPoint.h"
 
-@interface SGPointTest : GHTestCase { }
-@end
+@implementation SGPolygon
 
+@synthesize rings;
 
-@implementation SGPointTest
-
-- (BOOL)shouldRunOnMainThread
++ (SGPolygon *)polygonWithDictionary:(NSDictionary *)dictionary
 {
-    return NO;
+    if ([[dictionary objectForKey:@"type"] isEqual:@"Polygon"]) {
+        NSArray *coordinates = [dictionary objectForKey:@"coordinates"];
+        NSMutableArray *rings = [NSMutableArray arrayWithCapacity:[coordinates count]];
+
+        for (NSArray *ring in coordinates) {
+            NSMutableArray *r = [NSMutableArray arrayWithCapacity:[ring count]];
+            for (NSArray *coordinate in ring) {
+                [r addObject:[SGPoint pointWithLatitude:[[coordinate objectAtIndex:1] doubleValue]
+                                              longitude:[[coordinate objectAtIndex:0] doubleValue]]];
+            }
+            [rings addObject:r];
+        }
+
+        return [SGPolygon polygonWithRings:[NSArray arrayWithArray:rings]];
+    } else {
+        NSLog(@"%@ could not be converted into a polygon.", dictionary);
+        return nil;
+    }
 }
 
-- (void)testPointWithLatitudeAndLongitude
++ (SGPolygon *)polygonWithRings:(NSArray *)rings
 {
-    double latitude = 40.0;
-    double longitude = -105.0;
-    SGPoint *point = [SGPoint pointWithLatitude:latitude longitude:longitude];
+    return [[SGPolygon alloc] initWithRings:rings];
+}
 
-    GHAssertEquals([point latitude], latitude, @"Latitudes don't match.");
-    GHAssertEquals([point longitude], longitude, @"Longitudes don't match.");
+- (id)init
+{
+    return [self initWithRings:nil];
+}
+
+- (id)initWithRings:(NSArray *)someRings
+{
+    self = [super init];
+
+    if (self) {
+        rings = [someRings retain];
+    }
+
+    return self;
+}
+
+- (void)dealloc
+{
+    [rings release];
+    [super dealloc];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<SGPolygon: %@>", rings];
+}
+
+- (BOOL) isEqual:(id)object
+{
+    return [[object rings] isEqual:rings];
+}
+
+- (NSUInteger)hash
+{
+    return [rings hash];
 }
 
 @end

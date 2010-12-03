@@ -28,18 +28,18 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGPoint.h"
+#import "SGGeometry.h"
 
 
 @interface SGFeature : NSObject
 {
     NSString* featureId;
-    SGPoint* geometry;
+    SGGeometry* geometry;
     NSDictionary* properties;
 }
 
 @property (retain,readonly) NSString* featureId;
-@property (retain,readonly) SGPoint* geometry;
+@property (retain,readonly) SGGeometry* geometry;
 @property (retain,readonly) NSDictionary* properties;
 
 + (SGFeature *)featureWithId:(NSString *)id;
@@ -49,11 +49,11 @@
 + (SGFeature *)featureWithId:(NSString *)id
                   properties:(NSDictionary *)properties;
 + (SGFeature *)featureWithId:(NSString *)id
-                    geometry:(SGPoint *)geometry;
+                    geometry:(SGGeometry *)geometry;
 + (SGFeature *)featureWithId:(NSString *)id
-                    geometry:(SGPoint *)geometry
+                    geometry:(SGGeometry *)geometry
                   properties:(NSDictionary *)properties;
-+ (SGFeature *)featureWithGeometry:(SGPoint *)geometry
++ (SGFeature *)featureWithGeometry:(SGGeometry *)geometry
                         properties:(NSDictionary *)properties;
 - (id)initWithId:(NSString *)id;
 - (id)initWithId:(NSString *)id
@@ -61,11 +61,11 @@
 - (id)initWithId:(NSString *)id
       properties:(NSDictionary *)properties;
 - (id)initWithId:(NSString *)id
-        geometry:(SGPoint *)geometry;
+        geometry:(SGGeometry *)geometry;
 - (id)initWithId:(NSString *)id
-        geometry:(SGPoint *)geometry
+        geometry:(SGGeometry *)geometry
       properties:(NSDictionary *)properties;
-- (id)initWithGeometry:(SGPoint *)geometry
+- (id)initWithGeometry:(SGGeometry *)geometry
             properties:(NSDictionary *)properties;
 
 @end

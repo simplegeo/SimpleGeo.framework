@@ -1,5 +1,5 @@
 //
-//  SGPointTest.m
+//  SGGeometry.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,28 +28,13 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <GHUnit/GHUnit.h>
-#import "SGPoint.h"
 
-@interface SGPointTest : GHTestCase { }
-@end
+@interface SGGeometry : NSObject
 
-
-@implementation SGPointTest
-
-- (BOOL)shouldRunOnMainThread
-{
-    return NO;
-}
-
-- (void)testPointWithLatitudeAndLongitude
-{
-    double latitude = 40.0;
-    double longitude = -105.0;
-    SGPoint *point = [SGPoint pointWithLatitude:latitude longitude:longitude];
-
-    GHAssertEquals([point latitude], latitude, @"Latitudes don't match.");
-    GHAssertEquals([point longitude], longitude, @"Longitudes don't match.");
-}
+/**
+ * Suitable for "creating" SGGeometrys from other SGGeometrys or from
+ * NSDictionaries (such as those present in a GeoJSON document).
+ */
++ (SGGeometry *)geometryWithGeometry:(id)geometry;
 
 @end

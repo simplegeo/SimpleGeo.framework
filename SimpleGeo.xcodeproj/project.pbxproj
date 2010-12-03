@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D1C1B4912A9A5170055EC91 /* SGGeometryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C1B4712A9A5170055EC91 /* SGGeometryTest.m */; };
 		5D3990DF12A4642B00EB7B20 /* SGFeatureCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */; };
 		5D3990E012A4642B00EB7B20 /* SGFeatureCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3990DD12A4642B00EB7B20 /* SGFeatureCollection.h */; };
 		5D3990E112A4642B00EB7B20 /* SGFeatureCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */; };
@@ -17,6 +18,12 @@
 		5D39921D12A48F3F00EB7B20 /* SGAPIClient+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39921A12A48F3F00EB7B20 /* SGAPIClient+Internal.h */; };
 		5D39921E12A48F3F00EB7B20 /* SGAPIClient+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39921B12A48F3F00EB7B20 /* SGAPIClient+Internal.m */; };
 		5D39940E12A893D500EB7B20 /* SGAPIClientTest+Places.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39940D12A893D500EB7B20 /* SGAPIClientTest+Places.m */; };
+		5D3994E712A8A8A700EB7B20 /* SGGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3994E612A8A8A700EB7B20 /* SGGeometry.m */; };
+		5D3994E812A8A8A700EB7B20 /* SGGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3994E512A8A8A700EB7B20 /* SGGeometry.h */; };
+		5D3994E912A8A8A700EB7B20 /* SGGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3994E612A8A8A700EB7B20 /* SGGeometry.m */; };
+		5D3994EE12A8AB4300EB7B20 /* SGPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */; };
+		5D3994EF12A8AB4300EB7B20 /* SGPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3994EC12A8AB4300EB7B20 /* SGPolygon.h */; };
+		5D3994F012A8AB4300EB7B20 /* SGPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */; };
 		5D5B02C71291A37700399A50 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5B02C61291A37700399A50 /* YAJL.framework */; };
 		5D5B036F1291BD4500399A50 /* SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B036E1291BD4500399A50 /* SGFeature.m */; };
 		5D5B03701291BD4500399A50 /* SGFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5B036D1291BD4500399A50 /* SGFeature.h */; };
@@ -98,6 +105,7 @@
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCF5E0370ADEE00C91783 /* SimpleGeo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleGeo_Prefix.pch; sourceTree = "<group>"; };
+		5D1C1B4712A9A5170055EC91 /* SGGeometryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGGeometryTest.m; path = test/SGGeometryTest.m; sourceTree = "<group>"; };
 		5D3990DD12A4642B00EB7B20 /* SGFeatureCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGFeatureCollection.h; path = src/SGFeatureCollection.h; sourceTree = "<group>"; };
 		5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGFeatureCollection.m; path = src/SGFeatureCollection.m; sourceTree = "<group>"; };
 		5D3991E412A489EF00EB7B20 /* SGAPIClient+Places.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGAPIClient+Places.h"; path = "src/SGAPIClient+Places.h"; sourceTree = "<group>"; };
@@ -107,6 +115,10 @@
 		5D39924E12A571C000EB7B20 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = RunTests.sh; path = scripts/RunTests.sh; sourceTree = "<group>"; };
 		5D39940D12A893D500EB7B20 /* SGAPIClientTest+Places.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SGAPIClientTest+Places.m"; path = "test/SGAPIClientTest+Places.m"; sourceTree = "<group>"; };
 		5D39941112A8947600EB7B20 /* SGAPIClientTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGAPIClientTest.h; path = test/SGAPIClientTest.h; sourceTree = "<group>"; };
+		5D3994E512A8A8A700EB7B20 /* SGGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGGeometry.h; path = src/SGGeometry.h; sourceTree = "<group>"; };
+		5D3994E612A8A8A700EB7B20 /* SGGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGGeometry.m; path = src/SGGeometry.m; sourceTree = "<group>"; };
+		5D3994EC12A8AB4300EB7B20 /* SGPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGPolygon.h; path = src/SGPolygon.h; sourceTree = "<group>"; };
+		5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGPolygon.m; path = src/SGPolygon.m; sourceTree = "<group>"; };
 		5D5B02C61291A37700399A50 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = Library/Frameworks/YAJL.framework; sourceTree = SDKROOT; };
 		5D5B036D1291BD4500399A50 /* SGFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGFeature.h; path = src/SGFeature.h; sourceTree = "<group>"; };
 		5D5B036E1291BD4500399A50 /* SGFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGFeature.m; path = src/SGFeature.m; sourceTree = "<group>"; };
@@ -250,6 +262,10 @@
 				5D5B036E1291BD4500399A50 /* SGFeature.m */,
 				5D3990DD12A4642B00EB7B20 /* SGFeatureCollection.h */,
 				5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */,
+				5D3994E512A8A8A700EB7B20 /* SGGeometry.h */,
+				5D3994E612A8A8A700EB7B20 /* SGGeometry.m */,
+				5D3994EC12A8AB4300EB7B20 /* SGPolygon.h */,
+				5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */,
 				5DA3C343128E427C00E128DC /* SGPoint.h */,
 				5DA3C344128E427C00E128DC /* SGPoint.m */,
 				5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */,
@@ -338,6 +354,7 @@
 				5D7676181290EB2A006B7D51 /* SGAPIClientTest.m */,
 				5D39940D12A893D500EB7B20 /* SGAPIClientTest+Places.m */,
 				5D7676191290EB2A006B7D51 /* SGFeatureTest.m */,
+				5D1C1B4712A9A5170055EC91 /* SGGeometryTest.m */,
 				5D76761A1290EB2A006B7D51 /* SGPointTest.m */,
 				5D76761B1290EB2A006B7D51 /* GHUnitTestMain.m */,
 			);
@@ -372,6 +389,8 @@
 				5D3990E012A4642B00EB7B20 /* SGFeatureCollection.h in Headers */,
 				5D3991E712A489EF00EB7B20 /* SGAPIClient+Places.h in Headers */,
 				5D39921D12A48F3F00EB7B20 /* SGAPIClient+Internal.h in Headers */,
+				5D3994E812A8A8A700EB7B20 /* SGGeometry.h in Headers */,
+				5D3994EF12A8AB4300EB7B20 /* SGPolygon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +523,9 @@
 				5D3991E612A489EF00EB7B20 /* SGAPIClient+Places.m in Sources */,
 				5D39921C12A48F3F00EB7B20 /* SGAPIClient+Internal.m in Sources */,
 				5D39940E12A893D500EB7B20 /* SGAPIClientTest+Places.m in Sources */,
+				5D3994E712A8A8A700EB7B20 /* SGGeometry.m in Sources */,
+				5D3994EE12A8AB4300EB7B20 /* SGPolygon.m in Sources */,
+				5D1C1B4912A9A5170055EC91 /* SGGeometryTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +550,8 @@
 				5D3990E112A4642B00EB7B20 /* SGFeatureCollection.m in Sources */,
 				5D3991E812A489EF00EB7B20 /* SGAPIClient+Places.m in Sources */,
 				5D39921E12A48F3F00EB7B20 /* SGAPIClient+Internal.m in Sources */,
+				5D3994E912A8A8A700EB7B20 /* SGGeometry.m in Sources */,
+				5D3994F012A8AB4300EB7B20 /* SGPolygon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

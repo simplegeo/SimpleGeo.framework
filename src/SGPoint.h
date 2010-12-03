@@ -28,8 +28,10 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import "SGGeometry.h"
 
-@interface SGPoint : NSObject
+
+@interface SGPoint : SGGeometry
 {
     double latitude;
     double longitude;
@@ -38,11 +40,7 @@
 @property (readonly) double latitude;
 @property (readonly) double longitude;
 
-/**
- * Suitable for "creating" SGPoints from other SGPoints or from NSDictionaries (such as those
- * present in a GeoJSON document).
- */
-+ (SGPoint *)pointWithGeometry:(id)point;
++ (SGPoint *)pointWithDictionary:(NSDictionary *)dictionary;
 + (SGPoint *)pointWithLatitude:(double)latitude
                      longitude:(double) longitude;
 - (id)initWithLatitude:(double)latitude

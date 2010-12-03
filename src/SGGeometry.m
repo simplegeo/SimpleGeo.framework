@@ -1,5 +1,5 @@
 //
-//  SGPointTest.m
+//  SGGeometry.m
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,28 +28,27 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <GHUnit/GHUnit.h>
+#import "SGGeometry.h"
+#import "SGPolygon.h"
 #import "SGPoint.h"
 
-@interface SGPointTest : GHTestCase { }
-@end
+@implementation SGGeometry
 
-
-@implementation SGPointTest
-
-- (BOOL)shouldRunOnMainThread
++ (SGGeometry *)geometryWithGeometry:(id)geometry
 {
-    return NO;
-}
+    if ([geometry isKindOfClass:[SGGeometry class]]) {
+        return geometry;
+    } else if ([geometry isKindOfClass:[NSDictionary class]]) {
+        NSString *type = [geometry objectForKey:@"type"];
+        if ([type isEqual:@"Point"]) {
+            return [SGPoint pointWithDictionary:geometry];
+        } else if ([type isEqual:@"Polygon"]) {
+            return [SGPolygon polygonWithDictionary:geometry];
+        }
+    }
 
-- (void)testPointWithLatitudeAndLongitude
-{
-    double latitude = 40.0;
-    double longitude = -105.0;
-    SGPoint *point = [SGPoint pointWithLatitude:latitude longitude:longitude];
-
-    GHAssertEquals([point latitude], latitude, @"Latitudes don't match.");
-    GHAssertEquals([point longitude], longitude, @"Longitudes don't match.");
+    NSLog(@"%@ could not be converted into a geometry.", geometry);
+    return nil;
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  SGAPIClient+Places.h
+//  SGAPIClient+Context.m
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,37 +28,35 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGAPIClient.h"
+#import <YAJL/YAJL.h>
+#import "SGAPIClient+Context.h"
+#import "SGAPIClient+Internal.h"
 
 
-@interface NSObject (SGAPIClientPlaceDelegate)
+@implementation SGAPIClient (Context)
 
-- (void)didAddPlace:(SGFeature *)feature
-             handle:(NSString *)handle
-                URL:(NSURL *)url
-              token:(NSString *)token;
-- (void)didDeletePlace:(NSString *)handle
-                 token:(NSString *)token;
-- (void)didLoadPlaces:(SGFeatureCollection *)places
-                 near:(SGPoint *)point
-             matching:(NSString *)query
-           inCategory:(NSString *)category;
-- (void)didUpdatePlace:(NSString *)handle
-                 token:(NSString *)token;
+- (void)getContextNear:(SGPoint *)point
+{
+    NSURL *endpoint = [self endpointForString:
+                       [NSString stringWithFormat:@"/%@/context/%f,%f.json",
+                        SIMPLEGEO_API_VERSION,
+                        [point latitude], [point longitude]]];
 
-@end
+    ASIHTTPRequest *request = [self requestWithURL:endpoint];
+    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                          @"didLoadContext:", @"targetSelector",
+                          point, @"point",
+                          nil
+                          ]];
+    [request startAsynchronous];
+}
 
-@interface SGAPIClient (Places)
+#pragma mark Dispatcher Methods
 
-- (void)addPlace:(SGFeature *)feature;
-- (void)deletePlace:(NSString *)handle;
-- (void)getPlacesNear:(SGPoint *)point;
-- (void)getPlacesNear:(SGPoint *)point
-             matching:(NSString *)query;
-- (void)getPlacesNear:(SGPoint *)point
-             matching:(NSString *)query
-           inCategory:(NSString *)category;
-- (void)updatePlace:(NSString *)handle
-               with:(SGFeature *)data;
+- (void)didLoadContext:(ASIHTTPRequest *)request
+{
+    [delegate didLoadContext:[[[[request responseData] yajl_JSON] retain] autorelease]
+                        near:[[[[request userInfo] objectForKey:@"point"] retain] autorelease]];
+}
 
 @end

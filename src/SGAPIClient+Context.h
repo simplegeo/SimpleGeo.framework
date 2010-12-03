@@ -1,5 +1,5 @@
 //
-//  SGAPIClient+Places.h
+//  SGAPIClient+Context.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -31,34 +31,15 @@
 #import "SGAPIClient.h"
 
 
-@interface NSObject (SGAPIClientPlaceDelegate)
+@interface NSObject (SGAPIClientContextDelegate)
 
-- (void)didAddPlace:(SGFeature *)feature
-             handle:(NSString *)handle
-                URL:(NSURL *)url
-              token:(NSString *)token;
-- (void)didDeletePlace:(NSString *)handle
-                 token:(NSString *)token;
-- (void)didLoadPlaces:(SGFeatureCollection *)places
-                 near:(SGPoint *)point
-             matching:(NSString *)query
-           inCategory:(NSString *)category;
-- (void)didUpdatePlace:(NSString *)handle
-                 token:(NSString *)token;
+- (void)didLoadContext:(NSDictionary *)context
+                  near:(SGPoint *)point;
 
 @end
 
-@interface SGAPIClient (Places)
+@interface SGAPIClient (Context)
 
-- (void)addPlace:(SGFeature *)feature;
-- (void)deletePlace:(NSString *)handle;
-- (void)getPlacesNear:(SGPoint *)point;
-- (void)getPlacesNear:(SGPoint *)point
-             matching:(NSString *)query;
-- (void)getPlacesNear:(SGPoint *)point
-             matching:(NSString *)query
-           inCategory:(NSString *)category;
-- (void)updatePlace:(NSString *)handle
-               with:(SGFeature *)data;
+- (void)getContextNear:(SGPoint *)point;
 
 @end

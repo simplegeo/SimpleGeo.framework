@@ -1,5 +1,5 @@
 //
-//  SGAPIClient+Places.h
+//  SGAPIClientTest+Context.m
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,37 +28,32 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGAPIClient.h"
+#import "SGAPIClientTest.h"
+#import "SGAPIClient+Context.h"
 
+@implementation SGAPIClientTest (Context)
 
-@interface NSObject (SGAPIClientPlaceDelegate)
+- (void)testGetContextNear
+{
+    [self prepare];
 
-- (void)didAddPlace:(SGFeature *)feature
-             handle:(NSString *)handle
-                URL:(NSURL *)url
-              token:(NSString *)token;
-- (void)didDeletePlace:(NSString *)handle
-                 token:(NSString *)token;
-- (void)didLoadPlaces:(SGFeatureCollection *)places
-                 near:(SGPoint *)point
-             matching:(NSString *)query
-           inCategory:(NSString *)category;
-- (void)didUpdatePlace:(NSString *)handle
-                 token:(NSString *)token;
+    [[self createClient] getContextNear:[self point]];
 
-@end
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
 
-@interface SGAPIClient (Places)
+#pragma mark SGAPIClientContextDelegate Methods
 
-- (void)addPlace:(SGFeature *)feature;
-- (void)deletePlace:(NSString *)handle;
-- (void)getPlacesNear:(SGPoint *)point;
-- (void)getPlacesNear:(SGPoint *)point
-             matching:(NSString *)query;
-- (void)getPlacesNear:(SGPoint *)point
-             matching:(NSString *)query
-           inCategory:(NSString *)category;
-- (void)updatePlace:(NSString *)handle
-               with:(SGFeature *)data;
+- (void)didLoadContext:(NSDictionary *)context
+             near:(SGPoint *)point
+{
+    GHAssertNotNil([context objectForKey:@"demographics"], nil);
+    GHAssertNotNil([context objectForKey:@"weather"], nil);
+    GHAssertTrue([[context objectForKey:@"features"] isKindOfClass:[NSArray class]], nil);
+
+    [self notify:kGHUnitWaitStatusSuccess
+     forSelector:@selector(testGetContextNear)];
+}
 
 @end

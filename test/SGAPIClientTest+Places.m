@@ -111,7 +111,7 @@
                 timeout:0.25];
 }
 
-#pragma mark SGAPIClientDelegate Methods
+#pragma mark SGAPIClientPlaceDelegate Methods
 
 - (void)didAddPlace:(SGFeature *)feature
              handle:(NSString *)handle

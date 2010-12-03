@@ -226,7 +226,7 @@
 - (void)setGeometry:(id)input
 {
     [geometry autorelease];
-    geometry = [[SGPoint pointForGeometry:input] retain];
+    geometry = [[SGPoint pointWithGeometry:input] retain];
 }
 
 /**

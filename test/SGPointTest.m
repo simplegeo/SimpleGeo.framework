@@ -55,7 +55,7 @@
 - (void)testPointForGeometryWithSGPoint
 {
     SGPoint *input = [SGPoint pointWithLatitude:40.0 longitude:-105.0];
-    SGPoint *point = [SGPoint pointForGeometry:input];
+    SGPoint *point = [SGPoint pointWithGeometry:input];
 
     GHAssertEqualObjects(point, input, nil);
 }
@@ -69,7 +69,7 @@
     NSDictionary *geometry = [NSDictionary dictionaryWithObjectsAndKeys:@"Point", @"type",
                               coordinates, @"coordinates", nil];
 
-    SGPoint *point = [SGPoint pointForGeometry:geometry];
+    SGPoint *point = [SGPoint pointWithGeometry:geometry];
     GHAssertEquals([point latitude], latitude, @"Latitudes don't match.");
     GHAssertEquals([point longitude], longitude, @"Longitudes don't match.");
 }
@@ -101,7 +101,7 @@
     NSDictionary *geometry = [NSDictionary dictionaryWithObjectsAndKeys:@"Polygon", @"type",
                               coordinates, @"coordinates", nil];
 
-    GHAssertNil([SGPoint pointForGeometry:geometry], nil);
+    GHAssertNil([SGPoint pointWithGeometry:geometry], nil);
 }
 
 - (void)testPointForGeometryWithDictionaryContainingLineString
@@ -127,7 +127,7 @@
     NSDictionary *geometry = [NSDictionary dictionaryWithObjectsAndKeys:@"LineString", @"type",
                               coordinates, @"coordinates", nil];
 
-    GHAssertNil([SGPoint pointForGeometry:geometry], nil);
+    GHAssertNil([SGPoint pointWithGeometry:geometry], nil);
 }
 
 @end

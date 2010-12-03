@@ -36,7 +36,7 @@
 @synthesize latitude;
 @synthesize longitude;
 
-+ (SGPoint *)pointForDictionary:(NSDictionary *)input
++ (SGPoint *)pointWithDictionary:(NSDictionary *)input
 {
     if ([[input objectForKey:@"type"] isEqual:@"Point"]) {
         NSArray *coordinates = [input objectForKey:@"coordinates"];
@@ -44,17 +44,19 @@
         return [SGPoint pointWithLatitude:[[coordinates objectAtIndex:1] doubleValue]
                                 longitude:[[coordinates objectAtIndex:0] doubleValue]];
     } else {
+        NSLog(@"%@ could not be converted into a point.", input);
         return nil;
     }
 }
 
-+ (SGPoint *)pointForGeometry:(id)geometry
++ (SGPoint *)pointWithGeometry:(id)geometry
 {
     if ([geometry isKindOfClass:[SGPoint class]]) {
         return geometry;
     } else if ([geometry isKindOfClass:[NSDictionary class]]) {
-        return [SGPoint pointForDictionary:geometry];
+        return [SGPoint pointWithDictionary:geometry];
     } else {
+        NSLog(@"%@ could not be converted into a point.", geometry);
         return nil;
     }
 }

@@ -42,7 +42,7 @@
  * Suitable for "creating" SGPoints from other SGPoints or from NSDictionaries (such as those
  * present in a GeoJSON document).
  */
-+ (SGPoint *)pointForGeometry:(id)point;
++ (SGPoint *)pointWithGeometry:(id)point;
 + (SGPoint *)pointWithLatitude:(double)latitude
                      longitude:(double) longitude;
 - (id)initWithLatitude:(double)latitude

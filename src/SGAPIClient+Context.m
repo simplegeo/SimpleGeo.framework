@@ -35,7 +35,7 @@
 
 @implementation SGAPIClient (Context)
 
-- (void)getContextNear:(SGPoint *)point
+- (void)getContextFor:(SGPoint *)point
 {
     NSURL *endpoint = [self endpointForString:
                        [NSString stringWithFormat:@"/%@/context/%f,%f.json",
@@ -56,7 +56,7 @@
 - (void)didLoadContext:(ASIHTTPRequest *)request
 {
     [delegate didLoadContext:[[[[request responseData] yajl_JSON] retain] autorelease]
-                        near:[[[[request userInfo] objectForKey:@"point"] retain] autorelease]];
+                         for:[[[[request userInfo] objectForKey:@"point"] retain] autorelease]];
 }
 
 @end

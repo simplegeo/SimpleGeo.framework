@@ -33,11 +33,11 @@
 
 @implementation SGAPIClientTest (Context)
 
-- (void)testGetContextNear
+- (void)testGetContextFor
 {
     [self prepare];
 
-    [[self createClient] getContextNear:[self point]];
+    [[self createClient] getContextFor:[self point]];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
@@ -46,14 +46,14 @@
 #pragma mark SGAPIClientContextDelegate Methods
 
 - (void)didLoadContext:(NSDictionary *)context
-             near:(SGPoint *)point
+                   for:(SGPoint *)point
 {
     GHAssertNotNil([context objectForKey:@"demographics"], nil);
     GHAssertNotNil([context objectForKey:@"weather"], nil);
     GHAssertTrue([[context objectForKey:@"features"] isKindOfClass:[NSArray class]], nil);
 
     [self notify:kGHUnitWaitStatusSuccess
-     forSelector:@selector(testGetContextNear)];
+     forSelector:@selector(testGetContextFor)];
 }
 
 @end

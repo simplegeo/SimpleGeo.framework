@@ -34,13 +34,13 @@
 @interface NSObject (SGAPIClientContextDelegate)
 
 - (void)didLoadContext:(NSDictionary *)context
-                  near:(SGPoint *)point;
+                    for:(SGPoint *)point;
 
 @end
 
 
 @interface SGAPIClient (Context)
 
-- (void)getContextNear:(SGPoint *)point;
+- (void)getContextFor:(SGPoint *)point;
 
 @end

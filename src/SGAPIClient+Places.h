@@ -41,7 +41,7 @@
  * @param feature Feature that was added.
  * @param handle  Assigned handle.
  * @param url     Canonical URL for the created feature.
- * @token token   Status token.
+ * @param token   Status token.
  */
 - (void)didAddPlace:(SGFeature *)feature
              handle:(NSString *)handle

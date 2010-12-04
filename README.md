@@ -15,8 +15,10 @@ the latest `YAJL-*.zip` from the
 [yajl-objc](https://github.com/gabriel/yajl-objc) [Downloads
 page](https://github.com/gabriel/yajl-objc/downloads).
 
-For network tests to succeed, you'll want to start the mock SimpleGeo server:
+For network tests to succeed, you'll want to clone and start the mock SimpleGeo
+server:
 
+    $ git submodule update --init
     $ ruby -rubygems server/server.rb
 
 If it worked, it should say something like:

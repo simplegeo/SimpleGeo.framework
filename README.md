@@ -31,3 +31,27 @@ If it failed, install the dependencies and try again:
 
 To actually run the tests, choose "Tests" as the *Active Target* (via the
 *Project* menu) and click "Build and Run".
+
+## Building
+
+To generate a usable `SimpleGeo.framework` from the command-line:
+
+    $ make
+
+The resulting Framework will be in `build/Release`.
+
+## Docs
+
+To generate docs, make sure you've got `doxygen` installed (`brew install
+doxygen`, for example), then:
+
+    $ make docs
+
+If you'd like a handy-dandy Xcode docset:
+
+    $ cd docs/html/
+    $ make
+
+You can either run `make install` in `docs/html/` to install the docset into
+your home directory, or you can do whatever you wish with the
+`SimpleGeo.docset` that was created there.

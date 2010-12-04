@@ -33,23 +33,41 @@
 #import "SGFeatureCollection.h"
 #import "SGPoint.h"
 
+/*!
+ * \mainpage
+ *
+ * \section intro_sec Introduction
+ *
+ * Hi, you've reached the documentation for SimpleGeo's Objective-C client.
+ *
+ * For more information, please hold.
+ */
 
 extern NSString * const SIMPLEGEO_API_VERSION;
 extern NSString * const SIMPLEGEO_URL_PREFIX;
 
 
+/*!
+ * Informal delegate protocol for core functionality.
+ */
 @interface NSObject (SGAPIClientDelegate)
 
+//! Called when a feature has been loaded.
 - (void)didLoadFeature:(SGFeature *)feature
                 withId:(NSString *)featureId;
 
-// optional
+//! Called when a request has finished. (optional)
 - (void)requestDidFinish:(ASIHTTPRequest *)request;
+
+//! Called when a request has failed. (optional)
 - (void)requestDidFail:(ASIHTTPRequest *)request;
 
 @end
 
 
+/*!
+ * SimpleGeo client interface.
+ */
 @interface SGAPIClient : NSObject
 {
     id delegate;

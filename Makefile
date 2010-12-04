@@ -1,10 +1,10 @@
-
+BUILD_TARGET=SimpleGeo
 TEST_TARGET=Tests
 SDK=macosx10.5
 COMMAND=xcodebuild
 
 default:
-	# Set default make action here
+	$(COMMAND) -target $(BUILD_TARGET) -configuration Release -sdk $(SDK) build
 
 # If you need to clean a specific target/configuration: $(COMMAND) -target $(TARGET) -configuration DebugOrRelease -sdk $(SDK) clean
 clean:

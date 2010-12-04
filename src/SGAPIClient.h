@@ -41,6 +41,10 @@
  * Hi, you've reached the documentation for SimpleGeo's Objective-C client.
  *
  * For more information, please look at the Class documentation.
+ *
+ * You can also
+ * <a href="https://github.com/simplegeo/SimpleGeo.framework/downloads">download
+ * an Xcode docset</a>.
  */
 
 extern NSString * const SIMPLEGEO_API_VERSION;

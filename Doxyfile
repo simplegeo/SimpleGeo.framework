@@ -914,7 +914,7 @@ DOCSET_FEEDNAME        = "SimpleGeo"
 # reverse domain-name style string, e.g. com.mycompany.MyDocSet. Doxygen 
 # will append .docset to the name.
 
-DOCSET_BUNDLE_ID       = "com.simplegeo.Framework"
+DOCSET_BUNDLE_ID       = "SimpleGeo"
 
 # When GENERATE_PUBLISHER_ID tag specifies a string that should uniquely identify 
 # the documentation publisher. This should be a reverse domain-name style 

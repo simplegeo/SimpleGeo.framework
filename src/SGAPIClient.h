@@ -54,7 +54,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 
 //! Called when a feature has been loaded.
 - (void)didLoadFeature:(SGFeature *)feature
-                withId:(NSString *)featureId;
+            withHandle:(NSString *)featureId;
 
 //! Called when a request has finished. (optional)
 - (void)requestDidFinish:(ASIHTTPRequest *)request;
@@ -97,6 +97,6 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
         consumerSecret:(NSString *)consumerSecret
                    URL:(NSURL *)url;
 
-- (void)getFeatureWithId:(NSString *)featureId;
+- (void)getFeatureWithHandle:(NSString *)handle;
 
 @end

@@ -84,43 +84,43 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 #pragma mark Async Tests
 
-- (void)testGetPolygonFeatureWithId
+- (void)testGetPolygonFeatureWithHandle
 {
     [self prepare];
 
     SGAPIClient *client = [self createClient];
 
-    [client getFeatureWithId:@"SG_0Bw22I6fWoxnZ4GDc8YlXd"];
+    [client getFeatureWithHandle:@"SG_0Bw22I6fWoxnZ4GDc8YlXd"];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
 }
 
-- (void)testGetPointFeatureWithId
+- (void)testGetPointFeatureWithHandle
 {
     [self prepare];
 
     SGAPIClient *client = [self createClient];
 
-    [client getFeatureWithId:@"SG_4CsrE4oNy1gl8hCLdwu0F0"];
+    [client getFeatureWithHandle:@"SG_4CsrE4oNy1gl8hCLdwu0F0"];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
 }
 
-- (void)testGetFeatureWithIdAndNonExistentResult
+- (void)testGetFeatureWithHandleAndNonExistentResult
 {
     [self prepare];
 
     SGAPIClient *client = [self createClient];
 
-    [client getFeatureWithId:@"foo"];
+    [client getFeatureWithHandle:@"foo"];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
 }
 
-- (void)testGetFeatureWithIdAndBadCredentials
+- (void)testGetFeatureWithHandleAndBadCredentials
 {
     [self prepare];
 
@@ -130,19 +130,19 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
                                            consumerSecret:@"invalidSecret"
                                                       URL:url];
 
-    [client getFeatureWithId:@"badCredentials"];
+    [client getFeatureWithHandle:@"badCredentials"];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
 }
 
-- (void)testGetFeatureWithIdShouldCallRequestDidFinish
+- (void)testGetFeatureWithHandleShouldCallRequestDidFinish
 {
     [self prepare];
 
     SGAPIClient *client = [self createClient];
 
-    [client getFeatureWithId:@"requestDidFinish"];
+    [client getFeatureWithHandle:@"requestDidFinish"];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
@@ -152,25 +152,25 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 - (void)requestDidFinish:(ASIHTTPRequest *)request
 {
-    if ([[[request userInfo] objectForKey:@"featureId"] isEqual:@"requestDidFinish"]) {
+    if ([[[request userInfo] objectForKey:@"handle"] isEqual:@"requestDidFinish"]) {
         [self notify:kGHUnitWaitStatusSuccess
-         forSelector:@selector(testGetFeatureWithIdShouldCallRequestDidFinish)];
+         forSelector:@selector(testGetFeatureWithHandleShouldCallRequestDidFinish)];
     }
 }
 
 - (void)requestDidFail:(ASIHTTPRequest *)request
 {
     NSLog(@"requestDidFail: %@", [request userInfo]);
-    if ([[[request userInfo] objectForKey:@"featureId"] isEqual:@"badCredentials"]) {
+    if ([[[request userInfo] objectForKey:@"handle"] isEqual:@"badCredentials"]) {
         [self notify:kGHUnitWaitStatusSuccess
-         forSelector:@selector(testGetFeatureWithIdAndBadCredentials)];
+         forSelector:@selector(testGetFeatureWithHandleAndBadCredentials)];
     }
 }
 
 - (void)didLoadFeature:(SGFeature *)feature
-                withId:(NSString *)featureId
+            withHandle:(NSString *)handle
 {
-    if ([featureId isEqual:@"SG_4CsrE4oNy1gl8hCLdwu0F0"]) {
+    if ([handle isEqual:@"SG_4CsrE4oNy1gl8hCLdwu0F0"]) {
         GHAssertEqualObjects([feature featureId],
                              @"SG_4CsrE4oNy1gl8hCLdwu0F0_47.046962_-122.937467@1290636830", nil);
 
@@ -183,8 +183,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
                              @"Burger Master West Olympia", nil);
 
         [self notify:kGHUnitWaitStatusSuccess
-         forSelector:@selector(testGetPointFeatureWithId)];
-    } else if ([featureId isEqual:@"SG_0Bw22I6fWoxnZ4GDc8YlXd"]) {
+         forSelector:@selector(testGetPointFeatureWithHandle)];
+    } else if ([handle isEqual:@"SG_0Bw22I6fWoxnZ4GDc8YlXd"]) {
         GHAssertEqualObjects([feature featureId],
                              @"SG_0Bw22I6fWoxnZ4GDc8YlXd_37.759737_-122.433203", nil);
         GHAssertTrue([[feature geometry] isKindOfClass:[SGPolygon class]], nil);
@@ -192,12 +192,12 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
                              @"Castro District", nil);
 
         [self notify:kGHUnitWaitStatusSuccess
-         forSelector:@selector(testGetPolygonFeatureWithId)];
-    } else if ([featureId isEqual:@"foo"]) {
+         forSelector:@selector(testGetPolygonFeatureWithHandle)];
+    } else if ([handle isEqual:@"foo"]) {
         GHAssertNil(feature, nil);
 
         [self notify:kGHUnitWaitStatusSuccess
-         forSelector:@selector(testGetFeatureWithIdAndNonExistentResult)];
+         forSelector:@selector(testGetFeatureWithHandleAndNonExistentResult)];
     }
 }
 

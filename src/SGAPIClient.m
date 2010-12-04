@@ -121,16 +121,16 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
 #pragma mark Common API Calls
 
-- (void)getFeatureWithId:(NSString *)featureId
+- (void)getFeatureWithHandle:(NSString *)handle
 {
     NSURL *endpoint = [self endpointForString:
                        [NSString stringWithFormat:@"/%@/features/%@.json",
-                        SIMPLEGEO_API_VERSION, featureId]];
+                        SIMPLEGEO_API_VERSION, handle]];
 
     ASIHTTPRequest *request = [self requestWithURL:endpoint];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                             @"didLoadFeature:", @"targetSelector",
-                            featureId, @"featureId",
+                            handle, @"handle",
                             nil
                           ]];
     [request startAsynchronous];
@@ -174,18 +174,18 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
 - (void)didLoadFeature:(ASIHTTPRequest *)request
 {
-    NSString *featureId = [[request userInfo] objectForKey:@"featureId"];
+    NSString *handle = [[request userInfo] objectForKey:@"handle"];
 
     if ([request responseStatusCode] == 404) {
         [delegate didLoadFeature:nil
-                          withId:[[featureId retain] autorelease]];
+                      withHandle:[[handle retain] autorelease]];
     } else {
         NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
-        SGFeature *feature = [SGFeature featureWithId:featureId
+        SGFeature *feature = [SGFeature featureWithId:handle
                                            dictionary:jsonResponse];
 
         [delegate didLoadFeature:[[feature retain] autorelease]
-                          withId:[[featureId retain] autorelease]];
+                      withHandle:[[handle retain] autorelease]];
     }
 }
 

@@ -8,25 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		5D1C1B4912A9A5170055EC91 /* SGGeometryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C1B4712A9A5170055EC91 /* SGGeometryTest.m */; };
-		5D1C1B9C12A9AD1A0055EC91 /* SGAPIClient+Context.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1C1B9A12A9AD1A0055EC91 /* SGAPIClient+Context.h */; };
+		5D1C1B9C12A9AD1A0055EC91 /* SGAPIClient+Context.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1C1B9A12A9AD1A0055EC91 /* SGAPIClient+Context.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D1C1B9D12A9AD1A0055EC91 /* SGAPIClient+Context.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C1B9B12A9AD1A0055EC91 /* SGAPIClient+Context.m */; };
 		5D1C1B9E12A9AD1A0055EC91 /* SGAPIClient+Context.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C1B9B12A9AD1A0055EC91 /* SGAPIClient+Context.m */; };
 		5D3990DF12A4642B00EB7B20 /* SGFeatureCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */; };
-		5D3990E012A4642B00EB7B20 /* SGFeatureCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3990DD12A4642B00EB7B20 /* SGFeatureCollection.h */; };
+		5D3990E012A4642B00EB7B20 /* SGFeatureCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3990DD12A4642B00EB7B20 /* SGFeatureCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D3990E112A4642B00EB7B20 /* SGFeatureCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */; };
 		5D3991E612A489EF00EB7B20 /* SGAPIClient+Places.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3991E512A489EF00EB7B20 /* SGAPIClient+Places.m */; };
-		5D3991E712A489EF00EB7B20 /* SGAPIClient+Places.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3991E412A489EF00EB7B20 /* SGAPIClient+Places.h */; };
+		5D3991E712A489EF00EB7B20 /* SGAPIClient+Places.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3991E412A489EF00EB7B20 /* SGAPIClient+Places.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D3991E812A489EF00EB7B20 /* SGAPIClient+Places.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3991E512A489EF00EB7B20 /* SGAPIClient+Places.m */; };
 		5D39921C12A48F3F00EB7B20 /* SGAPIClient+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39921B12A48F3F00EB7B20 /* SGAPIClient+Internal.m */; };
-		5D39921D12A48F3F00EB7B20 /* SGAPIClient+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39921A12A48F3F00EB7B20 /* SGAPIClient+Internal.h */; };
+		5D39921D12A48F3F00EB7B20 /* SGAPIClient+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39921A12A48F3F00EB7B20 /* SGAPIClient+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D39921E12A48F3F00EB7B20 /* SGAPIClient+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39921B12A48F3F00EB7B20 /* SGAPIClient+Internal.m */; };
 		5D39940E12A893D500EB7B20 /* SGAPIClientTest+Places.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39940D12A893D500EB7B20 /* SGAPIClientTest+Places.m */; };
 		5D39948812A8A2B600EB7B20 /* SGAPIClientTest+Context.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39948712A8A2B600EB7B20 /* SGAPIClientTest+Context.m */; };
 		5D3994E712A8A8A700EB7B20 /* SGGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3994E612A8A8A700EB7B20 /* SGGeometry.m */; };
-		5D3994E812A8A8A700EB7B20 /* SGGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3994E512A8A8A700EB7B20 /* SGGeometry.h */; };
+		5D3994E812A8A8A700EB7B20 /* SGGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3994E512A8A8A700EB7B20 /* SGGeometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D3994E912A8A8A700EB7B20 /* SGGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3994E612A8A8A700EB7B20 /* SGGeometry.m */; };
 		5D3994EE12A8AB4300EB7B20 /* SGPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */; };
-		5D3994EF12A8AB4300EB7B20 /* SGPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3994EC12A8AB4300EB7B20 /* SGPolygon.h */; };
+		5D3994EF12A8AB4300EB7B20 /* SGPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3994EC12A8AB4300EB7B20 /* SGPolygon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D3994F012A8AB4300EB7B20 /* SGPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */; };
 		5D5B02C71291A37700399A50 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5B02C61291A37700399A50 /* YAJL.framework */; };
 		5D5B036F1291BD4500399A50 /* SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B036E1291BD4500399A50 /* SGFeature.m */; };
@@ -45,7 +45,7 @@
 		5D7674D312909E58006B7D51 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674BA12909ABA006B7D51 /* libz.dylib */; };
 		5D7676151290EAE1006B7D51 /* SGAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7676131290EAE1006B7D51 /* SGAPIClient.m */; };
 		5D7676161290EAE1006B7D51 /* SGAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7676131290EAE1006B7D51 /* SGAPIClient.m */; };
-		5D7676171290EAE1006B7D51 /* SGAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7676141290EAE1006B7D51 /* SGAPIClient.h */; };
+		5D7676171290EAE1006B7D51 /* SGAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7676141290EAE1006B7D51 /* SGAPIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D76761C1290EB2A006B7D51 /* SGAPIClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7676181290EB2A006B7D51 /* SGAPIClientTest.m */; };
 		5D76761D1290EB2A006B7D51 /* SGFeatureTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7676191290EB2A006B7D51 /* SGFeatureTest.m */; };
 		5D76761E1290EB2A006B7D51 /* SGPointTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D76761A1290EB2A006B7D51 /* SGPointTest.m */; };
@@ -86,7 +86,7 @@
 		5D8C1614129DED38002F8C01 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1613129DED38002F8C01 /* NSString+URLEncoding.m */; };
 		5D8C1615129DED38002F8C01 /* NSString+URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8C1612129DED38002F8C01 /* NSString+URLEncoding.h */; };
 		5D8C1616129DED38002F8C01 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1613129DED38002F8C01 /* NSString+URLEncoding.m */; };
-		5DA3C345128E427C00E128DC /* SGPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA3C343128E427C00E128DC /* SGPoint.h */; };
+		5DA3C345128E427C00E128DC /* SGPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA3C343128E427C00E128DC /* SGPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DA3C346128E427C00E128DC /* SGPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3C344128E427C00E128DC /* SGPoint.m */; };
 		5DA3C35A128E449B00E128DC /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA3C359128E449B00E128DC /* GHUnit.framework */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };

@@ -29,19 +29,34 @@
 //
 
 
+/*!
+ * Collections of Features.
+ */
 @interface SGFeatureCollection : NSObject
 {
     NSArray* features;
 }
 
+//! Collected Features.
 @property (retain,readonly) NSArray* features;
 
 + (SGFeatureCollection *)featureCollectionWithDictionary:(NSDictionary *)features;
+
+/*!
+ * Create a FeatureCollection from a list of Features.
+ * @param features List of Features.
+ */
 + (SGFeatureCollection *)featureCollectionWithFeatures:(NSArray *)features;
 
 - (id)initWithDictionary:(NSDictionary *)features;
+
+/*!
+ * Construct a FeatureCollection from a list of Features.
+ * @param features List of Features.
+ */
 - (id)initWithFeatures:(NSArray *)features;
 
+//! Gets the number of features in this collection.
 - (NSUInteger)count;
 
 @end

@@ -40,7 +40,7 @@
  *
  * Hi, you've reached the documentation for SimpleGeo's Objective-C client.
  *
- * For more information, please hold.
+ * For more information, please look at the Class documentation.
  */
 
 extern NSString * const SIMPLEGEO_API_VERSION;
@@ -52,14 +52,25 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
  */
 @interface NSObject (SGAPIClientDelegate)
 
-//! Called when a feature has been loaded.
+/*!
+ * Called when a feature has been loaded. feature will be nil if it could not
+ * be found.
+ * @param feature Feature that was loaded.
+ * @param handle  Handle used to request this feature.
+ */
 - (void)didLoadFeature:(SGFeature *)feature
-            withHandle:(NSString *)featureId;
+            withHandle:(NSString *)handle;
 
-//! Called when a request has finished. (optional)
+/*!
+ * Called when a request has finished. (optional)
+ * @param request Request instance.
+ */
 - (void)requestDidFinish:(ASIHTTPRequest *)request;
 
-//! Called when a request has failed. (optional)
+/*!
+ * Called when a request has failed. (optional)
+ * @param request Request instance.
+ */
 - (void)requestDidFail:(ASIHTTPRequest *)request;
 
 @end
@@ -81,6 +92,13 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 @property (retain,readonly) NSString* consumerSecret;
 @property (retain,readonly) NSURL* url;
 
+/*!
+ * Create a client.
+ * @param delegate       Delegate. Must conform to SGAPIClientDelegate and
+ *                       other variants as appropriate.
+ * @param consumerKey    OAuth consumer key.
+ * @param consumerSecret OAuth consumer secret.
+ */
 + (SGAPIClient *)clientWithDelegate:(id)delegate
                         consumerKey:(NSString *)consumerKey
                      consumerSecret:(NSString *)consumerSecret;
@@ -89,6 +107,13 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
                      consumerSecret:(NSString *)consumerSecret
                                 URL:(NSURL *)url;
 
+/*!
+ * Construct a client.
+ * @param delegate       Delegate. Must conform to SGAPIClientDelegate and
+ *                       other variants as appropriate.
+ * @param consumerKey    OAuth consumer key.
+ * @param consumerSecret OAuth consumer secret.
+ */
 - (id)initWithDelegate:(id)delegate
            consumerKey:(NSString *)consumerKey
         consumerSecret:(NSString *)consumerSecret;
@@ -97,6 +122,10 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
         consumerSecret:(NSString *)consumerSecret
                    URL:(NSURL *)url;
 
+/*!
+ * Get a feature with a specific handle.
+ * @param handle Handle of feature being queried for.
+ */
 - (void)getFeatureWithHandle:(NSString *)handle;
 
 @end

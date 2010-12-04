@@ -29,11 +29,16 @@
 //
 
 
+/*!
+ * Abstract Geometry class/factory.
+ */
 @interface SGGeometry : NSObject
 
-/**
- * Suitable for "creating" SGGeometrys from other SGGeometrys or from
- * NSDictionaries (such as those present in a GeoJSON document).
+/*!\cond
+ * Factory method for creating subclasses of SGGeometry either from an
+ * SGGeometry instance or an NSDictionary containing a parsed GeoJSON
+ * document).
+ * \endcond
  */
 + (SGGeometry *)geometryWithGeometry:(id)geometry;
 

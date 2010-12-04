@@ -31,16 +31,30 @@
 #import "SGGeometry.h"
 
 
+/*!
+ * Polygon representation.
+ */
 @interface SGPolygon : SGGeometry
 {
     // array of arrays of SGPoints
     NSArray* rings;
 }
 
+//! LinearRings that define this polygon.
 @property (retain,readonly) NSArray* rings;
 
 + (SGPolygon *)polygonWithDictionary:(NSDictionary *)dictionary;
+
+/*!
+ * Create a polygon from a set of LinearRings.
+ * @param rings LinearRings.
+ */
 + (SGPolygon *)polygonWithRings:(NSArray *)rings;
+
+/*!
+ * Construct a polygon from a set of LinearRings.
+ * @ param rings LinearRings.
+ */
 - (id)initWithRings:(NSArray *)rings;
 
 @end

@@ -31,18 +31,36 @@
 #import "SGGeometry.h"
 
 
+/*!
+ * Point representation.
+ */
 @interface SGPoint : SGGeometry
 {
     double latitude;
     double longitude;
 }
 
+//! Latitude (y coordinate).
 @property (readonly) double latitude;
+
+//! Longitude (x coordinate).
 @property (readonly) double longitude;
 
 + (SGPoint *)pointWithDictionary:(NSDictionary *)dictionary;
+
+/*!
+ * Create a point from a pair of coordinates.
+ * @param latitude Latitude.
+ * @param longitude Longitude.
+ */
 + (SGPoint *)pointWithLatitude:(double)latitude
-                     longitude:(double) longitude;
+                     longitude:(double)longitude;
+
+/*!
+ * Construct a point from a pair of coordinates.
+ * @param latitude Latitude.
+ * @param longitude Longitude.
+ */
 - (id)initWithLatitude:(double)latitude
              longitude:(double)longitude;
 

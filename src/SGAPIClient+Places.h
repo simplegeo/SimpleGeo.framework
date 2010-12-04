@@ -31,34 +31,100 @@
 #import "SGAPIClient.h"
 
 
+/*!
+ * Informal delegate protocol for Places functionality.
+ */
 @interface NSObject (SGAPIClientPlaceDelegate)
 
+/*!
+ * Called when a feature was successfully added to the Places database.
+ * @param feature Feature that was added.
+ * @param handle  Assigned handle.
+ * @param url     Canonical URL for the created feature.
+ * @token token   Status token.
+ */
 - (void)didAddPlace:(SGFeature *)feature
              handle:(NSString *)handle
                 URL:(NSURL *)url
               token:(NSString *)token;
+
+/*!
+ * Called when a place was successfully removed from the Places database.
+ * @param handle Handle of deleted place.
+ * @param token  Status token.
+ */
 - (void)didDeletePlace:(NSString *)handle
                  token:(NSString *)token;
+
+/*!
+ * Called when a collection of places were loaded from the Places database.
+ * @param places   Collection of places.
+ * @param point    Query point.
+ * @param query    Query string (may be nil).
+ * @param category Query category (may be nil).
+ */
 - (void)didLoadPlaces:(SGFeatureCollection *)places
                  near:(SGPoint *)point
              matching:(NSString *)query
            inCategory:(NSString *)category;
+
+/*!
+ * Called when a place was successfully updated in the Places database.
+ * @param handle Handle of updated place.
+ * @param token  Status token.
+ */
 - (void)didUpdatePlace:(NSString *)handle
                  token:(NSString *)token;
 
 @end
 
 
+/*!
+ * Client support for the Places API.
+ */
 @interface SGAPIClient (Places)
 
+/*!
+ * Add a feature to the Places database (SGAPIClient+Places.h).
+ * @param feature Feature to add.
+ */
 - (void)addPlace:(SGFeature *)feature;
+
+/*!
+ * Delete a place from the Places database (SGAPIClient+Places.h).
+ * @param handle Handle of feature to remove.
+ */
 - (void)deletePlace:(NSString *)handle;
+
+/*!
+ * Find places near a point (SGAPIClient+Places.h).
+ * @param point Query point.
+ */
 - (void)getPlacesNear:(SGPoint *)point;
+
+/*!
+ * Find places near a point matching a query string (SGAPIClient+Places.h).
+ * @param point Query point.
+ * @param query Query string.
+ */
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query;
+
+/*!
+ * Find places near a point matching a query string in a specific category (SGAPIClient+Places.h).
+ * @param point    Query point.
+ * @param query    Query string.
+ * @param category Query category.
+ */
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
            inCategory:(NSString *)category;
+
+/*!
+ * Update a place in the Places database (SGAPIClient+Places.h).
+ * @param handle Handle of feature to update.
+ * @param data   Data to update with (geometry/properties optional).
+ */
 - (void)updatePlace:(NSString *)handle
                with:(SGFeature *)data;
 

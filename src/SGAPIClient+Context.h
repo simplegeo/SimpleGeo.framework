@@ -30,17 +30,31 @@
 
 #import "SGAPIClient.h"
 
-
+/*!
+ * Informal delegate protocol for Context functionality.
+ */
 @interface NSObject (SGAPIClientContextDelegate)
 
+/*!
+ * Called when Context information has been loaded.
+ * @param context Context response.
+ * @param point   Query point.
+ */
 - (void)didLoadContext:(NSDictionary *)context
                     for:(SGPoint *)point;
 
 @end
 
 
+/*!
+ * Client support for the Places API.
+ */
 @interface SGAPIClient (Context)
 
+/*!
+ * Get a Context information for a specific point (SGAPIClient+Context.h).
+ * @param point Query point.
+ */
 - (void)getContextFor:(SGPoint *)point;
 
 @end

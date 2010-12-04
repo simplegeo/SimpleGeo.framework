@@ -42,7 +42,7 @@ get '/1.0/places/:lat,:lon.json' do
   end
 end
 
-post '/1.0/places/:id.json' do
+post '/1.0/features/:id.json' do
   # Update a record
   # Requires a partial (or full) GeoJSON object, any fields you set in it
   # replace the fields of the record with the matching ID.
@@ -57,8 +57,7 @@ post '/1.0/places/:id.json' do
   end
 end
 
-# TODO does this move to /1.0/features?
-delete '/1.0/places/:id.json' do
+delete '/1.0/features/:id.json' do
   # Delete a record.
   # Requires a single SimpleGeo ID
   # Returns a status polling token

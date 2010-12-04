@@ -53,7 +53,7 @@
 
 - (void)deletePlace:(NSString *)handle
 {
-    NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/places/%@.json",
+    NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/features/%@.json",
                                                   SIMPLEGEO_API_VERSION, handle]];
 
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
@@ -117,7 +117,7 @@
 - (void)updatePlace:(NSString *)handle
                with:(SGFeature *)feature
 {
-    NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/places/%@.json",
+    NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/features/%@.json",
                                                   SIMPLEGEO_API_VERSION, handle]];
 
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
@@ -143,7 +143,7 @@
     [delegate didAddPlace:[[[[request userInfo] objectForKey:@"feature"] retain] autorelease]
                    handle:[[[jsonResponse objectForKey:@"id"] retain] autorelease]
                       URL:[[placeURL retain] autorelease]
-                    token:[[[jsonResponse objectForKey:@"token"] retain] autorelease]];    
+                    token:[[[jsonResponse objectForKey:@"token"] retain] autorelease]];
 }
 
 - (void)didDeletePlace:(ASIHTTPRequest *)request

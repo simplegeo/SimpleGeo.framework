@@ -32,12 +32,12 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>didLoadFeature:withHandle:</Name>
+      <Name>didLoadFeature:handle:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
     </TokenIdentifier>
     <Path>interface_n_s_object_07_simple_geo_delegate_08.html</Path>
-    <Anchor>a49d7b3cf25b36499771418f73f358fef</Anchor>
+    <Anchor>ac0b93df7282d787efa370f26f8c035dd</Anchor>
     <Abstract>Called when a feature has been loaded.</Abstract>
   </Token>
   <Token>

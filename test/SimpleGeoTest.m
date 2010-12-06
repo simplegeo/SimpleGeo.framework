@@ -1,5 +1,5 @@
 //
-//  SGAPIClientTest.m
+//  SimpleGeoTest.m
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,14 +28,14 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGAPIClientTest.h"
+#import "SimpleGeoTest.h"
 #import "SGPolygon.h"
 
 
 NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 
-@implementation SGAPIClientTest
+@implementation SimpleGeoTest
 
 - (BOOL)shouldRunOnMainThread
 {
@@ -44,10 +44,10 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 #pragma mark Utility Methods
 
-- (SGAPIClient *)createClient
+- (SimpleGeo *)createClient
 {
     NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
-    return [[[SGAPIClient clientWithDelegate:self
+    return [[[SimpleGeo clientWithDelegate:self
                                  consumerKey:@"consumerKey"
                               consumerSecret:@"consumerSecret"
                                          URL:url] retain] autorelease];
@@ -64,7 +64,7 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 {
     NSURL *url = [NSURL URLWithString:SIMPLEGEO_URL_PREFIX];
     GHTestLog(@"SimpleGeo URL prefix: %@", SIMPLEGEO_URL_PREFIX);
-    SGAPIClient *client = [SGAPIClient clientWithDelegate:self
+    SimpleGeo *client = [SimpleGeo clientWithDelegate:self
                                               consumerKey:@""
                                            consumerSecret:@""];
 
@@ -74,7 +74,7 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 - (void)testCreateClientWithURL
 {
     NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
-    SGAPIClient *client = [SGAPIClient clientWithDelegate:self
+    SimpleGeo *client = [SimpleGeo clientWithDelegate:self
                                               consumerKey:@""
                                            consumerSecret:@""
                                                       URL:url];
@@ -88,7 +88,7 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 {
     [self prepare];
 
-    SGAPIClient *client = [self createClient];
+    SimpleGeo *client = [self createClient];
 
     [client getFeatureWithHandle:@"SG_0Bw22I6fWoxnZ4GDc8YlXd"];
 
@@ -100,7 +100,7 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 {
     [self prepare];
 
-    SGAPIClient *client = [self createClient];
+    SimpleGeo *client = [self createClient];
 
     [client getFeatureWithHandle:@"SG_4CsrE4oNy1gl8hCLdwu0F0"];
 
@@ -112,7 +112,7 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 {
     [self prepare];
 
-    SGAPIClient *client = [self createClient];
+    SimpleGeo *client = [self createClient];
 
     [client getFeatureWithHandle:@"foo"];
 
@@ -125,7 +125,7 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     [self prepare];
 
     NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
-    SGAPIClient *client = [SGAPIClient clientWithDelegate:self
+    SimpleGeo *client = [SimpleGeo clientWithDelegate:self
                                               consumerKey:@"invalidKey"
                                            consumerSecret:@"invalidSecret"
                                                       URL:url];
@@ -140,7 +140,7 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 {
     [self prepare];
 
-    SGAPIClient *client = [self createClient];
+    SimpleGeo *client = [self createClient];
 
     [client getFeatureWithHandle:@"requestDidFinish"];
 
@@ -148,7 +148,7 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
                 timeout:0.25];
 }
 
-#pragma mark SGAPIClientDelegate Methods
+#pragma mark SimpleGeoDelegate Methods
 
 - (void)requestDidFinish:(ASIHTTPRequest *)request
 {

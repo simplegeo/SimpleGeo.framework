@@ -1,5 +1,5 @@
 //
-//  SGAPIClient.h
+//  SimpleGeo.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -54,7 +54,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 /*!
  * Informal delegate protocol for core functionality.
  */
-@interface NSObject (SGAPIClientDelegate)
+@interface NSObject (SimpleGeoDelegate)
 
 /*!
  * Called when a feature has been loaded. feature will be nil if it could not
@@ -83,7 +83,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 /*!
  * SimpleGeo client interface.
  */
-@interface SGAPIClient : NSObject
+@interface SimpleGeo : NSObject
 {
     id delegate;
     NSString* consumerKey;
@@ -98,23 +98,23 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 
 /*!
  * Create a client.
- * @param delegate       Delegate. Must conform to SGAPIClientDelegate and
- *                       other variants as appropriate.
+ * @param delegate       Delegate. Must conform to SimpleGeoDelegate and other
+ *                       variants as appropriate.
  * @param consumerKey    OAuth consumer key.
  * @param consumerSecret OAuth consumer secret.
  */
-+ (SGAPIClient *)clientWithDelegate:(id)delegate
-                        consumerKey:(NSString *)consumerKey
-                     consumerSecret:(NSString *)consumerSecret;
-+ (SGAPIClient *)clientWithDelegate:(id)delegate
-                        consumerKey:(NSString *)consumerKey
-                     consumerSecret:(NSString *)consumerSecret
-                                URL:(NSURL *)url;
++ (SimpleGeo *)clientWithDelegate:(id)delegate
+                      consumerKey:(NSString *)consumerKey
+                   consumerSecret:(NSString *)consumerSecret;
++ (SimpleGeo *)clientWithDelegate:(id)delegate
+                      consumerKey:(NSString *)consumerKey
+                   consumerSecret:(NSString *)consumerSecret
+                              URL:(NSURL *)url;
 
 /*!
  * Construct a client.
- * @param delegate       Delegate. Must conform to SGAPIClientDelegate and
- *                       other variants as appropriate.
+ * @param delegate       Delegate. Must conform to SimpleGeoDelegate and other
+ *                       variants as appropriate.
  * @param consumerKey    OAuth consumer key.
  * @param consumerSecret OAuth consumer secret.
  */

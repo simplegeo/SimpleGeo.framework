@@ -1,5 +1,5 @@
 //
-//  SGAPIClient.m
+//  SimpleGeo.m
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -30,22 +30,22 @@
 
 #import <YAJL/YAJL.h>
 #import "NSArray+SGFeature.h"
-#import "SGAPIClient.h"
-#import "SGAPIClient+Internal.h"
+#import "SimpleGeo.h"
+#import "SimpleGeo+Internal.h"
 
 
 NSString * const SIMPLEGEO_API_VERSION = @"1.0";
 NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
 
-@interface SGAPIClient ()
+@interface SimpleGeo ()
 
 - (void)requestFailed:(ASIHTTPRequest *)request;
 
 @end
 
 
-@implementation SGAPIClient
+@implementation SimpleGeo
 
 @synthesize consumerKey;
 @synthesize consumerSecret;
@@ -54,22 +54,22 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
 #pragma mark Class Methods
 
-+ (SGAPIClient *)clientWithDelegate:(id)delegate
++ (SimpleGeo *)clientWithDelegate:(id)delegate
                         consumerKey:(NSString *)consumerKey
                      consumerSecret:(NSString *)consumerSecret
 {
-    return [SGAPIClient clientWithDelegate:delegate
+    return [SimpleGeo clientWithDelegate:delegate
                                consumerKey:consumerKey
                             consumerSecret:consumerSecret
                                        URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];
 }
 
-+ (SGAPIClient *)clientWithDelegate:(id)delegate
++ (SimpleGeo *)clientWithDelegate:(id)delegate
                         consumerKey:(NSString *)consumerKey
                      consumerSecret:(NSString *)consumerSecret
                                 URL:(NSURL *)url
 {
-    return [[[SGAPIClient alloc] initWithDelegate:delegate
+    return [[[SimpleGeo alloc] initWithDelegate:delegate
                                       consumerKey:consumerKey
                                    consumerSecret:consumerSecret
                                               URL:url] autorelease];

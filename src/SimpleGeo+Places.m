@@ -1,5 +1,5 @@
 //
-//  SGAPIClient+Places.m
+//  SimpleGeo+Places.m
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -29,11 +29,11 @@
 //
 
 #import <YAJL/YAJL.h>
-#import "SGAPIClient+Places.h"
-#import "SGAPIClient+Internal.h"
+#import "SimpleGeo+Places.h"
+#import "SimpleGeo+Internal.h"
 
 
-@implementation SGAPIClient (Places)
+@implementation SimpleGeo (Places)
 
 - (void)addPlace:(SGFeature *)feature
 {

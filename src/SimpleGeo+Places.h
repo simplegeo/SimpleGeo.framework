@@ -1,5 +1,5 @@
 //
-//  SGAPIClient+Places.h
+//  SimpleGeo+Places.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,13 +28,13 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGAPIClient.h"
+#import "SimpleGeo.h"
 
 
 /*!
  * Informal delegate protocol for Places functionality.
  */
-@interface NSObject (SGAPIClientPlaceDelegate)
+@interface NSObject (SimpleGeoPlaceDelegate)
 
 /*!
  * Called when a feature was successfully added to the Places database.
@@ -82,28 +82,28 @@
 /*!
  * Client support for the Places API.
  */
-@interface SGAPIClient (Places)
+@interface SimpleGeo (Places)
 
 /*!
- * Add a feature to the Places database (SGAPIClient+Places.h).
+ * Add a feature to the Places database (SimpleGeo+Places.h).
  * @param feature Feature to add.
  */
 - (void)addPlace:(SGFeature *)feature;
 
 /*!
- * Delete a place from the Places database (SGAPIClient+Places.h).
+ * Delete a place from the Places database (SimpleGeo+Places.h).
  * @param handle Handle of feature to remove.
  */
 - (void)deletePlace:(NSString *)handle;
 
 /*!
- * Find places near a point (SGAPIClient+Places.h).
+ * Find places near a point (SimpleGeo+Places.h).
  * @param point Query point.
  */
 - (void)getPlacesNear:(SGPoint *)point;
 
 /*!
- * Find places near a point matching a query string (SGAPIClient+Places.h).
+ * Find places near a point matching a query string (SimpleGeo+Places.h).
  * @param point Query point.
  * @param query Query string.
  */
@@ -111,7 +111,7 @@
              matching:(NSString *)query;
 
 /*!
- * Find places near a point matching a query string in a specific category (SGAPIClient+Places.h).
+ * Find places near a point matching a query string in a specific category (SimpleGeo+Places.h).
  * @param point    Query point.
  * @param query    Query string.
  * @param category Query category.
@@ -121,7 +121,7 @@
            inCategory:(NSString *)category;
 
 /*!
- * Update a place in the Places database (SGAPIClient+Places.h).
+ * Update a place in the Places database (SimpleGeo+Places.h).
  * @param handle Handle of feature to update.
  * @param data   Data to update with (geometry/properties optional).
  */

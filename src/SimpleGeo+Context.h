@@ -1,5 +1,5 @@
 //
-//  SGAPIClient+Internal.m
+//  SimpleGeo+Context.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,31 +28,33 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "ASIHTTPRequest+OAuth.h"
-#import "SGAPIClient+Internal.h"
+#import "SimpleGeo.h"
+
+/*!
+ * Informal delegate protocol for Context functionality.
+ */
+@interface NSObject (SimpleGeoContextDelegate)
+
+/*!
+ * Called when Context information has been loaded.
+ * @param context Context response.
+ * @param point   Query point.
+ */
+- (void)didLoadContext:(NSDictionary *)context
+                    for:(SGPoint *)point;
+
+@end
 
 
-NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.0";
+/*!
+ * Client support for the Places API.
+ */
+@interface SimpleGeo (Context)
 
-
-@implementation SGAPIClient (Internal)
-
-- (NSURL *)endpointForString:(NSString *)path
-{
-    return [[[NSURL alloc] initWithString:path relativeToURL:url] autorelease];
-}
-
-- (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL
-{
-    ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:aURL
-                                                      consumerKey:consumerKey
-                                                   consumerSecret:consumerSecret];
-    [request setDelegate:self];
-    [request setShouldRedirect:NO];
-    [request addRequestHeader:@"User-Agent" value:USER_AGENT];
-    [request addRequestHeader:@"Accept" value:@"application/json, application/javascript, */*"];
-
-    return [request autorelease];
-}
+/*!
+ * Get a Context information for a specific point (SimpleGeo+Context.h).
+ * @param point Query point.
+ */
+- (void)getContextFor:(SGPoint *)point;
 
 @end

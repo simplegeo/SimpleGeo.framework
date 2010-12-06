@@ -1,5 +1,5 @@
 //
-//  SGAPIClientTest+Places.m
+//  SimpleGeoTest+Places.m
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,10 +28,10 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGAPIClientTest.h"
-#import "SGAPIClient+Places.h"
+#import "SimpleGeoTest.h"
+#import "SimpleGeo+Places.h"
 
-@implementation SGAPIClientTest (Places)
+@implementation SimpleGeoTest (Places)
 
 - (void)testAddPlace
 {
@@ -111,7 +111,7 @@
                 timeout:0.25];
 }
 
-#pragma mark SGAPIClientPlaceDelegate Methods
+#pragma mark SimpleGeoPlaceDelegate Methods
 
 - (void)didAddPlace:(SGFeature *)feature
              handle:(NSString *)handle

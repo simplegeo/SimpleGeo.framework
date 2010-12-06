@@ -1,5 +1,5 @@
 //
-//  SGAPIClient+Internal.h
+//  SimpleGeoTest.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,12 +28,13 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGAPIClient.h"
+#import <GHUnit/GHUnit.h>
+#import "SimpleGeo.h"
 
 
-@interface SGAPIClient (Internal)
+@interface SimpleGeoTest : GHAsyncTestCase
 
-- (NSURL *)endpointForString:(NSString *)path;
-- (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL;
+- (SimpleGeo *)createClient;
+- (SGPoint *)point;
 
 @end

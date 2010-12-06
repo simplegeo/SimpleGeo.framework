@@ -1,5 +1,5 @@
 //
-//  SGAPIClient+Context.h
+//  SimpleGeoTest+Context.m
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,33 +28,32 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGAPIClient.h"
+#import "SimpleGeoTest.h"
+#import "SimpleGeo+Context.h"
 
-/*!
- * Informal delegate protocol for Context functionality.
- */
-@interface NSObject (SGAPIClientContextDelegate)
+@implementation SimpleGeoTest (Context)
 
-/*!
- * Called when Context information has been loaded.
- * @param context Context response.
- * @param point   Query point.
- */
+- (void)testGetContextFor
+{
+    [self prepare];
+
+    [[self createClient] getContextFor:[self point]];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
+#pragma mark SimpleGeoContextDelegate Methods
+
 - (void)didLoadContext:(NSDictionary *)context
-                    for:(SGPoint *)point;
+                   for:(SGPoint *)point
+{
+    GHAssertNotNil([context objectForKey:@"demographics"], nil);
+    GHAssertNotNil([context objectForKey:@"weather"], nil);
+    GHAssertTrue([[context objectForKey:@"features"] isKindOfClass:[NSArray class]], nil);
 
-@end
-
-
-/*!
- * Client support for the Places API.
- */
-@interface SGAPIClient (Context)
-
-/*!
- * Get a Context information for a specific point (SGAPIClient+Context.h).
- * @param point Query point.
- */
-- (void)getContextFor:(SGPoint *)point;
+    [self notify:kGHUnitWaitStatusSuccess
+     forSelector:@selector(testGetContextFor)];
+}
 
 @end

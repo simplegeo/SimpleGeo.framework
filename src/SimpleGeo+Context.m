@@ -1,5 +1,5 @@
 //
-//  SGAPIClient+Context.m
+//  SimpleGeo+Context.m
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -29,11 +29,11 @@
 //
 
 #import <YAJL/YAJL.h>
-#import "SGAPIClient+Context.h"
-#import "SGAPIClient+Internal.h"
+#import "SimpleGeo+Context.h"
+#import "SimpleGeo+Internal.h"
 
 
-@implementation SGAPIClient (Context)
+@implementation SimpleGeo (Context)
 
 - (void)getContextFor:(SGPoint *)point
 {

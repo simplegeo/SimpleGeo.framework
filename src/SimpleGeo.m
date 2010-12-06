@@ -175,14 +175,14 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
     if ([request responseStatusCode] == 404) {
         [delegate didLoadFeature:nil
-                      withHandle:[[handle retain] autorelease]];
+                          handle:[[handle retain] autorelease]];
     } else {
         NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
         SGFeature *feature = [SGFeature featureWithId:handle
                                            dictionary:jsonResponse];
 
         [delegate didLoadFeature:[[feature retain] autorelease]
-                      withHandle:[[handle retain] autorelease]];
+                          handle:[[handle retain] autorelease]];
     }
 }
 

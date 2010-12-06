@@ -63,7 +63,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
  * @param handle  Handle used to request this feature.
  */
 - (void)didLoadFeature:(SGFeature *)feature
-            withHandle:(NSString *)handle;
+                handle:(NSString *)handle;
 
 /*!
  * Called when a request has finished. (optional)

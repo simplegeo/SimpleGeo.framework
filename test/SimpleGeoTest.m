@@ -168,7 +168,7 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 }
 
 - (void)didLoadFeature:(SGFeature *)feature
-            withHandle:(NSString *)handle
+                handle:(NSString *)handle
 {
     if ([handle isEqual:@"SG_4CsrE4oNy1gl8hCLdwu0F0"]) {
         GHAssertEqualObjects([feature featureId],

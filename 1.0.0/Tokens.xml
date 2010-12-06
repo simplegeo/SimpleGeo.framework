@@ -2,13 +2,13 @@
 <Tokens version="1.0">
   <Token>
     <TokenIdentifier>
-      <Name>NSObject(SGAPIClientContextDelegate)</Name>
+      <Name>NSObject(SimpleGeoContextDelegate)</Name>
       <APILanguage>c</APILanguage>
       <Type>cl</Type>
     </TokenIdentifier>
-    <Path>interface_n_s_object_07_s_g_a_p_i_client_context_delegate_08.html</Path>
+    <Path>interface_n_s_object_07_simple_geo_context_delegate_08.html</Path>
     <Abstract>Informal delegate protocol for Context functionality.</Abstract>
-    <DeclaredIn>SGAPIClient+Context.h</DeclaredIn>
+    <DeclaredIn>SimpleGeo+Context.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -16,19 +16,19 @@
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
     </TokenIdentifier>
-    <Path>interface_n_s_object_07_s_g_a_p_i_client_context_delegate_08.html</Path>
-    <Anchor>ad43b1f1a5ca1778c2a4b5f782cfbd2a5</Anchor>
+    <Path>interface_n_s_object_07_simple_geo_context_delegate_08.html</Path>
+    <Anchor>a642b091e529a743c0555b04395045ac3</Anchor>
     <Abstract>Called when Context information has been loaded.</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>NSObject(SGAPIClientDelegate)</Name>
+      <Name>NSObject(SimpleGeoDelegate)</Name>
       <APILanguage>c</APILanguage>
       <Type>cl</Type>
     </TokenIdentifier>
-    <Path>interface_n_s_object_07_s_g_a_p_i_client_delegate_08.html</Path>
+    <Path>interface_n_s_object_07_simple_geo_delegate_08.html</Path>
     <Abstract>Informal delegate protocol for core functionality.</Abstract>
-    <DeclaredIn>SGAPIClient.h</DeclaredIn>
+    <DeclaredIn>SimpleGeo.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -36,8 +36,8 @@
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
     </TokenIdentifier>
-    <Path>interface_n_s_object_07_s_g_a_p_i_client_delegate_08.html</Path>
-    <Anchor>ae406769a7c76d4136b1eee3f04a994ea</Anchor>
+    <Path>interface_n_s_object_07_simple_geo_delegate_08.html</Path>
+    <Anchor>a49d7b3cf25b36499771418f73f358fef</Anchor>
     <Abstract>Called when a feature has been loaded.</Abstract>
   </Token>
   <Token>
@@ -46,8 +46,8 @@
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
     </TokenIdentifier>
-    <Path>interface_n_s_object_07_s_g_a_p_i_client_delegate_08.html</Path>
-    <Anchor>a803676bc954e6dc79f17897d92bb534a</Anchor>
+    <Path>interface_n_s_object_07_simple_geo_delegate_08.html</Path>
+    <Anchor>ab87bcbcd48a03be928882a8986137650</Anchor>
     <Abstract>Called when a request has finished.</Abstract>
   </Token>
   <Token>
@@ -56,19 +56,19 @@
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
     </TokenIdentifier>
-    <Path>interface_n_s_object_07_s_g_a_p_i_client_delegate_08.html</Path>
-    <Anchor>a3e4d573a835085451541ff11d271d618</Anchor>
+    <Path>interface_n_s_object_07_simple_geo_delegate_08.html</Path>
+    <Anchor>ae614b719fe223b8968a2f6b72ad7e314</Anchor>
     <Abstract>Called when a request has failed.</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>NSObject(SGAPIClientPlaceDelegate)</Name>
+      <Name>NSObject(SimpleGeoPlaceDelegate)</Name>
       <APILanguage>c</APILanguage>
       <Type>cl</Type>
     </TokenIdentifier>
-    <Path>interface_n_s_object_07_s_g_a_p_i_client_place_delegate_08.html</Path>
+    <Path>interface_n_s_object_07_simple_geo_place_delegate_08.html</Path>
     <Abstract>Informal delegate protocol for Places functionality.</Abstract>
-    <DeclaredIn>SGAPIClient+Places.h</DeclaredIn>
+    <DeclaredIn>SimpleGeo+Places.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -76,8 +76,8 @@
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
     </TokenIdentifier>
-    <Path>interface_n_s_object_07_s_g_a_p_i_client_place_delegate_08.html</Path>
-    <Anchor>a7bb77d24ded28567fc0326a04d8b7554</Anchor>
+    <Path>interface_n_s_object_07_simple_geo_place_delegate_08.html</Path>
+    <Anchor>a176f8ecbc3524e96205929f2aafa2d90</Anchor>
     <Abstract>Called when a feature was successfully added to the Places database.</Abstract>
   </Token>
   <Token>
@@ -86,8 +86,8 @@
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
     </TokenIdentifier>
-    <Path>interface_n_s_object_07_s_g_a_p_i_client_place_delegate_08.html</Path>
-    <Anchor>a5528dd155898cc1897c4a99840eab420</Anchor>
+    <Path>interface_n_s_object_07_simple_geo_place_delegate_08.html</Path>
+    <Anchor>ab65168648c0394b6bcbc15fa6021ea80</Anchor>
     <Abstract>Called when a place was successfully removed from the Places database.</Abstract>
   </Token>
   <Token>
@@ -96,8 +96,8 @@
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
     </TokenIdentifier>
-    <Path>interface_n_s_object_07_s_g_a_p_i_client_place_delegate_08.html</Path>
-    <Anchor>afd63873fe0d5d103d45e975bfeb25af4</Anchor>
+    <Path>interface_n_s_object_07_simple_geo_place_delegate_08.html</Path>
+    <Anchor>a51e033d7e2181d66f72e6b31a10670b7</Anchor>
     <Abstract>Called when a collection of places were loaded from the Places database.</Abstract>
   </Token>
   <Token>
@@ -106,119 +106,9 @@
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
     </TokenIdentifier>
-    <Path>interface_n_s_object_07_s_g_a_p_i_client_place_delegate_08.html</Path>
-    <Anchor>ae572dda4090b4ee3d0cc4474697abd20</Anchor>
+    <Path>interface_n_s_object_07_simple_geo_place_delegate_08.html</Path>
+    <Anchor>a59b07c1d3c9f999d3f8480fc3193a74e</Anchor>
     <Abstract>Called when a place was successfully updated in the Places database.</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>SGAPIClient</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-    </TokenIdentifier>
-    <Path>class_s_g_a_p_i_client.html</Path>
-    <Abstract>SimpleGeo client interface.</Abstract>
-    <DeclaredIn>SGAPIClient.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>initWithDelegate:consumerKey:consumerSecret:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-    </TokenIdentifier>
-    <Path>class_s_g_a_p_i_client.html</Path>
-    <Anchor>a86659dba9f8ba2c6b549dd4105dbd5e2</Anchor>
-    <Abstract>Construct a client.</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>getFeatureWithHandle:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-    </TokenIdentifier>
-    <Path>class_s_g_a_p_i_client.html</Path>
-    <Anchor>a66677dfe489b0f8566c9df830a5559a6</Anchor>
-    <Abstract>Get a feature with a specific handle.</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>getContextFor:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-    </TokenIdentifier>
-    <Path>class_s_g_a_p_i_client.html</Path>
-    <Anchor>a0db78dff62d4a1127b668e5dd1072c7b</Anchor>
-    <Abstract>Get a Context information for a specific point (SGAPIClient+Context.h).</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>addPlace:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-    </TokenIdentifier>
-    <Path>class_s_g_a_p_i_client.html</Path>
-    <Anchor>a9fa7555c1d037605db53d8c054bd3a9b</Anchor>
-    <Abstract>Add a feature to the Places database (SGAPIClient+Places.h).</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>deletePlace:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-    </TokenIdentifier>
-    <Path>class_s_g_a_p_i_client.html</Path>
-    <Anchor>a5cc578692634f6c3c04ffea13edc35ea</Anchor>
-    <Abstract>Delete a place from the Places database (SGAPIClient+Places.h).</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>getPlacesNear:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-    </TokenIdentifier>
-    <Path>class_s_g_a_p_i_client.html</Path>
-    <Anchor>a3e0b737503c40ff1247d9f76949b52ea</Anchor>
-    <Abstract>Find places near a point (SGAPIClient+Places.h).</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>getPlacesNear:matching:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-    </TokenIdentifier>
-    <Path>class_s_g_a_p_i_client.html</Path>
-    <Anchor>a178fd02392e4d3d352f3af663d846b9d</Anchor>
-    <Abstract>Find places near a point matching a query string (SGAPIClient+Places.h).</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>getPlacesNear:matching:inCategory:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-    </TokenIdentifier>
-    <Path>class_s_g_a_p_i_client.html</Path>
-    <Anchor>aab716addc4e7a9228be3a37b6df653c5</Anchor>
-    <Abstract>Find places near a point matching a query string in a specific category (SGAPIClient+Places.h).</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>updatePlace:with:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-    </TokenIdentifier>
-    <Path>class_s_g_a_p_i_client.html</Path>
-    <Anchor>a75a536732cf20086bb06db4f4944b836</Anchor>
-    <Abstract>Update a place in the Places database (SGAPIClient+Places.h).</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>clientWithDelegate:consumerKey:consumerSecret:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-    </TokenIdentifier>
-    <Path>class_s_g_a_p_i_client.html</Path>
-    <Anchor>a90b75b03e6480230aea0d39573ab9762</Anchor>
-    <Abstract>Create a client.</Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -509,5 +399,115 @@
     <Path>interface_s_g_polygon.html</Path>
     <Anchor>a6a869a045e60128c5ede0c64ff07a461</Anchor>
     <Abstract>LinearRings that define this polygon.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>SimpleGeo</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Abstract>SimpleGeo client interface.</Abstract>
+    <DeclaredIn>SimpleGeo.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithDelegate:consumerKey:consumerSecret:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a24e9428dec76df19296a58261d857054</Anchor>
+    <Abstract>Construct a client.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getFeatureWithHandle:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a7bea3d10a3e81f9c415817cd00b6e819</Anchor>
+    <Abstract>Get a feature with a specific handle.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getContextFor:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a432b82cb3ba5e0c06df2701f0ac371e9</Anchor>
+    <Abstract>Get a Context information for a specific point (SimpleGeo+Context.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>addPlace:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>ace22132cdfae46eb39d9e66b5ea2c5c6</Anchor>
+    <Abstract>Add a feature to the Places database (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>deletePlace:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a7d02c76929e443b13335898bcea01422</Anchor>
+    <Abstract>Delete a place from the Places database (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNear:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>ac3ed8c2860ad761abf71d62aceb17dd1</Anchor>
+    <Abstract>Find places near a point (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNear:matching:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a004049233b063343015a647b610c14d8</Anchor>
+    <Abstract>Find places near a point matching a query string (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNear:matching:inCategory:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>af19eccc317704ca45a7e28a2a68cdc18</Anchor>
+    <Abstract>Find places near a point matching a query string in a specific category (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>updatePlace:with:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a2dceb5ec5b282c1bd664f5eacdc1b08f</Anchor>
+    <Abstract>Update a place in the Places database (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>clientWithDelegate:consumerKey:consumerSecret:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a7a8dbe5eef1c0354f306d94965178798</Anchor>
+    <Abstract>Create a client.</Abstract>
   </Token>
 </Tokens>

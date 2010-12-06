@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>SimpleGeo: Member List</title>
+<title>SimpleGeo: NSObject(SimpleGeoContextDelegate) Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javaScript" src="search/search.js"></script>
@@ -47,22 +47,68 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
-<h1>SGAPIClient Member List</h1>  </div>
+<h1>NSObject(SimpleGeoContextDelegate) Class Reference</h1>  </div>
 </div>
 <div class="contents">
-This is the complete list of members for <a class="el" href="class_s_g_a_p_i_client.html">SGAPIClient</a>, including all inherited members.<table>
-  <tr class="memlist"><td>-&#160;</td><td><a class="el" href="class_s_g_a_p_i_client.html#a9fa7555c1d037605db53d8c054bd3a9b">addPlace:</a></td><td><a class="el" href="class_s_g_a_p_i_client.html">SGAPIClient(Places)</a></td><td></td></tr>
-  <tr class="memlist"><td>+&#160;</td><td><a class="el" href="class_s_g_a_p_i_client.html#a90b75b03e6480230aea0d39573ab9762">clientWithDelegate:consumerKey:consumerSecret:</a></td><td><a class="el" href="class_s_g_a_p_i_client.html">SGAPIClient</a></td><td><code> [static]</code></td></tr>
-  <tr class="memlist"><td>-&#160;</td><td><a class="el" href="class_s_g_a_p_i_client.html#a5cc578692634f6c3c04ffea13edc35ea">deletePlace:</a></td><td><a class="el" href="class_s_g_a_p_i_client.html">SGAPIClient(Places)</a></td><td></td></tr>
-  <tr class="memlist"><td>-&#160;</td><td><a class="el" href="class_s_g_a_p_i_client.html#a0db78dff62d4a1127b668e5dd1072c7b">getContextFor:</a></td><td><a class="el" href="class_s_g_a_p_i_client.html">SGAPIClient(Context)</a></td><td></td></tr>
-  <tr class="memlist"><td>-&#160;</td><td><a class="el" href="class_s_g_a_p_i_client.html#a66677dfe489b0f8566c9df830a5559a6">getFeatureWithHandle:</a></td><td><a class="el" href="class_s_g_a_p_i_client.html">SGAPIClient</a></td><td></td></tr>
-  <tr class="memlist"><td>-&#160;</td><td><a class="el" href="class_s_g_a_p_i_client.html#a3e0b737503c40ff1247d9f76949b52ea">getPlacesNear:</a></td><td><a class="el" href="class_s_g_a_p_i_client.html">SGAPIClient(Places)</a></td><td></td></tr>
-  <tr class="memlist"><td>-&#160;</td><td><a class="el" href="class_s_g_a_p_i_client.html#a178fd02392e4d3d352f3af663d846b9d">getPlacesNear:matching:</a></td><td><a class="el" href="class_s_g_a_p_i_client.html">SGAPIClient(Places)</a></td><td></td></tr>
-  <tr class="memlist"><td>-&#160;</td><td><a class="el" href="class_s_g_a_p_i_client.html#aab716addc4e7a9228be3a37b6df653c5">getPlacesNear:matching:inCategory:</a></td><td><a class="el" href="class_s_g_a_p_i_client.html">SGAPIClient(Places)</a></td><td></td></tr>
-  <tr class="memlist"><td>-&#160;</td><td><a class="el" href="class_s_g_a_p_i_client.html#a86659dba9f8ba2c6b549dd4105dbd5e2">initWithDelegate:consumerKey:consumerSecret:</a></td><td><a class="el" href="class_s_g_a_p_i_client.html">SGAPIClient</a></td><td></td></tr>
-  <tr class="memlist"><td>-&#160;</td><td><a class="el" href="class_s_g_a_p_i_client.html#a75a536732cf20086bb06db4f4944b836">updatePlace:with:</a></td><td><a class="el" href="class_s_g_a_p_i_client.html">SGAPIClient(Places)</a></td><td></td></tr>
-</table></div>
+<!-- doxytag: class="NSObject(SimpleGeoContextDelegate)" -->
+<p>Informal delegate protocol for Context functionality.  
+<a href="#_details">More...</a></p>
+
+<p><code>#import &lt;<a class="el" href="_simple_geo_09_context_8h_source.html">SimpleGeo+Context.h</a>&gt;</code></p>
+
+<p><a href="class_n_s_object_07_simple_geo_context_delegate_08-members.html">List of all members.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_simple_geo_context_delegate_08.html#a642b091e529a743c0555b04395045ac3">didLoadContext:for:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when Context information has been loaded.  <a href="#a642b091e529a743c0555b04395045ac3"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Informal delegate protocol for Context functionality. </p>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a642b091e529a743c0555b04395045ac3"></a><!-- doxytag: member="NSObject(SimpleGeoContextDelegate)::didLoadContext:for:" ref="a642b091e529a743c0555b04395045ac3" args="(NSDictionary *context,[for] SGPoint *point)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) didLoadContext: </td>
+          <td></td>
+          <td class="paramtype">(NSDictionary *)&#160;</td>
+          <td class="paramname"> <em>context</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">for:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interface_s_g_point.html">SGPoint</a> *)&#160;</td>
+          <td class="paramname"> <em>point</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Called when Context information has been loaded. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Context response. </td></tr>
+    <tr><td class="paramname">point</td><td>Query point. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>src/<a class="el" href="_simple_geo_09_context_8h_source.html">SimpleGeo+Context.h</a></li>
+</ul>
+</div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -77,7 +123,7 @@ This is the complete list of members for <a class="el" href="class_s_g_a_p_i_cli
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Dec 4 2010 16:24:59 for SimpleGeo by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 5 2010 17:37:42 for SimpleGeo by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>

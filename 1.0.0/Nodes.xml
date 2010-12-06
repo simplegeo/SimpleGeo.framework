@@ -14,20 +14,16 @@
         <Path>annotated.html</Path>
         <Subnodes>
          <Node>
-          <Name>NSObject(SGAPIClientContextDelegate)</Name>
-          <Path>interface_n_s_object_07_s_g_a_p_i_client_context_delegate_08.html</Path>
+          <Name>NSObject(SimpleGeoContextDelegate)</Name>
+          <Path>interface_n_s_object_07_simple_geo_context_delegate_08.html</Path>
          </Node>
          <Node>
-          <Name>NSObject(SGAPIClientDelegate)</Name>
-          <Path>interface_n_s_object_07_s_g_a_p_i_client_delegate_08.html</Path>
+          <Name>NSObject(SimpleGeoDelegate)</Name>
+          <Path>interface_n_s_object_07_simple_geo_delegate_08.html</Path>
          </Node>
          <Node>
-          <Name>NSObject(SGAPIClientPlaceDelegate)</Name>
-          <Path>interface_n_s_object_07_s_g_a_p_i_client_place_delegate_08.html</Path>
-         </Node>
-         <Node>
-          <Name>SGAPIClient</Name>
-          <Path>class_s_g_a_p_i_client.html</Path>
+          <Name>NSObject(SimpleGeoPlaceDelegate)</Name>
+          <Path>interface_n_s_object_07_simple_geo_place_delegate_08.html</Path>
          </Node>
          <Node>
           <Name>SGFeature</Name>
@@ -49,6 +45,10 @@
           <Name>SGPolygon</Name>
           <Path>interface_s_g_polygon.html</Path>
          </Node>
+         <Node>
+          <Name>SimpleGeo</Name>
+          <Path>class_simple_geo.html</Path>
+         </Node>
         </Subnodes>
        </Node>
        <Node>
@@ -56,20 +56,16 @@
         <Path>hierarchy.html</Path>
         <Subnodes>
          <Node>
-          <Name>NSObject(SGAPIClientContextDelegate)</Name>
-          <Path>interface_n_s_object_07_s_g_a_p_i_client_context_delegate_08.html</Path>
+          <Name>NSObject(SimpleGeoContextDelegate)</Name>
+          <Path>interface_n_s_object_07_simple_geo_context_delegate_08.html</Path>
          </Node>
          <Node>
-          <Name>NSObject(SGAPIClientDelegate)</Name>
-          <Path>interface_n_s_object_07_s_g_a_p_i_client_delegate_08.html</Path>
+          <Name>NSObject(SimpleGeoDelegate)</Name>
+          <Path>interface_n_s_object_07_simple_geo_delegate_08.html</Path>
          </Node>
          <Node>
-          <Name>NSObject(SGAPIClientPlaceDelegate)</Name>
-          <Path>interface_n_s_object_07_s_g_a_p_i_client_place_delegate_08.html</Path>
-         </Node>
-         <Node>
-          <Name>SGAPIClient</Name>
-          <Path>class_s_g_a_p_i_client.html</Path>
+          <Name>NSObject(SimpleGeoPlaceDelegate)</Name>
+          <Path>interface_n_s_object_07_simple_geo_place_delegate_08.html</Path>
          </Node>
          <Node>
           <Name>SGFeature</Name>
@@ -92,6 +88,10 @@
             <Path>interface_s_g_polygon.html</Path>
            </Node>
           </Subnodes>
+         </Node>
+         <Node>
+          <Name>SimpleGeo</Name>
+          <Path>class_simple_geo.html</Path>
          </Node>
         </Subnodes>
        </Node>

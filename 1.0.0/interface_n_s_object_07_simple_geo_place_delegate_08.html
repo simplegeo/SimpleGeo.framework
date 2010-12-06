@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>SimpleGeo: NSObject(SGAPIClientPlaceDelegate) Class Reference</title>
+<title>SimpleGeo: NSObject(SimpleGeoPlaceDelegate) Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javaScript" src="search/search.js"></script>
@@ -50,32 +50,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
-<h1>NSObject(SGAPIClientPlaceDelegate) Class Reference</h1>  </div>
+<h1>NSObject(SimpleGeoPlaceDelegate) Class Reference</h1>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="NSObject(SGAPIClientPlaceDelegate)" -->
+<!-- doxytag: class="NSObject(SimpleGeoPlaceDelegate)" -->
 <p>Informal delegate protocol for Places functionality.  
 <a href="#_details">More...</a></p>
 
-<p><code>#import &lt;<a class="el" href="_s_g_a_p_i_client_09_places_8h_source.html">SGAPIClient+Places.h</a>&gt;</code></p>
+<p><code>#import &lt;<a class="el" href="_simple_geo_09_places_8h_source.html">SimpleGeo+Places.h</a>&gt;</code></p>
 
-<p><a href="class_n_s_object_07_s_g_a_p_i_client_place_delegate_08-members.html">List of all members.</a></p>
+<p><a href="class_n_s_object_07_simple_geo_place_delegate_08-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_s_g_a_p_i_client_place_delegate_08.html#a7bb77d24ded28567fc0326a04d8b7554">didAddPlace:handle:URL:token:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a feature was successfully added to the Places database.  <a href="#a7bb77d24ded28567fc0326a04d8b7554"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_s_g_a_p_i_client_place_delegate_08.html#a5528dd155898cc1897c4a99840eab420">didDeletePlace:token:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a place was successfully removed from the Places database.  <a href="#a5528dd155898cc1897c4a99840eab420"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_s_g_a_p_i_client_place_delegate_08.html#afd63873fe0d5d103d45e975bfeb25af4">didLoadPlaces:near:matching:inCategory:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a collection of places were loaded from the Places database.  <a href="#afd63873fe0d5d103d45e975bfeb25af4"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_s_g_a_p_i_client_place_delegate_08.html#ae572dda4090b4ee3d0cc4474697abd20">didUpdatePlace:token:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a place was successfully updated in the Places database.  <a href="#ae572dda4090b4ee3d0cc4474697abd20"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_simple_geo_place_delegate_08.html#a176f8ecbc3524e96205929f2aafa2d90">didAddPlace:handle:URL:token:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a feature was successfully added to the Places database.  <a href="#a176f8ecbc3524e96205929f2aafa2d90"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_simple_geo_place_delegate_08.html#ab65168648c0394b6bcbc15fa6021ea80">didDeletePlace:token:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a place was successfully removed from the Places database.  <a href="#ab65168648c0394b6bcbc15fa6021ea80"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_simple_geo_place_delegate_08.html#a51e033d7e2181d66f72e6b31a10670b7">didLoadPlaces:near:matching:inCategory:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a collection of places were loaded from the Places database.  <a href="#a51e033d7e2181d66f72e6b31a10670b7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_simple_geo_place_delegate_08.html#a59b07c1d3c9f999d3f8480fc3193a74e">didUpdatePlace:token:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a place was successfully updated in the Places database.  <a href="#a59b07c1d3c9f999d3f8480fc3193a74e"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Informal delegate protocol for Places functionality. </p>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a7bb77d24ded28567fc0326a04d8b7554"></a><!-- doxytag: member="NSObject(SGAPIClientPlaceDelegate)::didAddPlace:handle:URL:token:" ref="a7bb77d24ded28567fc0326a04d8b7554" args="(SGFeature *feature,[handle] NSString *handle,[URL] NSURL *url,[token] NSString *token)" -->
+<a class="anchor" id="a176f8ecbc3524e96205929f2aafa2d90"></a><!-- doxytag: member="NSObject(SimpleGeoPlaceDelegate)::didAddPlace:handle:URL:token:" ref="a176f8ecbc3524e96205929f2aafa2d90" args="(SGFeature *feature,[handle] NSString *handle,[URL] NSURL *url,[token] NSString *token)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -125,7 +125,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5528dd155898cc1897c4a99840eab420"></a><!-- doxytag: member="NSObject(SGAPIClientPlaceDelegate)::didDeletePlace:token:" ref="a5528dd155898cc1897c4a99840eab420" args="(NSString *handle,[token] NSString *token)" -->
+<a class="anchor" id="ab65168648c0394b6bcbc15fa6021ea80"></a><!-- doxytag: member="NSObject(SimpleGeoPlaceDelegate)::didDeletePlace:token:" ref="ab65168648c0394b6bcbc15fa6021ea80" args="(NSString *handle,[token] NSString *token)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -161,7 +161,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="afd63873fe0d5d103d45e975bfeb25af4"></a><!-- doxytag: member="NSObject(SGAPIClientPlaceDelegate)::didLoadPlaces:near:matching:inCategory:" ref="afd63873fe0d5d103d45e975bfeb25af4" args="(SGFeatureCollection *places,[near] SGPoint *point,[matching] NSString *query,[inCategory] NSString *category)" -->
+<a class="anchor" id="a51e033d7e2181d66f72e6b31a10670b7"></a><!-- doxytag: member="NSObject(SimpleGeoPlaceDelegate)::didLoadPlaces:near:matching:inCategory:" ref="a51e033d7e2181d66f72e6b31a10670b7" args="(SGFeatureCollection *places,[near] SGPoint *point,[matching] NSString *query,[inCategory] NSString *category)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -211,7 +211,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae572dda4090b4ee3d0cc4474697abd20"></a><!-- doxytag: member="NSObject(SGAPIClientPlaceDelegate)::didUpdatePlace:token:" ref="ae572dda4090b4ee3d0cc4474697abd20" args="(NSString *handle,[token] NSString *token)" -->
+<a class="anchor" id="a59b07c1d3c9f999d3f8480fc3193a74e"></a><!-- doxytag: member="NSObject(SimpleGeoPlaceDelegate)::didUpdatePlace:token:" ref="a59b07c1d3c9f999d3f8480fc3193a74e" args="(NSString *handle,[token] NSString *token)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -248,7 +248,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/<a class="el" href="_s_g_a_p_i_client_09_places_8h_source.html">SGAPIClient+Places.h</a></li>
+<li>src/<a class="el" href="_simple_geo_09_places_8h_source.html">SimpleGeo+Places.h</a></li>
 </ul>
 </div>
 <!--- window showing the filter options -->
@@ -265,7 +265,7 @@ Public Member Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Dec 4 2010 16:24:59 for SimpleGeo by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 5 2010 17:37:42 for SimpleGeo by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>SimpleGeo: NSObject(SGAPIClientDelegate) Class Reference</title>
+<title>SimpleGeo: NSObject(SimpleGeoDelegate) Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javaScript" src="search/search.js"></script>
@@ -50,30 +50,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
-<h1>NSObject(SGAPIClientDelegate) Class Reference</h1>  </div>
+<h1>NSObject(SimpleGeoDelegate) Class Reference</h1>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="NSObject(SGAPIClientDelegate)" -->
+<!-- doxytag: class="NSObject(SimpleGeoDelegate)" -->
 <p>Informal delegate protocol for core functionality.  
 <a href="#_details">More...</a></p>
 
-<p><code>#import &lt;<a class="el" href="_s_g_a_p_i_client_8h_source.html">SGAPIClient.h</a>&gt;</code></p>
+<p><code>#import &lt;<a class="el" href="_simple_geo_8h_source.html">SimpleGeo.h</a>&gt;</code></p>
 
-<p><a href="class_n_s_object_07_s_g_a_p_i_client_delegate_08-members.html">List of all members.</a></p>
+<p><a href="class_n_s_object_07_simple_geo_delegate_08-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_s_g_a_p_i_client_delegate_08.html#ae406769a7c76d4136b1eee3f04a994ea">didLoadFeature:withHandle:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a feature has been loaded.  <a href="#ae406769a7c76d4136b1eee3f04a994ea"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_s_g_a_p_i_client_delegate_08.html#a803676bc954e6dc79f17897d92bb534a">requestDidFinish:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a request has finished.  <a href="#a803676bc954e6dc79f17897d92bb534a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_s_g_a_p_i_client_delegate_08.html#a3e4d573a835085451541ff11d271d618">requestDidFail:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a request has failed.  <a href="#a3e4d573a835085451541ff11d271d618"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_simple_geo_delegate_08.html#a49d7b3cf25b36499771418f73f358fef">didLoadFeature:withHandle:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a feature has been loaded.  <a href="#a49d7b3cf25b36499771418f73f358fef"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_simple_geo_delegate_08.html#ab87bcbcd48a03be928882a8986137650">requestDidFinish:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a request has finished.  <a href="#ab87bcbcd48a03be928882a8986137650"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_n_s_object_07_simple_geo_delegate_08.html#ae614b719fe223b8968a2f6b72ad7e314">requestDidFail:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a request has failed.  <a href="#ae614b719fe223b8968a2f6b72ad7e314"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Informal delegate protocol for core functionality. </p>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="ae406769a7c76d4136b1eee3f04a994ea"></a><!-- doxytag: member="NSObject(SGAPIClientDelegate)::didLoadFeature:withHandle:" ref="ae406769a7c76d4136b1eee3f04a994ea" args="(SGFeature *feature,[withHandle] NSString *handle)" -->
+<a class="anchor" id="a49d7b3cf25b36499771418f73f358fef"></a><!-- doxytag: member="NSObject(SimpleGeoDelegate)::didLoadFeature:withHandle:" ref="a49d7b3cf25b36499771418f73f358fef" args="(SGFeature *feature,[withHandle] NSString *handle)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -110,7 +110,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3e4d573a835085451541ff11d271d618"></a><!-- doxytag: member="NSObject(SGAPIClientDelegate)::requestDidFail:" ref="a3e4d573a835085451541ff11d271d618" args="(ASIHTTPRequest *request)" -->
+<a class="anchor" id="ae614b719fe223b8968a2f6b72ad7e314"></a><!-- doxytag: member="NSObject(SimpleGeoDelegate)::requestDidFail:" ref="ae614b719fe223b8968a2f6b72ad7e314" args="(ASIHTTPRequest *request)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -136,7 +136,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a803676bc954e6dc79f17897d92bb534a"></a><!-- doxytag: member="NSObject(SGAPIClientDelegate)::requestDidFinish:" ref="a803676bc954e6dc79f17897d92bb534a" args="(ASIHTTPRequest *request)" -->
+<a class="anchor" id="ab87bcbcd48a03be928882a8986137650"></a><!-- doxytag: member="NSObject(SimpleGeoDelegate)::requestDidFinish:" ref="ab87bcbcd48a03be928882a8986137650" args="(ASIHTTPRequest *request)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -163,7 +163,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/<a class="el" href="_s_g_a_p_i_client_8h_source.html">SGAPIClient.h</a></li>
+<li>src/<a class="el" href="_simple_geo_8h_source.html">SimpleGeo.h</a></li>
 </ul>
 </div>
 <!--- window showing the filter options -->
@@ -180,7 +180,7 @@ Public Member Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Dec 4 2010 16:24:59 for SimpleGeo by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 5 2010 17:37:42 for SimpleGeo by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>

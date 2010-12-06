@@ -140,9 +140,6 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    NSLog(@"request finished: %i", [request responseStatusCode]);
-    NSLog(@"body: %@", [request responseString]);
-
     if (([request responseStatusCode] >= 200 && [request responseStatusCode] < 400) ||
         [request responseStatusCode] == 404) {
 

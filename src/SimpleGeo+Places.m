@@ -86,16 +86,16 @@
                                  ];
 
     // this is ugly because NSURL doesn't handle setting query parameters well
-    if (query && category) {
+    if (query && ! [query isEqual:@""] && category && ! [category isEqual:@""]) {
         [endpoint appendFormat:@"?q=%@&category=%@",
          [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
          [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
          ];
-    } else if (category) {
+    } else if (category && ! [category isEqual:@""]) {
         [endpoint appendFormat:@"?category=%@",
          [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
          ];
-    } else if (query) {
+    } else if (query && ! [query isEqual:@""]) {
         [endpoint appendFormat:@"?q=%@",
          [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
          ];

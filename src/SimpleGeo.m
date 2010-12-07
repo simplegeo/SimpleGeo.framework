@@ -114,7 +114,6 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
 - (void) dealloc
 {
-    [delegate release];
     [url release];
     [super dealloc];
 }

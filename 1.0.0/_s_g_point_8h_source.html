@@ -82,23 +82,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00033"></a>00033 
 <a name="l00037"></a><a class="code" href="interface_s_g_point.html">00037</a> <span class="keyword">@interface </span><a class="code" href="interface_s_g_point.html" title="Point representation.">SGPoint</a> : <a class="code" href="interface_s_g_geometry.html" title="Abstract Geometry class/factory.">SGGeometry</a>
 <a name="l00038"></a>00038 {
-<a name="l00039"></a><a class="code" href="interface_s_g_point.html#a946e41f5c470083c96590b7d09df8a26">00039</a>     <span class="keywordtype">double</span> <a class="code" href="interface_s_g_point.html#a946e41f5c470083c96590b7d09df8a26" title="Latitude (y coordinate).">latitude</a>;
-<a name="l00040"></a><a class="code" href="interface_s_g_point.html#a62fba53035cb490ebd65436c20706857">00040</a>     <span class="keywordtype">double</span> <a class="code" href="interface_s_g_point.html#a62fba53035cb490ebd65436c20706857" title="Longitude (x coordinate).">longitude</a>;
-<a name="l00041"></a>00041 }
-<a name="l00042"></a>00042 
-<a name="l00044"></a>00044 @property (readonly) double latitude;
-<a name="l00045"></a>00045 
-<a name="l00047"></a>00047 @property (readonly) <span class="keywordtype">double</span> longitude;
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049 + (<a class="code" href="interface_s_g_point.html" title="Point representation.">SGPoint</a> *)pointWithDictionary:(NSDictionary *)dictionary;
-<a name="l00050"></a>00050 
-<a name="l00056"></a>00056 + (<a class="code" href="interface_s_g_point.html" title="Point representation.">SGPoint</a> *)pointWithLatitude:(<span class="keywordtype">double</span>)latitude
-<a name="l00057"></a>00057                      longitude:(<span class="keywordtype">double</span>)longitude;
-<a name="l00058"></a>00058 
-<a name="l00064"></a>00064 - (<span class="keywordtype">id</span>)initWithLatitude:(<span class="keywordtype">double</span>)latitude
-<a name="l00065"></a>00065              longitude:(<span class="keywordtype">double</span>)longitude;
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067 @end
+<a name="l00039"></a>00039   <span class="keyword">@private</span>
+<a name="l00040"></a><a class="code" href="interface_s_g_point.html#a946e41f5c470083c96590b7d09df8a26">00040</a>     <span class="keywordtype">double</span> <a class="code" href="interface_s_g_point.html#a946e41f5c470083c96590b7d09df8a26" title="Latitude (y coordinate).">latitude</a>;
+<a name="l00041"></a><a class="code" href="interface_s_g_point.html#a62fba53035cb490ebd65436c20706857">00041</a>     <span class="keywordtype">double</span> <a class="code" href="interface_s_g_point.html#a62fba53035cb490ebd65436c20706857" title="Longitude (x coordinate).">longitude</a>;
+<a name="l00042"></a>00042 }
+<a name="l00043"></a>00043 
+<a name="l00045"></a>00045 @property (readonly) double latitude;
+<a name="l00046"></a>00046 
+<a name="l00048"></a>00048 @property (readonly) <span class="keywordtype">double</span> longitude;
+<a name="l00049"></a>00049 
+<a name="l00055"></a>00055 + (<a class="code" href="interface_s_g_point.html" title="Point representation.">SGPoint</a> *)pointWithLatitude:(<span class="keywordtype">double</span>)latitude
+<a name="l00056"></a>00056                      longitude:(<span class="keywordtype">double</span>)longitude;
+<a name="l00057"></a>00057 
+<a name="l00063"></a>00063 - (<span class="keywordtype">id</span>)initWithLatitude:(<span class="keywordtype">double</span>)latitude
+<a name="l00064"></a>00064              longitude:(<span class="keywordtype">double</span>)longitude;
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 @end
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -115,7 +114,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 5 2010 23:13:04 for SimpleGeo by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Dec 6 2010 18:02:06 for SimpleGeo by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>

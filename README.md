@@ -3,6 +3,10 @@
 This is an Objective-C client library for the SimpleGeo API, suitable for use
 in both Mac OS X and iOS applications.
 
+`SimpleGeo.framework` embeds
+[ASIHTTPRequest](http://allseeing-i.com/ASIHTTPRequest/), so it will become
+available when you introduce this as a dependency.
+
 ## Getting Started
 
 In order to run the framework tests, you'll need to install `GHUnit.framework`

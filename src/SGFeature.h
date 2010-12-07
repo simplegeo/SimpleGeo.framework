@@ -36,6 +36,7 @@
  */
 @interface SGFeature : NSObject
 {
+  @private
     NSString* featureId;
     SGGeometry* geometry;
     NSDictionary* properties;

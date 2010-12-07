@@ -85,6 +85,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
  */
 @interface SimpleGeo : NSObject
 {
+  @private
     id delegate;
     NSString* consumerKey;
     NSString* consumerSecret;

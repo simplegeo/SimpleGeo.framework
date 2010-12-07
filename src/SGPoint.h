@@ -36,6 +36,7 @@
  */
 @interface SGPoint : SGGeometry
 {
+  @private
     double latitude;
     double longitude;
 }

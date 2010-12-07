@@ -36,6 +36,7 @@
  */
 @interface SGPolygon : SGGeometry
 {
+  @private
     // array of arrays of SGPoints
     NSArray* rings;
 }

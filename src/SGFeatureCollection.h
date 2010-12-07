@@ -34,6 +34,7 @@
  */
 @interface SGFeatureCollection : NSObject
 {
+  @private
     NSArray* features;
 }
 

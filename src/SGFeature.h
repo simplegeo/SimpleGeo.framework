@@ -56,9 +56,6 @@
  * @param id Feature id.
  */
 + (SGFeature *)featureWithId:(NSString *)id;
-+ (SGFeature *)featureWithId:(NSString *)id
-                  dictionary:(NSDictionary *)data;
-+ (SGFeature *)featureWithDictionary:(NSDictionary *)data;
 
 /*!
  * Create a Feature with an id and some properties.
@@ -99,8 +96,6 @@
  * @param id Feature id.
  */
 - (id)initWithId:(NSString *)id;
-- (id)initWithId:(NSString *)id
-      dictionary:(NSDictionary *)data;
 
 /*!
  * Construct a Feature with an id and some properties.

@@ -47,8 +47,6 @@
 //! Longitude (x coordinate).
 @property (readonly) double longitude;
 
-+ (SGPoint *)pointWithDictionary:(NSDictionary *)dictionary;
-
 /*!
  * Create a point from a pair of coordinates.
  * @param latitude Latitude.

@@ -1,5 +1,5 @@
 //
-//  SGPolygon.h
+//  SGFeatureCollection+Private.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,32 +28,12 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
+#import "SGFeatureCollection.h"
 
 
-/*!
- * Polygon representation.
- */
-@interface SGPolygon : SGGeometry
-{
-  @private
-    // array of arrays of SGPoints
-    NSArray* rings;
-}
+@interface SGFeatureCollection (Private)
 
-//! LinearRings that define this polygon.
-@property (retain,readonly) NSArray* rings;
-
-/*!
- * Create a polygon from a set of LinearRings.
- * @param rings LinearRings.
- */
-+ (SGPolygon *)polygonWithRings:(NSArray *)rings;
-
-/*!
- * Construct a polygon from a set of LinearRings.
- * @ param rings LinearRings.
- */
-- (id)initWithRings:(NSArray *)rings;
++ (SGFeatureCollection *)featureCollectionWithDictionary:(NSDictionary *)features;
+- (id)initWithDictionary:(NSDictionary *)features;
 
 @end

@@ -31,6 +31,7 @@
 #import <GHUnit/GHUnit.h>
 #import <YAJL/YAJL.h>
 #import "SGFeature.h"
+#import "SGFeature+Private.h"
 #import "SGPoint.h"
 
 @interface SGFeatureTest : GHTestCase { }

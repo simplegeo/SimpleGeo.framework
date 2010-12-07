@@ -29,6 +29,8 @@
 //
 
 #import "SGFeature.h"
+#import "SGFeature+Private.h"
+#import "SGGeometry+Private.h"
 
 
 // trigger @synthesize in SGFeature to create readwrite accessors

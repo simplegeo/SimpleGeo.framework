@@ -30,7 +30,9 @@
 
 #import "SGGeometry.h"
 #import "SGPolygon.h"
+#import "SGPolygon+Private.h"
 #import "SGPoint.h"
+#import "SGPoint+Private.h"
 
 @implementation SGGeometry
 

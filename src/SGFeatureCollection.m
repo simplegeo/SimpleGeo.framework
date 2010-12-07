@@ -29,6 +29,7 @@
 //
 
 #import "SGFeatureCollection.h"
+#import "SGFeatureCollection+Private.h"
 #import "NSArray+SGFeature.h"
 
 

@@ -31,6 +31,7 @@
 #import <YAJL/YAJL.h>
 #import "SimpleGeo+Places.h"
 #import "SimpleGeo+Internal.h"
+#import "SGFeatureCollection+Private.h"
 
 
 @implementation SimpleGeo (Places)

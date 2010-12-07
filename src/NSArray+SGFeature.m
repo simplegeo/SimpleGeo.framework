@@ -30,6 +30,7 @@
 
 #import "NSArray+SGFeature.h"
 #import "SGFeature.h"
+#import "SGFeature+Private.h"
 
 
 @implementation NSArray (SGFeature)

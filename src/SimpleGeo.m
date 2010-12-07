@@ -32,6 +32,7 @@
 #import "NSArray+SGFeature.h"
 #import "SimpleGeo.h"
 #import "SimpleGeo+Internal.h"
+#import "SGFeature+Private.h"
 
 
 NSString * const SIMPLEGEO_API_VERSION = @"1.0";

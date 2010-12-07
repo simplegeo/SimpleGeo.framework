@@ -89,6 +89,11 @@
 		5DA3C345128E427C00E128DC /* SGPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA3C343128E427C00E128DC /* SGPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DA3C346128E427C00E128DC /* SGPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3C344128E427C00E128DC /* SGPoint.m */; };
 		5DA3C35A128E449B00E128DC /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA3C359128E449B00E128DC /* GHUnit.framework */; };
+		5DF0864A12ADC878007A8A60 /* SGFeature+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF0864912ADC878007A8A60 /* SGFeature+Private.h */; };
+		5DF0865B12ADC94E007A8A60 /* SGFeatureCollection+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF0865A12ADC94E007A8A60 /* SGFeatureCollection+Private.h */; };
+		5DF0866D12ADCA9B007A8A60 /* SGGeometry+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF0866C12ADCA9B007A8A60 /* SGGeometry+Private.h */; };
+		5DF0867B12ADCB21007A8A60 /* SGPolygon+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF0867A12ADCB21007A8A60 /* SGPolygon+Private.h */; };
+		5DF0868912ADCBC5007A8A60 /* SGPoint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF0868812ADCBC5007A8A60 /* SGPoint+Private.h */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -171,6 +176,11 @@
 		5DA3C353128E448800E128DC /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA3C355128E448800E128DC /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		5DA3C359128E449B00E128DC /* GHUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnit.framework; path = Library/Frameworks/GHUnit.framework; sourceTree = SDKROOT; };
+		5DF0864912ADC878007A8A60 /* SGFeature+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGFeature+Private.h"; path = "src/SGFeature+Private.h"; sourceTree = "<group>"; };
+		5DF0865A12ADC94E007A8A60 /* SGFeatureCollection+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGFeatureCollection+Private.h"; path = "src/SGFeatureCollection+Private.h"; sourceTree = "<group>"; };
+		5DF0866C12ADCA9B007A8A60 /* SGGeometry+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGGeometry+Private.h"; path = "src/SGGeometry+Private.h"; sourceTree = "<group>"; };
+		5DF0867A12ADCB21007A8A60 /* SGPolygon+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGPolygon+Private.h"; path = "src/SGPolygon+Private.h"; sourceTree = "<group>"; };
+		5DF0868812ADCBC5007A8A60 /* SGPoint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGPoint+Private.h"; path = "src/SGPoint+Private.h"; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* SimpleGeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleGeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -219,7 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				5DA3C348128E42C600E128DC /* Tests */,
-				08FB77AEFE84172EC02AAC07 /* Classes */,
+				5DF0867212ADCAF5007A8A60 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
@@ -254,34 +264,6 @@
 				089C1666FE841158C02AAC07 /* InfoPlist.strings */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		08FB77AEFE84172EC02AAC07 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				5DE3488C12A9B477004E320D /* Optional */,
-				5D7676141290EAE1006B7D51 /* SimpleGeo.h */,
-				5D7676131290EAE1006B7D51 /* SimpleGeo.m */,
-				5D39921A12A48F3F00EB7B20 /* SimpleGeo+Internal.h */,
-				5D39921B12A48F3F00EB7B20 /* SimpleGeo+Internal.m */,
-				5D5B036D1291BD4500399A50 /* SGFeature.h */,
-				5D5B036E1291BD4500399A50 /* SGFeature.m */,
-				5D3990DD12A4642B00EB7B20 /* SGFeatureCollection.h */,
-				5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */,
-				5D3994E512A8A8A700EB7B20 /* SGGeometry.h */,
-				5D3994E612A8A8A700EB7B20 /* SGGeometry.m */,
-				5D3994EC12A8AB4300EB7B20 /* SGPolygon.h */,
-				5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */,
-				5DA3C343128E427C00E128DC /* SGPoint.h */,
-				5DA3C344128E427C00E128DC /* SGPoint.m */,
-				5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */,
-				5D5B05CF12934A9D00399A50 /* NSArray+SGFeature.m */,
-				5D8C148D129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h */,
-				5D8C148E129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.m */,
-				5D8C1612129DED38002F8C01 /* NSString+URLEncoding.h */,
-				5D8C1613129DED38002F8C01 /* NSString+URLEncoding.m */,
-			);
-			name = Classes;
 			sourceTree = "<group>";
 		};
 		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
@@ -379,6 +361,39 @@
 			name = Optional;
 			sourceTree = "<group>";
 		};
+		5DF0867212ADCAF5007A8A60 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5DE3488C12A9B477004E320D /* Optional */,
+				5D7676141290EAE1006B7D51 /* SimpleGeo.h */,
+				5D7676131290EAE1006B7D51 /* SimpleGeo.m */,
+				5D39921A12A48F3F00EB7B20 /* SimpleGeo+Internal.h */,
+				5D39921B12A48F3F00EB7B20 /* SimpleGeo+Internal.m */,
+				5D5B036D1291BD4500399A50 /* SGFeature.h */,
+				5DF0864912ADC878007A8A60 /* SGFeature+Private.h */,
+				5D5B036E1291BD4500399A50 /* SGFeature.m */,
+				5D3990DD12A4642B00EB7B20 /* SGFeatureCollection.h */,
+				5DF0865A12ADC94E007A8A60 /* SGFeatureCollection+Private.h */,
+				5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */,
+				5D3994E512A8A8A700EB7B20 /* SGGeometry.h */,
+				5DF0866C12ADCA9B007A8A60 /* SGGeometry+Private.h */,
+				5D3994E612A8A8A700EB7B20 /* SGGeometry.m */,
+				5D3994EC12A8AB4300EB7B20 /* SGPolygon.h */,
+				5DF0867A12ADCB21007A8A60 /* SGPolygon+Private.h */,
+				5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */,
+				5DA3C343128E427C00E128DC /* SGPoint.h */,
+				5DF0868812ADCBC5007A8A60 /* SGPoint+Private.h */,
+				5DA3C344128E427C00E128DC /* SGPoint.m */,
+				5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */,
+				5D5B05CF12934A9D00399A50 /* NSArray+SGFeature.m */,
+				5D8C148D129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h */,
+				5D8C148E129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.m */,
+				5D8C1612129DED38002F8C01 /* NSString+URLEncoding.h */,
+				5D8C1613129DED38002F8C01 /* NSString+URLEncoding.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -410,6 +425,11 @@
 				5D3994E812A8A8A700EB7B20 /* SGGeometry.h in Headers */,
 				5D3994EF12A8AB4300EB7B20 /* SGPolygon.h in Headers */,
 				5D1C1B9C12A9AD1A0055EC91 /* SimpleGeo+Context.h in Headers */,
+				5DF0864A12ADC878007A8A60 /* SGFeature+Private.h in Headers */,
+				5DF0865B12ADC94E007A8A60 /* SGFeatureCollection+Private.h in Headers */,
+				5DF0866D12ADCA9B007A8A60 /* SGGeometry+Private.h in Headers */,
+				5DF0867B12ADCB21007A8A60 /* SGPolygon+Private.h in Headers */,
+				5DF0868912ADCBC5007A8A60 /* SGPoint+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

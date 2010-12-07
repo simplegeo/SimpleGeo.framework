@@ -41,15 +41,11 @@
 //! Collected Features.
 @property (retain,readonly) NSArray* features;
 
-+ (SGFeatureCollection *)featureCollectionWithDictionary:(NSDictionary *)features;
-
 /*!
  * Create a FeatureCollection from a list of Features.
  * @param features List of Features.
  */
 + (SGFeatureCollection *)featureCollectionWithFeatures:(NSArray *)features;
-
-- (id)initWithDictionary:(NSDictionary *)features;
 
 /*!
  * Construct a FeatureCollection from a list of Features.

@@ -1,5 +1,5 @@
 //
-//  SGPolygon.h
+//  SGGeometry+Private.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -31,29 +31,14 @@
 #import "SGGeometry.h"
 
 
-/*!
- * Polygon representation.
- */
-@interface SGPolygon : SGGeometry
-{
-  @private
-    // array of arrays of SGPoints
-    NSArray* rings;
-}
+@interface SGGeometry (Private)
 
-//! LinearRings that define this polygon.
-@property (retain,readonly) NSArray* rings;
-
-/*!
- * Create a polygon from a set of LinearRings.
- * @param rings LinearRings.
+/*!\cond
+ * Factory method for creating subclasses of SGGeometry either from an
+ * SGGeometry instance or an NSDictionary containing a parsed GeoJSON
+ * document).
+ * \endcond
  */
-+ (SGPolygon *)polygonWithRings:(NSArray *)rings;
-
-/*!
- * Construct a polygon from a set of LinearRings.
- * @ param rings LinearRings.
- */
-- (id)initWithRings:(NSArray *)rings;
++ (SGGeometry *)geometryWithGeometry:(id)geometry;
 
 @end

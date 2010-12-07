@@ -630,8 +630,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SimpleGeo_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = SimpleGeo;
+				SYMROOT = "../SimpleGeo-build";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;

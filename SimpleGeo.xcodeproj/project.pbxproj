@@ -661,6 +661,7 @@
 				GCC_PREFIX_HEADER = SimpleGeo_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = SimpleGeo;
 				SYMROOT = "../SimpleGeo-build";
 				WRAPPER_EXTENSION = framework;
@@ -681,6 +682,7 @@
 				GCC_PREFIX_HEADER = SimpleGeo_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = SimpleGeo;
 				SYMROOT = "../SimpleGeo-build";
 				WRAPPER_EXTENSION = framework;

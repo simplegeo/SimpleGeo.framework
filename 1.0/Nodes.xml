@@ -38,6 +38,10 @@
           <Path>interface_s_g_geometry.html</Path>
          </Node>
          <Node>
+          <Name>SGMultiPolygon</Name>
+          <Path>interface_s_g_multi_polygon.html</Path>
+         </Node>
+         <Node>
           <Name>SGPoint</Name>
           <Path>interface_s_g_point.html</Path>
          </Node>
@@ -79,6 +83,10 @@
           <Name>SGGeometry</Name>
           <Path>interface_s_g_geometry.html</Path>
           <Subnodes>
+           <Node>
+            <Name>SGMultiPolygon</Name>
+            <Path>interface_s_g_multi_polygon.html</Path>
+           </Node>
            <Node>
             <Name>SGPoint</Name>
             <Path>interface_s_g_point.html</Path>

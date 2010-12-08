@@ -312,6 +312,46 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>SGMultiPolygon</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_multi_polygon.html</Path>
+    <Abstract>MultiPolygon representation.</Abstract>
+    <DeclaredIn>SGMultiPolygon.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithPolygons:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_multi_polygon.html</Path>
+    <Anchor>a2894321bc12ab5a6f46f970fb2e4cc8c</Anchor>
+    <Abstract>Construct a multi-polygon from a set of Polygons.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>multiPolygonWithPolygons:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_multi_polygon.html</Path>
+    <Anchor>a97101777ba24d9ea6be7e220de4f1c9b</Anchor>
+    <Abstract>Create a multi-polygon from a set of Polygons.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>polygons</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_multi_polygon.html</Path>
+    <Anchor>ae08200e3cbc66d4048aad38279c12232</Anchor>
+    <Abstract>Polygons that define this multi-polygon.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>SGPoint</Name>
       <APILanguage>c</APILanguage>
       <Type>cl</Type>

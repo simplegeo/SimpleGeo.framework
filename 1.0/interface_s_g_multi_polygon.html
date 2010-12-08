@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>SimpleGeo: SGPolygon Class Reference</title>
+<title>SimpleGeo: SGMultiPolygon Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javaScript" src="search/search.js"></script>
@@ -52,87 +52,87 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#properties">Properties</a>  </div>
   <div class="headertitle">
-<h1>SGPolygon Class Reference</h1>  </div>
+<h1>SGMultiPolygon Class Reference</h1>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="SGPolygon" --><!-- doxytag: inherits="SGGeometry" -->
-<p>Polygon representation.  
+<!-- doxytag: class="SGMultiPolygon" --><!-- doxytag: inherits="SGGeometry" -->
+<p>MultiPolygon representation.  
 <a href="#_details">More...</a></p>
 
-<p><code>#import &lt;<a class="el" href="_s_g_polygon_8h_source.html">SGPolygon.h</a>&gt;</code></p>
+<p><code>#import &lt;<a class="el" href="_s_g_multi_polygon_8h_source.html">SGMultiPolygon.h</a>&gt;</code></p>
 <!-- startSectionHeader --><div class="dynheader">
-Inheritance diagram for SGPolygon:<!-- endSectionHeader --></div>
+Inheritance diagram for SGMultiPolygon:<!-- endSectionHeader --></div>
 <!-- startSectionSummary --><!-- endSectionSummary --><!-- startSectionContent --><div class="dyncontent">
  <div class="center">
-  <img src="interface_s_g_polygon.png" usemap="#SGPolygon_map" alt=""/>
-  <map id="SGPolygon_map" name="SGPolygon_map">
-<area href="interface_s_g_geometry.html" alt="SGGeometry" shape="rect" coords="0,0,83,24"/>
+  <img src="interface_s_g_multi_polygon.png" usemap="#SGMultiPolygon_map" alt=""/>
+  <map id="SGMultiPolygon_map" name="SGMultiPolygon_map">
+<area href="interface_s_g_geometry.html" alt="SGGeometry" shape="rect" coords="0,0,102,24"/>
 </map>
  </div><!-- endSectionContent --></div>
 
-<p><a href="class_s_g_polygon-members.html">List of all members.</a></p>
+<p><a href="class_s_g_multi_polygon-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_polygon.html#ae639d96626c98f181793b5ff8f6cd755">initWithRings:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a polygon from a set of LinearRings.  <a href="#ae639d96626c98f181793b5ff8f6cd755"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_multi_polygon.html#a2894321bc12ab5a6f46f970fb2e4cc8c">initWithPolygons:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a multi-polygon from a set of Polygons.  <a href="#a2894321bc12ab5a6f46f970fb2e4cc8c"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_s_g_polygon.html">SGPolygon</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_s_g_polygon.html#a0838e1fd4317789540a02f51c50e34bb">polygonWithRings:</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a polygon from a set of LinearRings.  <a href="#a0838e1fd4317789540a02f51c50e34bb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_s_g_multi_polygon.html">SGMultiPolygon</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_s_g_multi_polygon.html#a97101777ba24d9ea6be7e220de4f1c9b">multiPolygonWithPolygons:</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a multi-polygon from a set of Polygons.  <a href="#a97101777ba24d9ea6be7e220de4f1c9b"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="properties"></a>
 Properties</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a869a045e60128c5ede0c64ff07a461"></a><!-- doxytag: member="SGPolygon::rings" ref="a6a869a045e60128c5ede0c64ff07a461" args="" -->
-NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_polygon.html#a6a869a045e60128c5ede0c64ff07a461">rings</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">LinearRings that define this polygon. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae08200e3cbc66d4048aad38279c12232"></a><!-- doxytag: member="SGMultiPolygon::polygons" ref="ae08200e3cbc66d4048aad38279c12232" args="" -->
+NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_multi_polygon.html#ae08200e3cbc66d4048aad38279c12232">polygons</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Polygons that define this multi-polygon. <br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<p>Polygon representation. </p>
+<p>MultiPolygon representation. </p>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="ae639d96626c98f181793b5ff8f6cd755"></a><!-- doxytag: member="SGPolygon::initWithRings:" ref="ae639d96626c98f181793b5ff8f6cd755" args="(NSArray *rings)" -->
+<a class="anchor" id="a2894321bc12ab5a6f46f970fb2e4cc8c"></a><!-- doxytag: member="SGMultiPolygon::initWithPolygons:" ref="a2894321bc12ab5a6f46f970fb2e4cc8c" args="(NSArray *polygons)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (id) initWithRings: </td>
+          <td class="memname">- (id) initWithPolygons: </td>
           <td></td>
           <td class="paramtype">(NSArray *)&#160;</td>
-          <td class="paramname"> <em>rings</em></td>
+          <td class="paramname"> <em>polygons</em></td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Construct a polygon from a set of LinearRings. </p>
+<p>Construct a multi-polygon from a set of Polygons. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">rings</td><td>LinearRings. </td></tr>
+    <tr><td class="paramname">polygons</td><td>Polygons. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a0838e1fd4317789540a02f51c50e34bb"></a><!-- doxytag: member="SGPolygon::polygonWithRings:" ref="a0838e1fd4317789540a02f51c50e34bb" args="(NSArray *rings)" -->
+<a class="anchor" id="a97101777ba24d9ea6be7e220de4f1c9b"></a><!-- doxytag: member="SGMultiPolygon::multiPolygonWithPolygons:" ref="a97101777ba24d9ea6be7e220de4f1c9b" args="(NSArray *polygons)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">+ (<a class="el" href="interface_s_g_polygon.html">SGPolygon</a> *) polygonWithRings: </td>
+          <td class="memname">+ (<a class="el" href="interface_s_g_multi_polygon.html">SGMultiPolygon</a> *) multiPolygonWithPolygons: </td>
           <td></td>
           <td class="paramtype">(NSArray *)&#160;</td>
-          <td class="paramname"> <em>rings</em></td>
+          <td class="paramname"> <em>polygons</em></td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Create a polygon from a set of LinearRings. </p>
+<p>Create a multi-polygon from a set of Polygons. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">rings</td><td>LinearRings. </td></tr>
+    <tr><td class="paramname">polygons</td><td>Polygons. </td></tr>
   </table>
   </dd>
 </dl>
@@ -140,8 +140,8 @@ NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/<a class="el" href="_s_g_polygon_8h_source.html">SGPolygon.h</a></li>
-<li>src/SGPolygon.m</li>
+<li>src/<a class="el" href="_s_g_multi_polygon_8h_source.html">SGMultiPolygon.h</a></li>
+<li>src/SGMultiPolygon.m</li>
 </ul>
 </div>
 <!--- window showing the filter options -->

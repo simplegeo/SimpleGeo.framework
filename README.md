@@ -72,3 +72,6 @@ The build directory for `SimpleGeo.framework` has been configured as
 `../SimpleGeo-build` to facilitate linking it into your application. You can
 also copy it wholesale into your project that it's copied into "frameworks" as
 part of your application target.
+
+[SimpleApp](https://github.com/simplegeo/SimpleApp) is an example of a Cocoa
+application built using this framework.

@@ -33,6 +33,7 @@
 
 @interface SGPolygon (Private)
 
++ (SGPolygon *)polygonWithArray:(NSArray *)array;
 + (SGPolygon *)polygonWithDictionary:(NSDictionary *)dictionary;
 
 @end

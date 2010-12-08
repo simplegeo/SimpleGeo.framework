@@ -1,5 +1,5 @@
 //
-//  SGPolygon.h
+//  SGMultiPolygon.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -32,28 +32,27 @@
 
 
 /*!
- * Polygon representation.
+ * MultiPolygon representation.
  */
-@interface SGPolygon : SGGeometry
-{
+@interface SGMultiPolygon : SGGeometry {
   @private
-    // array of arrays of SGPoints
-    NSArray* rings;
+    // array of SGPolygons
+    NSArray* polygons;
 }
 
-//! LinearRings that define this polygon.
-@property (retain,readonly) NSArray* rings;
+//! Polygons that define this multi-polygon.
+@property (retain,readonly) NSArray* polygons;
 
 /*!
- * Create a polygon from a set of LinearRings.
- * @param rings LinearRings.
+ * Create a multi-polygon from a set of Polygons.
+ * @param polygons Polygons.
  */
-+ (SGPolygon *)polygonWithRings:(NSArray *)rings;
++ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons;
 
 /*!
- * Construct a polygon from a set of LinearRings.
- * @param rings LinearRings.
+ * Construct a multi-polygon from a set of Polygons.
+ * @param polygons Polygons.
  */
-- (id)initWithRings:(NSArray *)rings;
+- (id)initWithPolygons:(NSArray *)polygons;
 
 @end

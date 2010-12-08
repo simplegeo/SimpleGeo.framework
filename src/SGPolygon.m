@@ -29,28 +29,32 @@
 //
 
 #import "SGPolygon.h"
-#import "SGPoint.h"
+#import "SGPoint+Private.h"
 
 @implementation SGPolygon
 
 @synthesize rings;
 
++ (SGPolygon *)polygonWithArray:(NSArray *)coordinates
+{
+    NSMutableArray *rings = [NSMutableArray arrayWithCapacity:[coordinates count]];
+
+    for (NSArray *ring in coordinates) {
+        NSMutableArray *r = [NSMutableArray arrayWithCapacity:[ring count]];
+        for (NSArray *coordinate in ring) {
+            [r addObject:[SGPoint pointWithLatitude:[[coordinate objectAtIndex:1] doubleValue]
+                                          longitude:[[coordinate objectAtIndex:0] doubleValue]]];
+        }
+        [rings addObject:r];
+    }
+
+    return [SGPolygon polygonWithRings:[NSArray arrayWithArray:rings]];
+}
+
 + (SGPolygon *)polygonWithDictionary:(NSDictionary *)dictionary
 {
     if ([[dictionary objectForKey:@"type"] isEqual:@"Polygon"]) {
-        NSArray *coordinates = [dictionary objectForKey:@"coordinates"];
-        NSMutableArray *rings = [NSMutableArray arrayWithCapacity:[coordinates count]];
-
-        for (NSArray *ring in coordinates) {
-            NSMutableArray *r = [NSMutableArray arrayWithCapacity:[ring count]];
-            for (NSArray *coordinate in ring) {
-                [r addObject:[SGPoint pointWithLatitude:[[coordinate objectAtIndex:1] doubleValue]
-                                              longitude:[[coordinate objectAtIndex:0] doubleValue]]];
-            }
-            [rings addObject:r];
-        }
-
-        return [SGPolygon polygonWithRings:[NSArray arrayWithArray:rings]];
+        return [SGPolygon polygonWithArray:[dictionary objectForKey:@"coordinates"]];
     } else {
         NSLog(@"%@ could not be converted into a polygon.", dictionary);
         return nil;
@@ -89,7 +93,7 @@
     return [NSString stringWithFormat:@"<SGPolygon: %@>", rings];
 }
 
-- (BOOL) isEqual:(id)object
+- (BOOL)isEqual:(id)object
 {
     return [[object rings] isEqual:rings];
 }

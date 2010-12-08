@@ -29,10 +29,10 @@
 //
 
 #import "SGGeometry.h"
-#import "SGPolygon.h"
-#import "SGPolygon+Private.h"
-#import "SGPoint.h"
 #import "SGPoint+Private.h"
+#import "SGPolygon+Private.h"
+#import "SGMultiPolygon+Private.h"
+
 
 @implementation SGGeometry
 
@@ -46,6 +46,8 @@
             return [SGPoint pointWithDictionary:geometry];
         } else if ([type isEqual:@"Polygon"]) {
             return [SGPolygon polygonWithDictionary:geometry];
+        } else if ([type isEqual:@"MultiPolygon"]) {
+            return [SGMultiPolygon multiPolygonWithDictionary:geometry];
         }
     }
 

@@ -1,5 +1,5 @@
 //
-//  SGPolygon.h
+//  SGMultiPolygon.m
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,32 +28,75 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
+#import "SGMultiPolygon.h"
+#import "SGPolygon+Private.h"
 
 
-/*!
- * Polygon representation.
- */
-@interface SGPolygon : SGGeometry
+@implementation SGMultiPolygon
+
+@synthesize polygons;
+
++ (SGMultiPolygon *)multiPolygonWithArray:(NSArray *)coordinates
 {
-  @private
-    // array of arrays of SGPoints
-    NSArray* rings;
+    NSMutableArray *polygons = [NSMutableArray arrayWithCapacity:[coordinates count]];
+
+    for (NSArray *polygon in coordinates) {
+        [polygons addObject:[SGPolygon polygonWithArray:polygon]];
+    }
+
+    return [SGMultiPolygon multiPolygonWithPolygons:[NSArray arrayWithArray:polygons]];
 }
 
-//! LinearRings that define this polygon.
-@property (retain,readonly) NSArray* rings;
++ (SGMultiPolygon *)multiPolygonWithDictionary:(NSDictionary *)dictionary
+{
+    if ([[dictionary objectForKey:@"type"] isEqual:@"MultiPolygon"]) {
+        return [SGMultiPolygon multiPolygonWithArray:[dictionary objectForKey:@"coordinates"]];
+    } else {
+        NSLog(@"%@ could not be converted into a multi-polygon.", dictionary);
+        return nil;
+    }
+}
 
-/*!
- * Create a polygon from a set of LinearRings.
- * @param rings LinearRings.
- */
-+ (SGPolygon *)polygonWithRings:(NSArray *)rings;
++ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons
+{
+    return [[SGMultiPolygon alloc] initWithPolygons:polygons];
+}
 
-/*!
- * Construct a polygon from a set of LinearRings.
- * @param rings LinearRings.
- */
-- (id)initWithRings:(NSArray *)rings;
+- (id)init
+{
+    return [self initWithPolygons:nil];
+}
+
+- (id)initWithPolygons:(NSArray *)somePolygons
+{
+    self = [super init];
+
+    if (self) {
+        polygons = [somePolygons retain];
+    }
+
+    return self;
+}
+
+- (void)dealloc
+{
+    [polygons release];
+    [super dealloc];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<SGMultiPolygon: %@>", polygons];
+}
+
+- (BOOL)isEqual:(id)object
+{
+    return [[object polygons] isEqual:polygons];
+}
+
+- (NSUInteger)hash
+{
+    return [polygons hash];
+}
 
 @end

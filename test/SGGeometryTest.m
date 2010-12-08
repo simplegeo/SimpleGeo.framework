@@ -33,6 +33,7 @@
 #import "SGGeometry+Private.h"
 #import "SGPoint.h"
 #import "SGPolygon.h"
+#import "SGMultiPolygon.h"
 
 
 @interface SGGeometryTest : GHTestCase { }
@@ -114,6 +115,141 @@
     SGPolygon *expected = [SGPolygon polygonWithRings:rings];
     SGPolygon *polygon = (SGPolygon *) [SGGeometry geometryWithGeometry:geometry];
     GHAssertEqualObjects(polygon, expected, nil);
+}
+
+- (void)testGeometryForGeometryWithDictionaryContainingMultiPolygon
+{
+    // [[[102.0, 2.0], [103.0, 2.0], [103.0, 3.0], [102.0, 3.0], [102.0, 2.0]]],
+    NSMutableArray *coordinates = [NSMutableArray arrayWithCapacity:3];
+    [coordinates addObject:[NSArray arrayWithObjects:
+                            [NSArray arrayWithObjects:
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"102.0"],
+                              [NSDecimalNumber decimalNumberWithString:@"2.0"],
+                              nil],
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"103.0"],
+                              [NSDecimalNumber decimalNumberWithString:@"2.0"],
+                              nil],
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"103.0"],
+                              [NSDecimalNumber decimalNumberWithString:@"3.0"],
+                              nil],
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"102.0"],
+                              [NSDecimalNumber decimalNumberWithString:@"3.0"],
+                              nil],
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"102.0"],
+                              [NSDecimalNumber decimalNumberWithString:@"2.0"],
+                              nil],
+                             nil],
+                            nil]];
+    // [[[100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0]],
+    [coordinates addObject:[NSArray arrayWithObjects:
+                            [NSArray arrayWithObjects:
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"100.0"],
+                              [NSDecimalNumber decimalNumberWithString:@"0.0"],
+                              nil],
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"101.0"],
+                              [NSDecimalNumber decimalNumberWithString:@"0.0"],
+                              nil],
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"101.0"],
+                              [NSDecimalNumber decimalNumberWithString:@"1.0"],
+                              nil],
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"100.0"],
+                              [NSDecimalNumber decimalNumberWithString:@"1.0"],
+                              nil],
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"100.0"],
+                              [NSDecimalNumber decimalNumberWithString:@"0.0"],
+                              nil],
+                             nil],
+                            nil]];
+    // [[100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2]]]
+    [coordinates addObject:[NSArray arrayWithObjects:
+                            [NSArray arrayWithObjects:
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"100.2"],
+                              [NSDecimalNumber decimalNumberWithString:@"0.2"],
+                              nil],
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"100.8"],
+                              [NSDecimalNumber decimalNumberWithString:@"0.2"],
+                              nil],
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"100.8"],
+                              [NSDecimalNumber decimalNumberWithString:@"0.8"],
+                              nil],
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"100.2"],
+                              [NSDecimalNumber decimalNumberWithString:@"0.8"],
+                              nil],
+                             [NSArray arrayWithObjects:
+                              [NSDecimalNumber decimalNumberWithString:@"100.2"],
+                              [NSDecimalNumber decimalNumberWithString:@"0.2"],
+                              nil],
+                             nil],
+                            nil]];
+
+    NSDictionary *geometry = [NSDictionary dictionaryWithObjectsAndKeys:@"MultiPolygon", @"type",
+                              coordinates, @"coordinates", nil];
+
+    NSMutableArray *polygons = [NSMutableArray arrayWithCapacity:3];
+    // [[[102.0, 2.0], [103.0, 2.0], [103.0, 3.0], [102.0, 3.0], [102.0, 2.0]]],
+    [polygons addObject:[SGPolygon polygonWithRings:[NSArray arrayWithObjects:
+                                                     [NSArray arrayWithObjects:
+                                                      [SGPoint pointWithLatitude:2.0
+                                                                       longitude:102.0],
+                                                      [SGPoint pointWithLatitude:2.0
+                                                                       longitude:103.0],
+                                                      [SGPoint pointWithLatitude:3.0
+                                                                       longitude:103.0],
+                                                      [SGPoint pointWithLatitude:3.0
+                                                                       longitude:102.0],
+                                                      [SGPoint pointWithLatitude:2.0
+                                                                       longitude:102.0],
+                                                      nil],
+                                                     nil]]];
+    // [[[100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0]],
+    [polygons addObject:[SGPolygon polygonWithRings:[NSArray arrayWithObjects:
+                                                     [NSArray arrayWithObjects:
+                                                      [SGPoint pointWithLatitude:0.0
+                                                                       longitude:100.0],
+                                                      [SGPoint pointWithLatitude:0.0
+                                                                       longitude:101.0],
+                                                      [SGPoint pointWithLatitude:1.0
+                                                                       longitude:101.0],
+                                                      [SGPoint pointWithLatitude:1.0
+                                                                       longitude:100.0],
+                                                      [SGPoint pointWithLatitude:0.0
+                                                                       longitude:100.0],
+                                                      nil],
+                                                     nil]]];
+    // [[100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2]]]
+    [polygons addObject:[SGPolygon polygonWithRings:[NSArray arrayWithObjects:
+                                                     [NSArray arrayWithObjects:
+                                                      [SGPoint pointWithLatitude:0.2
+                                                                       longitude:100.2],
+                                                      [SGPoint pointWithLatitude:0.2
+                                                                       longitude:100.8],
+                                                      [SGPoint pointWithLatitude:0.8
+                                                                       longitude:100.8],
+                                                      [SGPoint pointWithLatitude:0.8
+                                                                       longitude:100.2],
+                                                      [SGPoint pointWithLatitude:0.2
+                                                                       longitude:100.2],
+                                                      nil],
+                                                     nil]]];
+
+
+    SGMultiPolygon *expected = [SGMultiPolygon multiPolygonWithPolygons:polygons];
+    SGMultiPolygon *multiPolygon = (SGMultiPolygon *) [SGGeometry geometryWithGeometry:geometry];
+    GHAssertEqualObjects(multiPolygon, expected, nil);
 }
 
 - (void)testGeometryForGeometryWithDictionaryContainingLineString

@@ -33,6 +33,7 @@
 
 @interface SGPoint (Private)
 
++ (SGPoint *)pointWithArray:(NSArray *)array;
 + (SGPoint *)pointWithDictionary:(NSDictionary *)dictionary;
 
 @end

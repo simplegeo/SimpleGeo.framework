@@ -36,13 +36,16 @@
 @synthesize latitude;
 @synthesize longitude;
 
++ (SGPoint *)pointWithArray:(NSArray *)coordinates
+{
+    return [SGPoint pointWithLatitude:[[coordinates objectAtIndex:1] doubleValue]
+                            longitude:[[coordinates objectAtIndex:0] doubleValue]];
+}
+
 + (SGPoint *)pointWithDictionary:(NSDictionary *)input
 {
     if ([[input objectForKey:@"type"] isEqual:@"Point"]) {
-        NSArray *coordinates = [input objectForKey:@"coordinates"];
-
-        return [SGPoint pointWithLatitude:[[coordinates objectAtIndex:1] doubleValue]
-                                longitude:[[coordinates objectAtIndex:0] doubleValue]];
+        return [SGPoint pointWithArray:[input objectForKey:@"coordinates"]];
     } else {
         NSLog(@"%@ could not be converted into a point.", input);
         return nil;

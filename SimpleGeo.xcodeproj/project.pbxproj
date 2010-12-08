@@ -93,6 +93,10 @@
 		5DF0868912ADCBC5007A8A60 /* SGPoint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF0868812ADCBC5007A8A60 /* SGPoint+Private.h */; };
 		5DF08A3812AF3DDE007A8A60 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF08A3712AF3DDE007A8A60 /* YAJL.framework */; };
 		5DF08A5812AF3EAE007A8A60 /* YAJL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5DF08A3712AF3DDE007A8A60 /* YAJL.framework */; };
+		5DF08A9D12AF644F007A8A60 /* SGMultiPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF08A9B12AF644F007A8A60 /* SGMultiPolygon.h */; };
+		5DF08A9E12AF644F007A8A60 /* SGMultiPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF08A9C12AF644F007A8A60 /* SGMultiPolygon.m */; };
+		5DF08A9F12AF644F007A8A60 /* SGMultiPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF08A9C12AF644F007A8A60 /* SGMultiPolygon.m */; };
+		5DF08AA112AF6544007A8A60 /* SGMultiPolygon+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF08AA012AF6544007A8A60 /* SGMultiPolygon+Private.h */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -193,6 +197,9 @@
 		5DF0867A12ADCB21007A8A60 /* SGPolygon+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGPolygon+Private.h"; path = "src/SGPolygon+Private.h"; sourceTree = "<group>"; };
 		5DF0868812ADCBC5007A8A60 /* SGPoint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGPoint+Private.h"; path = "src/SGPoint+Private.h"; sourceTree = "<group>"; };
 		5DF08A3712AF3DDE007A8A60 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = ext/YAJL.framework; sourceTree = SOURCE_ROOT; };
+		5DF08A9B12AF644F007A8A60 /* SGMultiPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGMultiPolygon.h; path = src/SGMultiPolygon.h; sourceTree = "<group>"; };
+		5DF08A9C12AF644F007A8A60 /* SGMultiPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGMultiPolygon.m; path = src/SGMultiPolygon.m; sourceTree = "<group>"; };
+		5DF08AA012AF6544007A8A60 /* SGMultiPolygon+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGMultiPolygon+Private.h"; path = "src/SGMultiPolygon+Private.h"; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* SimpleGeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleGeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -388,12 +395,15 @@
 				5D3994E512A8A8A700EB7B20 /* SGGeometry.h */,
 				5DF0866C12ADCA9B007A8A60 /* SGGeometry+Private.h */,
 				5D3994E612A8A8A700EB7B20 /* SGGeometry.m */,
-				5D3994EC12A8AB4300EB7B20 /* SGPolygon.h */,
-				5DF0867A12ADCB21007A8A60 /* SGPolygon+Private.h */,
-				5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */,
 				5DA3C343128E427C00E128DC /* SGPoint.h */,
 				5DF0868812ADCBC5007A8A60 /* SGPoint+Private.h */,
 				5DA3C344128E427C00E128DC /* SGPoint.m */,
+				5D3994EC12A8AB4300EB7B20 /* SGPolygon.h */,
+				5DF0867A12ADCB21007A8A60 /* SGPolygon+Private.h */,
+				5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */,
+				5DF08A9B12AF644F007A8A60 /* SGMultiPolygon.h */,
+				5DF08AA012AF6544007A8A60 /* SGMultiPolygon+Private.h */,
+				5DF08A9C12AF644F007A8A60 /* SGMultiPolygon.m */,
 				5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */,
 				5D5B05CF12934A9D00399A50 /* NSArray+SGFeature.m */,
 				5D8C148D129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h */,
@@ -440,6 +450,8 @@
 				5DF0866D12ADCA9B007A8A60 /* SGGeometry+Private.h in Headers */,
 				5DF0867B12ADCB21007A8A60 /* SGPolygon+Private.h in Headers */,
 				5DF0868912ADCBC5007A8A60 /* SGPoint+Private.h in Headers */,
+				5DF08A9D12AF644F007A8A60 /* SGMultiPolygon.h in Headers */,
+				5DF08AA112AF6544007A8A60 /* SGMultiPolygon+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +590,7 @@
 				5D3994EE12A8AB4300EB7B20 /* SGPolygon.m in Sources */,
 				5D1C1B4912A9A5170055EC91 /* SGGeometryTest.m in Sources */,
 				5D1C1B9E12A9AD1A0055EC91 /* SimpleGeo+Context.m in Sources */,
+				5DF08A9F12AF644F007A8A60 /* SGMultiPolygon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,6 +618,7 @@
 				5D3994E912A8A8A700EB7B20 /* SGGeometry.m in Sources */,
 				5D3994F012A8AB4300EB7B20 /* SGPolygon.m in Sources */,
 				5D1C1B9D12A9AD1A0055EC91 /* SimpleGeo+Context.m in Sources */,
+				5DF08A9E12AF644F007A8A60 /* SGMultiPolygon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

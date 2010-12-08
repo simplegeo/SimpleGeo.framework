@@ -28,7 +28,6 @@
 		5D3994EE12A8AB4300EB7B20 /* SGPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */; };
 		5D3994EF12A8AB4300EB7B20 /* SGPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3994EC12A8AB4300EB7B20 /* SGPolygon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D3994F012A8AB4300EB7B20 /* SGPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */; };
-		5D5B02C71291A37700399A50 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5B02C61291A37700399A50 /* YAJL.framework */; };
 		5D5B036F1291BD4500399A50 /* SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B036E1291BD4500399A50 /* SGFeature.m */; };
 		5D5B03701291BD4500399A50 /* SGFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5B036D1291BD4500399A50 /* SGFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D5B03711291BD4500399A50 /* SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B036E1291BD4500399A50 /* SGFeature.m */; };
@@ -92,6 +91,8 @@
 		5DF0866D12ADCA9B007A8A60 /* SGGeometry+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF0866C12ADCA9B007A8A60 /* SGGeometry+Private.h */; };
 		5DF0867B12ADCB21007A8A60 /* SGPolygon+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF0867A12ADCB21007A8A60 /* SGPolygon+Private.h */; };
 		5DF0868912ADCBC5007A8A60 /* SGPoint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF0868812ADCBC5007A8A60 /* SGPoint+Private.h */; };
+		5DF08A3812AF3DDE007A8A60 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF08A3712AF3DDE007A8A60 /* YAJL.framework */; };
+		5DF08A5812AF3EAE007A8A60 /* YAJL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5DF08A3712AF3DDE007A8A60 /* YAJL.framework */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,19 @@
 			remoteInfo = SimpleGeo;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5DF08A6312AF3ED7007A8A60 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5DF08A5812AF3EAE007A8A60 /* YAJL.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -129,7 +143,6 @@
 		5D3994E612A8A8A700EB7B20 /* SGGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGGeometry.m; path = src/SGGeometry.m; sourceTree = "<group>"; };
 		5D3994EC12A8AB4300EB7B20 /* SGPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGPolygon.h; path = src/SGPolygon.h; sourceTree = "<group>"; };
 		5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGPolygon.m; path = src/SGPolygon.m; sourceTree = "<group>"; };
-		5D5B02C61291A37700399A50 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = Library/Frameworks/YAJL.framework; sourceTree = SDKROOT; };
 		5D5B036D1291BD4500399A50 /* SGFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGFeature.h; path = src/SGFeature.h; sourceTree = "<group>"; };
 		5D5B036E1291BD4500399A50 /* SGFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGFeature.m; path = src/SGFeature.m; sourceTree = "<group>"; };
 		5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+SGFeature.h"; path = "src/NSArray+SGFeature.h"; sourceTree = "<group>"; };
@@ -179,6 +192,7 @@
 		5DF0866C12ADCA9B007A8A60 /* SGGeometry+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGGeometry+Private.h"; path = "src/SGGeometry+Private.h"; sourceTree = "<group>"; };
 		5DF0867A12ADCB21007A8A60 /* SGPolygon+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGPolygon+Private.h"; path = "src/SGPolygon+Private.h"; sourceTree = "<group>"; };
 		5DF0868812ADCBC5007A8A60 /* SGPoint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGPoint+Private.h"; path = "src/SGPoint+Private.h"; sourceTree = "<group>"; };
+		5DF08A3712AF3DDE007A8A60 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = ext/YAJL.framework; sourceTree = SOURCE_ROOT; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* SimpleGeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleGeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -193,8 +207,8 @@
 				5D7674B712909AAB006B7D51 /* SystemConfiguration.framework in Frameworks */,
 				5D7674BB12909ABA006B7D51 /* libz.dylib in Frameworks */,
 				5D7674BD12909ACB006B7D51 /* CoreServices.framework in Frameworks */,
-				5D5B02C71291A37700399A50 /* YAJL.framework in Frameworks */,
 				5D8C15E7129DE86E002F8C01 /* AppKit.framework in Frameworks */,
+				5DF08A3812AF3DDE007A8A60 /* YAJL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +249,6 @@
 				5D7674B612909AAB006B7D51 /* SystemConfiguration.framework */,
 				5D7674BA12909ABA006B7D51 /* libz.dylib */,
 				5D7674BC12909ACB006B7D51 /* CoreServices.framework */,
-				5D5B02C61291A37700399A50 /* YAJL.framework */,
 				5D8C15DA129DE7C4002F8C01 /* Cocoa.framework */,
 				5D8C15E6129DE86E002F8C01 /* AppKit.framework */,
 			);
@@ -293,6 +306,7 @@
 			children = (
 				5D7674AC12909A5C006B7D51 /* ASIHTTPRequest */,
 				5D8C1562129DE17B002F8C01 /* TouchFoundation */,
+				5DF08A3712AF3DDE007A8A60 /* YAJL.framework */,
 			);
 			name = "Imported Libraries";
 			sourceTree = "<group>";
@@ -439,6 +453,7 @@
 				5DA3C34F128E448800E128DC /* Resources */,
 				5DA3C350128E448800E128DC /* Sources */,
 				5DA3C351128E448800E128DC /* Frameworks */,
+				5DF08A6312AF3ED7007A8A60 /* CopyFiles */,
 				5D39925012A571C700EB7B20 /* ShellScript */,
 			);
 			buildRules = (
@@ -622,6 +637,7 @@
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)\"/**";
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -644,6 +660,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)\"/**";
 				FRAMEWORK_VERSION = A;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -687,6 +704,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ext\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -695,6 +717,7 @@
 				GCC_PREFIX_HEADER = SimpleGeo_Prefix.pch;
 				INFOPLIST_FILE = "Tests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "\"@executable_path/../Frameworks\"";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -712,12 +735,18 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/ext\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SimpleGeo_Prefix.pch;
 				INFOPLIST_FILE = "Tests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "\"@executable_path/../Frameworks\"";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,

@@ -81,15 +81,13 @@
         return;
     }
 
-    NSLog(@"Applying OAuth headers...");
-
     // basic OAuth parameters
     NSMutableDictionary *oauthParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                         [requestCredentials objectForKey:@"consumerKey"],
                                         @"oauth_consumer_key",
                                         [self generateTimestamp], @"oauth_timestamp",
                                         [self generateNonce], @"oauth_nonce",
-                                        @"HMAC-SHA1", @"oauth_signature_method", 
+                                        @"HMAC-SHA1", @"oauth_signature_method",
                                         @"1.0", @"oauth_version",
                                         nil
                                         ];
@@ -104,7 +102,7 @@
     }
 
     NSString *sbs = [self signatureBaseStringWithParameters:params];
-    NSLog(@"Signature base string: %@", sbs);
+    // NSLog(@"Signature base string: %@", sbs);
 
     // generate the OAuth signature
 
@@ -125,7 +123,7 @@
     }
     NSString *components = [[NSArray arrayWithArray:pairs] componentsJoinedByString:@", "];
 
-    NSLog(@"Authorization header: %@", [NSString stringWithFormat:@"OAuth realm=\"\", %@", components]);
+    // NSLog(@"Authorization header: %@", [NSString stringWithFormat:@"OAuth realm=\"\", %@", components]);
     [self addRequestHeader:@"Authorization"
                      value:[NSString stringWithFormat:@"OAuth realm=\"\", %@", components]];
 }

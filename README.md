@@ -60,7 +60,7 @@ You can either run `make install` in `docs/html/` to install the docset into
 your home directory, or you can do whatever you wish with the
 `SimpleGeo.docset` that was created there.
 
-## Embedding `SimpleGeo.framework` in a Cocoa Application
+## Embedding in a Cocoa Application
 
 In order to embed `SimpleGeo.framework` into a Cocoa application, you'll have
 to add [`YAJL.framework`](https://github.com/gabriel/yajl-objc/downloads) to

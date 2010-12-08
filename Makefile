@@ -8,7 +8,8 @@ default:
 
 # If you need to clean a specific target/configuration: $(COMMAND) -target $(TARGET) -configuration DebugOrRelease -sdk $(SDK) clean
 clean:
-	-rm -rf build/*
+	-rm -rf build/
+	-rm -rf ../SimpleGeo-build/
 	-rm -rf docs/
 
 docs:

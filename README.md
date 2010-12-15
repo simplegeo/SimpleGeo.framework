@@ -14,11 +14,6 @@ into `/Library/Frameworks` (or somewhere similar). Look for the most recent
 version of `GHUnit-*.zip` on the [gh-unit](https://github.com/gabriel/gh-unit)
 [Downloads page](https://github.com/gabriel/gh-unit/downloads).
 
-You'll also need to install `YAJL.framework`. Same deal, but this time, grab
-the latest `YAJL-*.zip` from the
-[yajl-objc](https://github.com/gabriel/yajl-objc) [Downloads
-page](https://github.com/gabriel/yajl-objc/downloads).
-
 For network tests to succeed, you'll want to clone and start the mock SimpleGeo
 server:
 

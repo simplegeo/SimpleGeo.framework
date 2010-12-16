@@ -86,21 +86,22 @@
                                  ];
 
     // this is ugly because NSURL doesn't handle setting query parameters well
-    if (query && ! [query isEqual:@""] && category && ! [category isEqual:@""]) {
-        [endpoint appendFormat:@"?q=%@&category=%@",
-         [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
-         [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
-         ];
-    } else if (category && ! [category isEqual:@""]) {
-        [endpoint appendFormat:@"?category=%@",
-         [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
-         ];
-    } else if (query && ! [query isEqual:@""]) {
-        [endpoint appendFormat:@"?q=%@",
-         [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
-         ];
-    }
-
+	
+	NSMutableArray *queryParams = [NSMutableArray arrayWithCapacity:4];
+	
+	if (query && ! [query isEqual:@""]) {
+		[queryParams addObject: [NSString stringWithFormat:@"%@=%@", @"q", [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+	}
+	
+	if (category && ! [category isEqual:@""]) {
+		[queryParams addObject: [NSString stringWithFormat:@"%@=%@", @"category", [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+	}
+	
+	
+	if ([queryParams count] > 0) {
+		[endpoint appendFormat:@"?%@", [queryParams componentsJoinedByString:@"&"]];
+	}
+	
     NSURL *endpointURL = [self endpointForString:endpoint];
     NSLog(@"Endpoint: %@", endpoint);
 

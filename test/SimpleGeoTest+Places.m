@@ -151,19 +151,17 @@
                  near:(SGPoint *)point
              matching:(NSString *)query
            inCategory:(NSString *)category
-			   within:(double)radius
+               within:(double)radius
 {
-	NSLog(@"in didLoadPlaces, radius = %f", radius);
-	if (radius > 0.0f) {
-		GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
-		GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 7 places.");
-		GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
-                             @"Burger Master West Olympia", nil);
-		GHAssertEqualObjects([[[[places features] objectAtIndex:1] properties] objectForKey:@"name"],
-                             @"Red Robin Gourmet Burgers", nil);
-		[self notify:kGHUnitWaitStatusSuccess
+    NSLog(@"in didLoadPlaces, radius = %f", radius);
+    if (radius > 0.0f) {
+        GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
+        GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
+        GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
+                             @"Mountain Sun Pub & Brewery", nil);
+        [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearWithRadiusAndMultipleResults)];
-	} else if (!query && !category) {
+    } else if (!query && !category) {
         GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
         GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 7 places.");
         GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],

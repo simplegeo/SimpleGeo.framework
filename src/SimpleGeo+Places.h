@@ -68,7 +68,7 @@
                  near:(SGPoint *)point
              matching:(NSString *)query
            inCategory:(NSString *)category
-			   within:(double)radius;
+               within:(double)radius;
 
 /*!
  * Called when a place was successfully updated in the Places database.
@@ -110,7 +110,7 @@
  * @param radius Radius of query (in Kilometers)
  */
 - (void)getPlacesNear:(SGPoint *)point
-			   within:(double)radius;
+               within:(double)radius;
 
 /*!
  * Find places near a point matching a query string (SimpleGeo+Places.h).
@@ -128,7 +128,7 @@
  */
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
-			   within:(double)radius;
+               within:(double)radius;
 
 /*!
  * Find places near a point matching a query string in a specific category (SimpleGeo+Places.h).
@@ -150,7 +150,7 @@
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
            inCategory:(NSString *)category
-			   within:(double)radius;
+               within:(double)radius;
 
 /*!
  * Update a place in the Places database (SimpleGeo+Places.h).

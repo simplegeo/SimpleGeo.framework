@@ -72,46 +72,72 @@
 }
 
 - (void)getPlacesNear:(SGPoint *)point
+               within:(double)radius
+{
+    [self getPlacesNear:point matching:nil inCategory:nil within:radius];
+}
+
+- (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
 {
-    [self getPlacesNear:point matching:query inCategory:nil];
+    [self getPlacesNear:point matching:query inCategory:nil within:0.0f];
+}
+
+- (void)getPlacesNear:(SGPoint *)point
+             matching:(NSString *)query
+               within:(double)radius
+{
+    [self getPlacesNear:point matching:query inCategory:nil within:0.0f];
 }
 
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
            inCategory:(NSString *)category
 {
+    [self getPlacesNear:point matching:query inCategory:category within:0.0f];
+}
+
+
+- (void)getPlacesNear:(SGPoint *)point
+             matching:(NSString *)query
+           inCategory:(NSString *)category
+               within:(double)radius
+{
     NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/places/%f,%f.json",
                                  SIMPLEGEO_API_VERSION, [point latitude], [point longitude]
                                  ];
 
-    // this is ugly because NSURL doesn't handle setting query parameters well
-    if (query && ! [query isEqual:@""] && category && ! [category isEqual:@""]) {
-        [endpoint appendFormat:@"?q=%@&category=%@",
-         [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
-         [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
-         ];
-    } else if (category && ! [category isEqual:@""]) {
-        [endpoint appendFormat:@"?category=%@",
-         [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
-         ];
-    } else if (query && ! [query isEqual:@""]) {
-        [endpoint appendFormat:@"?q=%@",
-         [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
-         ];
+    NSMutableArray *queryParams = [NSMutableArray array];
+    NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                        @"didLoadPlaces:", @"targetSelector",
+                                        point, @"point",
+                                      nil];
+
+    if (query && ! [query isEqual:@""]) {
+        [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"q", [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+        [userInfo setObject:query forKey:@"matching"];
+    }
+
+    if (category && ! [category isEqual:@""]) {
+        [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"category", [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+        [userInfo setObject:category forKey:@"category"];
+    }
+
+    if (radius > 0.0) {
+        [queryParams addObject:[NSString stringWithFormat:@"%@=%f", @"radius", radius]];
+        NSNumber * objRadius = [NSNumber numberWithDouble:radius];
+        [userInfo setObject:objRadius forKey:@"radius"];
+    }
+
+    if ([queryParams count] > 0) {
+        [endpoint appendFormat:@"?%@", [queryParams componentsJoinedByString:@"&"]];
     }
 
     NSURL *endpointURL = [self endpointForString:endpoint];
     NSLog(@"Endpoint: %@", endpoint);
 
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
-    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                          @"didLoadPlaces:", @"targetSelector",
-                          point, @"point",
-                          query, @"matching",
-                          category, @"category",
-                          nil
-                          ]];
+    [request setUserInfo:userInfo];
     [request startAsynchronous];
 }
 
@@ -163,7 +189,8 @@
     [delegate didLoadPlaces:[[places retain] autorelease]
                        near:[[[[request userInfo] objectForKey:@"point"] retain] autorelease]
                    matching:[[[[request userInfo] objectForKey:@"matching"] retain] autorelease]
-                 inCategory:[[[[request userInfo] objectForKey:@"category"] retain] autorelease]];
+                 inCategory:[[[[request userInfo] objectForKey:@"category"] retain] autorelease]
+                     within:[[[request userInfo] objectForKey:@"radius"] doubleValue]];
 }
 
 - (void)didUpdatePlace:(ASIHTTPRequest *)request

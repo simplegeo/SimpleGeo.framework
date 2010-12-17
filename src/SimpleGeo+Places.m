@@ -85,34 +85,29 @@
                                  SIMPLEGEO_API_VERSION, [point latitude], [point longitude]
                                  ];
 
-    // this is ugly because NSURL doesn't handle setting query parameters well
-	
 	NSMutableArray *queryParams = [NSMutableArray arrayWithCapacity:4];
-	
+	NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"didLoadPlaces:", @"targetSelector", point, @"point", nil];
+
 	if (query && ! [query isEqual:@""]) {
 		[queryParams addObject: [NSString stringWithFormat:@"%@=%@", @"q", [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+		[userInfo setObject:query forKey:@"matching"];
 	}
-	
+
 	if (category && ! [category isEqual:@""]) {
 		[queryParams addObject: [NSString stringWithFormat:@"%@=%@", @"category", [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+		[userInfo setObject:category forKey:@"category"];
 	}
 	
 	
 	if ([queryParams count] > 0) {
 		[endpoint appendFormat:@"?%@", [queryParams componentsJoinedByString:@"&"]];
 	}
-	
+
     NSURL *endpointURL = [self endpointForString:endpoint];
     NSLog(@"Endpoint: %@", endpoint);
 
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
-    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                          @"didLoadPlaces:", @"targetSelector",
-                          point, @"point",
-                          query, @"matching",
-                          category, @"category",
-                          nil
-                          ]];
+    [request setUserInfo:userInfo];
     [request startAsynchronous];
 }
 

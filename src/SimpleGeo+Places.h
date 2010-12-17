@@ -62,11 +62,13 @@
  * @param point    Query point.
  * @param query    Query string (may be nil).
  * @param category Query category (may be nil).
+ * @param radius   Query radius (0.0 will be ignored).
  */
 - (void)didLoadPlaces:(SGFeatureCollection *)places
                  near:(SGPoint *)point
              matching:(NSString *)query
-           inCategory:(NSString *)category;
+           inCategory:(NSString *)category
+			   within:(double)radius;
 
 /*!
  * Called when a place was successfully updated in the Places database.
@@ -103,12 +105,30 @@
 - (void)getPlacesNear:(SGPoint *)point;
 
 /*!
+ * Find places near a point (SimpleGeo+Places.h).
+ * @param point Query point.
+ * @param radius Radius of query (in Kilometers)
+ */
+- (void)getPlacesNear:(SGPoint *)point
+			   within:(double)radius;
+
+/*!
  * Find places near a point matching a query string (SimpleGeo+Places.h).
  * @param point Query point.
  * @param query Query string.
  */
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query;
+
+/*!
+ * Find places near a point matching a query string (SimpleGeo+Places.h).
+ * @param point Query point.
+ * @param query Query string.
+ * @param radius Radius of query (in Kilometers)
+ */
+- (void)getPlacesNear:(SGPoint *)point
+             matching:(NSString *)query
+			   within:(double)radius;
 
 /*!
  * Find places near a point matching a query string in a specific category (SimpleGeo+Places.h).
@@ -119,6 +139,18 @@
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
            inCategory:(NSString *)category;
+
+/*!
+ * Find places near a point matching a query string in a specific category (SimpleGeo+Places.h).
+ * @param point    Query point.
+ * @param query    Query string.
+ * @param category Query category.
+ * @param radius Radius of query (in Kilometers)
+ */
+- (void)getPlacesNear:(SGPoint *)point
+             matching:(NSString *)query
+           inCategory:(NSString *)category
+			   within:(double)radius;
 
 /*!
  * Update a place in the Places database (SimpleGeo+Places.h).

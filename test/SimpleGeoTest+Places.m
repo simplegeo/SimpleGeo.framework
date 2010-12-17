@@ -70,6 +70,16 @@
                 timeout:0.25];
 }
 
+- (void)testGetPlacesNearWithRadiusAndMultipleResults
+{
+    [self prepare];
+
+    [[self createClient] getPlacesNear:[self point] within:1.5];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.5];
+}
+
 - (void)testGetPlacesNearMatchingWithASingleResult
 {
     [self prepare];
@@ -141,8 +151,19 @@
                  near:(SGPoint *)point
              matching:(NSString *)query
            inCategory:(NSString *)category
+			   within:(double)radius
 {
-    if (!query && !category) {
+	NSLog(@"in didLoadPlaces, radius = %f", radius);
+	if (radius > 0.0f) {
+		GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
+		GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 7 places.");
+		GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
+                             @"Burger Master West Olympia", nil);
+		GHAssertEqualObjects([[[[places features] objectAtIndex:1] properties] objectForKey:@"name"],
+                             @"Red Robin Gourmet Burgers", nil);
+		[self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetPlacesNearWithRadiusAndMultipleResults)];
+	} else if (!query && !category) {
         GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
         GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 7 places.");
         GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],

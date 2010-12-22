@@ -131,4 +131,9 @@
 - (id)initWithGeometry:(SGGeometry *)geometry
             properties:(NSDictionary *)properties;
 
+/*!
+ * Return an NSDictionary representation of this feature;
+ */
+- (NSDictionary *)asDictionary;
+
 @end

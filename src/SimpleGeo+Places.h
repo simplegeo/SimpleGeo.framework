@@ -62,7 +62,7 @@
  * @param query  Query information.
  */
 - (void)didLoadPlaces:(SGFeatureCollection *)places
-                query:(NSDictionary *)query;
+             forQuery:(NSDictionary *)query;
 
 /*!
  * Called when a place was successfully updated in the Places database.

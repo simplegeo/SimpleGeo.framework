@@ -148,7 +148,7 @@
 }
 
 - (void)didLoadPlaces:(SGFeatureCollection *)places
-                query:(NSDictionary *)query
+             forQuery:(NSDictionary *)query
 {
     SGPoint *point = [query objectForKey:@"point"];
     // NSString *address = [query objectForKey:@"address"];

@@ -295,7 +295,7 @@
     [query removeObjectForKey:@"targetSelector"];
 
     [delegate didLoadPlaces:[[places retain] autorelease]
-                      query:query];
+                   forQuery:query];
 }
 
 - (void)didUpdatePlace:(ASIHTTPRequest *)request

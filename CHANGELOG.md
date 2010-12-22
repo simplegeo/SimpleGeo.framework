@@ -12,6 +12,7 @@
   `SimpleGeoPlacesDelegate`
 * Changed `getContext:(SGPoint *)` to `getContextForPoint:(SGPoint *)` in
   `SimpleGeo+Context`
+* `SimpleGeo` `delegate` property is now read/write
 
 ## 1.0 - 12/8/10
 

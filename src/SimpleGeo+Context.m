@@ -35,20 +35,6 @@
 
 @implementation SimpleGeo (Context)
 
-- (void)getContext
-{
-    NSURL *endpoint = [self endpointForString:
-                       [NSString stringWithFormat:@"/%@/context/ip.json",
-                        SIMPLEGEO_API_VERSION]];
-
-    ASIHTTPRequest *request = [self requestWithURL:endpoint];
-    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                          @"didLoadContext:", @"targetSelector",
-                          nil
-                          ]];
-    [request startAsynchronous];
-}
-
 - (void)getContextForPoint:(SGPoint *)point
 {
     NSURL *endpoint = [self endpointForString:
@@ -78,24 +64,6 @@
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                           @"didLoadContext:", @"targetSelector",
                           address, @"address",
-                          nil
-                          ]];
-    [request startAsynchronous];
-}
-
-- (void)getContextForIP:(NSString *)ip
-{
-    NSURL *endpoint = [self endpointForString:
-                       [NSString stringWithFormat:@"/%@/context/%@.json",
-                        SIMPLEGEO_API_VERSION,
-                        ip,
-                        nil
-                        ]];
-
-    ASIHTTPRequest *request = [self requestWithURL:endpoint];
-    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                          @"didLoadContext:", @"targetSelector",
-                          ip, @"ip",
                           nil
                           ]];
     [request startAsynchronous];

@@ -33,20 +33,9 @@
 
 
 NSString * const EXAMPLE_ADDRESS = @"123 Fake St., Springfield, MA";
-NSString * const EXAMPLE_IP = @"1.2.3.4";
 
 
 @implementation SimpleGeoTest (Context)
-
-- (void)testGetContext
-{
-    [self prepare];
-
-    [[self createClient] getContext];
-
-    [self waitForStatus:kGHUnitWaitStatusSuccess
-                timeout:0.25];
-}
 
 - (void)testGetContextForPoint
 {
@@ -68,29 +57,12 @@ NSString * const EXAMPLE_IP = @"1.2.3.4";
                 timeout:0.25];
 }
 
-- (void)testGetContextForIP
-{
-    [self prepare];
-
-    [[self createClient] getContextForIP:EXAMPLE_IP];
-
-    [self waitForStatus:kGHUnitWaitStatusSuccess
-                timeout:0.25];
-}
-
 #pragma mark SimpleGeoContextDelegate Methods
 
 - (void)didLoadContext:(NSDictionary *)context
               forQuery:(NSDictionary *)query
 {
-    if ([query count] == 0) {
-        NSDictionary *queryRsp = [context objectForKey:@"query"];
-        GHAssertEquals([[queryRsp objectForKey:@"latitude"] doubleValue], 37.778381, nil);
-        GHAssertEquals([[queryRsp objectForKey:@"longitude"] doubleValue], -122.389388, nil);
-
-        [self notify:kGHUnitWaitStatusSuccess
-         forSelector:@selector(testGetContext)];
-    } else if ([[query objectForKey:@"point"] isEqual:[self point]]) {
+    if ([[query objectForKey:@"point"] isEqual:[self point]]) {
         GHAssertNotNil([context objectForKey:@"demographics"], nil);
         GHAssertNotNil([context objectForKey:@"weather"], nil);
         GHAssertTrue([[context objectForKey:@"features"] isKindOfClass:[NSArray class]], nil);
@@ -104,13 +76,6 @@ NSString * const EXAMPLE_IP = @"1.2.3.4";
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetContextForAddress)];
-    } else if ([[query objectForKey:@"ip"] isEqual:EXAMPLE_IP]) {
-        NSDictionary *queryRsp = [context objectForKey:@"query"];
-        GHAssertEquals([[queryRsp objectForKey:@"latitude"] doubleValue], 42.39020, nil);
-        GHAssertEquals([[queryRsp objectForKey:@"longitude"] doubleValue], -71.11470, nil);
-
-        [self notify:kGHUnitWaitStatusSuccess
-         forSelector:@selector(testGetContextForIP)];
     }
 }
 

@@ -53,12 +53,6 @@
 @interface SimpleGeo (Context)
 
 /*!
- * Get Context information for this client (by requesting IP).
- * (SimpleGeo+Context.h)
- */
-- (void)getContext;
-
-/*!
  * Get Context information for a specific point. (SimpleGeo+Context.h)
  * @param point Query point.
  */
@@ -70,12 +64,5 @@
  * @param address Query address.
  */
 - (void)getContextForAddress:(NSString *)address;
-
-/*!
- * Get Context information for an IP address. SimpleGeo will geocode the IP
- * address for you. (SimpleGeo+Context.h)
- * @param ip Query IP.
- */
-- (void)getContextForIP:(NSString *)ip;
 
 @end

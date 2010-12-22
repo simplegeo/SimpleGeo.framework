@@ -97,8 +97,8 @@
     // add in params from the query string
     for (NSString *pair in [[url query] componentsSeparatedByString:@"&"]) {
         NSArray *kv = [pair componentsSeparatedByString:@"="];
-        [params setObject:[kv objectAtIndex:1]
-                   forKey:[kv objectAtIndex:0]];
+        [params setObject:[[kv objectAtIndex:1] URLDecodedString]
+                   forKey:[[kv objectAtIndex:0] URLDecodedString]];
     }
 
     NSString *sbs = [self signatureBaseStringWithParameters:params];

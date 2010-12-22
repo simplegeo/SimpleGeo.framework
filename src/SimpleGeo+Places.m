@@ -213,8 +213,8 @@
 {
     // TODO extract boilerplate
     NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/places/address.json?address=%@",
-                                 SIMPLEGEO_API_VERSION, address
-                                 ];
+                                 SIMPLEGEO_API_VERSION,
+                                 [address stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
 
     NSMutableArray *queryParams = [NSMutableArray array];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:

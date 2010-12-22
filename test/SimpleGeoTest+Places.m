@@ -122,6 +122,16 @@
                 timeout:0.25];
 }
 
+- (void)testGetPlacesNearAddress
+{
+    [self prepare];
+
+    [[self createClient] getPlacesNearAddress:@"41 Decatur St., San Francisco, CA"];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                 timeout:0.25];
+}
+
 - (void)testUpdatePlace
 {
     [self prepare];
@@ -197,7 +207,7 @@
              forQuery:(NSDictionary *)query
 {
     SGPoint *point = [query objectForKey:@"point"];
-    // NSString *address = [query objectForKey:@"address"];
+    NSString *address = [query objectForKey:@"address"];
     NSString *matching = [query objectForKey:@"matching"];
     NSString *category = [query objectForKey:@"category"];
     double radius = [[query objectForKey:@"radius"] doubleValue];
@@ -207,9 +217,10 @@
         GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
         GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
                              @"Mountain Sun Pub & Brewery", nil);
+
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearWithRadiusAndMultipleResults)];
-    } else if (!matching && !category) {
+    } else if (!address && !matching && !category) {
         GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
         GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 7 places.");
         GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
@@ -242,6 +253,14 @@
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearMatchingInCategory)];
+    } else if (address) {
+        GHAssertEqualObjects(address, @"41 Decatur St., San Francisco, CA", @"Reference address didn't match");
+        GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
+        GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
+                             @"Mountain Sun Pub & Brewery", nil);
+
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetPlacesNearAddress)];
     }
 }
 

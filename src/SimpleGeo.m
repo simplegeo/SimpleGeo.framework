@@ -103,7 +103,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     self = [super init];
 
     if (self) {
-        delegate = [aDelegate retain];
+        delegate = aDelegate;
         consumerKey = [key retain];
         consumerSecret = [secret retain];
         url = [aURL retain];

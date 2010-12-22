@@ -31,13 +31,48 @@
 #import "SimpleGeoTest.h"
 #import "SimpleGeo+Context.h"
 
+
+NSString * const EXAMPLE_ADDRESS = @"123 Fake St., Springfield, MA";
+NSString * const EXAMPLE_IP = @"1.2.3.4";
+
+
 @implementation SimpleGeoTest (Context)
 
-- (void)testGetContextFor
+- (void)testGetContext
 {
     [self prepare];
 
-    [[self createClient] getContextFor:[self point]];
+    [[self createClient] getContext];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
+- (void)testGetContextForPoint
+{
+    [self prepare];
+
+    [[self createClient] getContextForPoint:[self point]];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
+- (void)testGetContextForAddress
+{
+    [self prepare];
+
+    [[self createClient] getContextForAddress:EXAMPLE_ADDRESS];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
+- (void)testGetContextForIP
+{
+    [self prepare];
+
+    [[self createClient] getContextForIP:EXAMPLE_IP];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
@@ -46,14 +81,37 @@
 #pragma mark SimpleGeoContextDelegate Methods
 
 - (void)didLoadContext:(NSDictionary *)context
-                   for:(SGPoint *)point
+              forQuery:(NSDictionary *)query
 {
-    GHAssertNotNil([context objectForKey:@"demographics"], nil);
-    GHAssertNotNil([context objectForKey:@"weather"], nil);
-    GHAssertTrue([[context objectForKey:@"features"] isKindOfClass:[NSArray class]], nil);
+    if ([query count] == 0) {
+        NSDictionary *queryRsp = [context objectForKey:@"query"];
+        GHAssertEquals([[queryRsp objectForKey:@"latitude"] doubleValue], 37.778381, nil);
+        GHAssertEquals([[queryRsp objectForKey:@"longitude"] doubleValue], -122.389388, nil);
 
-    [self notify:kGHUnitWaitStatusSuccess
-     forSelector:@selector(testGetContextFor)];
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetContext)];
+    } else if ([[query objectForKey:@"point"] isEqual:[self point]]) {
+        GHAssertNotNil([context objectForKey:@"demographics"], nil);
+        GHAssertNotNil([context objectForKey:@"weather"], nil);
+        GHAssertTrue([[context objectForKey:@"features"] isKindOfClass:[NSArray class]], nil);
+
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetContextForPoint)];
+    } else if ([[query objectForKey:@"address"] isEqual:EXAMPLE_ADDRESS]) {
+        NSDictionary *queryRsp = [context objectForKey:@"query"];
+        GHAssertEquals([[queryRsp objectForKey:@"latitude"] doubleValue], 40.01753, nil);
+        GHAssertEquals([[queryRsp objectForKey:@"longitude"] doubleValue], -105.27741, nil);
+
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetContextForAddress)];
+    } else if ([[query objectForKey:@"ip"] isEqual:EXAMPLE_IP]) {
+        NSDictionary *queryRsp = [context objectForKey:@"query"];
+        GHAssertEquals([[queryRsp objectForKey:@"latitude"] doubleValue], 42.39020, nil);
+        GHAssertEquals([[queryRsp objectForKey:@"longitude"] doubleValue], -71.11470, nil);
+
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetContextForIP)];
+    }
 }
 
 @end

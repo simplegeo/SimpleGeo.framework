@@ -35,7 +35,21 @@
 
 @implementation SimpleGeo (Context)
 
-- (void)getContextFor:(SGPoint *)point
+- (void)getContext
+{
+    NSURL *endpoint = [self endpointForString:
+                       [NSString stringWithFormat:@"/%@/context/ip.json",
+                        SIMPLEGEO_API_VERSION]];
+
+    ASIHTTPRequest *request = [self requestWithURL:endpoint];
+    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                          @"didLoadContext:", @"targetSelector",
+                          nil
+                          ]];
+    [request startAsynchronous];
+}
+
+- (void)getContextForPoint:(SGPoint *)point
 {
     NSURL *endpoint = [self endpointForString:
                        [NSString stringWithFormat:@"/%@/context/%f,%f.json",
@@ -51,12 +65,51 @@
     [request startAsynchronous];
 }
 
+- (void)getContextForAddress:(NSString *)address
+{
+    NSURL *endpoint = [self endpointForString:
+                       [NSString stringWithFormat:@"/%@/context/address.json?address=%@",
+                        SIMPLEGEO_API_VERSION,
+                        [address stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
+                        nil
+                        ]];
+
+    ASIHTTPRequest *request = [self requestWithURL:endpoint];
+    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                          @"didLoadContext:", @"targetSelector",
+                          address, @"address",
+                          nil
+                          ]];
+    [request startAsynchronous];
+}
+
+- (void)getContextForIP:(NSString *)ip
+{
+    NSURL *endpoint = [self endpointForString:
+                       [NSString stringWithFormat:@"/%@/context/%@.json",
+                        SIMPLEGEO_API_VERSION,
+                        ip,
+                        nil
+                        ]];
+
+    ASIHTTPRequest *request = [self requestWithURL:endpoint];
+    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                          @"didLoadContext:", @"targetSelector",
+                          ip, @"ip",
+                          nil
+                          ]];
+    [request startAsynchronous];
+}
+
 #pragma mark Dispatcher Methods
 
 - (void)didLoadContext:(ASIHTTPRequest *)request
 {
+    NSMutableDictionary *arguments = [NSMutableDictionary dictionaryWithDictionary:[request userInfo]];
+    [arguments removeObjectForKey:@"targetSelector"];
+
     [delegate didLoadContext:[[[[request responseData] yajl_JSON] retain] autorelease]
-                         for:[[[[request userInfo] objectForKey:@"point"] retain] autorelease]];
+                    forQuery:arguments];
 }
 
 @end

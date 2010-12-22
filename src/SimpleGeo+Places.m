@@ -68,64 +68,123 @@
 
 - (void)getPlacesNear:(SGPoint *)point
 {
-    [self getPlacesNear:point matching:nil];
+    [self getPlacesNear:point
+               matching:nil];
+}
+
+- (void)getPlacesNearAddress:(NSString *)address
+{
+    [self getPlacesNearAddress:address
+                      matching:nil];
 }
 
 - (void)getPlacesNear:(SGPoint *)point
                within:(double)radius
 {
-    [self getPlacesNear:point matching:nil inCategory:nil within:radius];
+    [self getPlacesNear:point
+               matching:nil
+             inCategory:nil
+                 within:radius];
+}
+
+- (void)getPlacesNearAddress:(NSString *)address
+                      within:(double)radius
+{
+    [self getPlacesNearAddress:address
+                      matching:nil
+                    inCategory:nil
+                        within:radius];
 }
 
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
 {
-    [self getPlacesNear:point matching:query inCategory:nil within:0.0f];
+    [self getPlacesNear:point
+               matching:query
+             inCategory:nil
+                 within:0.0f];
+}
+
+- (void)getPlacesNearAddress:(NSString *)address
+                    matching:(NSString *)query
+{
+    [self getPlacesNearAddress:address
+                      matching:query
+                    inCategory:nil
+                        within:0.0f];
 }
 
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
                within:(double)radius
 {
-    [self getPlacesNear:point matching:query inCategory:nil within:0.0f];
+    [self getPlacesNear:point
+               matching:query
+             inCategory:nil
+                 within:0.0f];
+}
+
+- (void)getPlacesNearAddress:(NSString *)address
+                    matching:(NSString *)query
+                      within:(double)radius
+{
+    [self getPlacesNearAddress:address
+                      matching:query
+                    inCategory:nil
+                        within:0.0f];
 }
 
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
            inCategory:(NSString *)category
 {
-    [self getPlacesNear:point matching:query inCategory:category within:0.0f];
+    [self getPlacesNear:point
+               matching:query
+             inCategory:category
+                 within:0.0f];
 }
 
+- (void)getPlacesNearAddress:(NSString *)address
+                    matching:(NSString *)query
+                  inCategory:(NSString *)category
+{
+    [self getPlacesNearAddress:address
+                      matching:query
+                    inCategory:category
+                        within:0.0f];
+}
 
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
            inCategory:(NSString *)category
                within:(double)radius
 {
+    // TODO extract boilerplate
     NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/places/%f,%f.json",
                                  SIMPLEGEO_API_VERSION, [point latitude], [point longitude]
                                  ];
 
     NSMutableArray *queryParams = [NSMutableArray array];
-    NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                         @"didLoadPlaces:", @"targetSelector",
                                         point, @"point",
                                       nil];
 
     if (query && ! [query isEqual:@""]) {
-        [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"q", [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+        [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"q",
+                                [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
         [userInfo setObject:query forKey:@"matching"];
     }
 
     if (category && ! [category isEqual:@""]) {
-        [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"category", [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+        [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"category",
+                                [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
         [userInfo setObject:category forKey:@"category"];
     }
 
     if (radius > 0.0) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%f", @"radius", radius]];
-        NSNumber * objRadius = [NSNumber numberWithDouble:radius];
+        NSNumber *objRadius = [NSNumber numberWithDouble:radius];
         [userInfo setObject:objRadius forKey:@"radius"];
     }
 
@@ -134,7 +193,53 @@
     }
 
     NSURL *endpointURL = [self endpointForString:endpoint];
-    NSLog(@"Endpoint: %@", endpoint);
+    // NSLog(@"Endpoint: %@", endpoint);
+
+    ASIHTTPRequest *request = [self requestWithURL:endpointURL];
+    [request setUserInfo:userInfo];
+    [request startAsynchronous];
+}
+
+- (void)getPlacesNearAddress:(NSString *)address
+                    matching:(NSString *)query
+                  inCategory:(NSString *)category
+                      within:(double)radius
+{
+    // TODO extract boilerplate
+    NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/places/address.json?address=%@",
+                                 SIMPLEGEO_API_VERSION, address
+                                 ];
+
+    NSMutableArray *queryParams = [NSMutableArray array];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                      @"didLoadPlaces:", @"targetSelector",
+                                      address, @"address",
+                                      nil];
+
+    if (query && ! [query isEqual:@""]) {
+        [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"q",
+                                [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+        [userInfo setObject:query forKey:@"matching"];
+    }
+
+    if (category && ! [category isEqual:@""]) {
+        [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"category",
+                                [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+        [userInfo setObject:category forKey:@"category"];
+    }
+
+    if (radius > 0.0) {
+        [queryParams addObject:[NSString stringWithFormat:@"%@=%f", @"radius", radius]];
+        NSNumber *objRadius = [NSNumber numberWithDouble:radius];
+        [userInfo setObject:objRadius forKey:@"radius"];
+    }
+
+    if ([queryParams count] > 0) {
+        [endpoint appendFormat:@"?%@", [queryParams componentsJoinedByString:@"&"]];
+    }
+
+    NSURL *endpointURL = [self endpointForString:endpoint];
+    // NSLog(@"Endpoint: %@", endpoint);
 
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
     [request setUserInfo:userInfo];
@@ -186,11 +291,11 @@
     NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
     SGFeatureCollection *places = [SGFeatureCollection featureCollectionWithDictionary:jsonResponse];
 
+    NSMutableDictionary *query = [NSMutableDictionary dictionaryWithDictionary:[request userInfo]];
+    [query removeObjectForKey:@"targetSelector"];
+
     [delegate didLoadPlaces:[[places retain] autorelease]
-                       near:[[[[request userInfo] objectForKey:@"point"] retain] autorelease]
-                   matching:[[[[request userInfo] objectForKey:@"matching"] retain] autorelease]
-                 inCategory:[[[[request userInfo] objectForKey:@"category"] retain] autorelease]
-                     within:[[[request userInfo] objectForKey:@"radius"] doubleValue]];
+                      query:query];
 }
 
 - (void)didUpdatePlace:(ASIHTTPRequest *)request

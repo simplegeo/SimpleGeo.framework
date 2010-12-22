@@ -67,14 +67,14 @@
 /*!
  * Get Context information for an address. SimpleGeo will geocode the address
  * for you. (SimpleGeo+Context.h)
- * @param point Query point.
+ * @param address Query address.
  */
 - (void)getContextForAddress:(NSString *)address;
 
 /*!
  * Get Context information for an IP address. SimpleGeo will geocode the IP
  * address for you. (SimpleGeo+Context.h)
- * @param point Query point.
+ * @param ip Query IP.
  */
 - (void)getContextForIP:(NSString *)ip;
 

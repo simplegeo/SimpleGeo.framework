@@ -30,6 +30,7 @@
 
 #import "SimpleGeo.h"
 
+
 /*!
  * Informal delegate protocol for Context functionality.
  */
@@ -41,7 +42,7 @@
  * @param point   Query point.
  */
 - (void)didLoadContext:(NSDictionary *)context
-                    for:(SGPoint *)point;
+                   for:(SGPoint *)point;
 
 @end
 

@@ -106,8 +106,8 @@
 
 /*!
  * Find places near a point (SimpleGeo+Places.h).
- * @param point Query point.
- * @param radius Radius of query (in Kilometers)
+ * @param point  Query point.
+ * @param radius Radius of query (km)
  */
 - (void)getPlacesNear:(SGPoint *)point
                within:(double)radius;
@@ -122,9 +122,9 @@
 
 /*!
  * Find places near a point matching a query string (SimpleGeo+Places.h).
- * @param point Query point.
- * @param query Query string.
- * @param radius Radius of query (in Kilometers)
+ * @param point  Query point.
+ * @param query  Query string.
+ * @param radius Radius of query (km)
  */
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query
@@ -145,7 +145,7 @@
  * @param point    Query point.
  * @param query    Query string.
  * @param category Query category.
- * @param radius Radius of query (in Kilometers)
+ * @param radius   Radius of query (km)
  */
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query

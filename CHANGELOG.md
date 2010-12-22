@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.1
+## 1.1 - 12/22/10
 
 * Support for `radius` in SimpleGeo Places
 * Support for address queries against SimpleGeo Context + SimpleGeo Places

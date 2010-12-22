@@ -105,11 +105,11 @@
 
 - (void)didLoadContext:(ASIHTTPRequest *)request
 {
-    NSMutableDictionary *arguments = [NSMutableDictionary dictionaryWithDictionary:[request userInfo]];
-    [arguments removeObjectForKey:@"targetSelector"];
+    NSMutableDictionary *query = [NSMutableDictionary dictionaryWithDictionary:[request userInfo]];
+    [query removeObjectForKey:@"targetSelector"];
 
     [delegate didLoadContext:[[[[request responseData] yajl_JSON] retain] autorelease]
-                    forQuery:arguments];
+                    forQuery:query];
 }
 
 @end

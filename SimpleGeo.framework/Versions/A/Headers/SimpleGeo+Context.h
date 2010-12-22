@@ -30,6 +30,7 @@
 
 #import "SimpleGeo.h"
 
+
 /*!
  * Informal delegate protocol for Context functionality.
  */
@@ -38,10 +39,10 @@
 /*!
  * Called when Context information has been loaded.
  * @param context Context response.
- * @param point   Query point.
+ * @param query   Query information.
  */
 - (void)didLoadContext:(NSDictionary *)context
-                    for:(SGPoint *)point;
+              forQuery:(NSDictionary *)query;
 
 @end
 
@@ -52,9 +53,16 @@
 @interface SimpleGeo (Context)
 
 /*!
- * Get a Context information for a specific point (SimpleGeo+Context.h).
+ * Get Context information for a specific point. (SimpleGeo+Context.h)
  * @param point Query point.
  */
-- (void)getContextFor:(SGPoint *)point;
+- (void)getContextForPoint:(SGPoint *)point;
+
+/*!
+ * Get Context information for an address. SimpleGeo will geocode the address
+ * for you. (SimpleGeo+Context.h)
+ * @param address Query address.
+ */
+- (void)getContextForAddress:(NSString *)address;
 
 @end

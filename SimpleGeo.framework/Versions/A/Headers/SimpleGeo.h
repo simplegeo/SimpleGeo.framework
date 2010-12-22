@@ -92,7 +92,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
     NSURL* url;
 }
 
-@property (readonly)        id delegate;
+@property (assign)          id delegate;
 @property (retain,readonly) NSString* consumerKey;
 @property (retain,readonly) NSString* consumerSecret;
 @property (retain,readonly) NSURL* url;

@@ -66,10 +66,12 @@
 
 /*!
  * Called when a place was successfully updated in the Places database.
- * @param handle Handle of updated place.
- * @param token  Status token.
+ * @param feature Updated feature.
+ * @param handle  Handle of updated place.
+ * @param token   Status token.
  */
-- (void)didUpdatePlace:(NSString *)handle
+- (void)didUpdatePlace:(SGFeature *)feature
+                handle:(NSString *)handle
                  token:(NSString *)token;
 
 @end
@@ -83,8 +85,10 @@
 /*!
  * Add a feature to the Places database (SimpleGeo+Places.h).
  * @param feature Feature to add.
+ * @param private Whether this addition should be private.
  */
-- (void)addPlace:(SGFeature *)feature;
+- (void)addPlace:(SGFeature *)feature
+         private:(BOOL)private;
 
 /*!
  * Delete a place from the Places database (SimpleGeo+Places.h).
@@ -210,8 +214,10 @@
  * Update a place in the Places database (SimpleGeo+Places.h).
  * @param handle Handle of feature to update.
  * @param data   Data to update with (geometry/properties optional).
+ * @param private Whether this update should be private.
  */
 - (void)updatePlace:(NSString *)handle
-               with:(SGFeature *)data;
+               with:(SGFeature *)data
+            private:(BOOL)private;
 
 @end

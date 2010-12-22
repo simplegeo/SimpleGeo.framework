@@ -55,4 +55,24 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.1";
     return [request autorelease];
 }
 
+- (NSDictionary *)markFeature:(SGFeature *)feature
+                      private:(BOOL)private
+{
+    NSMutableDictionary *properties = [NSMutableDictionary dictionaryWithDictionary:[feature properties]];
+
+    if (private) {
+        [properties setValue:@"true"
+                      forKey:@"private"];
+    } else {
+        [properties setValue:@"false"
+                      forKey:@"private"];
+    }
+
+    NSMutableDictionary *featureDict = [NSMutableDictionary dictionaryWithDictionary:[feature asDictionary]];
+    [featureDict setValue:properties
+                   forKey:@"properties"];
+
+    return featureDict;
+}
+
 @end

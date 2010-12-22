@@ -35,5 +35,7 @@
 
 - (NSURL *)endpointForString:(NSString *)path;
 - (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL;
+- (NSDictionary *)markFeature:(SGFeature *)feature
+                      private:(BOOL)private;
 
 @end

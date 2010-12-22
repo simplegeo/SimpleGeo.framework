@@ -44,7 +44,26 @@
     SGFeature *feature = [SGFeature featureWithGeometry:geometry
                                              properties:properties];
 
-    [[self createClient] addPlace:feature];
+    [[self createClient] addPlace:feature
+                          private:NO];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
+- (void)testAddPlacePrivately
+{
+    [self prepare];
+
+    SGPoint *geometry = [self point];
+    NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
+                                @"Mike's Bike Shed", @"name",
+                                nil];
+    SGFeature *feature = [SGFeature featureWithGeometry:geometry
+                                             properties:properties];
+
+    [[self createClient] addPlace:feature
+                          private:YES];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
@@ -115,7 +134,27 @@
                                                    nil]];
 
     [[self createClient] updatePlace:handle
-                                with:feature];
+                                with:feature
+                             private:NO];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
+- (void)testUpdatePlacePrivately
+{
+    [self prepare];
+
+    NSString *handle = @"SG_4CsrE4oNy1gl8hCLdwu0F0_47.046962_-122.937467@1290636830";
+
+    SGFeature *feature = [SGFeature featureWithId:handle
+                                       properties:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                   @"Mike's Bike Shed", @"name",
+                                                   nil]];
+
+    [[self createClient] updatePlace:handle
+                                with:feature
+                             private:YES];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
@@ -128,13 +167,20 @@
                 URL:(NSURL *)url
               token:(NSString *)token
 {
-    NSArray *handleComponents = [handle componentsSeparatedByString:@"@"];
-    GHAssertEqualObjects([handleComponents objectAtIndex:0],
-                         @"SG_07624b34159916851f3df2a0657f6ab5b9af962a_40_-105", nil);
-    GHAssertEqualObjects(token, @"596499b4fc2a11dfa39058b035fcf1e5", nil);
+    if ([[[feature properties] objectForKey:@"name"] isEqual:@"Mike's Burger Shack"]) {
+        NSArray *handleComponents = [handle componentsSeparatedByString:@"@"];
+        GHAssertEqualObjects([handleComponents objectAtIndex:0],
+                             @"SG_07624b34159916851f3df2a0657f6ab5b9af962a_40_-105", nil);
+        GHAssertEqualObjects(token, @"596499b4fc2a11dfa39058b035fcf1e5", nil);
 
-    [self notify:kGHUnitWaitStatusSuccess
-     forSelector:@selector(testAddPlace)];
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testAddPlace)];
+    } else if ([[[feature properties] objectForKey:@"name"] isEqual:@"Mike's Bike Shed"]) {
+        GHAssertEqualObjects(token, @"0ff119100e1811e0b72e58b035fcf1e5", nil);
+
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testAddPlacePrivately)];
+    }
 }
 
 - (void)didDeletePlace:(NSString *)handle
@@ -199,14 +245,22 @@
     }
 }
 
-- (void)didUpdatePlace:(NSString *)handle
+- (void)didUpdatePlace:(SGFeature *)feature
+                handle:(NSString *)handle
                  token:(NSString *)token
 {
-    GHAssertEqualObjects(handle, @"SG_4CsrE4oNy1gl8hCLdwu0F0_47.046962_-122.937467@1290636830", nil);
-    GHAssertEqualObjects(token, @"79ea18ccfc2911dfa39058b035fcf1e5", nil);
+    if ([[[feature properties] objectForKey:@"name"] isEqual:@"Mike's Burger Shack"]) {
+        GHAssertEqualObjects(handle, @"SG_4CsrE4oNy1gl8hCLdwu0F0_47.046962_-122.937467@1290636830", nil);
+        GHAssertEqualObjects(token, @"79ea18ccfc2911dfa39058b035fcf1e5", nil);
 
-    [self notify:kGHUnitWaitStatusSuccess
-     forSelector:@selector(testUpdatePlace)];
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testUpdatePlace)];
+    } else if ([[[feature properties] objectForKey:@"name"] isEqual:@"Mike's Bike Shed"]) {
+        GHAssertEqualObjects(token, @"3489de320e1911e0b72e58b035fcf1e5", nil);
+
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testUpdatePlacePrivately)];
+    }
 }
 
 @end

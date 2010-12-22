@@ -10,6 +10,9 @@
 * Changed `didLoadPlaces:(SGFeatureCollection *)near:(SGPoint *):matching:(NSString *):inCategory:(NSString *)`
   to `didLoadPlaces:(SGFeatureCollection *)forQuery:(NSDictionary *)` in
   `SimpleGeoPlacesDelegate`
+* Changed `didUpdatePlace:(NSString *)token:(NSString *)` to
+  `didUpdatePlace:(SGFeature *)handle:(NSString *)token:(NSString *)` in
+  `SimpleGeoPlacesDelegate`
 * Changed `getContext:(SGPoint *)` to `getContextForPoint:(SGPoint *)` in
   `SimpleGeo+Context`
 * `SimpleGeo` `delegate` property is now read/write

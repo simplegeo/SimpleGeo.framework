@@ -37,17 +37,23 @@
 @implementation SimpleGeo (Places)
 
 - (void)addPlace:(SGFeature *)feature
+         private:(BOOL)private
 {
     NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/places",
                                                   SIMPLEGEO_API_VERSION]];
 
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
-    [request appendPostData:[[feature yajl_JSONString] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    NSDictionary *featureDict = [self markFeature:feature
+                                          private:private];
+
+    [request appendPostData:[[featureDict yajl_JSONString] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setRequestMethod:@"POST"];
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                           @"didAddPlace:", @"targetSelector",
                           feature, @"feature",
+                          [NSNumber numberWithBool:private], @"private",
                           nil]];
     [request startAsynchronous];
 }
@@ -248,17 +254,24 @@
 
 - (void)updatePlace:(NSString *)handle
                with:(SGFeature *)feature
+            private:(BOOL)private
 {
     NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/features/%@.json",
                                                   SIMPLEGEO_API_VERSION, handle]];
 
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
-    [request appendPostData:[[feature yajl_JSONString] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    NSDictionary *featureDict = [self markFeature:feature
+                                          private:private];
+
+    [request appendPostData:[[featureDict yajl_JSONString] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setRequestMethod:@"POST"];
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                           @"didUpdatePlace:", @"targetSelector",
                           handle, @"handle",
+                          feature, @"feature",
+                          [NSNumber numberWithBool:private], @"private",
                           nil]];
     [request startAsynchronous];
 }
@@ -302,7 +315,8 @@
 {
     NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
 
-    [delegate didUpdatePlace:[[[[request userInfo] objectForKey:@"handle"] retain] autorelease]
+    [delegate didUpdatePlace:[[[[request userInfo] objectForKey:@"feature"] retain] autorelease]
+                      handle:[[[[request userInfo] objectForKey:@"handle"] retain] autorelease]
                        token:[[[jsonResponse objectForKey:@"token"] retain] autorelease]];
 }
 

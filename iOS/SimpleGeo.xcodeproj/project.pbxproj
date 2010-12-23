@@ -462,10 +462,7 @@
 				INFOPLIST_FILE = "SimpleGeo-Info.plist";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				PRODUCT_NAME = SimpleGeo;
 				WRAPPER_EXTENSION = framework;
@@ -490,10 +487,7 @@
 				INFOPLIST_FILE = "SimpleGeo-Info.plist";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				PRODUCT_NAME = SimpleGeo;
 				WRAPPER_EXTENSION = framework;

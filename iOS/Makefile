@@ -1,3 +1,5 @@
+default: release
+
 # Create a Universal binary (iOS + Simulator)
 release:
 	xcodebuild -target SimpleGeo -configuration Release -sdk iphoneos4.2 build

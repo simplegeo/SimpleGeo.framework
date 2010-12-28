@@ -59,9 +59,9 @@
 		5DF1FC0712C2C7CC0097CF47 /* ASINetworkQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF1FB9B12C2C6F50097CF47 /* ASINetworkQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DF1FC0812C2C7CC0097CF47 /* ASIProgressDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF1FB9D12C2C6F50097CF47 /* ASIProgressDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DF1FC0912C2C7D30097CF47 /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF1FBA012C2C6F50097CF47 /* Base64Transcoder.h */; };
-		5DF1FCB312C2C9C90097CF47 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF1FCB112C2C9C90097CF47 /* Reachability.h */; };
+		5DF1FCB312C2C9C90097CF47 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF1FCB112C2C9C90097CF47 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DF1FCB412C2C9C90097CF47 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1FCB212C2C9C90097CF47 /* Reachability.m */; };
-		5DF1FCB712C2C9DA0097CF47 /* ASIAuthenticationDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF1FCB512C2C9DA0097CF47 /* ASIAuthenticationDialog.h */; };
+		5DF1FCB712C2C9DA0097CF47 /* ASIAuthenticationDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF1FCB512C2C9DA0097CF47 /* ASIAuthenticationDialog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DF1FCB812C2C9DA0097CF47 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1FCB612C2C9DA0097CF47 /* ASIAuthenticationDialog.m */; };
 		5DF1FD7A12C2CD9C0097CF47 /* SimpleGeo_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5DF1FD7912C2CD9C0097CF47 /* SimpleGeo_Prefix.pch */; };
 /* End PBXBuildFile section */

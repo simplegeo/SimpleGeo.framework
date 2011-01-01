@@ -46,6 +46,35 @@ order to add its dependencies properly.
 [SimpleApp](https://github.com/simplegeo/SimpleApp) is an example of a Cocoa
 application built using this framework.
 
+## Embedding in an iOS Application
+
+In order to embed `SimpleGeo.framework` into an iOS application, you'll first
+have to add [`YAJL.framework`](https://github.com/gabriel/yajl-objc/downloads)
+(the iOS variant) to your project and follow the [iOS installation instructions
+in the YAJL
+README](https://github.com/gabriel/yajl-objc/blob/master/README.md).
+
+`SimpleGeo.framework` is available as either a [downloadable ZIP
+file](https://github.com/simplegeo/SimpleGeo.framework/downloads) or a branch
+suitable for use as a [git
+submodule](http://book.git-scm.com/5_submodules.html). In either case, you'll
+want to put it in a subdirectory beneath your app. Here's an example of adding
+it as a submodule:
+
+    $ git submodule add -b framework-ios \
+      git://github.com/simplegeo/SimpleGeo.framework.git ext/SimpleGeo.framework
+
+Once it's been added to `ext/`, drag it into your Xcode project and it will
+show up as a linked Framework.
+
+Since `SimpleGeo.framework` embeds
+[ASIHTTPRequest](http://allseeing-i.com/ASIHTTPRequest/), you'll have to follow
+[the instructions](http://allseeing-i.com/ASIHTTPRequest/Setup-instructions) in
+order to add its dependencies properly.
+
+[SimpleGeo-iPhone](https://github.com/simplegeo/SimpleGeo-iPhone) is an example
+of an iOS application built using this framework.
+
 ## Developing
 
 ### Getting Started

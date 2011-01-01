@@ -1,6 +1,6 @@
 # Release Checklist
 
-* update version numbers (`src/SimpleGeo+Internal.m`, `Info.plist`, `Doxyfile`)
+* update version numbers (`src/SimpleGeo+Internal.m`, `Doxyfile`, Project files)
 * run tests
 * update `CHANGELOG.md` and add release date
 * tag release version

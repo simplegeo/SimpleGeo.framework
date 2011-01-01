@@ -1,6 +1,6 @@
 # Release Checklist
 
-* update version numbers (`src/SimpleGeo+Internal.m`, `Info.plist`)
+* update version numbers (`src/SimpleGeo+Internal.m`, `Info.plist`, `Doxyfile`)
 * run tests
 * update `CHANGELOG.md` and add release date
 * tag release version
@@ -9,6 +9,6 @@
 * copy framework build into `framework` branch
 * tag framework branch w/ version
 * upload framework to GitHub
-* copy iOS framework built into `framework-iOS` branch
+* copy iOS framework build into `framework-iOS` branch
 * tag iOS framework branch w/ version
 * upload iOS framework to GitHub

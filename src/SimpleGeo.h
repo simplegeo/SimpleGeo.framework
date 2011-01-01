@@ -133,6 +133,14 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
  */
 - (void)getFeatureWithHandle:(NSString *)handle;
 
+/*!
+ * Get a feature with a specific handle.
+ * @param handle Handle of feature being queried for.
+ * @param zoom   Zoom level to determine complexity of returned feature.
+ */
+- (void)getFeatureWithHandle:(NSString *)handle
+                        zoom:(int)zoom;
+
 @end
 
 #import "SimpleGeo+Context.h"

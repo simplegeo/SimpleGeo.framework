@@ -96,6 +96,19 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
                 timeout:0.25];
 }
 
+- (void)testGetPolygonFeatureWithHandleAndZoom
+{
+    [self prepare];
+
+    SimpleGeo *client = [self createClient];
+
+    [client getFeatureWithHandle:@"SG_3tLT0I5cOUWIpoVOBeScOx"
+                            zoom:0];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
 - (void)testGetPointFeatureWithHandle
 {
     [self prepare];
@@ -193,6 +206,12 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPolygonFeatureWithHandle)];
+    } else if ([handle isEqual:@"SG_3tLT0I5cOUWIpoVOBeScOx"]) {
+        GHAssertEqualObjects([[feature properties] objectForKey:@"name"],
+                             @"America/Los_Angeles @ Zoom 0", nil);
+
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetPolygonFeatureWithHandleAndZoom)];
     } else if ([handle isEqual:@"foo"]) {
         GHAssertNil(feature, nil);
 

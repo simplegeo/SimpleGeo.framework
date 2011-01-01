@@ -123,16 +123,32 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
 - (void)getFeatureWithHandle:(NSString *)handle
 {
-    NSURL *endpoint = [self endpointForString:
-                       [NSString stringWithFormat:@"/%@/features/%@.json",
-                        SIMPLEGEO_API_VERSION, handle]];
+    [self getFeatureWithHandle:handle
+                          zoom:-1];
+}
 
-    ASIHTTPRequest *request = [self requestWithURL:endpoint];
-    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                            @"didLoadFeature:", @"targetSelector",
-                            handle, @"handle",
-                            nil
-                          ]];
+- (void)getFeatureWithHandle:(NSString *)handle
+                        zoom:(int)zoom
+{
+    // TODO extract shared boilerplate w/ SimpleGeo+Places.m
+    NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/features/%@.json",
+                                 SIMPLEGEO_API_VERSION, handle];
+
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                     @"didLoadFeature:", @"targetSelector",
+                                     handle, @"handle",
+                                     nil];
+
+    if (zoom >= 0) {
+        [endpoint appendFormat:@"?zoom=%i", zoom];
+        [userInfo setObject:[NSNumber numberWithInt:zoom]
+                     forKey:@"zoom"];
+    }
+
+    NSURL *endpointURL = [self endpointForString:endpoint];
+
+    ASIHTTPRequest *request = [self requestWithURL:endpointURL];
+    [request setUserInfo:userInfo];
     [request startAsynchronous];
 }
 

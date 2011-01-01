@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.1.2
+* More complete namespacing of `Base64Transcoder`
+
 ## 1.1.1 - 1/1/11
 * Support for `zoom` in SimpleGeo Features
 * Unicode characters are encoded properly 

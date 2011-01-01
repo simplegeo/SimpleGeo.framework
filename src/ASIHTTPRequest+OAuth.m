@@ -184,7 +184,7 @@
     // Base64 Encoding
     char base64Result[32];
     size_t theResultLength = 32;
-    SG_Base64EncodeData(result, 20, base64Result, &theResultLength, SG_Base64Flags_Default);
+    SG_Base64EncodeData(result, 20, base64Result, &theResultLength, Base64Flags_Default);
     NSString *base64EncodedResult = [[NSString alloc] initWithFormat:@"%s", base64Result];
 
     return [base64EncodedResult autorelease];

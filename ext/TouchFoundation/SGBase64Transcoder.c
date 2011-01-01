@@ -32,34 +32,34 @@
 #include <math.h>
 #include <string.h>
 
-const u_int8_t kBase64EncodeTable[64] = {
-	/*  0 */ 'A',	/*  1 */ 'B',	/*  2 */ 'C',	/*  3 */ 'D', 
-	/*  4 */ 'E',	/*  5 */ 'F',	/*  6 */ 'G',	/*  7 */ 'H', 
-	/*  8 */ 'I',	/*  9 */ 'J',	/* 10 */ 'K',	/* 11 */ 'L', 
-	/* 12 */ 'M',	/* 13 */ 'N',	/* 14 */ 'O',	/* 15 */ 'P', 
-	/* 16 */ 'Q',	/* 17 */ 'R',	/* 18 */ 'S',	/* 19 */ 'T', 
-	/* 20 */ 'U',	/* 21 */ 'V',	/* 22 */ 'W',	/* 23 */ 'X', 
-	/* 24 */ 'Y',	/* 25 */ 'Z',	/* 26 */ 'a',	/* 27 */ 'b', 
-	/* 28 */ 'c',	/* 29 */ 'd',	/* 30 */ 'e',	/* 31 */ 'f', 
-	/* 32 */ 'g',	/* 33 */ 'h',	/* 34 */ 'i',	/* 35 */ 'j', 
-	/* 36 */ 'k',	/* 37 */ 'l',	/* 38 */ 'm',	/* 39 */ 'n', 
-	/* 40 */ 'o',	/* 41 */ 'p',	/* 42 */ 'q',	/* 43 */ 'r', 
-	/* 44 */ 's',	/* 45 */ 't',	/* 46 */ 'u',	/* 47 */ 'v', 
-	/* 48 */ 'w',	/* 49 */ 'x',	/* 50 */ 'y',	/* 51 */ 'z', 
-	/* 52 */ '0',	/* 53 */ '1',	/* 54 */ '2',	/* 55 */ '3', 
-	/* 56 */ '4',	/* 57 */ '5',	/* 58 */ '6',	/* 59 */ '7', 
+const u_int8_t kSG_Base64EncodeTable[64] = {
+	/*  0 */ 'A',	/*  1 */ 'B',	/*  2 */ 'C',	/*  3 */ 'D',
+	/*  4 */ 'E',	/*  5 */ 'F',	/*  6 */ 'G',	/*  7 */ 'H',
+	/*  8 */ 'I',	/*  9 */ 'J',	/* 10 */ 'K',	/* 11 */ 'L',
+	/* 12 */ 'M',	/* 13 */ 'N',	/* 14 */ 'O',	/* 15 */ 'P',
+	/* 16 */ 'Q',	/* 17 */ 'R',	/* 18 */ 'S',	/* 19 */ 'T',
+	/* 20 */ 'U',	/* 21 */ 'V',	/* 22 */ 'W',	/* 23 */ 'X',
+	/* 24 */ 'Y',	/* 25 */ 'Z',	/* 26 */ 'a',	/* 27 */ 'b',
+	/* 28 */ 'c',	/* 29 */ 'd',	/* 30 */ 'e',	/* 31 */ 'f',
+	/* 32 */ 'g',	/* 33 */ 'h',	/* 34 */ 'i',	/* 35 */ 'j',
+	/* 36 */ 'k',	/* 37 */ 'l',	/* 38 */ 'm',	/* 39 */ 'n',
+	/* 40 */ 'o',	/* 41 */ 'p',	/* 42 */ 'q',	/* 43 */ 'r',
+	/* 44 */ 's',	/* 45 */ 't',	/* 46 */ 'u',	/* 47 */ 'v',
+	/* 48 */ 'w',	/* 49 */ 'x',	/* 50 */ 'y',	/* 51 */ 'z',
+	/* 52 */ '0',	/* 53 */ '1',	/* 54 */ '2',	/* 55 */ '3',
+	/* 56 */ '4',	/* 57 */ '5',	/* 58 */ '6',	/* 59 */ '7',
 	/* 60 */ '8',	/* 61 */ '9',	/* 62 */ '+',	/* 63 */ '/'
 };
 
 /*
 -1 = Base64 end of data marker.
 -2 = White space (tabs, cr, lf, space)
--3 = Noise (all non whitespace, non-base64 characters) 
+-3 = Noise (all non whitespace, non-base64 characters)
 -4 = Dangerous noise
 -5 = Illegal noise (null byte)
 */
 
-const int8_t kBase64DecodeTable[128] = {
+const int8_t kSG_Base64DecodeTable[128] = {
 	/* 0x00 */ -5, 	/* 0x01 */ -3, 	/* 0x02 */ -3, 	/* 0x03 */ -3,
 	/* 0x04 */ -3, 	/* 0x05 */ -3, 	/* 0x06 */ -3, 	/* 0x07 */ -3,
 	/* 0x08 */ -3, 	/* 0x09 */ -2, 	/* 0x0a */ -2, 	/* 0x0b */ -2,
@@ -94,14 +94,14 @@ const int8_t kBase64DecodeTable[128] = {
 	/* '|' */ -3,	/* '}' */ -3,	/* '~' */ -3,	/* 0x7f */ -3
 };
 
-const u_int8_t kBits_00000011 = 0x03;
-const u_int8_t kBits_00001111 = 0x0F;
-const u_int8_t kBits_00110000 = 0x30;
-const u_int8_t kBits_00111100 = 0x3C;
-const u_int8_t kBits_00111111 = 0x3F;
-const u_int8_t kBits_11000000 = 0xC0;
-const u_int8_t kBits_11110000 = 0xF0;
-const u_int8_t kBits_11111100 = 0xFC;
+const u_int8_t kSG_Bits_00000011 = 0x03;
+const u_int8_t kSG_Bits_00001111 = 0x0F;
+const u_int8_t kSG_Bits_00110000 = 0x30;
+const u_int8_t kSG_Bits_00111100 = 0x3C;
+const u_int8_t kSG_Bits_00111111 = 0x3F;
+const u_int8_t kSG_Bits_11000000 = 0xC0;
+const u_int8_t kSG_Bits_11110000 = 0xF0;
+const u_int8_t kSG_Bits_11111100 = 0xFC;
 
 size_t SG_EstimateBas64EncodedDataSize(size_t inDataSize, int32_t inFlags)
 {
@@ -129,11 +129,11 @@ const u_int8_t *theInPtr = (const u_int8_t *)inInputData;
 u_int32_t theInIndex = 0, theOutIndex = 0;
 for (; theInIndex < (inInputDataSize / 3) * 3; theInIndex += 3)
 	{
-	outOutputData[theOutIndex++] = kBase64EncodeTable[(theInPtr[theInIndex] & kBits_11111100) >> 2];
-	outOutputData[theOutIndex++] = kBase64EncodeTable[(theInPtr[theInIndex] & kBits_00000011) << 4 | (theInPtr[theInIndex + 1] & kBits_11110000) >> 4];
-	outOutputData[theOutIndex++] = kBase64EncodeTable[(theInPtr[theInIndex + 1] & kBits_00001111) << 2 | (theInPtr[theInIndex + 2] & kBits_11000000) >> 6];
-	outOutputData[theOutIndex++] = kBase64EncodeTable[(theInPtr[theInIndex + 2] & kBits_00111111) >> 0];
-	if (inFlags & SG_Base64Flags_IncludeNewlines && theOutIndex % 74 == 72)
+	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex] & kSG_Bits_11111100) >> 2];
+	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex] & kSG_Bits_00000011) << 4 | (theInPtr[theInIndex + 1] & kSG_Bits_11110000) >> 4];
+	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex + 1] & kSG_Bits_00001111) << 2 | (theInPtr[theInIndex + 2] & kSG_Bits_11000000) >> 6];
+	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex + 2] & kSG_Bits_00111111) >> 0];
+	if (inFlags & Base64Flags_IncludeNewlines && theOutIndex % 74 == 72)
 		{
 		outOutputData[theOutIndex++] = '\r';
 		outOutputData[theOutIndex++] = '\n';
@@ -142,11 +142,11 @@ for (; theInIndex < (inInputDataSize / 3) * 3; theInIndex += 3)
 const size_t theRemainingBytes = inInputDataSize - theInIndex;
 if (theRemainingBytes == 1)
 	{
-	outOutputData[theOutIndex++] = kBase64EncodeTable[(theInPtr[theInIndex] & kBits_11111100) >> 2];
-	outOutputData[theOutIndex++] = kBase64EncodeTable[(theInPtr[theInIndex] & kBits_00000011) << 4 | (0 & kBits_11110000) >> 4];
+	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex] & kSG_Bits_11111100) >> 2];
+	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex] & kSG_Bits_00000011) << 4 | (0 & kSG_Bits_11110000) >> 4];
 	outOutputData[theOutIndex++] = '=';
 	outOutputData[theOutIndex++] = '=';
-	if (inFlags & SG_Base64Flags_IncludeNewlines && theOutIndex % 74 == 72)
+	if (inFlags & Base64Flags_IncludeNewlines && theOutIndex % 74 == 72)
 		{
 		outOutputData[theOutIndex++] = '\r';
 		outOutputData[theOutIndex++] = '\n';
@@ -154,17 +154,17 @@ if (theRemainingBytes == 1)
 	}
 else if (theRemainingBytes == 2)
 	{
-	outOutputData[theOutIndex++] = kBase64EncodeTable[(theInPtr[theInIndex] & kBits_11111100) >> 2];
-	outOutputData[theOutIndex++] = kBase64EncodeTable[(theInPtr[theInIndex] & kBits_00000011) << 4 | (theInPtr[theInIndex + 1] & kBits_11110000) >> 4];
-	outOutputData[theOutIndex++] = kBase64EncodeTable[(theInPtr[theInIndex + 1] & kBits_00001111) << 2 | (0 & kBits_11000000) >> 6];
+	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex] & kSG_Bits_11111100) >> 2];
+	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex] & kSG_Bits_00000011) << 4 | (theInPtr[theInIndex + 1] & kSG_Bits_11110000) >> 4];
+	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex + 1] & kSG_Bits_00001111) << 2 | (0 & kSG_Bits_11000000) >> 6];
 	outOutputData[theOutIndex++] = '=';
-	if (inFlags & SG_Base64Flags_IncludeNewlines & theOutIndex % 74 == 72)
+	if (inFlags & Base64Flags_IncludeNewlines & theOutIndex % 74 == 72)
 		{
 		outOutputData[theOutIndex++] = '\r';
 		outOutputData[theOutIndex++] = '\n';
 		}
 	}
-	
+
 outOutputData[theOutIndex] = 0;
 
 return(true);
@@ -186,46 +186,46 @@ size_t theSequence = 0;
 for (; theInIndex < inInputDataSize; )
 	{
 	int8_t theSextet = 0;
-	
+
 	int8_t theCurrentInputOctet = theInPtr[theInIndex];
-	theSextet = kBase64DecodeTable[theCurrentInputOctet];
+	theSextet = kSG_Base64DecodeTable[theCurrentInputOctet];
 	if (theSextet == -1)
 		break;
 	while (theSextet == -2)
 		{
 		theCurrentInputOctet = theInPtr[++theInIndex];
-		theSextet = kBase64DecodeTable[theCurrentInputOctet];
+		theSextet = kSG_Base64DecodeTable[theCurrentInputOctet];
 		}
 	while (theSextet == -3)
 		{
 		theCurrentInputOctet = theInPtr[++theInIndex];
-		theSextet = kBase64DecodeTable[theCurrentInputOctet];
+		theSextet = kSG_Base64DecodeTable[theCurrentInputOctet];
 		}
 	if (theSequence == 0)
 		{
-		theOutputOctet = (theSextet >= 0 ? theSextet : 0) << 2 & kBits_11111100;
+		theOutputOctet = (theSextet >= 0 ? theSextet : 0) << 2 & kSG_Bits_11111100;
 		}
 	else if (theSequence == 1)
 		{
-		theOutputOctet |= (theSextet >- 0 ? theSextet : 0) >> 4 & kBits_00000011;
+		theOutputOctet |= (theSextet >- 0 ? theSextet : 0) >> 4 & kSG_Bits_00000011;
 		theOutPtr[theOutIndex++] = theOutputOctet;
 		}
 	else if (theSequence == 2)
 		{
-		theOutputOctet = (theSextet >= 0 ? theSextet : 0) << 4 & kBits_11110000;
+		theOutputOctet = (theSextet >= 0 ? theSextet : 0) << 4 & kSG_Bits_11110000;
 		}
 	else if (theSequence == 3)
 		{
-		theOutputOctet |= (theSextet >= 0 ? theSextet : 0) >> 2 & kBits_00001111;
+		theOutputOctet |= (theSextet >= 0 ? theSextet : 0) >> 2 & kSG_Bits_00001111;
 		theOutPtr[theOutIndex++] = theOutputOctet;
 		}
 	else if (theSequence == 4)
 		{
-		theOutputOctet = (theSextet >= 0 ? theSextet : 0) << 6 & kBits_11000000;
+		theOutputOctet = (theSextet >= 0 ? theSextet : 0) << 6 & kSG_Bits_11000000;
 		}
 	else if (theSequence == 5)
 		{
-		theOutputOctet |= (theSextet >= 0 ? theSextet : 0) >> 0 & kBits_00111111;
+		theOutputOctet |= (theSextet >= 0 ? theSextet : 0) >> 0 & kSG_Bits_00111111;
 		theOutPtr[theOutIndex++] = theOutputOctet;
 		}
 	theSequence = (theSequence + 1) % 6;

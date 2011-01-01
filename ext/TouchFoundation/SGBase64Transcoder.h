@@ -31,8 +31,8 @@
 #include <stdbool.h>
 
 typedef enum {
-	SG_Base64Flags_IncludeNewlines = 0x01,
-	SG_Base64Flags_Default = SG_Base64Flags_IncludeNewlines,
+	Base64Flags_IncludeNewlines = 0x01,
+	Base64Flags_Default = Base64Flags_IncludeNewlines,
 } EBase64Flags;
 
 extern size_t SG_EstimateBas64EncodedDataSize(size_t inDataSize, int32_t inFlags);

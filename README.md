@@ -5,7 +5,12 @@ in both Mac OS X and iOS applications.
 
 `SimpleGeo.framework` embeds
 [ASIHTTPRequest](http://allseeing-i.com/ASIHTTPRequest/), so that will become
-available when you introduce this as a dependency.
+available when you introduce this as a dependency. Change `#import
+"ASIHTTPRequest.h"` to `#import <SimpleGeo/ASIHTTPRequest.h>`.
+
+**NOTE**: Due to the way `SimpleGeo.framework` uses ASIHTTPRequest to make
+OAuth-signed calls, **Basic Authentication WILL NOT WORK** if you are also
+using ASIHTTPRequest.
 
 ## Embedding in a Cocoa Application
 
@@ -32,6 +37,11 @@ Alternately, the build directory for `SimpleGeo.framework` has been configured
 as `../SimpleGeo-build` to facilitate linking the project file into your
 application (this is useful if you decide you need to make changes to the
 library while simultaneously working on your application).
+
+Since `SimpleGeo.framework` embeds
+[ASIHTTPRequest](http://allseeing-i.com/ASIHTTPRequest/), you'll have to follow
+[the instructions](http://allseeing-i.com/ASIHTTPRequest/Setup-instructions) in
+order to add its dependencies properly.
 
 [SimpleApp](https://github.com/simplegeo/SimpleApp) is an example of a Cocoa
 application built using this framework.
@@ -79,7 +89,7 @@ To generate a usable `SimpleGeo.framework` for iOS from the command-line:
 
 The resulting Framework will be in `iOS/build/Release-iphoneos`.
 
-Building from the command-line will create a über-Universal Framework, built
+Building from the command-line will create an über-Universal Framework, built
 for `armv6`, `armv7` devices *as well as the Simulator*.
 
 ### Docs

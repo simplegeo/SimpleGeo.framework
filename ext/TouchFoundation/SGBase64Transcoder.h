@@ -31,13 +31,13 @@
 #include <stdbool.h>
 
 typedef enum {
-	Base64Flags_IncludeNewlines = 0x01,
-	Base64Flags_Default = Base64Flags_IncludeNewlines,
+	SG_Base64Flags_IncludeNewlines = 0x01,
+	SG_Base64Flags_Default = SG_Base64Flags_IncludeNewlines,
 } EBase64Flags;
 
-extern size_t EstimateBas64EncodedDataSize(size_t inDataSize, int32_t inFlags);
-extern size_t EstimateBas64DecodedDataSize(size_t inDataSize, int32_t inFlags);
+extern size_t SG_EstimateBas64EncodedDataSize(size_t inDataSize, int32_t inFlags);
+extern size_t SG_EstimateBas64DecodedDataSize(size_t inDataSize, int32_t inFlags);
 
-extern bool Base64EncodeData(const void *inInputData, size_t inInputDataSize, char *outOutputData, size_t *ioOutputDataSize, int32_t inFlags);
-extern bool Base64DecodeData(const void *inInputData, size_t inInputDataSize, void *ioOutputData, size_t *ioOutputDataSize, int32_t inFlags);
+extern bool SG_Base64EncodeData(const void *inInputData, size_t inInputDataSize, char *outOutputData, size_t *ioOutputDataSize, int32_t inFlags);
+extern bool SG_Base64DecodeData(const void *inInputData, size_t inInputDataSize, void *ioOutputData, size_t *ioOutputDataSize, int32_t inFlags);
 

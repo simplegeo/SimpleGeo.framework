@@ -74,10 +74,10 @@
 		5D76764F1290EE9F006B7D51 /* ASIFormDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7676361290EE9F006B7D51 /* ASIFormDataRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D7676501290EE9F006B7D51 /* ASIDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7676371290EE9F006B7D51 /* ASIDownloadCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D8C148F129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8C148D129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h */; };
-		5D8C1568129DE193002F8C01 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1566129DE193002F8C01 /* Base64Transcoder.c */; };
-		5D8C1569129DE193002F8C01 /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8C1567129DE193002F8C01 /* Base64Transcoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5D8C1568129DE193002F8C01 /* SGBase64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1566129DE193002F8C01 /* SGBase64Transcoder.c */; };
+		5D8C1569129DE193002F8C01 /* SGBase64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8C1567129DE193002F8C01 /* SGBase64Transcoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D8C158B129DE515002F8C01 /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C148E129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.m */; };
-		5D8C15D3129DE755002F8C01 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1566129DE193002F8C01 /* Base64Transcoder.c */; };
+		5D8C15D3129DE755002F8C01 /* SGBase64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1566129DE193002F8C01 /* SGBase64Transcoder.c */; };
 		5D8C15D6129DE763002F8C01 /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C148E129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.m */; };
 		5D8C15E7129DE86E002F8C01 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8C15E6129DE86E002F8C01 /* AppKit.framework */; };
 		5D8C1614129DED38002F8C01 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1613129DED38002F8C01 /* NSString+URLEncoding.m */; };
@@ -180,8 +180,8 @@
 		5D7676371290EE9F006B7D51 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDownloadCache.h; path = "ext/asi-http-request/ASIDownloadCache.h"; sourceTree = "<group>"; };
 		5D8C148D129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ASIHTTPRequest+OAuth.h"; path = "src/ASIHTTPRequest+OAuth.h"; sourceTree = "<group>"; };
 		5D8C148E129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ASIHTTPRequest+OAuth.m"; path = "src/ASIHTTPRequest+OAuth.m"; sourceTree = "<group>"; };
-		5D8C1566129DE193002F8C01 /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Base64Transcoder.c; path = ext/TouchFoundation/Base64Transcoder.c; sourceTree = "<group>"; };
-		5D8C1567129DE193002F8C01 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64Transcoder.h; path = ext/TouchFoundation/Base64Transcoder.h; sourceTree = "<group>"; };
+		5D8C1566129DE193002F8C01 /* SGBase64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SGBase64Transcoder.c; path = ext/TouchFoundation/SGBase64Transcoder.c; sourceTree = "<group>"; };
+		5D8C1567129DE193002F8C01 /* SGBase64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGBase64Transcoder.h; path = ext/TouchFoundation/SGBase64Transcoder.h; sourceTree = "<group>"; };
 		5D8C15DA129DE7C4002F8C01 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5D8C15E6129DE86E002F8C01 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		5D8C1612129DED38002F8C01 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+URLEncoding.h"; path = "src/NSString+URLEncoding.h"; sourceTree = "<group>"; };
@@ -346,8 +346,8 @@
 		5D8C1562129DE17B002F8C01 /* TouchFoundation */ = {
 			isa = PBXGroup;
 			children = (
-				5D8C1567129DE193002F8C01 /* Base64Transcoder.h */,
-				5D8C1566129DE193002F8C01 /* Base64Transcoder.c */,
+				5D8C1567129DE193002F8C01 /* SGBase64Transcoder.h */,
+				5D8C1566129DE193002F8C01 /* SGBase64Transcoder.c */,
 			);
 			name = TouchFoundation;
 			sourceTree = "<group>";
@@ -437,7 +437,7 @@
 				5D5B03701291BD4500399A50 /* SGFeature.h in Headers */,
 				5D5B05D012934A9D00399A50 /* NSArray+SGFeature.h in Headers */,
 				5D8C148F129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h in Headers */,
-				5D8C1569129DE193002F8C01 /* Base64Transcoder.h in Headers */,
+				5D8C1569129DE193002F8C01 /* SGBase64Transcoder.h in Headers */,
 				5D8C1615129DED38002F8C01 /* NSString+URLEncoding.h in Headers */,
 				5D3990E012A4642B00EB7B20 /* SGFeatureCollection.h in Headers */,
 				5D3991E712A489EF00EB7B20 /* SimpleGeo+Places.h in Headers */,
@@ -579,7 +579,7 @@
 				5D5B036F1291BD4500399A50 /* SGFeature.m in Sources */,
 				5D5B05D212934A9D00399A50 /* NSArray+SGFeature.m in Sources */,
 				5D8C15D6129DE763002F8C01 /* ASIHTTPRequest+OAuth.m in Sources */,
-				5D8C15D3129DE755002F8C01 /* Base64Transcoder.c in Sources */,
+				5D8C15D3129DE755002F8C01 /* SGBase64Transcoder.c in Sources */,
 				5D8C1614129DED38002F8C01 /* NSString+URLEncoding.m in Sources */,
 				5D3990DF12A4642B00EB7B20 /* SGFeatureCollection.m in Sources */,
 				5D3991E612A489EF00EB7B20 /* SimpleGeo+Places.m in Sources */,
@@ -610,7 +610,7 @@
 				5D5B03711291BD4500399A50 /* SGFeature.m in Sources */,
 				5D5B05D112934A9D00399A50 /* NSArray+SGFeature.m in Sources */,
 				5D8C158B129DE515002F8C01 /* ASIHTTPRequest+OAuth.m in Sources */,
-				5D8C1568129DE193002F8C01 /* Base64Transcoder.c in Sources */,
+				5D8C1568129DE193002F8C01 /* SGBase64Transcoder.c in Sources */,
 				5D8C1616129DED38002F8C01 /* NSString+URLEncoding.m in Sources */,
 				5D3990E112A4642B00EB7B20 /* SGFeatureCollection.m in Sources */,
 				5D3991E812A489EF00EB7B20 /* SimpleGeo+Places.m in Sources */,

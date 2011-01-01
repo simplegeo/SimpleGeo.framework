@@ -31,7 +31,7 @@
 #import <CommonCrypto/CommonHMAC.h>
 #import "ASIHTTPRequest+OAuth.h"
 #import "NSString+URLEncoding.h"
-#import "Base64Transcoder.h"
+#import "SGBase64Transcoder.h"
 
 
 @interface ASIHTTPRequest ()
@@ -184,7 +184,7 @@
     // Base64 Encoding
     char base64Result[32];
     size_t theResultLength = 32;
-    Base64EncodeData(result, 20, base64Result, &theResultLength, Base64Flags_Default);
+    SG_Base64EncodeData(result, 20, base64Result, &theResultLength, SG_Base64Flags_Default);
     NSString *base64EncodedResult = [[NSString alloc] initWithFormat:@"%s", base64Result];
 
     return [base64EncodedResult autorelease];

@@ -56,7 +56,7 @@
     NSURL *endpoint = [self endpointForString:
                        [NSString stringWithFormat:@"/%@/context/address.json?address=%@",
                         SIMPLEGEO_API_VERSION,
-                        [address stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
+                        [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
                         nil
                         ]];
 

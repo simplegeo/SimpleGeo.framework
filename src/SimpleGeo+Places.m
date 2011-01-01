@@ -178,13 +178,13 @@
 
     if (query && ! [query isEqual:@""]) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"q",
-                                [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+                                [query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
         [userInfo setObject:query forKey:@"matching"];
     }
 
     if (category && ! [category isEqual:@""]) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"category",
-                                [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+                                [category stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
         [userInfo setObject:category forKey:@"category"];
     }
 
@@ -214,7 +214,7 @@
     // TODO extract boilerplate
     NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/places/address.json?address=%@",
                                  SIMPLEGEO_API_VERSION,
-                                 [address stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+                                 [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 
     NSMutableArray *queryParams = [NSMutableArray array];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -224,13 +224,13 @@
 
     if (query && ! [query isEqual:@""]) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"q",
-                                [query stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+                                [query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
         [userInfo setObject:query forKey:@"matching"];
     }
 
     if (category && ! [category isEqual:@""]) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"category",
-                                [category stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+                                [category stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
         [userInfo setObject:category forKey:@"category"];
     }
 

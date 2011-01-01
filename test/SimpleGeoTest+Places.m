@@ -104,7 +104,7 @@
     [self prepare];
 
     [[self createClient] getPlacesNear:[self point]
-                              matching:@"one"];
+                              matching:@"öne"];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
@@ -230,9 +230,9 @@
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearWithMultipleResults)];
-    } else if ([matching isEqual:@"one"]) {
+    } else if ([matching isEqual:@"öne"]) {
         GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
-        GHAssertEqualObjects(matching, @"one", nil);
+        GHAssertEqualObjects(matching, @"öne", nil);
         GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
         NSArray *features = [places features];
         GHAssertEqualObjects([[[features objectAtIndex:0] properties] objectForKey:@"name"],

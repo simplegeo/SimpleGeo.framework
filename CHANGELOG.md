@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.1.2
+## 1.1.2 - 1/1/11
 * More complete namespacing of `Base64Transcoder`
 
 ## 1.1.1 - 1/1/11

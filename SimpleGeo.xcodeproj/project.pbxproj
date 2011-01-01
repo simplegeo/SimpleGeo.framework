@@ -75,7 +75,7 @@
 		5D7676501290EE9F006B7D51 /* ASIDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7676371290EE9F006B7D51 /* ASIDownloadCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D8C148F129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8C148D129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.h */; };
 		5D8C1568129DE193002F8C01 /* SGBase64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1566129DE193002F8C01 /* SGBase64Transcoder.c */; };
-		5D8C1569129DE193002F8C01 /* SGBase64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8C1567129DE193002F8C01 /* SGBase64Transcoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5D8C1569129DE193002F8C01 /* SGBase64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8C1567129DE193002F8C01 /* SGBase64Transcoder.h */; settings = {ATTRIBUTES = (); }; };
 		5D8C158B129DE515002F8C01 /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C148E129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.m */; };
 		5D8C15D3129DE755002F8C01 /* SGBase64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1566129DE193002F8C01 /* SGBase64Transcoder.c */; };
 		5D8C15D6129DE763002F8C01 /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C148E129C7FFB002F8C01 /* ASIHTTPRequest+OAuth.m */; };

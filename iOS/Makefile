@@ -7,7 +7,7 @@ release:
 	-lipo -create build/Release-iphoneos/SimpleGeo.framework/SimpleGeo build/Release-iphonesimulator/SimpleGeo.framework/SimpleGeo -output build/Release-iphoneos/SimpleGeo.framework/SimpleGeo
 
 dist: release
-	cd build/Release-iphoneos/ && zip -r ../../SimpleGeo-iOS.zip SimpleGeo.framework/
+	cd build/Release-iphoneos/ && tar zcf ../../SimpleGeo-iOS.tgz SimpleGeo.framework/
 
 clean:
 	-rm -rf build

@@ -28,6 +28,9 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import "SimpleGeo+Context.h"
+#import "SimpleGeo+Places.h"
+
 #import "ASIHTTPRequest.h"
 #import "SGFeature.h"
 #import "SGFeatureCollection.h"

@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.1.1
+* Support for `zoom` in SimpleGeo Features
+* Unicode characters are encoded properly 
+* `Base64Transcoder` has been namespaced to avoid conflicts (usually with other
+  libraries that use OAuth) 
+* No need to `#import <SimpleGeo/SimpleGeo+Context.h>`, etc. any longer
+* iOS framework build
+
 ## 1.1 - 12/22/10
 
 * Support for `radius` in SimpleGeo Places

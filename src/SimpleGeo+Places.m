@@ -127,7 +127,7 @@
     [self getPlacesNear:point
                matching:query
              inCategory:nil
-                 within:0.0f];
+                 within:radius];
 }
 
 - (void)getPlacesNearAddress:(NSString *)address
@@ -137,7 +137,7 @@
     [self getPlacesNearAddress:address
                       matching:query
                     inCategory:nil
-                        within:0.0f];
+                        within:radius];
 }
 
 - (void)getPlacesNear:(SGPoint *)point

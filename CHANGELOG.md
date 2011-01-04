@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.1.3
+* Always pass radius through when it's provided
+
 ## 1.1.2 - 1/1/11
 * More complete namespacing of `Base64Transcoder`
 

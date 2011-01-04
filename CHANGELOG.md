@@ -1,13 +1,16 @@
 # Change Log
 
-## 1.1.3
+## 1.1.3 - 1/4/11
+
 * Properly URL-encode strings
 * Always pass radius through when it's provided
 
 ## 1.1.2 - 1/1/11
+
 * More complete namespacing of `Base64Transcoder`
 
 ## 1.1.1 - 1/1/11
+
 * Support for `zoom` in SimpleGeo Features
 * Unicode characters are encoded properly 
 * `Base64Transcoder` has been namespaced to avoid conflicts (usually with other

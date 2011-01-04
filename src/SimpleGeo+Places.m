@@ -32,6 +32,7 @@
 #import "SimpleGeo+Places.h"
 #import "SimpleGeo+Internal.h"
 #import "SGFeatureCollection+Private.h"
+#import "NSString+URLEncoding.h"
 
 
 @implementation SimpleGeo (Places)
@@ -178,13 +179,13 @@
 
     if (query && ! [query isEqual:@""]) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"q",
-                                [query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+                                [query URLEncodedString]]];
         [userInfo setObject:query forKey:@"matching"];
     }
 
     if (category && ! [category isEqual:@""]) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"category",
-                                [category stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+                                [category URLEncodedString]]];
         [userInfo setObject:category forKey:@"category"];
     }
 
@@ -214,7 +215,7 @@
     // TODO extract boilerplate
     NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/places/address.json?address=%@",
                                  SIMPLEGEO_API_VERSION,
-                                 [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                                 [address URLEncodedString]];
 
     NSMutableArray *queryParams = [NSMutableArray array];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -224,13 +225,13 @@
 
     if (query && ! [query isEqual:@""]) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"q",
-                                [query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+                                [query URLEncodedString]]];
         [userInfo setObject:query forKey:@"matching"];
     }
 
     if (category && ! [category isEqual:@""]) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"category",
-                                [category stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+                                [category URLEncodedString]]];
         [userInfo setObject:category forKey:@"category"];
     }
 

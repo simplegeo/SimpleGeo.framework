@@ -1,6 +1,7 @@
 # Change Log
 
 ## 1.1.3
+* Properly URL-encode strings
 * Always pass radius through when it's provided
 
 ## 1.1.2 - 1/1/11

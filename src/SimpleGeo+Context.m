@@ -31,6 +31,7 @@
 #import <YAJL/YAJL.h>
 #import "SimpleGeo+Context.h"
 #import "SimpleGeo+Internal.h"
+#import "NSString+URLEncoding.h"
 
 
 @implementation SimpleGeo (Context)
@@ -56,7 +57,7 @@
     NSURL *endpoint = [self endpointForString:
                        [NSString stringWithFormat:@"/%@/context/address.json?address=%@",
                         SIMPLEGEO_API_VERSION,
-                        [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                        [address URLEncodedString],
                         nil
                         ]];
 

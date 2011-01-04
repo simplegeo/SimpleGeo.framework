@@ -116,7 +116,7 @@
 
     [[self createClient] getPlacesNear:[self point]
                               matching:@"burgers"
-                            inCategory:@"Restaurants"];
+                            inCategory:@"Restaurants & Bars"];
 
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
@@ -243,7 +243,7 @@
     } else if ([matching isEqual:@"burgers"]) {
         GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
         GHAssertEqualObjects(matching, @"burgers", nil);
-        GHAssertEqualObjects(category, @"Restaurants", nil);
+        GHAssertEqualObjects(category, @"Restaurants & Bars", nil);
         GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 7 places.");
         NSArray *features = [places features];
         GHAssertEqualObjects([[[features objectAtIndex:0] properties] objectForKey:@"name"],

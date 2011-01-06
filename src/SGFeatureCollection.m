@@ -71,7 +71,7 @@
 
     if (self) {
         if (someFeatures) {
-            features = [NSArray arrayWithFeatures:someFeatures];
+            features = [[NSArray arrayWithFeatures:someFeatures] retain];
         } else {
             features = [[NSArray alloc] init];
         }

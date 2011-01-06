@@ -200,7 +200,6 @@
     }
 
     NSURL *endpointURL = [self endpointForString:endpoint];
-    // NSLog(@"Endpoint: %@", endpoint);
 
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
     [request setUserInfo:userInfo];
@@ -246,7 +245,6 @@
     }
 
     NSURL *endpointURL = [self endpointForString:endpoint];
-    // NSLog(@"Endpoint: %@", endpoint);
 
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
     [request setUserInfo:userInfo];

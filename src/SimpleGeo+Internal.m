@@ -39,7 +39,9 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.1.3";
 
 - (NSURL *)endpointForString:(NSString *)path
 {
-    return [[[NSURL alloc] initWithString:path relativeToURL:url] autorelease];
+    NSURL *endpoint = [[[NSURL alloc] initWithString:path relativeToURL:url] autorelease];
+    NSLog(@"Endpoint: %@", endpoint);
+    return endpoint;
 }
 
 - (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL

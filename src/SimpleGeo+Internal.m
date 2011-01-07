@@ -32,7 +32,7 @@
 #import "SimpleGeo+Internal.h"
 
 
-NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.1.3";
+NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.1.4";
 
 
 @implementation SimpleGeo (Internal)

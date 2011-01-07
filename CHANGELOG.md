@@ -2,7 +2,7 @@
 
 ## 1.1.4 - 1/7/11
 
-* Add a missing retain that was causing invalid points in `SGFeature`
+* Add a missing retain that was causing invalid pointers in `SGFeature`
 
 ## 1.1.3 - 1/4/11
 

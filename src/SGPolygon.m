@@ -63,7 +63,7 @@
 
 + (SGPolygon *)polygonWithRings:(NSArray *)rings
 {
-    return [[SGPolygon alloc] initWithRings:rings];
+    return [[[SGPolygon alloc] initWithRings:rings] autorelease];
 }
 
 - (id)init

@@ -59,7 +59,7 @@
 
 + (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons
 {
-    return [[SGMultiPolygon alloc] initWithPolygons:polygons];
+    return [[[SGMultiPolygon alloc] initWithPolygons:polygons] autorelease];
 }
 
 - (id)init

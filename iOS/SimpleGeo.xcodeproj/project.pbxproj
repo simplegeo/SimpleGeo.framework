@@ -462,6 +462,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SimpleGeo_Prefix.pch;
 				INFOPLIST_FILE = "SimpleGeo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
 				OTHER_LDFLAGS = "-ObjC";
@@ -489,6 +490,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SimpleGeo_Prefix.pch;
 				INFOPLIST_FILE = "SimpleGeo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
 				OTHER_LDFLAGS = "-ObjC";

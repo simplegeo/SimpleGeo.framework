@@ -1,8 +1,7 @@
 //
-//  SimpleGeo+Internal.h
-//  SimpleGeo.framework
+//  ASIHTTPRequest+OAuth.h
 //
-//  Copyright (c) 2010, SimpleGeo Inc.
+//  Copyright (c) 2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,16 +27,29 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SimpleGeo.h"
 
+#import "ASIHTTPRequest.h"
 
-@interface SimpleGeo (Internal)
+@interface ASIHTTPRequest (OAuth)
 
-- (NSURL *)endpointForString:(NSString *)path;
-- (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL;
-- (NSDictionary *)markFeature:(SGFeature *)feature
-                      private:(BOOL)private;
-- (NSString *)URLEncodedString:(NSString *)string;
-- (NSString *)URLDecodedString:(NSString *)string;
++ (id)requestWithURL:(NSURL *)newURL
+         consumerKey:(NSString *)consumerKey
+      consumerSecret:(NSString *)consumerSecret
+               token:(NSString *)token
+         tokenSecret:(NSString *)tokenSecret;
+
+- (id)initWithURL:(NSURL *)newURL
+      consumerKey:(NSString *)consumerKey
+   consumerSecret:(NSString *)consumerSecret
+            token:(NSString *)token
+      tokenSecret:(NSString *)tokenSecret;
+
+- (void)addOAuthHeaderWithConsumerKey:(NSString *)consumerKey
+                       consumerSecret:(NSString *)consumerSecret
+                                token:(NSString *)token
+                          tokenSecret:(NSString *)tokenSecret
+                      signatureMethod:(NSString *)signatureMethod;
+
+- (void)setOAuthSignatureMethod:(NSString *)signatureMethod;
 
 @end

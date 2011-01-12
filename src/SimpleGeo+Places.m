@@ -32,7 +32,6 @@
 #import "SimpleGeo+Places.h"
 #import "SimpleGeo+Internal.h"
 #import "SGFeatureCollection+Private.h"
-#import "NSString+URLEncoding.h"
 
 
 @implementation SimpleGeo (Places)
@@ -179,13 +178,13 @@
 
     if (query && ! [query isEqual:@""]) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"q",
-                                [query URLEncodedString]]];
+                                [self URLEncodedString:query]]];
         [userInfo setObject:query forKey:@"matching"];
     }
 
     if (category && ! [category isEqual:@""]) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"category",
-                                [category URLEncodedString]]];
+                                [self URLEncodedString:category]]];
         [userInfo setObject:category forKey:@"category"];
     }
 
@@ -214,7 +213,7 @@
     // TODO extract boilerplate
     NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/places/address.json?address=%@",
                                  SIMPLEGEO_API_VERSION,
-                                 [address URLEncodedString]];
+                                 [self URLEncodedString:address]];
 
     NSMutableArray *queryParams = [NSMutableArray array];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -224,13 +223,13 @@
 
     if (query && ! [query isEqual:@""]) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"q",
-                                [query URLEncodedString]]];
+                                [self URLEncodedString:query]]];
         [userInfo setObject:query forKey:@"matching"];
     }
 
     if (category && ! [category isEqual:@""]) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%@", @"category",
-                                [category URLEncodedString]]];
+                                [self URLEncodedString:category]]];
         [userInfo setObject:category forKey:@"category"];
     }
 

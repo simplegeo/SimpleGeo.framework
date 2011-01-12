@@ -80,9 +80,6 @@
 		5D76764F1290EE9F006B7D51 /* ASIFormDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7676361290EE9F006B7D51 /* ASIFormDataRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D7676501290EE9F006B7D51 /* ASIDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7676371290EE9F006B7D51 /* ASIDownloadCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D8C15E7129DE86E002F8C01 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8C15E6129DE86E002F8C01 /* AppKit.framework */; };
-		5D8C1614129DED38002F8C01 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1613129DED38002F8C01 /* NSString+URLEncoding.m */; };
-		5D8C1615129DED38002F8C01 /* NSString+URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8C1612129DED38002F8C01 /* NSString+URLEncoding.h */; };
-		5D8C1616129DED38002F8C01 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C1613129DED38002F8C01 /* NSString+URLEncoding.m */; };
 		5DA3C345128E427C00E128DC /* SGPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA3C343128E427C00E128DC /* SGPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DA3C346128E427C00E128DC /* SGPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3C344128E427C00E128DC /* SGPoint.m */; };
 		5DA3C35A128E449B00E128DC /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA3C359128E449B00E128DC /* GHUnit.framework */; };
@@ -184,8 +181,6 @@
 		5D7676371290EE9F006B7D51 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDownloadCache.h; path = "ext/asi-http-request/ASIDownloadCache.h"; sourceTree = "<group>"; };
 		5D8C15DA129DE7C4002F8C01 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5D8C15E6129DE86E002F8C01 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		5D8C1612129DED38002F8C01 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+URLEncoding.h"; path = "src/NSString+URLEncoding.h"; sourceTree = "<group>"; };
-		5D8C1613129DED38002F8C01 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+URLEncoding.m"; path = "src/NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		5DA3C343128E427C00E128DC /* SGPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGPoint.h; path = src/SGPoint.h; sourceTree = "<group>"; };
 		5DA3C344128E427C00E128DC /* SGPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGPoint.m; path = src/SGPoint.m; sourceTree = "<group>"; };
 		5DA3C353128E448800E128DC /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -408,8 +403,6 @@
 				5DF08A9C12AF644F007A8A60 /* SGMultiPolygon.m */,
 				5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */,
 				5D5B05CF12934A9D00399A50 /* NSArray+SGFeature.m */,
-				5D8C1612129DED38002F8C01 /* NSString+URLEncoding.h */,
-				5D8C1613129DED38002F8C01 /* NSString+URLEncoding.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -436,7 +429,6 @@
 				5D7676501290EE9F006B7D51 /* ASIDownloadCache.h in Headers */,
 				5D5B03701291BD4500399A50 /* SGFeature.h in Headers */,
 				5D5B05D012934A9D00399A50 /* NSArray+SGFeature.h in Headers */,
-				5D8C1615129DED38002F8C01 /* NSString+URLEncoding.h in Headers */,
 				5D3990E012A4642B00EB7B20 /* SGFeatureCollection.h in Headers */,
 				5D3991E712A489EF00EB7B20 /* SimpleGeo+Places.h in Headers */,
 				5D39921D12A48F3F00EB7B20 /* SimpleGeo+Internal.h in Headers */,
@@ -578,7 +570,6 @@
 				5D76763E1290EE9F006B7D51 /* ASIFormDataRequest.m in Sources */,
 				5D5B036F1291BD4500399A50 /* SGFeature.m in Sources */,
 				5D5B05D212934A9D00399A50 /* NSArray+SGFeature.m in Sources */,
-				5D8C1614129DED38002F8C01 /* NSString+URLEncoding.m in Sources */,
 				5D3990DF12A4642B00EB7B20 /* SGFeatureCollection.m in Sources */,
 				5D3991E612A489EF00EB7B20 /* SimpleGeo+Places.m in Sources */,
 				5D39921C12A48F3F00EB7B20 /* SimpleGeo+Internal.m in Sources */,
@@ -609,7 +600,6 @@
 				5D76764E1290EE9F006B7D51 /* ASIFormDataRequest.m in Sources */,
 				5D5B03711291BD4500399A50 /* SGFeature.m in Sources */,
 				5D5B05D112934A9D00399A50 /* NSArray+SGFeature.m in Sources */,
-				5D8C1616129DED38002F8C01 /* NSString+URLEncoding.m in Sources */,
 				5D3990E112A4642B00EB7B20 /* SGFeatureCollection.m in Sources */,
 				5D3991E812A489EF00EB7B20 /* SimpleGeo+Places.m in Sources */,
 				5D39921E12A48F3F00EB7B20 /* SimpleGeo+Internal.m in Sources */,

@@ -37,5 +37,7 @@
 - (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL;
 - (NSDictionary *)markFeature:(SGFeature *)feature
                       private:(BOOL)private;
+- (NSString *)URLEncodedString:(NSString *)string;
+- (NSString *)URLDecodedString:(NSString *)string;
 
 @end

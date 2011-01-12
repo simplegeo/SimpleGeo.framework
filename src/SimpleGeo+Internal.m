@@ -79,4 +79,24 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.1.4";
     return featureDict;
 }
 
+- (NSString *)URLEncodedString:(NSString *)string
+{
+
+    NSString *result = (NSString *) NSMakeCollectable(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                                              (CFStringRef)string,
+                                                                                              NULL,
+                                                                                              CFSTR("!*'();:@&=+$,/?#[]"),
+                                                                                              kCFStringEncodingUTF8));
+    return [result autorelease];
+}
+
+- (NSString *)URLDecodedString:(NSString *)string
+{
+    NSString *result = (NSString *) NSMakeCollectable(CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
+                                                                                                              (CFStringRef)string,
+                                                                                                              CFSTR(""),
+                                                                                                              kCFStringEncodingUTF8));
+    return [result autorelease];
+}
+
 @end

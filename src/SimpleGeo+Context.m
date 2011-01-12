@@ -73,11 +73,15 @@
 
 - (void)didLoadContext:(ASIHTTPRequest *)request
 {
-    NSMutableDictionary *query = [NSMutableDictionary dictionaryWithDictionary:[request userInfo]];
-    [query removeObjectForKey:@"targetSelector"];
+    if ([delegate respondsToSelector:@selector(didLoadContext:forQuery:)]) {
+        NSMutableDictionary *query = [NSMutableDictionary dictionaryWithDictionary:[request userInfo]];
+        [query removeObjectForKey:@"targetSelector"];
 
-    [delegate didLoadContext:[[[[request responseData] yajl_JSON] retain] autorelease]
-                    forQuery:query];
+        [delegate didLoadContext:[[[[request responseData] yajl_JSON] retain] autorelease]
+                        forQuery:query];
+    } else {
+        NSLog(@"Delegate does not implement didLoadContext:forQuery:");
+    }
 }
 
 @end

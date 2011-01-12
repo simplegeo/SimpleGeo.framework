@@ -278,44 +278,60 @@
 
 - (void)didAddPlace:(ASIHTTPRequest *)request
 {
-    NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
-    NSURL *placeURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",
-                                            SIMPLEGEO_URL_PREFIX,
-                                            [jsonResponse objectForKey:@"uri"]]];
+    if ([delegate respondsToSelector:@selector(didAddPlace:handle:URL:token:)]) {
+        NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
+        NSURL *placeURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",
+                                                SIMPLEGEO_URL_PREFIX,
+                                                [jsonResponse objectForKey:@"uri"]]];
 
-    [delegate didAddPlace:[[[[request userInfo] objectForKey:@"feature"] retain] autorelease]
-                   handle:[[[jsonResponse objectForKey:@"id"] retain] autorelease]
-                      URL:[[placeURL retain] autorelease]
-                    token:[[[jsonResponse objectForKey:@"token"] retain] autorelease]];
+        [delegate didAddPlace:[[[[request userInfo] objectForKey:@"feature"] retain] autorelease]
+                       handle:[[[jsonResponse objectForKey:@"id"] retain] autorelease]
+                          URL:[[placeURL retain] autorelease]
+                        token:[[[jsonResponse objectForKey:@"token"] retain] autorelease]];
+    } else {
+        NSLog(@"Delegate does not implement didAddPlace:handle:URL:token:");
+    }
 }
 
 - (void)didDeletePlace:(ASIHTTPRequest *)request
 {
-    NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
+    if ([delegate respondsToSelector:@selector(didDeletePlace:token:)]) {
+        NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
 
-    [delegate didDeletePlace:[[[[request userInfo] objectForKey:@"handle"] retain] autorelease]
-                       token:[[[jsonResponse objectForKey:@"token"] retain] autorelease]];
+        [delegate didDeletePlace:[[[[request userInfo] objectForKey:@"handle"] retain] autorelease]
+                           token:[[[jsonResponse objectForKey:@"token"] retain] autorelease]];
+    } else {
+        NSLog(@"Delegate does not implement didDeletePlace:token:");
+    }
 }
 
 - (void)didLoadPlaces:(ASIHTTPRequest *)request
 {
-    NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
-    SGFeatureCollection *places = [SGFeatureCollection featureCollectionWithDictionary:jsonResponse];
+    if ([delegate respondsToSelector:@selector(didLoadPlaces:forQuery:)]) {
+        NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
+        SGFeatureCollection *places = [SGFeatureCollection featureCollectionWithDictionary:jsonResponse];
 
-    NSMutableDictionary *query = [NSMutableDictionary dictionaryWithDictionary:[request userInfo]];
-    [query removeObjectForKey:@"targetSelector"];
+        NSMutableDictionary *query = [NSMutableDictionary dictionaryWithDictionary:[request userInfo]];
+        [query removeObjectForKey:@"targetSelector"];
 
-    [delegate didLoadPlaces:[[places retain] autorelease]
-                   forQuery:query];
+        [delegate didLoadPlaces:[[places retain] autorelease]
+                       forQuery:query];
+    } else {
+        NSLog(@"Delegate does not implement didLoadPlaces:forQuery:");
+    }
 }
 
 - (void)didUpdatePlace:(ASIHTTPRequest *)request
 {
-    NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
+    if ([delegate respondsToSelector:@selector(didUpdatePlace:handle:token:)]) {
+        NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
 
-    [delegate didUpdatePlace:[[[[request userInfo] objectForKey:@"feature"] retain] autorelease]
-                      handle:[[[[request userInfo] objectForKey:@"handle"] retain] autorelease]
-                       token:[[[jsonResponse objectForKey:@"token"] retain] autorelease]];
+        [delegate didUpdatePlace:[[[[request userInfo] objectForKey:@"feature"] retain] autorelease]
+                          handle:[[[[request userInfo] objectForKey:@"handle"] retain] autorelease]
+                           token:[[[jsonResponse objectForKey:@"token"] retain] autorelease]];
+    } else {
+        NSLog(@"Delegate does not implement didUpdatePlace:handle:token:");
+    }
 }
 
 @end

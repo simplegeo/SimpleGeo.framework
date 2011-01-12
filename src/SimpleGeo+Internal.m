@@ -48,7 +48,9 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.1.4";
 {
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:aURL
                                                       consumerKey:consumerKey
-                                                   consumerSecret:consumerSecret];
+                                                   consumerSecret:consumerSecret
+                                                            token:nil
+                                                      tokenSecret:nil];
     [request setDelegate:self];
     [request setShouldRedirect:NO];
     [request addRequestHeader:@"User-Agent" value:USER_AGENT];

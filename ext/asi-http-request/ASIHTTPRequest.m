@@ -11,6 +11,7 @@
 //  See: http://developer.apple.com/samplecode/ImageClient/listing37.html
 
 #import "ASIHTTPRequest.h"
+#import "ASIHTTPRequest+OAuth.h"
 
 #if TARGET_OS_IPHONE
 #import "Reachability.h"
@@ -921,7 +922,19 @@ static NSOperationQueue *sharedQueue = nil;
 			[self addBasicAuthenticationHeaderWithUsername:[self username] andPassword:[self password]];
 		}
 	}
-	
+
+    // Are any credentials set on this request that might be used for OAuth?
+    if ([[self requestCredentials] objectForKey:@"consumerKey"] ||
+        [[self requestCredentials] objectForKey:@"consumerSecret"] ||
+        [[self requestCredentials] objectForKey:@"token"] ||
+        [[self requestCredentials] objectForKey:@"tokenSecret"]) {
+        [self addOAuthHeaderWithConsumerKey:[[self requestCredentials] objectForKey:@"consumerKey"]
+                             consumerSecret:[[self requestCredentials] objectForKey:@"consumerSecret"]
+                                      token:[[self requestCredentials] objectForKey:@"token"]
+                                tokenSecret:[[self requestCredentials] objectForKey:@"tokenSecret"]
+                            signatureMethod:[[self requestCredentials] objectForKey:@"signatureMethod"]];
+    }
+
 	if (credentials && ![[self requestHeaders] objectForKey:@"Authorization"]) {
 		
 		// When the Authentication key is set, the credentials were stored after an authentication challenge, so we can let CFNetwork apply them

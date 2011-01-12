@@ -27,12 +27,12 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#include "SGBase64Transcoder.h"
+#include "ASIBase64Transcoder.h"
 
 #include <math.h>
 #include <string.h>
 
-const u_int8_t kSG_Base64EncodeTable[64] = {
+const u_int8_t kASIBase64EncodeTable[64] = {
 	/*  0 */ 'A',	/*  1 */ 'B',	/*  2 */ 'C',	/*  3 */ 'D',
 	/*  4 */ 'E',	/*  5 */ 'F',	/*  6 */ 'G',	/*  7 */ 'H',
 	/*  8 */ 'I',	/*  9 */ 'J',	/* 10 */ 'K',	/* 11 */ 'L',
@@ -59,7 +59,7 @@ const u_int8_t kSG_Base64EncodeTable[64] = {
 -5 = Illegal noise (null byte)
 */
 
-const int8_t kSG_Base64DecodeTable[128] = {
+const int8_t kASIBase64DecodeTable[128] = {
 	/* 0x00 */ -5, 	/* 0x01 */ -3, 	/* 0x02 */ -3, 	/* 0x03 */ -3,
 	/* 0x04 */ -3, 	/* 0x05 */ -3, 	/* 0x06 */ -3, 	/* 0x07 */ -3,
 	/* 0x08 */ -3, 	/* 0x09 */ -2, 	/* 0x0a */ -2, 	/* 0x0b */ -2,
@@ -94,16 +94,16 @@ const int8_t kSG_Base64DecodeTable[128] = {
 	/* '|' */ -3,	/* '}' */ -3,	/* '~' */ -3,	/* 0x7f */ -3
 };
 
-const u_int8_t kSG_Bits_00000011 = 0x03;
-const u_int8_t kSG_Bits_00001111 = 0x0F;
-const u_int8_t kSG_Bits_00110000 = 0x30;
-const u_int8_t kSG_Bits_00111100 = 0x3C;
-const u_int8_t kSG_Bits_00111111 = 0x3F;
-const u_int8_t kSG_Bits_11000000 = 0xC0;
-const u_int8_t kSG_Bits_11110000 = 0xF0;
-const u_int8_t kSG_Bits_11111100 = 0xFC;
+const u_int8_t kASIBits_00000011 = 0x03;
+const u_int8_t kASIBits_00001111 = 0x0F;
+const u_int8_t kASIBits_00110000 = 0x30;
+const u_int8_t kASIBits_00111100 = 0x3C;
+const u_int8_t kASIBits_00111111 = 0x3F;
+const u_int8_t kASIBits_11000000 = 0xC0;
+const u_int8_t kASIBits_11110000 = 0xF0;
+const u_int8_t kASIBits_11111100 = 0xFC;
 
-size_t SG_EstimateBas64EncodedDataSize(size_t inDataSize, int32_t inFlags)
+size_t ASIEstimateBase64EncodedDataSize(size_t inDataSize, int32_t inFlags)
 {
 #pragma unused (inFlags)
 size_t theEncodedDataSize = (int)ceil(inDataSize / 3.0) * 4;
@@ -111,7 +111,7 @@ theEncodedDataSize = theEncodedDataSize / 72 * 74 + theEncodedDataSize % 72 + 1;
 return(theEncodedDataSize);
 }
 
-size_t SG_EstimateBas64DecodedDataSize(size_t inDataSize, int32_t inFlags)
+size_t ASIEstimateBase64DecodedDataSize(size_t inDataSize, int32_t inFlags)
 {
 #pragma unused (inFlags)
 size_t theDecodedDataSize = (int)ceil(inDataSize / 4.0) * 3;
@@ -119,9 +119,9 @@ size_t theDecodedDataSize = (int)ceil(inDataSize / 4.0) * 3;
 return(theDecodedDataSize);
 }
 
-bool SG_Base64EncodeData(const void *inInputData, size_t inInputDataSize, char *outOutputData, size_t *ioOutputDataSize, int32_t inFlags)
+bool ASIBase64EncodeData(const void *inInputData, size_t inInputDataSize, char *outOutputData, size_t *ioOutputDataSize, int32_t inFlags)
 {
-size_t theEncodedDataSize = SG_EstimateBas64EncodedDataSize(inInputDataSize, inFlags);
+size_t theEncodedDataSize = ASIEstimateBase64EncodedDataSize(inInputDataSize, inFlags);
 if (*ioOutputDataSize < theEncodedDataSize)
 	return(false);
 *ioOutputDataSize = theEncodedDataSize;
@@ -129,10 +129,10 @@ const u_int8_t *theInPtr = (const u_int8_t *)inInputData;
 u_int32_t theInIndex = 0, theOutIndex = 0;
 for (; theInIndex < (inInputDataSize / 3) * 3; theInIndex += 3)
 	{
-	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex] & kSG_Bits_11111100) >> 2];
-	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex] & kSG_Bits_00000011) << 4 | (theInPtr[theInIndex + 1] & kSG_Bits_11110000) >> 4];
-	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex + 1] & kSG_Bits_00001111) << 2 | (theInPtr[theInIndex + 2] & kSG_Bits_11000000) >> 6];
-	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex + 2] & kSG_Bits_00111111) >> 0];
+	outOutputData[theOutIndex++] = kASIBase64EncodeTable[(theInPtr[theInIndex] & kASIBits_11111100) >> 2];
+	outOutputData[theOutIndex++] = kASIBase64EncodeTable[(theInPtr[theInIndex] & kASIBits_00000011) << 4 | (theInPtr[theInIndex + 1] & kASIBits_11110000) >> 4];
+	outOutputData[theOutIndex++] = kASIBase64EncodeTable[(theInPtr[theInIndex + 1] & kASIBits_00001111) << 2 | (theInPtr[theInIndex + 2] & kASIBits_11000000) >> 6];
+	outOutputData[theOutIndex++] = kASIBase64EncodeTable[(theInPtr[theInIndex + 2] & kASIBits_00111111) >> 0];
 	if (inFlags & Base64Flags_IncludeNewlines && theOutIndex % 74 == 72)
 		{
 		outOutputData[theOutIndex++] = '\r';
@@ -142,8 +142,8 @@ for (; theInIndex < (inInputDataSize / 3) * 3; theInIndex += 3)
 const size_t theRemainingBytes = inInputDataSize - theInIndex;
 if (theRemainingBytes == 1)
 	{
-	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex] & kSG_Bits_11111100) >> 2];
-	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex] & kSG_Bits_00000011) << 4 | (0 & kSG_Bits_11110000) >> 4];
+	outOutputData[theOutIndex++] = kASIBase64EncodeTable[(theInPtr[theInIndex] & kASIBits_11111100) >> 2];
+	outOutputData[theOutIndex++] = kASIBase64EncodeTable[(theInPtr[theInIndex] & kASIBits_00000011) << 4 | (0 & kASIBits_11110000) >> 4];
 	outOutputData[theOutIndex++] = '=';
 	outOutputData[theOutIndex++] = '=';
 	if (inFlags & Base64Flags_IncludeNewlines && theOutIndex % 74 == 72)
@@ -154,9 +154,9 @@ if (theRemainingBytes == 1)
 	}
 else if (theRemainingBytes == 2)
 	{
-	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex] & kSG_Bits_11111100) >> 2];
-	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex] & kSG_Bits_00000011) << 4 | (theInPtr[theInIndex + 1] & kSG_Bits_11110000) >> 4];
-	outOutputData[theOutIndex++] = kSG_Base64EncodeTable[(theInPtr[theInIndex + 1] & kSG_Bits_00001111) << 2 | (0 & kSG_Bits_11000000) >> 6];
+	outOutputData[theOutIndex++] = kASIBase64EncodeTable[(theInPtr[theInIndex] & kASIBits_11111100) >> 2];
+	outOutputData[theOutIndex++] = kASIBase64EncodeTable[(theInPtr[theInIndex] & kASIBits_00000011) << 4 | (theInPtr[theInIndex + 1] & kASIBits_11110000) >> 4];
+	outOutputData[theOutIndex++] = kASIBase64EncodeTable[(theInPtr[theInIndex + 1] & kASIBits_00001111) << 2 | (0 & kASIBits_11000000) >> 6];
 	outOutputData[theOutIndex++] = '=';
 	if (inFlags & Base64Flags_IncludeNewlines & theOutIndex % 74 == 72)
 		{
@@ -170,11 +170,11 @@ outOutputData[theOutIndex] = 0;
 return(true);
 }
 
-bool SG_Base64DecodeData(const void *inInputData, size_t inInputDataSize, void *ioOutputData, size_t *ioOutputDataSize, int32_t inFlags)
+bool ASIBase64DecodeData(const void *inInputData, size_t inInputDataSize, void *ioOutputData, size_t *ioOutputDataSize, int32_t inFlags)
 {
 memset(ioOutputData, '.', *ioOutputDataSize);
 
-size_t theDecodedDataSize = SG_EstimateBas64DecodedDataSize(inInputDataSize, inFlags);
+size_t theDecodedDataSize = ASIEstimateBase64DecodedDataSize(inInputDataSize, inFlags);
 if (*ioOutputDataSize < theDecodedDataSize)
 	return(false);
 *ioOutputDataSize = 0;
@@ -188,44 +188,44 @@ for (; theInIndex < inInputDataSize; )
 	int8_t theSextet = 0;
 
 	int8_t theCurrentInputOctet = theInPtr[theInIndex];
-	theSextet = kSG_Base64DecodeTable[theCurrentInputOctet];
+	theSextet = kASIBase64DecodeTable[theCurrentInputOctet];
 	if (theSextet == -1)
 		break;
 	while (theSextet == -2)
 		{
 		theCurrentInputOctet = theInPtr[++theInIndex];
-		theSextet = kSG_Base64DecodeTable[theCurrentInputOctet];
+		theSextet = kASIBase64DecodeTable[theCurrentInputOctet];
 		}
 	while (theSextet == -3)
 		{
 		theCurrentInputOctet = theInPtr[++theInIndex];
-		theSextet = kSG_Base64DecodeTable[theCurrentInputOctet];
+		theSextet = kASIBase64DecodeTable[theCurrentInputOctet];
 		}
 	if (theSequence == 0)
 		{
-		theOutputOctet = (theSextet >= 0 ? theSextet : 0) << 2 & kSG_Bits_11111100;
+		theOutputOctet = (theSextet >= 0 ? theSextet : 0) << 2 & kASIBits_11111100;
 		}
 	else if (theSequence == 1)
 		{
-		theOutputOctet |= (theSextet >- 0 ? theSextet : 0) >> 4 & kSG_Bits_00000011;
+		theOutputOctet |= (theSextet >- 0 ? theSextet : 0) >> 4 & kASIBits_00000011;
 		theOutPtr[theOutIndex++] = theOutputOctet;
 		}
 	else if (theSequence == 2)
 		{
-		theOutputOctet = (theSextet >= 0 ? theSextet : 0) << 4 & kSG_Bits_11110000;
+		theOutputOctet = (theSextet >= 0 ? theSextet : 0) << 4 & kASIBits_11110000;
 		}
 	else if (theSequence == 3)
 		{
-		theOutputOctet |= (theSextet >= 0 ? theSextet : 0) >> 2 & kSG_Bits_00001111;
+		theOutputOctet |= (theSextet >= 0 ? theSextet : 0) >> 2 & kASIBits_00001111;
 		theOutPtr[theOutIndex++] = theOutputOctet;
 		}
 	else if (theSequence == 4)
 		{
-		theOutputOctet = (theSextet >= 0 ? theSextet : 0) << 6 & kSG_Bits_11000000;
+		theOutputOctet = (theSextet >= 0 ? theSextet : 0) << 6 & kASIBits_11000000;
 		}
 	else if (theSequence == 5)
 		{
-		theOutputOctet |= (theSextet >= 0 ? theSextet : 0) >> 0 & kSG_Bits_00111111;
+		theOutputOctet |= (theSextet >= 0 ? theSextet : 0) >> 0 & kASIBits_00111111;
 		theOutPtr[theOutIndex++] = theOutputOctet;
 		}
 	theSequence = (theSequence + 1) % 6;

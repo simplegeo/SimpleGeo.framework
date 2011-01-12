@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.1.5
+
+* Don't call delegate methods when they're not implemented; warn instead
+* Moved potentially conflicting symbols in `NSString`
+* Refactored OAuth implementation to no longer conflict with Basic Auth
+* Fixed some potential memory leaks
+
 ## 1.1.4 - 1/7/11
 
 * Add a missing retain that was causing invalid pointers in `SGFeature`

@@ -3,14 +3,11 @@
 This is an Objective-C client library for the SimpleGeo API, suitable for use
 in both Mac OS X and iOS applications.
 
-`SimpleGeo.framework` embeds
-[ASIHTTPRequest](http://allseeing-i.com/ASIHTTPRequest/), so that will become
-available when you introduce this as a dependency. Change `#import
-"ASIHTTPRequest.h"` to `#import <SimpleGeo/ASIHTTPRequest.h>`.
-
-**NOTE**: Due to the way `SimpleGeo.framework` uses ASIHTTPRequest to make
-OAuth-signed calls, **Basic Authentication WILL NOT WORK** if you are also
-using ASIHTTPRequest.
+`SimpleGeo.framework` embeds a slightly modified (but still compatible) version
+of [ASIHTTPRequest](http://allseeing-i.com/ASIHTTPRequest/), so that will
+become available when you introduce this as a dependency. Change any and all
+instances of `#import "ASIHTTPRequest.h"` with `#import
+<SimpleGeo/ASIHTTPRequest.h>`.
 
 ## Embedding in a Cocoa Application
 

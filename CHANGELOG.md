@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.1.5
+## 1.1.5 - 1/12/11
 
 * Don't call delegate methods when they're not implemented; warn instead
 * Moved potentially conflicting symbols in `NSString`

@@ -1,0 +1,8 @@
+//
+//  Release-OSX.xcconfig
+//  SimpleGeo
+//
+
+#include "Shared-OSX.xcconfig"
+
+DEBUG_INFORMATION_FORMAT = dwarf-with-dsym

@@ -79,6 +79,9 @@
 		5D76764E1290EE9F006B7D51 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7676351290EE9F006B7D51 /* ASIFormDataRequest.m */; };
 		5D76764F1290EE9F006B7D51 /* ASIFormDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7676361290EE9F006B7D51 /* ASIFormDataRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D7676501290EE9F006B7D51 /* ASIDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7676371290EE9F006B7D51 /* ASIDownloadCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5D79620E12E114B400B33631 /* Shared-OSX.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D79620D12E114B400B33631 /* Shared-OSX.xcconfig */; };
+		5D79621012E1151100B33631 /* Debug-OSX.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D79620F12E1151100B33631 /* Debug-OSX.xcconfig */; };
+		5D79621212E1153400B33631 /* Release-OSX.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D79621112E1153400B33631 /* Release-OSX.xcconfig */; };
 		5D8C15E7129DE86E002F8C01 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8C15E6129DE86E002F8C01 /* AppKit.framework */; };
 		5DA3C345128E427C00E128DC /* SGPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA3C343128E427C00E128DC /* SGPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DA3C346128E427C00E128DC /* SGPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3C344128E427C00E128DC /* SGPoint.m */; };
@@ -179,6 +182,9 @@
 		5D7676351290EE9F006B7D51 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIFormDataRequest.m; path = "ext/asi-http-request/ASIFormDataRequest.m"; sourceTree = "<group>"; };
 		5D7676361290EE9F006B7D51 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIFormDataRequest.h; path = "ext/asi-http-request/ASIFormDataRequest.h"; sourceTree = "<group>"; };
 		5D7676371290EE9F006B7D51 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDownloadCache.h; path = "ext/asi-http-request/ASIDownloadCache.h"; sourceTree = "<group>"; };
+		5D79620D12E114B400B33631 /* Shared-OSX.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Shared-OSX.xcconfig"; sourceTree = "<group>"; };
+		5D79620F12E1151100B33631 /* Debug-OSX.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Debug-OSX.xcconfig"; sourceTree = "<group>"; };
+		5D79621112E1153400B33631 /* Release-OSX.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Release-OSX.xcconfig"; sourceTree = "<group>"; };
 		5D8C15DA129DE7C4002F8C01 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5D8C15E6129DE86E002F8C01 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		5DA3C343128E427C00E128DC /* SGPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGPoint.h; path = src/SGPoint.h; sourceTree = "<group>"; };
@@ -240,6 +246,7 @@
 		0867D691FE84028FC02AAC07 /* SimpleGeo */ = {
 			isa = PBXGroup;
 			children = (
+				5D79620C12E114A700B33631 /* Build Configuration */,
 				5DA3C348128E42C600E128DC /* Tests */,
 				5DF0867212ADCAF5007A8A60 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
@@ -338,6 +345,16 @@
 				5D7676371290EE9F006B7D51 /* ASIDownloadCache.h */,
 			);
 			name = ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		5D79620C12E114A700B33631 /* Build Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				5D79620F12E1151100B33631 /* Debug-OSX.xcconfig */,
+				5D79620D12E114B400B33631 /* Shared-OSX.xcconfig */,
+				5D79621112E1153400B33631 /* Release-OSX.xcconfig */,
+			);
+			name = "Build Configuration";
 			sourceTree = "<group>";
 		};
 		5D8C1562129DE17B002F8C01 /* TouchFoundation */ = {
@@ -528,6 +545,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
+				5D79620E12E114B400B33631 /* Shared-OSX.xcconfig in Resources */,
+				5D79621012E1151100B33631 /* Debug-OSX.xcconfig in Resources */,
+				5D79621212E1153400B33631 /* Release-OSX.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,46 +656,15 @@
 /* Begin XCBuildConfiguration section */
 		1DEB91AE08733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D79620F12E1151100B33631 /* Debug-OSX.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.1.5;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)\"/**";
-				FRAMEWORK_VERSION = A;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SimpleGeo_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				PRODUCT_NAME = SimpleGeo;
-				SYMROOT = "../SimpleGeo-build";
-				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
 		};
 		1DEB91AF08733DA50010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D79621112E1153400B33631 /* Release-OSX.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.1.5;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)\"/**";
-				FRAMEWORK_VERSION = A;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SimpleGeo_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				PRODUCT_NAME = SimpleGeo;
-				SYMROOT = "../SimpleGeo-build";
-				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
 		};

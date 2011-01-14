@@ -11,6 +11,9 @@
 		5D1DA88B12DD2AB100556B20 /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DA88912DD2AB100556B20 /* ASIHTTPRequest+OAuth.m */; };
 		5D1DA88F12DD2AC300556B20 /* ASIBase64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DA88D12DD2AC300556B20 /* ASIBase64Transcoder.c */; };
 		5D1DA89012DD2AC300556B20 /* ASIBase64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1DA88E12DD2AC300556B20 /* ASIBase64Transcoder.h */; };
+		5D79622C12E1164D00B33631 /* Debug-iOS.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D79622B12E1164D00B33631 /* Debug-iOS.xcconfig */; };
+		5D79623212E1166B00B33631 /* Shared-iOS.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D79623112E1166B00B33631 /* Shared-iOS.xcconfig */; };
+		5D79623412E1167500B33631 /* Release-iOS.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D79623312E1167500B33631 /* Release-iOS.xcconfig */; };
 		5DF1FBC312C2C6F50097CF47 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1FB8E12C2C6F50097CF47 /* ASIDataCompressor.m */; };
 		5DF1FBC412C2C6F50097CF47 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1FB9012C2C6F50097CF47 /* ASIDataDecompressor.m */; };
 		5DF1FBC512C2C6F50097CF47 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1FB9212C2C6F50097CF47 /* ASIDownloadCache.m */; };
@@ -69,6 +72,9 @@
 		5D1DA88912DD2AB100556B20 /* ASIHTTPRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIHTTPRequest+OAuth.m"; sourceTree = "<group>"; };
 		5D1DA88D12DD2AC300556B20 /* ASIBase64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ASIBase64Transcoder.c; sourceTree = "<group>"; };
 		5D1DA88E12DD2AC300556B20 /* ASIBase64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIBase64Transcoder.h; sourceTree = "<group>"; };
+		5D79622B12E1164D00B33631 /* Debug-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Debug-iOS.xcconfig"; sourceTree = "<group>"; };
+		5D79623112E1166B00B33631 /* Shared-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Shared-iOS.xcconfig"; sourceTree = "<group>"; };
+		5D79623312E1167500B33631 /* Release-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Release-iOS.xcconfig"; sourceTree = "<group>"; };
 		5DF1FB8512C2C5B60097CF47 /* SimpleGeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleGeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF1FB8612C2C5B60097CF47 /* SimpleGeo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleGeo-Info.plist"; sourceTree = "<group>"; };
 		5DF1FB8C12C2C6F50097CF47 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -147,6 +153,7 @@
 		0867D691FE84028FC02AAC07 /* SimpleGeo */ = {
 			isa = PBXGroup;
 			children = (
+				5D79622A12E1163D00B33631 /* Build Configuration */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				5DF1FBF112C2C7A30097CF47 /* External Frameworks and Libraries */,
@@ -203,6 +210,16 @@
 				5DF1FD7912C2CD9C0097CF47 /* SimpleGeo_Prefix.pch */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		5D79622A12E1163D00B33631 /* Build Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				5D79622B12E1164D00B33631 /* Debug-iOS.xcconfig */,
+				5D79623112E1166B00B33631 /* Shared-iOS.xcconfig */,
+				5D79623312E1167500B33631 /* Release-iOS.xcconfig */,
+			);
+			name = "Build Configuration";
 			sourceTree = "<group>";
 		};
 		5DF1FB8B12C2C6F50097CF47 /* asi-http-request */ = {
@@ -370,6 +387,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D79622C12E1164D00B33631 /* Debug-iOS.xcconfig in Resources */,
+				5D79623212E1166B00B33631 /* Shared-iOS.xcconfig in Resources */,
+				5D79623412E1167500B33631 /* Release-iOS.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,59 +457,15 @@
 		};
 		5DF1FB8712C2C5B60097CF47 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D79622B12E1164D00B33631 /* Debug-iOS.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = NO;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.1.5;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../ext\"",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SimpleGeo_Prefix.pch;
-				INFOPLIST_FILE = "SimpleGeo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LINK_WITH_STANDARD_LIBRARIES = NO;
-				MACH_O_TYPE = mh_object;
-				OTHER_LDFLAGS = "-ObjC";
-				PREBINDING = NO;
-				PRODUCT_NAME = SimpleGeo;
-				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
 		};
 		5DF1FB8812C2C5B60097CF47 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D79623312E1167500B33631 /* Release-iOS.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEAD_CODE_STRIPPING = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.1.5;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../ext\"",
-				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SimpleGeo_Prefix.pch;
-				INFOPLIST_FILE = "SimpleGeo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LINK_WITH_STANDARD_LIBRARIES = NO;
-				MACH_O_TYPE = mh_object;
-				OTHER_LDFLAGS = "-ObjC";
-				PREBINDING = NO;
-				PRODUCT_NAME = SimpleGeo;
-				WRAPPER_EXTENSION = framework;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};

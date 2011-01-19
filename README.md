@@ -47,9 +47,7 @@ application built using this framework.
 
 In order to embed `SimpleGeo.framework` into an iOS application, you'll first
 have to add [`YAJL.framework`](https://github.com/gabriel/yajl-objc/downloads)
-(the iOS variant) to your project and follow the [iOS installation instructions
-in the YAJL
-README](https://github.com/gabriel/yajl-objc/blob/master/README.md).
+(the iOS variant) to your project.
 
 `SimpleGeo.framework` is available as either a [downloadable ZIP
 file](https://github.com/simplegeo/SimpleGeo.framework/downloads) or a branch
@@ -64,10 +62,24 @@ it as a submodule:
 Once it's been added to `ext/`, drag it into your Xcode project and it will
 show up as a linked Framework.
 
-Since `SimpleGeo.framework` embeds
-[ASIHTTPRequest](http://allseeing-i.com/ASIHTTPRequest/), you'll have to follow
-[the instructions](http://allseeing-i.com/ASIHTTPRequest/Setup-instructions) in
-order to add its dependencies properly.
+Add the following additional frameworks to your project by right-clicking on
+the target, choosing the "General" tab, and using the `+` button at the bottom
+of the window to add "Linked Libraries":
+
+* Foundation
+* UIKit
+* CFNetwork
+* SystemConfiguration
+* MobileCoreServices
+* CoreGraphics
+* libz
+* YAJL (importing it into your project should have added it, but if not, add it
+  now)
+
+Non-system frameworks must be statically linked to your application (iOS does
+not allow embedded frameworks), so you'll need to add `-ObjC` and `-all_load`
+to your "Linker Flags" (accessible via the "Build" tab in the Target Info
+window).
 
 [SimpleGeo-iPhone](https://github.com/simplegeo/SimpleGeo-iPhone) is an example
 of an iOS application built using this framework.

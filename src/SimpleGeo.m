@@ -154,6 +154,21 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     [request startAsynchronous];
 }
 
+-(void)getCategories
+{
+    NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/features/categories.json",
+                                 SIMPLEGEO_API_VERSION];
+    
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                     @"didLoadCategories:", @"targetSelector",
+                                     nil];
+    
+	NSURL *endpointURL = [self endpointForString:endpoint];
+    ASIHTTPRequest *request = [self requestWithURL:endpointURL];
+    [request setUserInfo:userInfo];
+    [request startAsynchronous];
+}
+
 #pragma mark ASIHTTPRequest Delegate Methods
 
 - (void)requestFinished:(ASIHTTPRequest *)request
@@ -190,7 +205,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 - (void)didLoadFeature:(ASIHTTPRequest *)request
 {
     NSString *handle = [[request userInfo] objectForKey:@"handle"];
-
+    
     if ([delegate respondsToSelector:@selector(didLoadFeature:handle:)]) {
         if ([request responseStatusCode] == 404) {
             [delegate didLoadFeature:nil
@@ -199,11 +214,29 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
             NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
             SGFeature *feature = [SGFeature featureWithId:handle
                                                dictionary:jsonResponse];
-
+            
             [delegate didLoadFeature:[[feature retain] autorelease]
                               handle:[[handle retain] autorelease]];
         }
     }
 }
-
+    
+- (void)didLoadCategories:(ASIHTTPRequest *)request
+{
+    if([request responseStatusCode] == 404) {
+        [delegate didLoadCategories:nil];
+    }
+    else {
+        NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
+        
+        NSMutableArray *Categories=[[NSArray alloc] init];   
+        
+        for (NSString *key in [jsonResponse allKeys]) {
+            [Categories addObject:[jsonResponse objectForKey:key]];
+        }
+        
+        [delegate didLoadCategories:Categories];
+        [Categories release];
+    }
+}
 @end

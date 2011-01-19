@@ -161,6 +161,18 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
                 timeout:0.25];
 }
 
+- (void)testGetCategories
+{
+	[self prepare];
+
+	SimpleGeo *client = [self createClient];
+	
+    [client getCategories];
+
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
 #pragma mark SimpleGeoDelegate Methods
 
 - (void)requestDidFinish:(ASIHTTPRequest *)request
@@ -217,6 +229,13 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetFeatureWithHandleAndNonExistentResult)];
+    }
+
+- (void)didLoadCategories:(NSArray *)categories {
+		//NSLog(@"Did Load Categories delegate method");
+		//GHAssertNil(categories, nil);
+	[self notify:kGHUnitWaitStatusSuccess
+	 forSelector:@selector(testGetCategories)];
     }
 }
 

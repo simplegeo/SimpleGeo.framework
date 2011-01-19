@@ -77,6 +77,12 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
  */
 - (void)requestDidFail:(ASIHTTPRequest *)request;
 
+/*!
+ * Called When Categories have been loaded. 
+ * @param AN Array of categories
+ */
+- (void)didLoadCategories:(NSArray *)categories;
+
 @end
 
 
@@ -140,6 +146,12 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
  */
 - (void)getFeatureWithHandle:(NSString *)handle
                         zoom:(int)zoom;
+
+/*!
+ * Get an array of categories  [/features/categories.json].
+ */
+-(void)getCategories;
+-(void)didLoadCategories:(ASIHTTPRequest *)request;
 
 @end
 

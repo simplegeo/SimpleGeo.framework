@@ -35,10 +35,15 @@ as `../SimpleGeo-build` to facilitate linking the project file into your
 application (this is useful if you decide you need to make changes to the
 library while simultaneously working on your application).
 
-Since `SimpleGeo.framework` embeds
-[ASIHTTPRequest](http://allseeing-i.com/ASIHTTPRequest/), you'll have to follow
-[the instructions](http://allseeing-i.com/ASIHTTPRequest/Setup-instructions) in
-order to add its dependencies properly.
+Add the following additional frameworks to your project by right-clicking on
+the target, choosing the "General" tab, and using the `+` button at the bottom
+of the window to add "Linked Libraries":
+
+* CoreServices
+* SystemConfiguration
+* libz
+* YAJL (if it's not already present)
+* SimpleGeo (if it's not already present)
 
 [SimpleApp](https://github.com/simplegeo/SimpleApp) is an example of a Cocoa
 application built using this framework.
@@ -73,8 +78,8 @@ of the window to add "Linked Libraries":
 * MobileCoreServices
 * CoreGraphics
 * libz
-* YAJL (importing it into your project should have added it, but if not, add it
-  now)
+* YAJL (if it's not already present)
+* SimpleGeo (if it's not already present)
 
 Non-system frameworks must be statically linked to your application (iOS does
 not allow embedded frameworks), so you'll need to add `-ObjC` and `-all_load`

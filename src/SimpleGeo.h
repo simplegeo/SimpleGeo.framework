@@ -78,8 +78,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 - (void)requestDidFail:(ASIHTTPRequest *)request;
 
 /*!
- * Called when categories have been loaded. Categories will be an empty array 
- * if it could not be found.
+ * Called when categories have been loaded.
  * @param an array of categories
  */
 - (void)didLoadCategories:(NSArray *)categories;

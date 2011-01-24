@@ -42,7 +42,6 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 @interface SimpleGeo ()
 
 - (void)requestFailed:(ASIHTTPRequest *)request;
-- (void)didLoadCategories:(ASIHTTPRequest *)request;
 
 @end
 
@@ -159,12 +158,12 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 {
     NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/features/categories.json",
                                  SIMPLEGEO_API_VERSION];
-    
+
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     @"didLoadCategories:", @"targetSelector",
-									 nil];
+                                     @"didRequestCategories:", @"targetSelector",
+                                     nil];
     NSURL *endpointURL = [self endpointForString:endpoint];
-    
+
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
     [request setUserInfo:userInfo];
     [request startAsynchronous];
@@ -206,7 +205,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 - (void)didLoadFeature:(ASIHTTPRequest *)request
 {
     NSString *handle = [[request userInfo] objectForKey:@"handle"];
-    
+
     if ([delegate respondsToSelector:@selector(didLoadFeature:handle:)]) {
         if ([request responseStatusCode] == 404) {
             [delegate didLoadFeature:nil
@@ -215,23 +214,19 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
             NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
             SGFeature *feature = [SGFeature featureWithId:handle
                                                dictionary:jsonResponse];
-            
+
             [delegate didLoadFeature:[[feature retain] autorelease]
                               handle:[[handle retain] autorelease]];
         }
     }
 }
-    
-- (void)didLoadCategories:(ASIHTTPRequest *)request
+
+- (void)didRequestCategories:(ASIHTTPRequest *)request
 {
-	if ([delegate respondsToSelector:@selector(didLoadCategories:)]) {
-		if ([request responseStatusCode] == 404) {
-			[delegate didLoadCategories:[NSArray arrayWithObjects:nil]];
-		} else {
-			NSArray *jsonResponse = [[request responseData] yajl_JSON];
-			[delegate didLoadCategories:jsonResponse];
-		}
-	}
+   if ([delegate respondsToSelector:@selector(didLoadCategories:)]) {
+        NSArray *jsonResponse = [[request responseData] yajl_JSON];
+        [delegate didLoadCategories:jsonResponse];
+   }
 }
 
 @end

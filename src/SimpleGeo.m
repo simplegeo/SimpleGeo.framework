@@ -223,10 +223,10 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
 - (void)didRequestCategories:(ASIHTTPRequest *)request
 {
-   if ([delegate respondsToSelector:@selector(didLoadCategories:)]) {
+    if ([delegate respondsToSelector:@selector(didLoadCategories:)]) {
         NSArray *jsonResponse = [[request responseData] yajl_JSON];
         [delegate didLoadCategories:jsonResponse];
-   }
+    }
 }
 
 @end

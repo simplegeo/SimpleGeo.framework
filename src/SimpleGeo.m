@@ -42,6 +42,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 @interface SimpleGeo ()
 
 - (void)requestFailed:(ASIHTTPRequest *)request;
+- (void)didLoadCategories:(ASIHTTPRequest *)request;
 
 @end
 
@@ -154,16 +155,16 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     [request startAsynchronous];
 }
 
--(void)getCategories
+- (void)getCategories
 {
     NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/features/categories.json",
                                  SIMPLEGEO_API_VERSION];
     
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                      @"didLoadCategories:", @"targetSelector",
-                                     nil];
+									 nil];
+    NSURL *endpointURL = [self endpointForString:endpoint];
     
-	NSURL *endpointURL = [self endpointForString:endpoint];
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
     [request setUserInfo:userInfo];
     [request startAsynchronous];
@@ -223,20 +224,14 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     
 - (void)didLoadCategories:(ASIHTTPRequest *)request
 {
-    if([request responseStatusCode] == 404) {
-        [delegate didLoadCategories:nil];
-    }
-    else {
-        NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
-        
-        NSMutableArray *Categories=[[NSArray alloc] init];   
-        
-        for (NSString *key in [jsonResponse allKeys]) {
-            [Categories addObject:[jsonResponse objectForKey:key]];
-        }
-        
-        [delegate didLoadCategories:Categories];
-        [Categories release];
-    }
+	if ([delegate respondsToSelector:@selector(didLoadCategories:)]) {
+		if ([request responseStatusCode] == 404) {
+			[delegate didLoadCategories:[NSArray arrayWithObjects:nil]];
+		} else {
+			NSArray *jsonResponse = [[request responseData] yajl_JSON];
+			[delegate didLoadCategories:jsonResponse];
+		}
+	}
 }
+
 @end

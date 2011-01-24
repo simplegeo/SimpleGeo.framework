@@ -164,12 +164,11 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 - (void)testGetCategories
 {
 	[self prepare];
-
+	
 	SimpleGeo *client = [self createClient];
 	
-    [client getCategories];
-
-    [self waitForStatus:kGHUnitWaitStatusSuccess
+	[client getCategories];
+	[self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
 }
 
@@ -230,13 +229,22 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetFeatureWithHandleAndNonExistentResult)];
     }
+}
 
 - (void)didLoadCategories:(NSArray *)categories {
-		//NSLog(@"Did Load Categories delegate method");
-		//GHAssertNil(categories, nil);
+	GHAssertEquals([categories count],(NSUInteger)4,@"Should have read a list of 4 categories.");
+	if ([categories count] > 0) {
+		GHAssertEqualObjects([[categories objectAtIndex:0] objectForKey:@"category"],
+                             @"Administrative", nil);
+		GHAssertEqualObjects([[categories objectAtIndex:0] objectForKey:@"category_id"],
+                             @"10100100", nil);
+		GHAssertEqualObjects([[categories objectAtIndex:0] objectForKey:@"type"],
+                             @"Region", nil);
+		GHAssertEqualObjects([[categories objectAtIndex:0] objectForKey:@"subcategory"],
+                             @"Consolidated City", nil);
+	}
 	[self notify:kGHUnitWaitStatusSuccess
 	 forSelector:@selector(testGetCategories)];
-    }
 }
 
 @end

@@ -154,6 +154,21 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     [request startAsynchronous];
 }
 
+- (void)getCategories
+{
+    NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/features/categories.json",
+                                 SIMPLEGEO_API_VERSION];
+
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                     @"didRequestCategories:", @"targetSelector",
+                                     nil];
+    NSURL *endpointURL = [self endpointForString:endpoint];
+
+    ASIHTTPRequest *request = [self requestWithURL:endpointURL];
+    [request setUserInfo:userInfo];
+    [request startAsynchronous];
+}
+
 #pragma mark ASIHTTPRequest Delegate Methods
 
 - (void)requestFinished:(ASIHTTPRequest *)request
@@ -203,6 +218,14 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
             [delegate didLoadFeature:[[feature retain] autorelease]
                               handle:[[handle retain] autorelease]];
         }
+    }
+}
+
+- (void)didRequestCategories:(ASIHTTPRequest *)request
+{
+    if ([delegate respondsToSelector:@selector(didLoadCategories:)]) {
+        NSArray *jsonResponse = [[request responseData] yajl_JSON];
+        [delegate didLoadCategories:jsonResponse];
     }
 }
 

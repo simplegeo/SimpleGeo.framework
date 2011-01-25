@@ -172,7 +172,7 @@
 
     NSMutableArray *queryParams = [NSMutableArray array];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                        @"didLoadPlaces:", @"targetSelector",
+                                        @"didRequestPlaces:", @"targetSelector",
                                         point, @"point",
                                       nil];
 
@@ -217,7 +217,7 @@
 
     NSMutableArray *queryParams = [NSMutableArray array];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                      @"didLoadPlaces:", @"targetSelector",
+                                      @"didRequestPlaces:", @"targetSelector",
                                       address, @"address",
                                       nil];
 
@@ -305,7 +305,7 @@
     }
 }
 
-- (void)didLoadPlaces:(ASIHTTPRequest *)request
+- (void)didRequestPlaces:(ASIHTTPRequest *)request
 {
     if ([delegate respondsToSelector:@selector(didLoadPlaces:forQuery:)]) {
         NSDictionary *jsonResponse = [[request responseData] yajl_JSON];

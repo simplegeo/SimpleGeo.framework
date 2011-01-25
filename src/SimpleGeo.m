@@ -137,7 +137,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
                                  SIMPLEGEO_API_VERSION, handle];
 
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     @"didLoadFeature:", @"targetSelector",
+                                     @"didRequestFeature:", @"targetSelector",
                                      handle, @"handle",
                                      nil];
 
@@ -202,7 +202,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
 #pragma mark Dispatcher Methods
 
-- (void)didLoadFeature:(ASIHTTPRequest *)request
+- (void)didRequestFeature:(ASIHTTPRequest *)request
 {
     NSString *handle = [[request userInfo] objectForKey:@"handle"];
 

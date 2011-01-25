@@ -44,7 +44,7 @@
 
     ASIHTTPRequest *request = [self requestWithURL:endpoint];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                          @"didLoadContext:", @"targetSelector",
+                          @"didRequestContext:", @"targetSelector",
                           point, @"point",
                           nil
                           ]];
@@ -62,7 +62,7 @@
 
     ASIHTTPRequest *request = [self requestWithURL:endpoint];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                          @"didLoadContext:", @"targetSelector",
+                          @"didRequestContext:", @"targetSelector",
                           address, @"address",
                           nil
                           ]];
@@ -71,7 +71,7 @@
 
 #pragma mark Dispatcher Methods
 
-- (void)didLoadContext:(ASIHTTPRequest *)request
+- (void)didRequestContext:(ASIHTTPRequest *)request
 {
     if ([delegate respondsToSelector:@selector(didLoadContext:forQuery:)]) {
         NSMutableDictionary *query = [NSMutableDictionary dictionaryWithDictionary:[request userInfo]];

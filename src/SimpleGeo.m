@@ -178,7 +178,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
         // call requestDidFinish first
         if ([delegate respondsToSelector:@selector(requestDidFinish:)]) {
-            [delegate requestDidFinish:[[request retain] autorelease]];
+            [delegate requestDidFinish:request];
         }
 
         // assume that "targetSelector" was set on the request and use that to dispatch appropriately
@@ -186,7 +186,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
         [self performSelector:targetSelector withObject:request];
     } else {
         // consider non-2xx, 3xx, or 404s to be failures
-        [self requestFailed:[[request retain] autorelease]];
+        [self requestFailed:request];
     }
 }
 
@@ -196,7 +196,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
     // TODO how can clients identify which request failed that they queued?
     if ([delegate respondsToSelector:@selector(requestDidFail:)]) {
-        [delegate requestDidFail:[[request retain] autorelease]];
+        [delegate requestDidFail:request];
     }
 }
 
@@ -204,19 +204,19 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
 - (void)didRequestFeature:(ASIHTTPRequest *)request
 {
-    NSString *handle = [[request userInfo] objectForKey:@"handle"];
-
     if ([delegate respondsToSelector:@selector(didLoadFeature:handle:)]) {
+        NSString *handle = [[[[request userInfo] objectForKey:@"handle"] retain] autorelease];
+
         if ([request responseStatusCode] == 404) {
             [delegate didLoadFeature:nil
-                              handle:[[handle retain] autorelease]];
+                              handle:handle];
         } else {
             NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
             SGFeature *feature = [SGFeature featureWithId:handle
                                                dictionary:jsonResponse];
 
-            [delegate didLoadFeature:[[feature retain] autorelease]
-                              handle:[[handle retain] autorelease]];
+            [delegate didLoadFeature:feature
+                              handle:handle];
         }
     }
 }

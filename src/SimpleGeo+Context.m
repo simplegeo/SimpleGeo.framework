@@ -77,7 +77,7 @@
         NSMutableDictionary *query = [NSMutableDictionary dictionaryWithDictionary:[request userInfo]];
         [query removeObjectForKey:@"targetSelector"];
 
-        [delegate didLoadContext:[[[[request responseData] yajl_JSON] retain] autorelease]
+        [delegate didLoadContext:[[request responseData] yajl_JSON]
                         forQuery:query];
     } else {
         NSLog(@"Delegate does not implement didLoadContext:forQuery:");

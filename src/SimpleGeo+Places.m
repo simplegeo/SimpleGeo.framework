@@ -286,7 +286,7 @@
 
         [delegate didAddPlace:[[[[request userInfo] objectForKey:@"feature"] retain] autorelease]
                        handle:[[[jsonResponse objectForKey:@"id"] retain] autorelease]
-                          URL:[[placeURL retain] autorelease]
+                          URL:placeURL
                         token:[[[jsonResponse objectForKey:@"token"] retain] autorelease]];
     } else {
         NSLog(@"Delegate does not implement didAddPlace:handle:URL:token:");
@@ -314,7 +314,7 @@
         NSMutableDictionary *query = [NSMutableDictionary dictionaryWithDictionary:[request userInfo]];
         [query removeObjectForKey:@"targetSelector"];
 
-        [delegate didLoadPlaces:[[places retain] autorelease]
+        [delegate didLoadPlaces:places
                        forQuery:query];
     } else {
         NSLog(@"Delegate does not implement didLoadPlaces:forQuery:");

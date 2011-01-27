@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.1.6
+## 1.1.6 - 1/27/11
 
 * Categories support
 * Fixed some documented memory leaks

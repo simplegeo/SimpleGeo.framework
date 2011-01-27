@@ -6,8 +6,9 @@ release:
 	xcodebuild -target SimpleGeo -configuration Release -sdk iphonesimulator build
 	-lipo -create build/Release-iphoneos/SimpleGeo.framework/SimpleGeo build/Release-iphonesimulator/SimpleGeo.framework/SimpleGeo -output build/Release-iphoneos/SimpleGeo.framework/SimpleGeo
 
-dist: release
+dist: clean release
 	cd build/Release-iphoneos/ && tar zcf ../../SimpleGeo-iOS.tgz SimpleGeo.framework/
 
 clean:
 	-rm -rf build
+	-rm SimpleGeo-iOS.tgz

@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.1.6
+
+* Categories support
+* Fixed some documented memory leaks
+
 ## 1.1.5 - 1/12/11
 
 * Don't call delegate methods when they're not implemented; warn instead

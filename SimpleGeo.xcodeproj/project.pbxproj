@@ -79,9 +79,6 @@
 		5D76764E1290EE9F006B7D51 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7676351290EE9F006B7D51 /* ASIFormDataRequest.m */; };
 		5D76764F1290EE9F006B7D51 /* ASIFormDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7676361290EE9F006B7D51 /* ASIFormDataRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D7676501290EE9F006B7D51 /* ASIDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7676371290EE9F006B7D51 /* ASIDownloadCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5D79620E12E114B400B33631 /* Shared-OSX.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D79620D12E114B400B33631 /* Shared-OSX.xcconfig */; };
-		5D79621012E1151100B33631 /* Debug-OSX.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D79620F12E1151100B33631 /* Debug-OSX.xcconfig */; };
-		5D79621212E1153400B33631 /* Release-OSX.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D79621112E1153400B33631 /* Release-OSX.xcconfig */; };
 		5D8C15E7129DE86E002F8C01 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8C15E6129DE86E002F8C01 /* AppKit.framework */; };
 		5DA3C345128E427C00E128DC /* SGPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA3C343128E427C00E128DC /* SGPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DA3C346128E427C00E128DC /* SGPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3C344128E427C00E128DC /* SGPoint.m */; };
@@ -545,9 +542,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
-				5D79620E12E114B400B33631 /* Shared-OSX.xcconfig in Resources */,
-				5D79621012E1151100B33631 /* Debug-OSX.xcconfig in Resources */,
-				5D79621212E1153400B33631 /* Release-OSX.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

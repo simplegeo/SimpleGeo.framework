@@ -174,7 +174,7 @@
                 // there's no other way to achieve this otherwise
                 if ([self respondsToSelector:selector]) {
                     [self performSelector:selector
-                               withObject:[data objectForKey:key]];
+                               withObject:[[[data objectForKey:key] retain] autorelease]];
                 }
             }
         }
@@ -227,7 +227,7 @@
 
 - (void)setGeometry:(id)input
 {
-    [geometry autorelease];
+    [geometry release];
     geometry = [[SGGeometry geometryWithGeometry:input] retain];
 }
 

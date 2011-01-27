@@ -178,6 +178,8 @@
 
     [self addRequestHeader:@"Authorization"
                      value:[NSString stringWithFormat:@"OAuth realm=\"\", %@", components]];
+
+    [params release];
 }
 
 - (NSString *)generateNonce
@@ -186,7 +188,7 @@
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
     NSMakeCollectable(theUUID);
 
-    return (NSString *) string;
+    return [(NSString *) string autorelease];
 }
 
 - (NSString *)generateTimestamp

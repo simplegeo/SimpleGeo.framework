@@ -80,6 +80,12 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [features release];
+    [super dealloc];
+}
+
 - (NSUInteger)count
 {
     return [features count];

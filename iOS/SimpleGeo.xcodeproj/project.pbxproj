@@ -11,6 +11,7 @@
 		5D1DA88B12DD2AB100556B20 /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DA88912DD2AB100556B20 /* ASIHTTPRequest+OAuth.m */; };
 		5D1DA88F12DD2AC300556B20 /* ASIBase64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DA88D12DD2AC300556B20 /* ASIBase64Transcoder.c */; };
 		5D1DA89012DD2AC300556B20 /* ASIBase64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1DA88E12DD2AC300556B20 /* ASIBase64Transcoder.h */; };
+		5D4A7C1412F21B1800A2C443 /* Global.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D4A7C1312F21B1800A2C443 /* Global.xcconfig */; };
 		5D79622C12E1164D00B33631 /* Debug-iOS.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D79622B12E1164D00B33631 /* Debug-iOS.xcconfig */; };
 		5D79623212E1166B00B33631 /* Shared-iOS.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D79623112E1166B00B33631 /* Shared-iOS.xcconfig */; };
 		5D79623412E1167500B33631 /* Release-iOS.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D79623312E1167500B33631 /* Release-iOS.xcconfig */; };
@@ -72,6 +73,7 @@
 		5D1DA88912DD2AB100556B20 /* ASIHTTPRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIHTTPRequest+OAuth.m"; sourceTree = "<group>"; };
 		5D1DA88D12DD2AC300556B20 /* ASIBase64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ASIBase64Transcoder.c; sourceTree = "<group>"; };
 		5D1DA88E12DD2AC300556B20 /* ASIBase64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIBase64Transcoder.h; sourceTree = "<group>"; };
+		5D4A7C1312F21B1800A2C443 /* Global.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Global.xcconfig; path = ../Global.xcconfig; sourceTree = SOURCE_ROOT; };
 		5D79622B12E1164D00B33631 /* Debug-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Debug-iOS.xcconfig"; sourceTree = "<group>"; };
 		5D79623112E1166B00B33631 /* Shared-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Shared-iOS.xcconfig"; sourceTree = "<group>"; };
 		5D79623312E1167500B33631 /* Release-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Release-iOS.xcconfig"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				5D79622B12E1164D00B33631 /* Debug-iOS.xcconfig */,
+				5D4A7C1312F21B1800A2C443 /* Global.xcconfig */,
 				5D79623112E1166B00B33631 /* Shared-iOS.xcconfig */,
 				5D79623312E1167500B33631 /* Release-iOS.xcconfig */,
 			);
@@ -390,6 +393,7 @@
 				5D79622C12E1164D00B33631 /* Debug-iOS.xcconfig in Resources */,
 				5D79623212E1166B00B33631 /* Shared-iOS.xcconfig in Resources */,
 				5D79623412E1167500B33631 /* Release-iOS.xcconfig in Resources */,
+				5D4A7C1412F21B1800A2C443 /* Global.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

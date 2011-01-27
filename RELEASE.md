@@ -1,6 +1,6 @@
 # Release Checklist
 
-* update version numbers (`src/SimpleGeo+Internal.m`, `Doxyfile`, Project files)
+* update version numbers (`Global.xcconfig`, `Doxyfile`)
 * run tests
 * update `CHANGELOG.md` and add release date
 * tag release version

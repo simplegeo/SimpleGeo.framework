@@ -3,7 +3,8 @@
 //  SimpleGeo
 //
 
-SYMROOT = ../SimpleGeo-build
+#include "Global.xcconfig"
+
 INSTALL_PATH = @executable_path/../Frameworks
 MACOSX_DEPLOYMENT_TARGET = 10.5
 DYLIB_COMPATIBILITY_VERSION = 1

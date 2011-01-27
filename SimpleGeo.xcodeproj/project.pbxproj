@@ -22,6 +22,7 @@
 		5D3994E912A8A8A700EB7B20 /* SGGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3994E612A8A8A700EB7B20 /* SGGeometry.m */; };
 		5D3994EF12A8AB4300EB7B20 /* SGPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3994EC12A8AB4300EB7B20 /* SGPolygon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D3994F012A8AB4300EB7B20 /* SGPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */; };
+		5D4A79B212F211CA00A2C443 /* Global.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5D4A79B112F211CA00A2C443 /* Global.xcconfig */; };
 		5D4A7BA212F2170C00A2C443 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674BA12909ABA006B7D51 /* libz.dylib */; };
 		5D4A7BA612F2172900A2C443 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8C15E6129DE86E002F8C01 /* AppKit.framework */; };
 		5D4A7BAD12F2174A00A2C443 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674B612909AAB006B7D51 /* SystemConfiguration.framework */; };
@@ -124,6 +125,7 @@
 		5D3994E612A8A8A700EB7B20 /* SGGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGGeometry.m; path = src/SGGeometry.m; sourceTree = "<group>"; };
 		5D3994EC12A8AB4300EB7B20 /* SGPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGPolygon.h; path = src/SGPolygon.h; sourceTree = "<group>"; };
 		5D3994ED12A8AB4300EB7B20 /* SGPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGPolygon.m; path = src/SGPolygon.m; sourceTree = "<group>"; };
+		5D4A79B112F211CA00A2C443 /* Global.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Global.xcconfig; sourceTree = "<group>"; };
 		5D5AD27D12DD1CA9008810F0 /* ASIHTTPRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ASIHTTPRequest+OAuth.h"; path = "ext/asi-http-request/ASIHTTPRequest+OAuth.h"; sourceTree = "<group>"; };
 		5D5AD27E12DD1CA9008810F0 /* ASIHTTPRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ASIHTTPRequest+OAuth.m"; path = "ext/asi-http-request/ASIHTTPRequest+OAuth.m"; sourceTree = "<group>"; };
 		5D5AD28412DD1CF5008810F0 /* ASIBase64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ASIBase64Transcoder.c; path = ext/TouchFoundation/ASIBase64Transcoder.c; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				5D79620F12E1151100B33631 /* Debug-OSX.xcconfig */,
+				5D4A79B112F211CA00A2C443 /* Global.xcconfig */,
 				5D79620D12E114B400B33631 /* Shared-OSX.xcconfig */,
 				5D79621112E1153400B33631 /* Release-OSX.xcconfig */,
 			);
@@ -522,6 +525,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
+				5D4A79B212F211CA00A2C443 /* Global.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

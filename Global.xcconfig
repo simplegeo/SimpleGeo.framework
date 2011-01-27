@@ -1,0 +1,6 @@
+//
+//  Global.xcconfig
+//  SimpleGeo
+//
+
+DYLIB_CURRENT_VERSION = 1.1.5

@@ -32,9 +32,6 @@
 #import "SimpleGeo+Internal.h"
 
 
-NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.1.5";
-
-
 @implementation SimpleGeo (Internal)
 
 - (NSURL *)endpointForString:(NSString *)path
@@ -46,6 +43,12 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.1.5";
 
 - (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL
 {
+    static NSString *UserAgent = nil;
+    if (! UserAgent) {
+        NSDictionary *infoDictionary = [[NSBundle bundleForClass:[SimpleGeo class]] infoDictionary];
+        UserAgent = [NSString stringWithFormat:@"SimpleGeo/Obj-C %@", [infoDictionary objectForKey:@"CFBundleVersion"]];
+    }
+
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:aURL
                                                       consumerKey:consumerKey
                                                    consumerSecret:consumerSecret
@@ -53,7 +56,7 @@ NSString * const USER_AGENT = @"SimpleGeo/Obj-C 1.1.5";
                                                       tokenSecret:nil];
     [request setDelegate:self];
     [request setShouldRedirect:NO];
-    [request addRequestHeader:@"User-Agent" value:USER_AGENT];
+    [request addRequestHeader:@"User-Agent" value:UserAgent];
     [request addRequestHeader:@"Accept" value:@"application/json, application/javascript, */*"];
 
     return [request autorelease];

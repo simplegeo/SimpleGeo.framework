@@ -30,11 +30,6 @@ it as a submodule:
 Once it's been added to `ext/`, drag it into your Xcode project and it will
 show up as a linked Framework.
 
-Alternately, the build directory for `SimpleGeo.framework` has been configured
-as `../SimpleGeo-build` to facilitate linking the project file into your
-application (this is useful if you decide you need to make changes to the
-library while simultaneously working on your application).
-
 Add the following additional frameworks to your project by right-clicking on
 the target, choosing the "General" tab, and using the `+` button at the bottom
 of the window to add "Linked Libraries":

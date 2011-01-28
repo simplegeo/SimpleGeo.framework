@@ -356,10 +356,52 @@
 
 #pragma mark Record History
 
-// TODO history methods
+/*!
+ * Get the location history for a record.
+ *
+ * @param recordId Record ID.
+ * @param layer    Layer containing the record.
+ */
+- (void)getHistoryForRecordId:(NSString *)recordId
+                      inLayer:(NSString *)layer;
+
+/*!
+ * Get the location history for a record.
+ *
+ * @param recordId Record ID.
+ * @param layer    Layer containing the record.
+ * @param count    Number of results to return.
+ */
+- (void)getHistoryForRecordId:(NSString *)recordId
+                      inLayer:(NSString *)layer
+                        count:(int)count;
+
+/*!
+ * Get additional location history for a record.
+ *
+ * @param recordId Record ID.
+ * @param layer    Layer containing the record.
+ * @param cursor   Cursor string (used for pagination).
+ */
+- (void)getHistoryForRecordId:(NSString *)recordId
+                      inLayer:(NSString *)layer
+                       cursor:(NSString *)cursor;
+
+/*!
+ * Get additional location history for a record.
+ *
+ * @param recordId Record ID.
+ * @param layer    Layer containing the record.
+ * @param cursor   Cursor string (used for pagination).
+ * @param count    Number of results to return.
+ */
+- (void)getHistoryForRecordId:(NSString *)recordId
+                      inLayer:(NSString *)layer
+                       cursor:(NSString *)cursor
+                        count:(int)count;
 
 #pragma mark Layer Manipulation
 
-// TODO layer manipulation methods
+// It is not currently possible to manipulate layers using the API.
 
 @end

@@ -41,12 +41,9 @@
  *
  * @param record Record that was added or updated.
  * @param layer  Layer that the record belongs to.
- * @param added  Whether the record was added.
  */
-// TODO not sure that the API returns enough information to determined `added`
 - (void)didAddOrUpdateRecord:(SGRecord *)record
-                     inLayer:(NSString *)layer
-                       added:(BOOL)added;
+                     inLayer:(NSString *)layer;
 
 /*!
  * Called when a record was successfully added or updated.

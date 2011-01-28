@@ -36,11 +36,40 @@
  */
 @interface NSObject (SimpleGeoStorageDelegate)
 
+/*!
+ * Called when a record was successfully added or updated.
+ *
+ * @param record Record that was added or updated.
+ * @param layer  Layer that the record belongs to.
+ * @param added  Whether the record was added.
+ */
+// TODO not sure that the API returns enough information to determined `added`
+- (void)didAddOrUpdateRecord:(SGRecord *)record
+                     inLayer:(NSString *)layer
+                       added:(BOOL)added;
+
+/*!
+ * Called when a record was successfully added or updated.
+ *
+ * @param record Record that was added or updated.
+ * @param layer  Layer that the record belongs to.
+ * @param added  Whether the record was added.
+ */
+- (void)didAddOrUpdateRecords:(NSArray *)records
+                      inLayer:(NSString *)layer;
+
+/*!
+ * Called when a record was successfully deleted.
+ *
+ * @param layer Layer that the record was deleted from.
+ * @param id    ID of the record that was deleted.
+ */
 - (void)didDeleteRecordInLayer:(NSString *)layer
                         withId:(NSString *)id;
 
 /*!
  * Called when a record was loaded.
+ *
  * @param record Record that was loaded.
  * @param layer  Layer that the record was loaded from.
  * @param id     Id of the record that was loaded.
@@ -49,8 +78,16 @@
             fromLayer:(NSString *)layer
                withId:(NSString *)id;
 
-- (void)didUpdateRecord:(SGRecord *)record
-                inLayer:(NSString *)layer;
+/*!
+ * Called when records were loaded.
+ *
+ * @param records Matching records.
+ * @param query   Query information.
+ * @param cursor  Cursor string (for pagination).
+ */
+- (void)didLoadRecords:(SGFeatureCollection *)records
+              forQuery:(NSDictionary *)query
+                cursor:(NSString *)cursor;
 
 @end
 
@@ -60,40 +97,272 @@
  */
 @interface SimpleGeo (Storage)
 
+#pragma mark Record Manipulation
+
+/*!
+ * Add or update a record. If a record already exists with the provided ID, it
+ * will be updated, otherwise it will be added.
+ *
+ * @param record Record to add or update. Its `id` property must be set.
+ * @param layer  Layer to apply this record to.
+ */
+- (void)addOrUpdateRecord:(SGRecord *)record
+                  inLayer:(NSString *)layer;
+
+/*!
+ * Add or update a collection of records.
+ *
+ * @param records List of records to add or update. Each record must have its
+ *                `id` property set.
+ * @param layer  Layer to apply these records to.
+ */
+- (void)addOrUpdateRecords:(NSArray *)records
+                   inLayer:(NSString *)layer;
+
+/*!
+ * Delete a record.
+ *
+ * @param layer Layer to delete the record from.
+ * @param id    ID of the record to delete.
+ */
 - (void)deleteRecordInLayer:(NSString *)layer
                      withId:(NSString *)id;
-
-// TODO getRecordsForQuery:(SGQuery *) ???
-
-- (void)getRecordsInLayer:(NSString *)layer
-                     near:(SGPoint *)point;
-
-- (void)getRecordsInLayer:(NSString *)layer
-                     near:(SGPoint *)point
-                   cursor:(NSString *)cursor;
-
-- (void)getRecordsInLayer:(NSString *)layer
-                     near:(SGPoint *)point
-                   cursor:(NSString *)count
-                    count:(int)count;
-
-- (void)getRecordsInLayer:(NSString *)layer
-                     near:(SGPoint *)point
-                    count:(int)count;
-
-- (void)getRecordsInLayer:(NSString *)layer
-              nearAddress:(NSString *)address;
-
-// TODO tag queries
-// TODO time-bounded queries (?)
 
 - (void)getRecordFromLayer:(NSString *)layer
                     withId:(NSString *)id;
 
-- (void)updateRecord:(SGRecord *)record
-             inLayer:(NSString *)layer;
+#pragma mark Methods for querying by point
 
-// TODO history
-// TODO layer manipulation
+/*!
+ * Get records nearest to a point.
+ *
+ * @param layer Layer to query.
+ * @param point Origin point.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+                     near:(SGPoint *)point;
+
+/*!
+ * Get records nearest to a point.
+ *
+ * @param layer  Layer to query.
+ * @param point  Origin point.
+ * @param radius Radius (in km) to limit results to.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+                     near:(SGPoint *)point
+                   radius:(double)radius;
+
+/*!
+ * Get records nearest to a point.
+ *
+ * @param layer  Layer to query.
+ * @param point  Origin point.
+ * @param count  Number of results to return.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+                     near:(SGPoint *)point
+                    count:(int)count;
+
+/*!
+ * Get records nearest to a point.
+ *
+ * @param layer  Layer to query.
+ * @param point  Origin point.
+ * @param radius Radius (in km) to limit results to.
+ * @param count  Number of results to return.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+                     near:(SGPoint *)point
+                   radius:(double)radius
+                    count:(int)count;
+
+/*!
+ * Get additional records nearest to a point.
+ *
+ * @param layer  Layer to query.
+ * @param point  Origin point.
+ * @param cursor Cursor string (used for pagination).
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+                     near:(SGPoint *)point
+                   cursor:(NSString *)cursor;
+
+/*!
+ * Get additional records nearest to a point.
+ *
+ * @param layer  Layer to query.
+ * @param point  Origin point.
+ * @param radius Radius (in km) to limit results to.
+ * @param cursor Cursor string (used for pagination).
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+                     near:(SGPoint *)point
+                   radius:(double)radius
+                   cursor:(NSString *)cursor;
+
+/*!
+ * Get additional records nearest to a point.
+ *
+ * @param layer  Layer to query.
+ * @param point  Origin point.
+ * @param radius Radius (in km) to limit results to.
+ * @param cursor Cursor string (used for pagination).
+ * @param count  Number of results to return.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+                     near:(SGPoint *)point
+                   radius:(double)radius
+                   cursor:(NSString *)cursor
+                    count:(int)count;
+
+/*!
+ * Get additional records nearest to a point.
+ *
+ * @param layer  Layer to query.
+ * @param point  Origin point.
+ * @param cursor Cursor string (used for pagination).
+ * @param count  Number of results to return.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+                     near:(SGPoint *)point
+                   cursor:(NSString *)cursor
+                    count:(int)count;
+
+/*!
+ * Get additional records nearest to a point.
+ *
+ * @param layer  Layer to query.
+ * @param point  Origin point.
+ * @param radius Radius (in km) to limit results to.
+ * @param cursor Cursor string (used for pagination).
+ * @param count  Number of results to return.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+                     near:(SGPoint *)point
+                   radius:(double)radius
+                   cursor:(NSString *)cursor
+                    count:(int)count;
+
+#pragma mark Methods for querying by address
+
+/*!
+ * Get records nearest to an address.
+ *
+ * @param layer   Layer to query.
+ * @param address Address.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+              nearAddress:(NSString *)address;
+
+/*!
+ * Get records nearest to an address.
+ *
+ * @param layer   Layer to query.
+ * @param address Address.
+ * @param radius  Radius (in km) to limit results to.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+              nearAddress:(NSString *)address
+                   radius:(double)radius;
+
+/*!
+ * Get records nearest to an address.
+ *
+ * @param layer   Layer to query.
+ * @param address Address.
+ * @param count   Number of results to return.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+              nearAddress:(NSString *)address
+                    count:(int)count;
+
+/*!
+ * Get records nearest to an address.
+ *
+ * @param layer   Layer to query.
+ * @param address Address.
+ * @param radius  Radius (in km) to limit results to.
+ * @param count   Number of results to return.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+              nearAddress:(NSString *)address
+                   radius:(double)radius
+                    count:(int)count;
+
+/*!
+ * Get additional records nearest to an address.
+ *
+ * @param layer   Layer to query.
+ * @param address Address.
+ * @param cursor  Cursor string (used for pagination).
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+              nearAddress:(NSString *)address
+                   cursor:(NSString *)cursor;
+
+/*!
+ * Get additional records nearest to an address.
+ *
+ * @param layer   Layer to query.
+ * @param address Address.
+ * @param radius  Radius (in km) to limit results to.
+ * @param cursor  Cursor string (used for pagination).
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+              nearAddress:(NSString *)address
+                   radius:(double)radius
+                   cursor:(NSString *)cursor;
+
+/*!
+ * Get additional records nearest to an address.
+ *
+ * @param layer   Layer to query.
+ * @param address Address.
+ * @param radius  Radius (in km) to limit results to.
+ * @param cursor  Cursor string (used for pagination).
+ * @param count   Number of results to return.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+              nearAddress:(NSString *)address
+                   radius:(double)radius
+                   cursor:(NSString *)cursor
+                    count:(int)count;
+
+/*!
+ * Get additional records nearest to an address.
+ *
+ * @param layer   Layer to query.
+ * @param address Address.
+ * @param cursor  Cursor string (used for pagination).
+ * @param count   Number of results to return.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+              nearAddress:(NSString *)address
+                   cursor:(NSString *)cursor
+                    count:(int)count;
+
+/*!
+ * Get additional records nearest to an address.
+ *
+ * @param layer   Layer to query.
+ * @param address Address.
+ * @param radius  Radius (in km) to limit results to.
+ * @param cursor  Cursor string (used for pagination).
+ * @param count   Number of results to return.
+ */
+- (void)getRecordsInLayer:(NSString *)layer
+              nearAddress:(NSString *)address
+                   radius:(double)radius
+                   cursor:(NSString *)cursor
+                    count:(int)count;
+
+#pragma mark Record History
+
+// TODO history methods
+
+#pragma mark Layer Manipulation
+
+// TODO layer manipulation methods
 
 @end

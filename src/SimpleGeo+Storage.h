@@ -28,6 +28,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import "SGGeometryCollection.h"
 #import "SGRecord.h"
 
 
@@ -65,6 +66,20 @@
                         withId:(NSString *)id;
 
 /*!
+ * Called when the location history for a record was loaded.
+ *
+ * @param history  Record history.
+ * @param recordId Record ID.
+ * @param layer    Layer containing the record.
+ * @param cursor   Cursor string to retrieve the next set of historical
+ *                 locations.
+ */
+- (void)didLoadHistory:(SGGeometryCollection *)history
+           forRecordId:(NSString *)recordId
+               inLayer:(NSString *)layer
+                cursor:(NSString *)cursor;
+
+/*!
  * Called when a record was loaded.
  *
  * @param record Record that was loaded.
@@ -80,7 +95,7 @@
  *
  * @param records Matching records.
  * @param query   Query information.
- * @param cursor  Cursor string (for pagination).
+ * @param cursor  Cursor string to retrieve the next set of records.
  */
 - (void)didLoadRecords:(SGFeatureCollection *)records
               forQuery:(NSDictionary *)query

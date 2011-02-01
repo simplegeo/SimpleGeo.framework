@@ -38,6 +38,8 @@
 		5D5B03711291BD4500399A50 /* SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B036E1291BD4500399A50 /* SGFeature.m */; };
 		5D5B05D012934A9D00399A50 /* NSArray+SGFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */; };
 		5D5B05D112934A9D00399A50 /* NSArray+SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B05CF12934A9D00399A50 /* NSArray+SGFeature.m */; };
+		5D687FF312F8D53F001716EA /* SGGeometryCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D687FF112F8D53F001716EA /* SGGeometryCollection.h */; };
+		5D687FF412F8D53F001716EA /* SGGeometryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D687FF212F8D53F001716EA /* SGGeometryCollection.m */; };
 		5D7674B712909AAB006B7D51 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674B612909AAB006B7D51 /* SystemConfiguration.framework */; };
 		5D7674BB12909ABA006B7D51 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674BA12909ABA006B7D51 /* libz.dylib */; };
 		5D7674BD12909ACB006B7D51 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674BC12909ACB006B7D51 /* CoreServices.framework */; };
@@ -141,6 +143,8 @@
 		5D5B036E1291BD4500399A50 /* SGFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGFeature.m; path = src/SGFeature.m; sourceTree = "<group>"; };
 		5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+SGFeature.h"; path = "src/NSArray+SGFeature.h"; sourceTree = "<group>"; };
 		5D5B05CF12934A9D00399A50 /* NSArray+SGFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+SGFeature.m"; path = "src/NSArray+SGFeature.m"; sourceTree = "<group>"; };
+		5D687FF112F8D53F001716EA /* SGGeometryCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGGeometryCollection.h; path = src/SGGeometryCollection.h; sourceTree = "<group>"; };
+		5D687FF212F8D53F001716EA /* SGGeometryCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGGeometryCollection.m; path = src/SGGeometryCollection.m; sourceTree = "<group>"; };
 		5D7674B612909AAB006B7D51 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5D7674BA12909ABA006B7D51 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5D7674BC12909ACB006B7D51 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
@@ -379,6 +383,8 @@
 				5D12248012F246AA00CB2CC2 /* SimpleGeo+Storage.m */,
 				5D1224CA12F250BC00CB2CC2 /* SGRecord.h */,
 				5D1224CB12F250BC00CB2CC2 /* SGRecord.m */,
+				5D687FF112F8D53F001716EA /* SGGeometryCollection.h */,
+				5D687FF212F8D53F001716EA /* SGGeometryCollection.m */,
 			);
 			name = Optional;
 			sourceTree = "<group>";
@@ -454,6 +460,7 @@
 				5D5AD28812DD1CF5008810F0 /* ASIBase64Transcoder.h in Headers */,
 				5D12248112F246AA00CB2CC2 /* SimpleGeo+Storage.h in Headers */,
 				5D1224CC12F250BC00CB2CC2 /* SGRecord.h in Headers */,
+				5D687FF312F8D53F001716EA /* SGGeometryCollection.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +608,7 @@
 				5D5AD28712DD1CF5008810F0 /* ASIBase64Transcoder.c in Sources */,
 				5D12248212F246AA00CB2CC2 /* SimpleGeo+Storage.m in Sources */,
 				5D1224CD12F250BC00CB2CC2 /* SGRecord.m in Sources */,
+				5D687FF412F8D53F001716EA /* SGGeometryCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

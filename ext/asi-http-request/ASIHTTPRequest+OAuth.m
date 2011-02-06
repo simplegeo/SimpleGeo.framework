@@ -186,7 +186,7 @@
 {
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
-    NSMakeCollectable(theUUID);
+    [NSMakeCollectable(theUUID) release];
 
     return [(NSString *) string autorelease];
 }

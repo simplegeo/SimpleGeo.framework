@@ -38,9 +38,6 @@
 {
     NSTimeInterval created;
     NSString *layer;
-
-    // TODO expires (?)
-    // TODO history
 }
 
 //! Created at timestamp (Unix epoch)

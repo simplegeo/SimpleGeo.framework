@@ -375,10 +375,34 @@
 		5DE3488C12A9B477004E320D /* Optional */ = {
 			isa = PBXGroup;
 			children = (
+				5DEC2F4C130457A5001A59C5 /* Context */,
+				5DEC2F4E130457AD001A59C5 /* Places */,
+				5DEC2F4F130457B2001A59C5 /* Storage */,
+			);
+			name = Optional;
+			sourceTree = "<group>";
+		};
+		5DEC2F4C130457A5001A59C5 /* Context */ = {
+			isa = PBXGroup;
+			children = (
 				5D1C1B9A12A9AD1A0055EC91 /* SimpleGeo+Context.h */,
 				5D1C1B9B12A9AD1A0055EC91 /* SimpleGeo+Context.m */,
+			);
+			name = Context;
+			sourceTree = "<group>";
+		};
+		5DEC2F4E130457AD001A59C5 /* Places */ = {
+			isa = PBXGroup;
+			children = (
 				5D3991E412A489EF00EB7B20 /* SimpleGeo+Places.h */,
 				5D3991E512A489EF00EB7B20 /* SimpleGeo+Places.m */,
+			);
+			name = Places;
+			sourceTree = "<group>";
+		};
+		5DEC2F4F130457B2001A59C5 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
 				5D12247F12F246AA00CB2CC2 /* SimpleGeo+Storage.h */,
 				5D12248012F246AA00CB2CC2 /* SimpleGeo+Storage.m */,
 				5D1224CA12F250BC00CB2CC2 /* SGRecord.h */,
@@ -386,7 +410,7 @@
 				5D687FF112F8D53F001716EA /* SGGeometryCollection.h */,
 				5D687FF212F8D53F001716EA /* SGGeometryCollection.m */,
 			);
-			name = Optional;
+			name = Storage;
 			sourceTree = "<group>";
 		};
 		5DF0867212ADCAF5007A8A60 /* Classes */ = {

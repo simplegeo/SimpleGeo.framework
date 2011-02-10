@@ -233,6 +233,38 @@
 			name = "Build Configuration";
 			sourceTree = "<group>";
 		};
+		5DEC2F4913045788001A59C5 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				5DF1FBBB12C2C6F50097CF47 /* SimpleGeo+Context.h */,
+				5DF1FBBC12C2C6F50097CF47 /* SimpleGeo+Context.m */,
+				5DEC2F4A1304578F001A59C5 /* Places */,
+			);
+			name = Context;
+			sourceTree = "<group>";
+		};
+		5DEC2F4A1304578F001A59C5 /* Places */ = {
+			isa = PBXGroup;
+			children = (
+				5DF1FBBF12C2C6F50097CF47 /* SimpleGeo+Places.h */,
+				5DF1FBC012C2C6F50097CF47 /* SimpleGeo+Places.m */,
+			);
+			name = Places;
+			sourceTree = "<group>";
+		};
+		5DEC2F4B1304579A001A59C5 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				5DEC2F441304576F001A59C5 /* SimpleGeo+Storage.h */,
+				5DEC2F451304576F001A59C5 /* SimpleGeo+Storage.m */,
+				5DEC2F4013045763001A59C5 /* SGRecord.h */,
+				5DEC2F4113045763001A59C5 /* SGRecord.m */,
+				5DEC2F1513045743001A59C5 /* SGGeometryCollection.h */,
+				5DEC2F1613045743001A59C5 /* SGGeometryCollection.m */,
+			);
+			name = Storage;
+			sourceTree = "<group>";
+		};
 		5DF1FB8B12C2C6F50097CF47 /* asi-http-request */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,16 +308,8 @@
 		5DF1FBD912C2C7100097CF47 /* Optional */ = {
 			isa = PBXGroup;
 			children = (
-				5DF1FBBB12C2C6F50097CF47 /* SimpleGeo+Context.h */,
-				5DF1FBBC12C2C6F50097CF47 /* SimpleGeo+Context.m */,
-				5DF1FBBF12C2C6F50097CF47 /* SimpleGeo+Places.h */,
-				5DF1FBC012C2C6F50097CF47 /* SimpleGeo+Places.m */,
-				5DEC2F441304576F001A59C5 /* SimpleGeo+Storage.h */,
-				5DEC2F451304576F001A59C5 /* SimpleGeo+Storage.m */,
-				5DEC2F4013045763001A59C5 /* SGRecord.h */,
-				5DEC2F4113045763001A59C5 /* SGRecord.m */,
-				5DEC2F1513045743001A59C5 /* SGGeometryCollection.h */,
-				5DEC2F1613045743001A59C5 /* SGGeometryCollection.m */,
+				5DEC2F4913045788001A59C5 /* Context */,
+				5DEC2F4B1304579A001A59C5 /* Storage */,
 			);
 			name = Optional;
 			sourceTree = "<group>";

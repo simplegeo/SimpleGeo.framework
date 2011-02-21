@@ -56,4 +56,15 @@
 //! Gets the number of features in this collection.
 - (NSUInteger)count;
 
+/*!
+ * Create a FeatureCollection from a list of Records.
+ * @param records List of Records.
+ */
++ (SGFeatureCollection *)featureCollectionWithRecords:(NSArray *)records;
+
+/*!
+ * Construct a FeatureCollection from a list of Records.
+ * @param someRecords List of Records.
+ */
+- (id)initWithRecords:(NSArray *)someRecords;
 @end

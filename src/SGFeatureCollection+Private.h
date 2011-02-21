@@ -36,4 +36,8 @@
 + (SGFeatureCollection *)featureCollectionWithDictionary:(NSDictionary *)features;
 - (id)initWithDictionary:(NSDictionary *)features;
 
++ (SGFeatureCollection *)featureCollectionWithRecords:(NSArray *)records;
+- (id)initWithRecords:(NSArray *)someRecords;
+
+
 @end

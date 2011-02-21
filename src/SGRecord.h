@@ -46,4 +46,22 @@
 //! Layer name
 @property (retain,readonly) NSString *layer;
 
+
++ (SGRecord *)recordWithDictionary:(NSDictionary *)data;
++ (SGRecord *)recordWithCreatedTimestamp:(NSTimeInterval)created;
++ (SGRecord *)recordWithLayer:(NSString *)layer;
++ (SGRecord *)recordWithCreatedTimestamp:(NSTimeInterval)created layer:(NSString *)layer;
+
++ (SGRecord *)recordWithFeature:(SGFeature *)feature createdTimestamp:(NSTimeInterval)created;
++ (SGRecord *)recordWithFeature:(SGFeature *)feature layer:(NSString *)layer;
++ (SGRecord *)recordWithFeature:(SGFeature *)feature createdTimestamp:(NSTimeInterval)created layer:(NSString *)layer;
+
+- (id)initWithId:(NSString *)id dictionary:(NSDictionary *)data;
+- (id)initWithCreatedTimestamp:(NSTimeInterval)created;
+- (id)initWithLayer:(NSString *)layer;
+- (id)initWithCreatedTimestamp:(NSTimeInterval)created layer:(NSString *)layer;
+- (id)initWithFeature:(SGFeature *)feature createdTimestamp:(NSTimeInterval)created;
+- (id)initWithFeature:(SGFeature *)feature layer:(NSString *)layer;
+- (id)initWithFeature:(SGFeature *)feature createdTimestamp:(NSTimeInterval)created Layer:(NSString *)layer;
+
 @end

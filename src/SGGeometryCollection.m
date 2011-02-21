@@ -29,8 +29,62 @@
 //
 
 #import "SGGeometryCollection.h"
+#import "NSArray+SGFeature.h"
+#import "NSArray+SGGeometry.h"
 
+@interface SGGeometryCollection ()
+
+@property (retain) NSArray* geometries;
+
+@end
 
 @implementation SGGeometryCollection
+@synthesize geometries;
+
++ (SGGeometryCollection *)geometryCollectionWithDictionary:(NSDictionary *)geometries
+{
+    return [[[SGGeometryCollection alloc] initWithDictionary:geometries] autorelease];
+}
++ (SGGeometryCollection *)geometryCollectionWithGeometries:(NSArray *)geometries
+{
+	return [[[SGGeometryCollection alloc] initWithGeometries:geometries] autorelease];
+}
+
+- (id)initWithDictionary:(NSDictionary *)someGeometries
+{
+    if ([[someGeometries objectForKey:@"type"] isEqual:@"GeometryCollection"]) {
+        return [self initWithGeometries:[someGeometries objectForKey:@"geometries"]];
+    } else {
+        NSLog(@"Invalid type '%@' for a RecordCollection.", [someGeometries objectForKey:@"type"]);
+        return nil;
+    }
+}
+
+- (id)initWithGeometries:(NSArray *)someGeometries
+{
+    self = [super init];
+	
+    if (self) {
+        if (someGeometries) {
+            geometries = [[NSArray arrayWithGeometries:someGeometries] retain];
+        } else {
+            geometries = [[NSArray alloc] init];
+        }
+    }
+	
+    return self;
+}
+
+- (void)dealloc
+{
+    [geometries release];
+    [super dealloc];
+}
+
+- (NSUInteger)count
+{
+    return [geometries count];
+}
+
 
 @end

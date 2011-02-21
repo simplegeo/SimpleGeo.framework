@@ -33,7 +33,18 @@
 
 @interface SGGeometryCollection : NSObject
 {
-
+@private
+	NSArray* geometries;
 }
+@property (retain,readonly) NSArray* geometries;
+
++ (SGGeometryCollection *)geometryCollectionWithDictionary:(NSDictionary *)geometries;
+
++ (SGGeometryCollection *)geometryCollectionWithGeometries:(NSArray *)geometries;
+
+- (id)initWithGeometries:(NSArray *)geometries;
+
+//! Gets the number of geometries in this collection.
+- (NSUInteger)count;
 
 @end

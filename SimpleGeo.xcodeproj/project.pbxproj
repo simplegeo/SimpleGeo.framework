@@ -82,6 +82,13 @@
 		5DF08A9E12AF644F007A8A60 /* SGMultiPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF08A9C12AF644F007A8A60 /* SGMultiPolygon.m */; };
 		5DF08AA112AF6544007A8A60 /* SGMultiPolygon+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF08AA012AF6544007A8A60 /* SGMultiPolygon+Private.h */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
+		EA29A52D1313109D00979D1A /* NSArray+SGGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29A52C1313109D00979D1A /* NSArray+SGGeometry.m */; };
+		EA29A52E1313109D00979D1A /* NSArray+SGGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = EA29A52B1313109D00979D1A /* NSArray+SGGeometry.h */; };
+		EA29A52F1313109D00979D1A /* NSArray+SGGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29A52C1313109D00979D1A /* NSArray+SGGeometry.m */; };
+		EA29A533131310EE00979D1A /* NSArray+SGRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = EA29A531131310EE00979D1A /* NSArray+SGRecord.h */; };
+		EA29A534131310EE00979D1A /* NSArray+SGRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29A532131310EE00979D1A /* NSArray+SGRecord.m */; };
+		EA29A535131310EE00979D1A /* NSArray+SGRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29A532131310EE00979D1A /* NSArray+SGRecord.m */; };
+		EA29A537131311B700979D1A /* SimpleGeoTest+Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29A536131311B700979D1A /* SimpleGeoTest+Storage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +201,11 @@
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* SimpleGeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleGeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		EA29A52B1313109D00979D1A /* NSArray+SGGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+SGGeometry.h"; path = "src/NSArray+SGGeometry.h"; sourceTree = "<group>"; };
+		EA29A52C1313109D00979D1A /* NSArray+SGGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+SGGeometry.m"; path = "src/NSArray+SGGeometry.m"; sourceTree = "<group>"; };
+		EA29A531131310EE00979D1A /* NSArray+SGRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+SGRecord.h"; path = "src/NSArray+SGRecord.h"; sourceTree = "<group>"; };
+		EA29A532131310EE00979D1A /* NSArray+SGRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+SGRecord.m"; path = "src/NSArray+SGRecord.m"; sourceTree = "<group>"; };
+		EA29A536131311B700979D1A /* SimpleGeoTest+Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SimpleGeoTest+Storage.m"; path = "test/SimpleGeoTest+Storage.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +376,7 @@
 				5D7676181290EB2A006B7D51 /* SimpleGeoTest.m */,
 				5D39948712A8A2B600EB7B20 /* SimpleGeoTest+Context.m */,
 				5D39940D12A893D500EB7B20 /* SimpleGeoTest+Places.m */,
+				EA29A536131311B700979D1A /* SimpleGeoTest+Storage.m */,
 				5D7676191290EB2A006B7D51 /* SGFeatureTest.m */,
 				5D1C1B4712A9A5170055EC91 /* SGGeometryTest.m */,
 				5D76761A1290EB2A006B7D51 /* SGPointTest.m */,
@@ -441,6 +454,10 @@
 				5DF08A9C12AF644F007A8A60 /* SGMultiPolygon.m */,
 				5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */,
 				5D5B05CF12934A9D00399A50 /* NSArray+SGFeature.m */,
+				EA29A52B1313109D00979D1A /* NSArray+SGGeometry.h */,
+				EA29A52C1313109D00979D1A /* NSArray+SGGeometry.m */,
+				EA29A531131310EE00979D1A /* NSArray+SGRecord.h */,
+				EA29A532131310EE00979D1A /* NSArray+SGRecord.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -485,6 +502,8 @@
 				5D12248112F246AA00CB2CC2 /* SimpleGeo+Storage.h in Headers */,
 				5D1224CC12F250BC00CB2CC2 /* SGRecord.h in Headers */,
 				5D687FF312F8D53F001716EA /* SGGeometryCollection.h in Headers */,
+				EA29A52E1313109D00979D1A /* NSArray+SGGeometry.h in Headers */,
+				EA29A533131310EE00979D1A /* NSArray+SGRecord.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +622,9 @@
 				5D39940E12A893D500EB7B20 /* SimpleGeoTest+Places.m in Sources */,
 				5D39948812A8A2B600EB7B20 /* SimpleGeoTest+Context.m in Sources */,
 				5D1C1B4912A9A5170055EC91 /* SGGeometryTest.m in Sources */,
+				EA29A52D1313109D00979D1A /* NSArray+SGGeometry.m in Sources */,
+				EA29A535131310EE00979D1A /* NSArray+SGRecord.m in Sources */,
+				EA29A537131311B700979D1A /* SimpleGeoTest+Storage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +655,8 @@
 				5D12248212F246AA00CB2CC2 /* SimpleGeo+Storage.m in Sources */,
 				5D1224CD12F250BC00CB2CC2 /* SGRecord.m in Sources */,
 				5D687FF412F8D53F001716EA /* SGGeometryCollection.m in Sources */,
+				EA29A52F1313109D00979D1A /* NSArray+SGGeometry.m in Sources */,
+				EA29A534131310EE00979D1A /* NSArray+SGRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

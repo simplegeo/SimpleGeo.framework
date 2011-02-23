@@ -31,7 +31,6 @@
 #import "SGFeatureCollection.h"
 #import "SGFeatureCollection+Private.h"
 #import "NSArray+SGFeature.h"
-#import "NSArray+SGRecord.h"
 
 // trigger @synthesize in SGFeature to create readwrite accessors
 @interface SGFeatureCollection ()
@@ -88,15 +87,15 @@
 - (id)initWithRecords:(NSArray *)someRecords
 {
     self = [super init];
-	
+
     if (self) {
         if (someRecords) {
-			features=[[NSArray arrayWithRecords:someRecords]retain];
+            features = [someRecords retain];
         } else {
             features = [[NSArray alloc] init];
         }
     }
-	
+
     return self;
 }
 
@@ -113,11 +112,14 @@
 
 - (NSDictionary *)asDictionary
 {
-	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:[features count]];
-	for(int i=0;i<[features count];i++)
-	{
-		[dict setObject:[features objectAtIndex:i] forKey:[NSString stringWithFormat:@"record%d",i]];
-	}
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
+
+    [dict setObject:@"FeatureCollection"
+             forKey:@"type"];
+
+    [dict setObject:features
+             forKey:@"features"];
+
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
@@ -125,6 +127,5 @@
 {
     return [self asDictionary];
 }
-
 
 @end

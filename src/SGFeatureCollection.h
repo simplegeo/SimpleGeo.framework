@@ -2,7 +2,7 @@
 //  SGFeatureCollection.h
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2010, SimpleGeo Inc.
+//  Copyright (c) 2010-2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -48,23 +48,24 @@
 + (SGFeatureCollection *)featureCollectionWithFeatures:(NSArray *)features;
 
 /*!
- * Construct a FeatureCollection from a list of Features.
- * @param features List of Features.
- */
-- (id)initWithFeatures:(NSArray *)features;
-
-//! Gets the number of features in this collection.
-- (NSUInteger)count;
-
-/*!
  * Create a FeatureCollection from a list of Records.
  * @param records List of Records.
  */
 + (SGFeatureCollection *)featureCollectionWithRecords:(NSArray *)records;
 
 /*!
+ * Construct a FeatureCollection from a list of Features.
+ * @param features List of Features.
+ */
+- (id)initWithFeatures:(NSArray *)features;
+
+/*!
  * Construct a FeatureCollection from a list of Records.
  * @param someRecords List of Records.
  */
 - (id)initWithRecords:(NSArray *)someRecords;
+
+//! Gets the number of features in this collection.
+- (NSUInteger)count;
+
 @end

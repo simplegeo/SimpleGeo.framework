@@ -28,6 +28,8 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import "SimpleGeo.h"
+#import "SGFeatureCollection.h"
 #import "SGGeometryCollection.h"
 #import "SGRecord.h"
 
@@ -76,7 +78,7 @@
  */
 - (void)didLoadHistory:(SGGeometryCollection *)history
            forRecordId:(NSString *)recordId
-			  forQuery:(NSDictionary *)query
+              forQuery:(NSDictionary *)query
                 cursor:(NSString *)cursor;
 
 /*!

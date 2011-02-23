@@ -2,7 +2,7 @@
 //  NSArray+SGGeometry.m
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2010, SimpleGeo Inc.
+//  Copyright (c) 2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -27,19 +27,21 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-#import "NSArray+SGGeometry.h"
-#import "SGGeometry.h"
-#import "SGGeometry+Private.h"
-#import "SGRecord.h"
 
-@implementation NSArray(SGGeometry)
+#import "NSArray+SGGeometry.h"
+#import "SGGeometry+Private.h"
+
+
+@implementation NSArray (SGGeometry)
 
 + (NSArray *)arrayWithGeometries:(NSArray *)input
 {
-	NSMutableArray *geometries = [NSMutableArray arrayWithCapacity:[input count]];
+    NSMutableArray *geometries = [NSMutableArray arrayWithCapacity:[input count]];
+
     for (NSDictionary *geometry in input) {
-		[geometries addObject:[SGGeometry geometryWithGeometry:geometry]];		
-	}
+        [geometries addObject:[SGGeometry geometryWithGeometry:geometry]];
+    }
+
     return geometries;
 }
 

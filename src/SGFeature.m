@@ -193,18 +193,24 @@
 
 - (NSDictionary *)asDictionary
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:3];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:4];
+
+    [dict setObject:@"Feature"
+             forKey:@"type"];
 
     if (featureId) {
-        [dict setObject:featureId forKey:@"id"];
+        [dict setObject:featureId
+                 forKey:@"id"];
     }
 
     if (geometry) {
-        [dict setObject:geometry forKey:@"geometry"];
+        [dict setObject:geometry
+                 forKey:@"geometry"];
     }
 
     if (properties) {
-        [dict setObject:properties forKey:@"properties"];
+        [dict setObject:properties
+                 forKey:@"properties"];
     }
 
     return [NSDictionary dictionaryWithDictionary:dict];

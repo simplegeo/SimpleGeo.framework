@@ -29,8 +29,9 @@
 //
 
 #import "SGGeometryCollection.h"
-#import "NSArray+SGFeature.h"
+#import "SGGeometryCollection+Private.h"
 #import "NSArray+SGGeometry.h"
+
 
 @interface SGGeometryCollection ()
 
@@ -39,15 +40,17 @@
 @end
 
 @implementation SGGeometryCollection
+
 @synthesize geometries;
 
 + (SGGeometryCollection *)geometryCollectionWithDictionary:(NSDictionary *)geometries
 {
     return [[[SGGeometryCollection alloc] initWithDictionary:geometries] autorelease];
 }
+
 + (SGGeometryCollection *)geometryCollectionWithGeometries:(NSArray *)geometries
 {
-	return [[[SGGeometryCollection alloc] initWithGeometries:geometries] autorelease];
+    return [[[SGGeometryCollection alloc] initWithGeometries:geometries] autorelease];
 }
 
 - (id)initWithDictionary:(NSDictionary *)someGeometries
@@ -55,7 +58,7 @@
     if ([[someGeometries objectForKey:@"type"] isEqual:@"GeometryCollection"]) {
         return [self initWithGeometries:[someGeometries objectForKey:@"geometries"]];
     } else {
-        NSLog(@"Invalid type '%@' for a RecordCollection.", [someGeometries objectForKey:@"type"]);
+        NSLog(@"Invalid type '%@' for a GeometryCollection.", [someGeometries objectForKey:@"type"]);
         return nil;
     }
 }
@@ -63,7 +66,7 @@
 - (id)initWithGeometries:(NSArray *)someGeometries
 {
     self = [super init];
-	
+
     if (self) {
         if (someGeometries) {
             geometries = [[NSArray arrayWithGeometries:someGeometries] retain];
@@ -71,7 +74,7 @@
             geometries = [[NSArray alloc] init];
         }
     }
-	
+
     return self;
 }
 
@@ -85,6 +88,5 @@
 {
     return [geometries count];
 }
-
 
 @end

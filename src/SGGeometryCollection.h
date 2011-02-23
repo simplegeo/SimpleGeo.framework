@@ -31,17 +31,28 @@
 #import "SGGeometry.h"
 
 
+/*!
+ * Collections of Geometries.
+ */
 @interface SGGeometryCollection : NSObject
 {
-@private
-	NSArray* geometries;
+  @private
+    NSArray* geometries;
 }
+
+//! Collected Geometries.
 @property (retain,readonly) NSArray* geometries;
 
-+ (SGGeometryCollection *)geometryCollectionWithDictionary:(NSDictionary *)geometries;
-
+/*!
+ * Create a GeometryCollection from a list of Geometries.
+ * @param geometries List of Geometries.
+ */
 + (SGGeometryCollection *)geometryCollectionWithGeometries:(NSArray *)geometries;
 
+/*!
+ * Create a GeometryCollection from a list of Geometries.
+ * @param geometries List of Geometries.
+ */
 - (id)initWithGeometries:(NSArray *)geometries;
 
 //! Gets the number of geometries in this collection.

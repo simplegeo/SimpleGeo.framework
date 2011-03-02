@@ -1,0 +1,1233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+  <Token>
+    <TokenIdentifier>
+      <Name>NSObject(SimpleGeoContextDelegate)</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_context_delegate_08.html</Path>
+    <Abstract>Informal delegate protocol for Context functionality.</Abstract>
+    <DeclaredIn>SimpleGeo+Context.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>didLoadContext:forQuery:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_context_delegate_08.html</Path>
+    <Anchor>ac6addf17baf42655545b77225e1f2e53</Anchor>
+    <Abstract>Called when Context information has been loaded.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>NSObject(SimpleGeoDelegate)</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_delegate_08.html</Path>
+    <Abstract>Informal delegate protocol for core functionality.</Abstract>
+    <DeclaredIn>SimpleGeo.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>didLoadFeature:handle:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_delegate_08.html</Path>
+    <Anchor>ac0b93df7282d787efa370f26f8c035dd</Anchor>
+    <Abstract>Called when a feature has been loaded.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>requestDidFinish:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_delegate_08.html</Path>
+    <Anchor>ab87bcbcd48a03be928882a8986137650</Anchor>
+    <Abstract>Called when a request has finished.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>requestDidFail:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_delegate_08.html</Path>
+    <Anchor>ae614b719fe223b8968a2f6b72ad7e314</Anchor>
+    <Abstract>Called when a request has failed.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>didLoadCategories:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_delegate_08.html</Path>
+    <Anchor>a27b49eb3db67706c4ee2b1d2e096450d</Anchor>
+    <Abstract>Called when categories have been loaded.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>NSObject(SimpleGeoPlaceDelegate)</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_place_delegate_08.html</Path>
+    <Abstract>Informal delegate protocol for Places functionality.</Abstract>
+    <DeclaredIn>SimpleGeo+Places.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>didAddPlace:handle:URL:token:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_place_delegate_08.html</Path>
+    <Anchor>a176f8ecbc3524e96205929f2aafa2d90</Anchor>
+    <Abstract>Called when a feature was successfully added to the Places database.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>didDeletePlace:token:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_place_delegate_08.html</Path>
+    <Anchor>ab65168648c0394b6bcbc15fa6021ea80</Anchor>
+    <Abstract>Called when a place was successfully removed from the Places database.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>didLoadPlaces:forQuery:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_place_delegate_08.html</Path>
+    <Anchor>a326cbe51b98707d19fc70e0766bd4219</Anchor>
+    <Abstract>Called when a collection of places were loaded from the Places database.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>didUpdatePlace:handle:token:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_place_delegate_08.html</Path>
+    <Anchor>a3d04227655c2a3b2e56b75a1f644f9bb</Anchor>
+    <Abstract>Called when a place was successfully updated in the Places database.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>NSObject(SimpleGeoStorageDelegate)</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_storage_delegate_08.html</Path>
+    <Abstract>Informal delegate protocol for Storage functionality.</Abstract>
+    <DeclaredIn>SimpleGeo+Storage.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>didAddOrUpdateRecord:inLayer:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_storage_delegate_08.html</Path>
+    <Anchor>ac686ad458f63faf2c0a830feb9485ca0</Anchor>
+    <Abstract>Called when a record was successfully added or updated.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>didAddOrUpdateRecords:inLayer:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_storage_delegate_08.html</Path>
+    <Anchor>a16b76e5f6e2e6330e0b5c6c7f2865495</Anchor>
+    <Abstract>Called when a record was successfully added or updated.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>didDeleteRecordInLayer:withId:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_storage_delegate_08.html</Path>
+    <Anchor>a172137c233397cfa0c77b94dd15fd558</Anchor>
+    <Abstract>Called when a record was successfully deleted.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>didLoadHistory:forRecordId:forQuery:cursor:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_storage_delegate_08.html</Path>
+    <Anchor>abcabb630dd5a52d55d5f33484dd806af</Anchor>
+    <Abstract>Called when the location history for a record was loaded.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>didLoadRecord:fromLayer:withId:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_storage_delegate_08.html</Path>
+    <Anchor>a95340b814f24adf2d3a0358b1347cf01</Anchor>
+    <Abstract>Called when a record was loaded.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>didLoadRecords:forQuery:cursor:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_n_s_object_07_simple_geo_storage_delegate_08.html</Path>
+    <Anchor>abc18dba4940fb882a853fc8f7f812a6f</Anchor>
+    <Abstract>Called when records were loaded.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>SGFeature</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Abstract>Feature.</Abstract>
+    <DeclaredIn>SGFeature.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithId:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>a247dd7d0e5b3282bebf0bcc6db6348d9</Anchor>
+    <Abstract>Construct a Feature with an id.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithId:properties:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>a5ce52fac80adc43cc84751ff0eff9cdf</Anchor>
+    <Abstract>Construct a Feature with an id and some properties.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithId:geometry:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>aa87cfcaef310d16d427615e281f846e6</Anchor>
+    <Abstract>Construct a Feature with an id and a geometry.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithId:geometry:properties:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>ac315aaef5e11ea5b3e04ff2a7b0f0ecf</Anchor>
+    <Abstract>Construct a Feature with an id, a geometry, and some properties.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithGeometry:properties:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>a7b4017712aa8ac96cce982a75781fa51</Anchor>
+    <Abstract>Construct a Feature with a geometry and some properties.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>asDictionary</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>a01531452016ae27e00f862bbb5e43834</Anchor>
+    <Abstract>Return an NSDictionary representation of this feature;.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>featureWithId:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>a8fcb221dbbbc8e9d8dc43c86c8abccfb</Anchor>
+    <Abstract>Create a Feature with an id.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>featureWithId:properties:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>a0598eb3b94e5755916dbd512c4b215c0</Anchor>
+    <Abstract>Create a Feature with an id and some properties.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>featureWithId:geometry:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>ab23763268691dacab41890fd012e3492</Anchor>
+    <Abstract>Create a Feature with an id and a geometry.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>featureWithId:geometry:properties:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>a848e359251402770be456bc1f727a348</Anchor>
+    <Abstract>Create a Feature with an id, a geometry, and some properties.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>featureWithGeometry:properties:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>a817728fe61002b4172d9ecdc5dc16907</Anchor>
+    <Abstract>Create a Feature with a geometry and some properties.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>featureId</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>a52d68cbaf99b47c6fb95b7ff1a3d2558</Anchor>
+    <Abstract>Feature id.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>geometry</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>a12e8c77ab9cefd46cfd2b9992a0c275d</Anchor>
+    <Abstract>Feature geometry.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>properties</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature.html</Path>
+    <Anchor>ae5baa9e68a239a3c40b18d02c9f67c09</Anchor>
+    <Abstract>Feature properties.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>SGFeatureCollection</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature_collection.html</Path>
+    <Abstract>Collections of Features.</Abstract>
+    <DeclaredIn>SGFeatureCollection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithFeatures:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature_collection.html</Path>
+    <Anchor>ae13554f6d574c8ce8628e73663a9411d</Anchor>
+    <Abstract>Construct a FeatureCollection from a list of Features.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithRecords:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature_collection.html</Path>
+    <Anchor>a25024a6be1e4a803541f246bc7108377</Anchor>
+    <Abstract>Construct a FeatureCollection from a list of Records.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>count</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature_collection.html</Path>
+    <Anchor>a06ef8499fbfe9be2ab18179b4ed9b72c</Anchor>
+    <Abstract>Gets the number of features in this collection.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>featureCollectionWithFeatures:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature_collection.html</Path>
+    <Anchor>a6b56a7da2bd48100540accbf23e0aef0</Anchor>
+    <Abstract>Create a FeatureCollection from a list of Features.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>featureCollectionWithRecords:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature_collection.html</Path>
+    <Anchor>a1c6bc07eb323b77a0815203d16ea0e2b</Anchor>
+    <Abstract>Create a FeatureCollection from a list of Records.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>features</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_feature_collection.html</Path>
+    <Anchor>a768542011f2e4554bb8de0917f708711</Anchor>
+    <Abstract>Collected Features.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>SGGeometry</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_geometry.html</Path>
+    <Abstract>Abstract Geometry class/factory.</Abstract>
+    <DeclaredIn>SGGeometry.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>SGGeometryCollection</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_geometry_collection.html</Path>
+    <Abstract>Collections of Geometries.</Abstract>
+    <DeclaredIn>SGGeometryCollection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithGeometries:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_geometry_collection.html</Path>
+    <Anchor>ae9ee136992e29b699125ef46b751d29e</Anchor>
+    <Abstract>Create a GeometryCollection from a list of Geometries.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>count</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_geometry_collection.html</Path>
+    <Anchor>ac18d8c8673a1409acb11922ffc4d0f0b</Anchor>
+    <Abstract>Gets the number of geometries in this collection.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>geometryCollectionWithGeometries:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_geometry_collection.html</Path>
+    <Anchor>a677a5c2a96d14884933ec6d3ae323c9a</Anchor>
+    <Abstract>Create a GeometryCollection from a list of Geometries.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>geometries</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_geometry_collection.html</Path>
+    <Anchor>ab9122e55ca0c87b1b155d9a61ae2a734</Anchor>
+    <Abstract>Collected Geometries.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>SGMultiPolygon</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_multi_polygon.html</Path>
+    <Abstract>MultiPolygon representation.</Abstract>
+    <DeclaredIn>SGMultiPolygon.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithPolygons:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_multi_polygon.html</Path>
+    <Anchor>a2894321bc12ab5a6f46f970fb2e4cc8c</Anchor>
+    <Abstract>Construct a multi-polygon from a set of Polygons.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>multiPolygonWithPolygons:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_multi_polygon.html</Path>
+    <Anchor>a97101777ba24d9ea6be7e220de4f1c9b</Anchor>
+    <Abstract>Create a multi-polygon from a set of Polygons.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>polygons</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_multi_polygon.html</Path>
+    <Anchor>ae08200e3cbc66d4048aad38279c12232</Anchor>
+    <Abstract>Polygons that define this multi-polygon.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>SGPoint</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_point.html</Path>
+    <Abstract>Point representation.</Abstract>
+    <DeclaredIn>SGPoint.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithLatitude:longitude:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_point.html</Path>
+    <Anchor>a1fa367cc2e4f87385587e797f818dce7</Anchor>
+    <Abstract>Construct a point from a pair of coordinates.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>pointWithLatitude:longitude:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_point.html</Path>
+    <Anchor>a8c21ee9070dda8c111eccebf9d822ddb</Anchor>
+    <Abstract>Create a point from a pair of coordinates.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>latitude</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_point.html</Path>
+    <Anchor>a946e41f5c470083c96590b7d09df8a26</Anchor>
+    <Abstract>Latitude (y coordinate).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>longitude</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_point.html</Path>
+    <Anchor>a62fba53035cb490ebd65436c20706857</Anchor>
+    <Abstract>Longitude (x coordinate).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>SGPolygon</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_polygon.html</Path>
+    <Abstract>Polygon representation.</Abstract>
+    <DeclaredIn>SGPolygon.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithRings:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_polygon.html</Path>
+    <Anchor>ae639d96626c98f181793b5ff8f6cd755</Anchor>
+    <Abstract>Construct a polygon from a set of LinearRings.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>polygonWithRings:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_polygon.html</Path>
+    <Anchor>a0838e1fd4317789540a02f51c50e34bb</Anchor>
+    <Abstract>Create a polygon from a set of LinearRings.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>rings</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_polygon.html</Path>
+    <Anchor>a6a869a045e60128c5ede0c64ff07a461</Anchor>
+    <Abstract>LinearRings that define this polygon.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>SGStoredRecord</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Abstract>Representation of a record as exposed by the SimpleGeo Storage API.</Abstract>
+    <DeclaredIn>SGStoredRecord.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithCreatedTimestamp:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>a38db6ce18bb8911f3908a6cb3dc2c179</Anchor>
+    <Abstract>Construct a record with a created timestamp.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithLayer:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>ac833683ebfb8f675c9378788583bfb28</Anchor>
+    <Abstract>Construct a record with an associated layer.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithCreatedTimestamp:layer:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>ab04005a7bb9a8fdde453b95c4b712833</Anchor>
+    <Abstract>Construct a record with a created timestamp and an associated layer.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithFeature:createdTimestamp:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>af0fd5a4d5e8abf2e03a38fd5b426a3ea</Anchor>
+    <Abstract>Construct a record from a Feature with a created timestamp.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithFeature:layer:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>a6d72840d7a12b072c47e52bae19f1911</Anchor>
+    <Abstract>Construct a record from a Feature with an associated layer.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithFeature:createdTimestamp:layer:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>a3461a6feee5635766f43448ca424e535</Anchor>
+    <Abstract>Construct a record from a Feature with a created timestamp and an associated layer.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>recordWithCreatedTimestamp:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>a6f511682528cb40d81213590b89dfc5a</Anchor>
+    <Abstract>Create a record with a created timestamp.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>recordWithLayer:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>a8e78b806704e7e5f04b5b65f90e0dc9b</Anchor>
+    <Abstract>Create a record associated with a layer.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>recordWithCreatedTimestamp:layer:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>a24707e7e08805995b468a4e04833b657</Anchor>
+    <Abstract>Create a record with a created timestamp and an associated layer.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>recordWithFeature:createdTimestamp:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>a55f7933ac658a774d055cbbbf7ef5aa8</Anchor>
+    <Abstract>Create a record from a Feature with a created timestamp.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>recordWithFeature:layer:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>ac707877f90c18696487139db4e82ca14</Anchor>
+    <Abstract>Create a record from a Feature with an associated layer.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>recordWithFeature:createdTimestamp:layer:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>aaabe395ae558d14f933e72e67512c8fc</Anchor>
+    <Abstract>Create a record from a Feature with a created timestamp and an associated layer.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>created</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>ae6dbca54ab6804db9ae4fd5eb1feb946</Anchor>
+    <Abstract>Created at timestamp (Unix epoch)</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>layer</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+    </TokenIdentifier>
+    <Path>interface_s_g_stored_record.html</Path>
+    <Anchor>abf1a42bfbf8e8909fcdfed6a797e7294</Anchor>
+    <Abstract>Layer name.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>SimpleGeo</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Abstract>SimpleGeo client interface.</Abstract>
+    <DeclaredIn>SimpleGeo.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithDelegate:consumerKey:consumerSecret:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a24e9428dec76df19296a58261d857054</Anchor>
+    <Abstract>Construct a client.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getFeatureWithHandle:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a7bea3d10a3e81f9c415817cd00b6e819</Anchor>
+    <Abstract>Get a feature with a specific handle.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getFeatureWithHandle:zoom:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>adbbe5f661004a2c08ef7aedc287d4bac</Anchor>
+    <Abstract>Get a feature with a specific handle.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getCategories</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>afc6fcfb7dacd130857147df769f96196</Anchor>
+    <Abstract>Get the overall list of categories.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getContextForPoint:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a0fb591751a8d8080ff00e1ac2b9db159</Anchor>
+    <Abstract>Get Context information for a specific point.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getContextForAddress:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a76a953d415f7765f5e38301e15f07e47</Anchor>
+    <Abstract>Get Context information for an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>addPlace:private:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>af44025518c9da96abccdfb4390f9d2e4</Anchor>
+    <Abstract>Add a feature to the Places database (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>deletePlace:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a7d02c76929e443b13335898bcea01422</Anchor>
+    <Abstract>Delete a place from the Places database (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNear:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>ac3ed8c2860ad761abf71d62aceb17dd1</Anchor>
+    <Abstract>Find places near a point (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNearAddress:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a5406abbcd762edf7161024c30a7307a8</Anchor>
+    <Abstract>Find places near an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNear:within:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a21173e17c35ad97aad5442990aa2f90a</Anchor>
+    <Abstract>Find places near a point (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNearAddress:within:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a1f9dabd85dd99f3834d11263fb59edbd</Anchor>
+    <Abstract>Find places near an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNear:matching:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a004049233b063343015a647b610c14d8</Anchor>
+    <Abstract>Find places near a point matching a query string (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNearAddress:matching:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a854175cb43633604c308d9edcab61400</Anchor>
+    <Abstract>Find places near an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNear:matching:within:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a56ce12cea5b3719b32b9d0fce2db6f60</Anchor>
+    <Abstract>Find places near a point matching a query string (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNearAddress:matching:within:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a24361edb873659adba053652705eab50</Anchor>
+    <Abstract>Find places near an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNear:matching:inCategory:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>af19eccc317704ca45a7e28a2a68cdc18</Anchor>
+    <Abstract>Find places near a point matching a query string in a specific category (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNearAddress:matching:inCategory:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a5d4f2f98db25ac63a67e632560cd8108</Anchor>
+    <Abstract>Find places near an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNear:matching:inCategory:within:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a038d9b2f61905f99492aa8338aa3313b</Anchor>
+    <Abstract>Find places near a point matching a query string in a specific category (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getPlacesNearAddress:matching:inCategory:within:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>abb1d7c26f3d2a0e24f7a60a72baf9586</Anchor>
+    <Abstract>Find places near an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>updatePlace:with:private:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>acd19c9657be8e5e1ab3e93628f0d2820</Anchor>
+    <Abstract>Update a place in the Places database (SimpleGeo+Places.h).</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>addOrUpdateRecord:inLayer:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a2e9902dec100f7fe99321c068645d4c5</Anchor>
+    <Abstract>Add or update a record.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>addOrUpdateRecords:inLayer:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a1a598b8fcabd60e0106fc60edae0eeda</Anchor>
+    <Abstract>Add or update a collection of records.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>deleteRecordInLayer:withId:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>ab4e2c80410a8caa1c9ab9c7fd6b818c4</Anchor>
+    <Abstract>Delete a record.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:near:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>ac435895b0c650cb1d00755b9d1ba9ac2</Anchor>
+    <Abstract>Get records nearest to a point.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:near:radius:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>ad1a67a5b9cd36dac20b401e0c8105ae0</Anchor>
+    <Abstract>Get records nearest to a point.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:near:count:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>aa9f59dca0f5d2cac6c07d8fb4d1c4167</Anchor>
+    <Abstract>Get records nearest to a point.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:near:radius:count:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a6cc2c32d4223d72718c6681afd1cc9c2</Anchor>
+    <Abstract>Get records nearest to a point.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:near:cursor:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a680edb109f5bee4c753371e8796e6637</Anchor>
+    <Abstract>Get additional records nearest to a point.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:near:radius:cursor:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a054f0bc7226c5c16c386a2621c342182</Anchor>
+    <Abstract>Get additional records nearest to a point.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:near:radius:cursor:count:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>ad84df192c4930f1cfeeefc6a65cad2c3</Anchor>
+    <Abstract>Get additional records nearest to a point.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:near:radius:cursor:count:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>ad84df192c4930f1cfeeefc6a65cad2c3</Anchor>
+    <Abstract>Get additional records nearest to a point.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:near:cursor:count:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a6b0774155a7a51b5745f1d31e027508d</Anchor>
+    <Abstract>Get additional records nearest to a point.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:nearAddress:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>af7a48098a09c0d6553ff5adb69d0f5fd</Anchor>
+    <Abstract>Get records nearest to an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:nearAddress:radius:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>acbf45350b2e502c9dababba8e1e1a00b</Anchor>
+    <Abstract>Get records nearest to an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:nearAddress:count:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a75a4239b580b2444cc7990f1fc3d8348</Anchor>
+    <Abstract>Get records nearest to an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:nearAddress:radius:count:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>aacf25e8df94489d6e83ee224ceb20d8f</Anchor>
+    <Abstract>Get records nearest to an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:nearAddress:cursor:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a1428b4f73305e62572f8018ab6e22651</Anchor>
+    <Abstract>Get additional records nearest to an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:nearAddress:radius:cursor:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a18db481b08222c2613924cb55fec3c0d</Anchor>
+    <Abstract>Get additional records nearest to an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:nearAddress:radius:cursor:count:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a1f36c647080bd0b292619d5bc194e92d</Anchor>
+    <Abstract>Get additional records nearest to an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:nearAddress:radius:cursor:count:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a1f36c647080bd0b292619d5bc194e92d</Anchor>
+    <Abstract>Get additional records nearest to an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getRecordsInLayer:nearAddress:cursor:count:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>ac293181d91da0b27267a16d36a834e35</Anchor>
+    <Abstract>Get additional records nearest to an address.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getHistoryForRecordId:inLayer:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>ae6d62b4f76e4f42d1bc047ddc680d61a</Anchor>
+    <Abstract>Get the location history for a record.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getHistoryForRecordId:inLayer:count:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a5eb632c00156c5612090cd6a76ee3cfd</Anchor>
+    <Abstract>Get the location history for a record.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getHistoryForRecordId:inLayer:cursor:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a60c9e2c81632de152e186ea0147048f2</Anchor>
+    <Abstract>Get additional location history for a record.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>getHistoryForRecordId:inLayer:cursor:count:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a54e453b188aecb651fb8f9da7d929a6c</Anchor>
+    <Abstract>Get additional location history for a record.</Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>clientWithDelegate:consumerKey:consumerSecret:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+    </TokenIdentifier>
+    <Path>class_simple_geo.html</Path>
+    <Anchor>a7a8dbe5eef1c0354f306d94965178798</Anchor>
+    <Abstract>Create a client.</Abstract>
+  </Token>
+</Tokens>

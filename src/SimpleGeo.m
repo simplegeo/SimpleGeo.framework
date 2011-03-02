@@ -186,6 +186,11 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
         [self performSelector:targetSelector withObject:request];
     } else {
         // consider non-2xx, 3xx, or 404s to be failures
+
+        if ([request responseStatusCode] == 400) {
+            NSLog(@"Bad request. Please double-check your OAuth key and secret.");
+        }
+
         [self requestFailed:request];
     }
 }

@@ -1,5 +1,5 @@
 //
-//  NSArray+SGFeature.h
+//  NSArray+SGGeometry.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2011, SimpleGeo Inc.
@@ -28,9 +28,8 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+@interface NSArray (SGGeometry)
 
-@interface NSArray (SGFeature)
-
-+ (NSArray *)arrayWithFeatures:(NSArray *)features;
++ (NSArray *)arrayWithGeometries:(NSArray *)geometries;
 
 @end

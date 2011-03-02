@@ -32,7 +32,6 @@
 #import "SGFeatureCollection+Private.h"
 #import "NSArray+SGFeature.h"
 
-
 // trigger @synthesize in SGFeature to create readwrite accessors
 @interface SGFeatureCollection ()
 
@@ -53,6 +52,11 @@
 + (SGFeatureCollection *)featureCollectionWithFeatures:(NSArray *)features
 {
     return [[[SGFeatureCollection alloc] initWithFeatures:features] autorelease];
+}
+
++ (SGFeatureCollection *)featureCollectionWithRecords:(NSArray *)records
+{
+    return [[[SGFeatureCollection alloc] initWithRecords:records] autorelease];
 }
 
 - (id)initWithDictionary:(NSDictionary *)someFeatures
@@ -80,6 +84,21 @@
     return self;
 }
 
+- (id)initWithRecords:(NSArray *)someRecords
+{
+    self = [super init];
+
+    if (self) {
+        if (someRecords) {
+            features = [someRecords retain];
+        } else {
+            features = [[NSArray alloc] init];
+        }
+    }
+
+    return self;
+}
+
 - (void)dealloc
 {
     [features release];
@@ -89,6 +108,24 @@
 - (NSUInteger)count
 {
     return [features count];
+}
+
+- (NSDictionary *)asDictionary
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
+
+    [dict setObject:@"FeatureCollection"
+             forKey:@"type"];
+
+    [dict setObject:features
+             forKey:@"features"];
+
+    return [NSDictionary dictionaryWithDictionary:dict];
+}
+
+- (id)JSON
+{
+    return [self asDictionary];
 }
 
 @end

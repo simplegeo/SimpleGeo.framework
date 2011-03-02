@@ -1,5 +1,5 @@
 //
-//  NSArray+SGFeature.h
+//  SGGeometryCollection.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2011, SimpleGeo Inc.
@@ -28,9 +28,34 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import "SGGeometry.h"
 
-@interface NSArray (SGFeature)
 
-+ (NSArray *)arrayWithFeatures:(NSArray *)features;
+/*!
+ * Collections of Geometries.
+ */
+@interface SGGeometryCollection : NSObject
+{
+  @private
+    NSArray* geometries;
+}
+
+//! Collected Geometries.
+@property (retain,readonly) NSArray* geometries;
+
+/*!
+ * Create a GeometryCollection from a list of Geometries.
+ * @param geometries List of Geometries.
+ */
++ (SGGeometryCollection *)geometryCollectionWithGeometries:(NSArray *)geometries;
+
+/*!
+ * Create a GeometryCollection from a list of Geometries.
+ * @param geometries List of Geometries.
+ */
+- (id)initWithGeometries:(NSArray *)geometries;
+
+//! Gets the number of geometries in this collection.
+- (NSUInteger)count;
 
 @end

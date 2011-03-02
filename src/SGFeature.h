@@ -77,7 +77,7 @@
  * Create a Feature with an id, a geometry, and some properties.
  * @param id         Feature id.
  * @param geometry   Feature geometry.
- * @param properties Feature Properties.
+ * @param properties Feature properties.
  */
 + (SGFeature *)featureWithId:(NSString *)id
                     geometry:(SGGeometry *)geometry
@@ -100,7 +100,7 @@
 /*!
  * Construct a Feature with an id and some properties.
  * @param id         Feature id.
- * @param properties Feature Properties.
+ * @param properties Feature properties.
  */
 - (id)initWithId:(NSString *)id
       properties:(NSDictionary *)properties;
@@ -117,7 +117,7 @@
  * Construct a Feature with an id, a geometry, and some properties.
  * @param id         Feature id.
  * @param geometry   Feature geometry.
- * @param properties Feature Properties.
+ * @param properties Feature properties.
  */
 - (id)initWithId:(NSString *)id
         geometry:(SGGeometry *)geometry
@@ -126,7 +126,7 @@
 /*!
  * Construct a Feature with a geometry and some properties.
  * @param geometry   Feature geometry.
- * @param properties Feature Properties.
+ * @param properties Feature properties.
  */
 - (id)initWithGeometry:(SGGeometry *)geometry
             properties:(NSDictionary *)properties;

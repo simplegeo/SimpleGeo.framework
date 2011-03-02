@@ -1,5 +1,5 @@
 //
-//  NSArray+SGFeature.h
+//  SGGeometryCollection+Private.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2011, SimpleGeo Inc.
@@ -28,9 +28,12 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import "SGGeometryCollection.h"
 
-@interface NSArray (SGFeature)
 
-+ (NSArray *)arrayWithFeatures:(NSArray *)features;
+@interface SGGeometryCollection (Private)
+
++ (SGGeometryCollection *)geometryCollectionWithDictionary:(NSDictionary *)geometries;
+- (id)initWithDictionary:(NSDictionary *)geometries;
 
 @end

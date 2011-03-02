@@ -1,5 +1,5 @@
 //
-//  NSArray+SGFeature.h
+//  SGRecord+Private.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2011, SimpleGeo Inc.
@@ -28,9 +28,13 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import "SGRecord.h"
 
-@interface NSArray (SGFeature)
 
-+ (NSArray *)arrayWithFeatures:(NSArray *)features;
+@interface SGRecord (Private)
+
++ (SGRecord *)recordWithDictionary:(NSDictionary *)data;
+- (id)initWithId:(NSString *)id
+      dictionary:(NSDictionary *)data;
 
 @end

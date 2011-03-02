@@ -14,12 +14,12 @@
 		5D1DA88B12DD2AB100556B20 /* ASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DA88912DD2AB100556B20 /* ASIHTTPRequest+OAuth.m */; };
 		5D1DA88F12DD2AC300556B20 /* ASIBase64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D1DA88D12DD2AC300556B20 /* ASIBase64Transcoder.c */; };
 		5D1DA89012DD2AC300556B20 /* ASIBase64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1DA88E12DD2AC300556B20 /* ASIBase64Transcoder.h */; };
-		5D30FFA0131F0A360089F563 /* SGStoredRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D30FF9D131F0A360089F563 /* SGStoredRecord.h */; };
+		5D30FFA0131F0A360089F563 /* SGStoredRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D30FF9D131F0A360089F563 /* SGStoredRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D30FFA1131F0A360089F563 /* SGStoredRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D30FF9E131F0A360089F563 /* SGStoredRecord.m */; };
 		5D30FFA2131F0A360089F563 /* SGStoredRecord+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D30FF9F131F0A360089F563 /* SGStoredRecord+Private.h */; };
 		5DEC2F1713045743001A59C5 /* SGGeometryCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DEC2F1513045743001A59C5 /* SGGeometryCollection.h */; };
 		5DEC2F1813045743001A59C5 /* SGGeometryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEC2F1613045743001A59C5 /* SGGeometryCollection.m */; };
-		5DEC2F461304576F001A59C5 /* SimpleGeo+Storage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DEC2F441304576F001A59C5 /* SimpleGeo+Storage.h */; };
+		5DEC2F461304576F001A59C5 /* SimpleGeo+Storage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DEC2F441304576F001A59C5 /* SimpleGeo+Storage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DEC2F471304576F001A59C5 /* SimpleGeo+Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEC2F451304576F001A59C5 /* SimpleGeo+Storage.m */; };
 		5DF1FBC312C2C6F50097CF47 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1FB8E12C2C6F50097CF47 /* ASIDataCompressor.m */; };
 		5DF1FBC412C2C6F50097CF47 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1FB9012C2C6F50097CF47 /* ASIDataDecompressor.m */; };

@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.0 - 3/2/11
+
+* Storage support
+
 ## 1.1.6 - 1/27/11
 
 * Categories support

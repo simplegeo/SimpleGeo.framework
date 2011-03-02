@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D12248112F246AA00CB2CC2 /* SimpleGeo+Storage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D12247F12F246AA00CB2CC2 /* SimpleGeo+Storage.h */; };
+		5D12248112F246AA00CB2CC2 /* SimpleGeo+Storage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D12247F12F246AA00CB2CC2 /* SimpleGeo+Storage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D12248212F246AA00CB2CC2 /* SimpleGeo+Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D12248012F246AA00CB2CC2 /* SimpleGeo+Storage.m */; };
 		5D1408C1131586BB0001417A /* SGGeometryCollection+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1408C0131586BB0001417A /* SGGeometryCollection+Private.h */; };
 		5D1C1B4912A9A5170055EC91 /* SGGeometryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C1B4712A9A5170055EC91 /* SGGeometryTest.m */; };
@@ -15,7 +15,7 @@
 		5D1C1B9D12A9AD1A0055EC91 /* SimpleGeo+Context.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C1B9B12A9AD1A0055EC91 /* SimpleGeo+Context.m */; };
 		5D30FF8F131F0A180089F563 /* SGStoredRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D30FF8C131F0A180089F563 /* SGStoredRecord.h */; };
 		5D30FF90131F0A180089F563 /* SGStoredRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D30FF8D131F0A180089F563 /* SGStoredRecord.m */; };
-		5D30FF91131F0A180089F563 /* SGStoredRecord+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D30FF8E131F0A180089F563 /* SGStoredRecord+Private.h */; };
+		5D30FF91131F0A180089F563 /* SGStoredRecord+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D30FF8E131F0A180089F563 /* SGStoredRecord+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D3990E012A4642B00EB7B20 /* SGFeatureCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3990DD12A4642B00EB7B20 /* SGFeatureCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D3990E112A4642B00EB7B20 /* SGFeatureCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3990DE12A4642B00EB7B20 /* SGFeatureCollection.m */; };
 		5D3991E712A489EF00EB7B20 /* SimpleGeo+Places.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D3991E412A489EF00EB7B20 /* SimpleGeo+Places.h */; settings = {ATTRIBUTES = (Public, ); }; };

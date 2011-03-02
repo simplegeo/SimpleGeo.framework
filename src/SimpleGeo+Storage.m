@@ -39,7 +39,7 @@
 
 @implementation SimpleGeo (Storage)
 
-- (void)addOrUpdateRecord:(SGRecord *)record
+- (void)addOrUpdateRecord:(SGStoredRecord *)record
                   inLayer:(NSString *)layer
 {
     NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/records/%@/%@.json",

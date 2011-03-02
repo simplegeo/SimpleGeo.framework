@@ -31,7 +31,7 @@
 #import "SimpleGeo.h"
 #import "SGFeatureCollection.h"
 #import "SGGeometryCollection.h"
-#import "SGRecord.h"
+#import "SGStoredRecord.h"
 
 
 /*!
@@ -45,7 +45,7 @@
  * @param record Record that was added or updated.
  * @param layer  Layer that the record belongs to.
  */
-- (void)didAddOrUpdateRecord:(SGRecord *)record
+- (void)didAddOrUpdateRecord:(SGStoredRecord *)record
                      inLayer:(NSString *)layer;
 
 /*!
@@ -88,7 +88,7 @@
  * @param layer  Layer that the record was loaded from.
  * @param id     Id of the record that was loaded.
  */
-- (void)didLoadRecord:(SGRecord *)record
+- (void)didLoadRecord:(SGStoredRecord *)record
             fromLayer:(NSString *)layer
                withId:(NSString *)id;
 
@@ -120,7 +120,7 @@
  * @param record Record to add or update. Its `id` property must be set.
  * @param layer  Layer to apply this record to.
  */
-- (void)addOrUpdateRecord:(SGRecord *)record
+- (void)addOrUpdateRecord:(SGStoredRecord *)record
                   inLayer:(NSString *)layer;
 
 /*!

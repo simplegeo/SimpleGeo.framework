@@ -1,5 +1,5 @@
 //
-//  SGRecord.h
+//  SGStoredRecord.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2011, SimpleGeo Inc.
@@ -34,7 +34,7 @@
 /*!
  * Representation of a record as exposed by the SimpleGeo Storage API.
  */
-@interface SGRecord : SGFeature
+@interface SGStoredRecord : SGFeature
 {
     NSTimeInterval created;
     NSString *layer;
@@ -52,14 +52,14 @@
  *
  * @param created Created timestamp.
  */
-+ (SGRecord *)recordWithCreatedTimestamp:(NSTimeInterval)created;
++ (SGStoredRecord *)recordWithCreatedTimestamp:(NSTimeInterval)created;
 
 /*!
  * Create a record associated with a layer.
  *
  * @param layer Associated layer.
  */
-+ (SGRecord *)recordWithLayer:(NSString *)layer;
++ (SGStoredRecord *)recordWithLayer:(NSString *)layer;
 
 /*!
  * Create a record with a created timestamp and an associated layer.
@@ -67,8 +67,8 @@
  * @param created Created timestamp.
  * @param layer   Associated layer.
  */
-+ (SGRecord *)recordWithCreatedTimestamp:(NSTimeInterval)created
-                                   layer:(NSString *)layer;
++ (SGStoredRecord *)recordWithCreatedTimestamp:(NSTimeInterval)created
+                                         layer:(NSString *)layer;
 
 /*!
  * Create a record from a Feature with a created timestamp.
@@ -76,8 +76,8 @@
  * @param feature Feature.
  * @param created Created timestamp.
  */
-+ (SGRecord *)recordWithFeature:(SGFeature *)feature
-               createdTimestamp:(NSTimeInterval)created;
++ (SGStoredRecord *)recordWithFeature:(SGFeature *)feature
+                     createdTimestamp:(NSTimeInterval)created;
 
 /*!
  * Create a record from a Feature with an associated layer.
@@ -85,8 +85,8 @@
  * @param feature Feature.
  * @param layer  Associated layer.
  */
-+ (SGRecord *)recordWithFeature:(SGFeature *)feature
-                          layer:(NSString *)layer;
++ (SGStoredRecord *)recordWithFeature:(SGFeature *)feature
+                                layer:(NSString *)layer;
 
 /*!
  * Create a record from a Feature with a created timestamp and an associated
@@ -96,9 +96,9 @@
  * @param created Created timestamp.
  * @param layer   Associated layer.
  */
-+ (SGRecord *)recordWithFeature:(SGFeature *)feature
-               createdTimestamp:(NSTimeInterval)created
-                          layer:(NSString *)layer;
++ (SGStoredRecord *)recordWithFeature:(SGFeature *)feature
+                     createdTimestamp:(NSTimeInterval)created
+                                layer:(NSString *)layer;
 
 /*!
  * Construct a record with a created timestamp.

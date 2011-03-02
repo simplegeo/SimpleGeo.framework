@@ -1,5 +1,5 @@
 //
-//  SGRecord.m
+//  SGStoredRecord.m
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2011, SimpleGeo Inc.
@@ -28,60 +28,60 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGRecord.h"
-#import "SGRecord+Private.h"
+#import "SGStoredRecord.h"
+#import "SGStoredRecord+Private.h"
 
 
-@implementation SGRecord
+@implementation SGStoredRecord
 
 @synthesize created;
 @synthesize layer;
 
-+ (SGRecord *)recordWithDictionary:(NSDictionary *)data
++ (SGStoredRecord *)recordWithDictionary:(NSDictionary *)data
 {
-    return [[[SGRecord alloc] initWithId:nil
+    return [[[SGStoredRecord alloc] initWithId:nil
                               dictionary:data] autorelease];
 }
 
-+ (SGRecord *)recordWithCreatedTimestamp:(NSTimeInterval)created
++ (SGStoredRecord *)recordWithCreatedTimestamp:(NSTimeInterval)created
 {
-    return [SGRecord recordWithCreatedTimestamp:created
+    return [SGStoredRecord recordWithCreatedTimestamp:created
                                           layer:nil];
 }
 
-+ (SGRecord *)recordWithLayer:(NSString *)layer
++ (SGStoredRecord *)recordWithLayer:(NSString *)layer
 {
-    return [SGRecord recordWithCreatedTimestamp:0
+    return [SGStoredRecord recordWithCreatedTimestamp:0
                                           layer:layer];
 }
-+ (SGRecord *)recordWithCreatedTimestamp:(NSTimeInterval)created
-                                   layer:(NSString *)layer
++ (SGStoredRecord *)recordWithCreatedTimestamp:(NSTimeInterval)created
+                                         layer:(NSString *)layer
 {
-    return [[[SGRecord alloc] initWithCreatedTimestamp:created
+    return [[[SGStoredRecord alloc] initWithCreatedTimestamp:created
                                                  layer:layer] autorelease];
 }
 
-+ (SGRecord *)recordWithFeature:(SGFeature *)feature
-               createdTimestamp:(NSTimeInterval)created
++ (SGStoredRecord *)recordWithFeature:(SGFeature *)feature
+                     createdTimestamp:(NSTimeInterval)created
 {
-    return [SGRecord recordWithFeature:feature
+    return [SGStoredRecord recordWithFeature:feature
                       createdTimestamp:created
                                  layer:nil];
 }
 
-+ (SGRecord *)recordWithFeature:(SGFeature *)feature
-                          layer:(NSString *)layer
++ (SGStoredRecord *)recordWithFeature:(SGFeature *)feature
+                                layer:(NSString *)layer
 {
-    return [SGRecord recordWithFeature:feature
+    return [SGStoredRecord recordWithFeature:feature
                       createdTimestamp:0
                                  layer:layer];
 }
 
-+ (SGRecord *)recordWithFeature:(SGFeature *)feature
-               createdTimestamp:(NSTimeInterval)created
-                          layer:(NSString *)layer
++ (SGStoredRecord *)recordWithFeature:(SGFeature *)feature
+                     createdTimestamp:(NSTimeInterval)created
+                                layer:(NSString *)layer
 {
-    return [[[SGRecord alloc] initWithFeature:feature
+    return [[[SGStoredRecord alloc] initWithFeature:feature
                              createdTimestamp:created
                                         layer:layer] autorelease];
 }

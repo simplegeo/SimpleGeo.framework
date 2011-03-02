@@ -1,5 +1,5 @@
 //
-//  SGRecord+Private.h
+//  SGStoredRecord+Private.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2011, SimpleGeo Inc.
@@ -28,12 +28,12 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGRecord.h"
+#import "SGStoredRecord.h"
 
 
-@interface SGRecord (Private)
+@interface SGStoredRecord (Private)
 
-+ (SGRecord *)recordWithDictionary:(NSDictionary *)data;
++ (SGStoredRecord *)recordWithDictionary:(NSDictionary *)data;
 - (id)initWithId:(NSString *)id
       dictionary:(NSDictionary *)data;
 

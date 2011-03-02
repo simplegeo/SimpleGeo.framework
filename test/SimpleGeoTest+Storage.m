@@ -46,9 +46,9 @@
                                          geometry:geometry
                                        properties:properties];
     NSTimeInterval created = 2000;
-    SGRecord *record = [SGRecord recordWithFeature:feature
-                                  createdTimestamp:created
-                                             layer:@"mojodna.test"];
+    SGStoredRecord *record = [SGStoredRecord recordWithFeature:feature
+                                              createdTimestamp:created
+                                                         layer:@"mojodna.test"];
     [[self createClient] addOrUpdateRecord:record
                                    inLayer:@"mojodna.test" ];
     [self waitForStatus:kGHUnitWaitStatusSuccess
@@ -65,15 +65,15 @@
     SGFeature *feature = [SGFeature featureWithGeometry:geometry
                                              properties:properties];
     NSTimeInterval created = 2000;
-    SGRecord *record = [SGRecord recordWithFeature:feature
-                                  createdTimestamp:created
-                                             layer:@"layer1"];
+    SGStoredRecord *record = [SGStoredRecord recordWithFeature:feature
+                                              createdTimestamp:created
+                                                         layer:@"layer1"];
     SGFeature *feature2 = [SGFeature featureWithGeometry:geometry
                                               properties:[NSDictionary dictionaryWithObjectsAndKeys:
                                                           @"Shrek", @"name",
                                                           nil]];
-    SGRecord *record2 = [SGRecord recordWithFeature:feature2
-                                              layer:@"mojodna.test"];
+    SGStoredRecord *record2 = [SGStoredRecord recordWithFeature:feature2
+                                                          layer:@"mojodna.test"];
     [[self createClient] addOrUpdateRecords:[NSArray arrayWithObjects:
                                              record,
                                              record2,
@@ -327,7 +327,7 @@
 
 #pragma mark SimpleGeoStorageDelegate Methods
 
-- (void)didAddOrUpdateRecord:(SGRecord *)record
+- (void)didAddOrUpdateRecord:(SGStoredRecord *)record
                      inLayer:(NSString *)layer
 {
     GHAssertEqualObjects([record featureId],
@@ -384,7 +384,7 @@
     }
 }
 
-- (void)didLoadRecord:(SGRecord *)record
+- (void)didLoadRecord:(SGStoredRecord *)record
             fromLayer:(NSString *)layer
                withId:(NSString *)recordId
 {

@@ -1,8 +1,8 @@
 //
-//  SGFeatureCollection.h
+//  SGStoredRecord+Private.h
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2010-2011, SimpleGeo Inc.
+//  Copyright (c) 2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,44 +28,13 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import "SGStoredRecord.h"
 
-/*!
- * Collections of Features.
- */
-@interface SGFeatureCollection : NSObject
-{
-  @private
-    NSArray* features;
-}
 
-//! Collected Features.
-@property (retain,readonly) NSArray* features;
+@interface SGStoredRecord (Private)
 
-/*!
- * Create a FeatureCollection from a list of Features.
- * @param features List of Features.
- */
-+ (SGFeatureCollection *)featureCollectionWithFeatures:(NSArray *)features;
-
-/*!
- * Create a FeatureCollection from a list of Records.
- * @param records List of Records.
- */
-+ (SGFeatureCollection *)featureCollectionWithRecords:(NSArray *)records;
-
-/*!
- * Construct a FeatureCollection from a list of Features.
- * @param features List of Features.
- */
-- (id)initWithFeatures:(NSArray *)features;
-
-/*!
- * Construct a FeatureCollection from a list of Records.
- * @param someRecords List of Records.
- */
-- (id)initWithRecords:(NSArray *)someRecords;
-
-//! Gets the number of features in this collection.
-- (NSUInteger)count;
++ (SGStoredRecord *)recordWithDictionary:(NSDictionary *)data;
+- (id)initWithId:(NSString *)id
+      dictionary:(NSDictionary *)data;
 
 @end

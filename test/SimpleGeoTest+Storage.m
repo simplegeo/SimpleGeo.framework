@@ -329,11 +329,11 @@
 
 - (void)testAddOrUpdateLayer
 {
-	[self prepare];
+    [self prepare];
     [[self createClient] addOrUpdateLayer:@"mojodna.test"
-									title:@"TheTitle"
-							  description:@"mojodna's description" 
-								   public:TRUE];
+                                    title:@"TheTitle"
+                              description:@"mojodna's description" 
+                                   public:TRUE];
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
 	
@@ -341,71 +341,71 @@
 
 - (void)testAddOrUpdateLayerWithcallbackURLs
 {
-	[self prepare];
+    [self prepare];
     [[self createClient] addOrUpdateLayer:@"mojodna.test2"
-									title:@"Mojodna Test Layer Title"
-							  description:@"This is a test layer for Mojodna"
-								   public:FALSE
-							 callbackURLs:[NSArray arrayWithObjects:nil]];
+                                    title:@"Mojodna Test Layer Title"
+                              description:@"This is a test layer for Mojodna"
+                                   public:FALSE
+                             callbackURLs:[NSArray arrayWithObjects:nil]];
 	[self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
 }
 
 - (void)testGetLayers
 {
-	[self prepare];
+    [self prepare];
     [[self createClient] getLayers];
-	[self waitForStatus:kGHUnitWaitStatusSuccess
+    [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
 }
 
 - (void)testGetLayersWithCursor
 {
-	[self prepare];
+    [self prepare];
     [[self createClient] getLayersWithCursor:@"cursor1"];
-	[self waitForStatus:kGHUnitWaitStatusSuccess
+    [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
 }
 
 - (void)testGetLayer
 {
-	[self prepare];
-	[[self createClient] getLayer:@"mojodna.test"];
-	[self waitForStatus:kGHUnitWaitStatusSuccess
+    [self prepare];
+    [[self createClient] getLayer:@"mojodna.test"];
+    [self waitForStatus:kGHUnitWaitStatusSuccess
 				timeout:0.25];
 }
 
 - (void)testDeleteLayer
 {
-	[self prepare];
-	[[self createClient] deleteLayer:@"mojodna.test"];
-	[self waitForStatus:kGHUnitWaitStatusSuccess
-				timeout:0.25];	
+    [self prepare];
+    [[self createClient] deleteLayer:@"mojodna.test"];
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];	
 }
 
 #pragma mark SimpleGeoStorageDelegate Methods
 
 - (void)didAddOrUpdateLayer:(NSString *)name
 {
-	if ([name isEqualToString:@"mojodna.test"]) {
-		[self notify:kGHUnitWaitStatusSuccess
-		 forSelector:@selector(testAddOrUpdateLayer)];		
-	} else if ([name isEqualToString:@"mojodna.test2"]) {
-		[self notify:kGHUnitWaitStatusSuccess
-		 forSelector:@selector(testAddOrUpdateLayerWithcallbackURLs)];
-	}
+    if ([name isEqualToString:@"mojodna.test"]) {
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testAddOrUpdateLayer)];		
+     } else if ([name isEqualToString:@"mojodna.test2"]) {
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testAddOrUpdateLayerWithcallbackURLs)];
+    }
 }
 
 - (void)didLoadLayers:(NSArray *)layers withCursor:(NSString *)cursor
 {
-	if ([layers count] > 0) {
+    if ([layers count] > 0) {
 		NSDictionary *layer1=[layers objectAtIndex:0];
 		GHAssertEqualObjects([layer1 objectForKey:@"name"],@"mojodna.test",nil);
 		GHAssertEqualObjects([layer1 objectForKey:@"title"],@"Mojodna Test Layer",nil);
 		GHAssertEqualObjects([layer1 objectForKey:@"description"],@"This is a test layer for Mojodna",nil);
 		if ([cursor isEqualToString:@"cursor1"]) {
-			[self notify:kGHUnitWaitStatusSuccess
-			 forSelector:@selector(testGetLayersWithCursor)];
+            [self notify:kGHUnitWaitStatusSuccess
+             forSelector:@selector(testGetLayersWithCursor)];
 		} else {
 			[self notify:kGHUnitWaitStatusSuccess
 			 forSelector:@selector(testGetLayers)];
@@ -416,19 +416,19 @@
 - (void)didLoadLayer:(NSDictionary *)layer
             withName:(NSString *)name
 {
-	GHAssertEqualObjects([layer objectForKey:@"name"],@"mojodna.test",nil);
-	GHAssertEqualObjects([layer objectForKey:@"title"],@"Mojodna Test Layer",nil);
-	GHAssertEqualObjects([layer objectForKey:@"description"],@"This is a test layer for Mojodna",nil);
-	GHAssertEqualObjects(name,@"mojodna.test",nil);
-	[self notify:kGHUnitWaitStatusSuccess
-	 forSelector:@selector(testGetLayer)];
+    GHAssertEqualObjects([layer objectForKey:@"name"],@"mojodna.test",nil);
+    GHAssertEqualObjects([layer objectForKey:@"title"],@"Mojodna Test Layer",nil);
+    GHAssertEqualObjects([layer objectForKey:@"description"],@"This is a test layer for Mojodna",nil);
+    GHAssertEqualObjects(name,@"mojodna.test",nil);
+    [self notify:kGHUnitWaitStatusSuccess
+     forSelector:@selector(testGetLayer)];
 }
 
 - (void)didDeleteLayer:(NSString *)name
 {
-	GHAssertEqualObjects(name,@"mojodna.test",nil);
-	[self notify:kGHUnitWaitStatusSuccess
-	 forSelector:@selector(testDeleteLayer)];
+    GHAssertEqualObjects(name,@"mojodna.test",nil);
+    [self notify:kGHUnitWaitStatusSuccess
+     forSelector:@selector(testDeleteLayer)];
 }
 
 - (void)didAddOrUpdateRecord:(SGStoredRecord *)record

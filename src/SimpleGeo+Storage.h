@@ -110,8 +110,8 @@
  * @param layers List of NSDictionarys containing layer data.
  * @param cursor Cursor string used to retrieve layer
  */
-- (void)didLoadLayers:(NSArray *)layers 
-		   withCursor:(NSString *)cursor;
+- (void)didLoadLayers:(NSArray *)layers
+           withCursor:(NSString *)cursor;
 
 /*!
  * Called when a record was loaded.

@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.1 - 3/11/11
+
+* Support for layer manipulation
+
 ## 1.2.0 - 3/2/11
 
 * Storage support

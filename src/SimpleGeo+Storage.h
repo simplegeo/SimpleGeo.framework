@@ -56,11 +56,10 @@
                      inLayer:(NSString *)layer;
 
 /*!
- * Called when a record was successfully added or updated.
+ * Called when records were successfully added or updated.
  *
- * @param record Record that was added or updated.
+ * @param records Records that were added or updated.
  * @param layer  Layer that the record belongs to.
- * @param added  Whether the record was added.
  */
 - (void)didAddOrUpdateRecords:(NSArray *)records
                       inLayer:(NSString *)layer;

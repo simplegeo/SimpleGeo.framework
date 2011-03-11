@@ -108,7 +108,7 @@
  * Called when information about all available layers was loaded.
  *
  * @param layers List of NSDictionarys containing layer data.
- * @param cursor Cursor string used to retrieve layer
+ * @param cursor Cursor string (used for pagination).
  */
 - (void)didLoadLayers:(NSArray *)layers
            withCursor:(NSString *)cursor;

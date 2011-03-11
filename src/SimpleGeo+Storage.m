@@ -438,7 +438,7 @@
                      title:title
                description:description
                     public:public
-              callbackURLs:[NSArray arrayWithObjects:nil]];
+              callbackURLs:[NSArray array]];
 }
 
 - (void)addOrUpdateLayer:(NSString *)name
@@ -448,26 +448,28 @@
             callbackURLs:(NSArray *)callbackURLs
 {
     NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/layers/%@.json",
-                                                  SIMPLEGEO_API_VERSION_FOR_STORAGE,name]];
+                                                  SIMPLEGEO_API_VERSION_FOR_STORAGE, name]];
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
-	
+        
     NSMutableDictionary *layerDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-									  name,@"name",
-									  title,@"title",
-									  description,@"description",
-									  callbackURLs,@"callbackURLs",nil];
+                                      name, @"name",
+                                      title, @"title",
+                                      description, @"description",
+                                      callbackURLs, @"callbackURLs",
+                                      nil];
     if (public) {
         [layerDict setValue:@"true"
-                      forKey:@"public"];
+                     forKey:@"public"];
     } else {
         [layerDict setValue:@"false"
-                      forKey:@"public"];
+                     forKey:@"public"];
     }
-	
+        
     [request appendPostData:[[layerDict yajl_JSONString] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setRequestMethod:@"PUT"];
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
-    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"didRequestLoadAddOrUpdateLayer:", @"targetSelector",
+    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                          @"didRequestLoadAddOrUpdateLayer:", @"targetSelector",
                           layerDict, @"layerInfo",
                           nil]];
     [request startAsynchronous];
@@ -483,14 +485,16 @@
     NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/layers.json",
                                  SIMPLEGEO_API_VERSION_FOR_STORAGE];
     if (cursor) {
-		[endpoint appendFormat:@"?%@",[NSString stringWithFormat:@"%@=%@",@"cursor",cursor]];
-	}
+        [endpoint appendFormat:@"?%@", [NSString stringWithFormat:@"%@=%@",
+                                        @"cursor", cursor]];
+    }
     NSURL *endpointURL = [self endpointForString:endpoint];
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
     [request setRequestMethod:@"GET"];
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
-    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"didRequestLoadLoadLayers:", @"targetSelector",
-                          cursor,@"cursor",
+    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                          @"didRequestLoadLoadLayers:", @"targetSelector",
+                          cursor, @"cursor",
                           nil]];
     [request startAsynchronous];
 }
@@ -498,14 +502,14 @@
 - (void)getLayer:(NSString *)layer
 {
     NSMutableString *endpoint = [NSMutableString stringWithFormat:@"/%@/layers/%@.json",
-                                 SIMPLEGEO_API_VERSION_FOR_STORAGE,layer];
+                                 SIMPLEGEO_API_VERSION_FOR_STORAGE, layer];
     NSURL *endpointURL = [self endpointForString:endpoint];
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
     [request setRequestMethod:@"GET"];
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                           @"didRequestLoadLoadLayer:", @"targetSelector",
-                          layer,@"layer",
+                          layer, @"layer",
                           nil]];
     [request startAsynchronous];
 }
@@ -513,7 +517,7 @@
 - (void)deleteLayer:(NSString *)name
 {
     NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/layers/%@.json",
-                                                  SIMPLEGEO_API_VERSION_FOR_STORAGE,name]];
+                                                  SIMPLEGEO_API_VERSION_FOR_STORAGE, name]];
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
     [request setRequestMethod:@"DELETE"];
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
@@ -522,7 +526,6 @@
                           name, @"layer",
                           nil]];
     [request startAsynchronous];
-	
 }
 
 #pragma mark Dispatcher Methods
@@ -533,12 +536,12 @@
         if ([request responseStatusCode] == 404) {
             NSLog(@"Response code = 404");
         } else {
-            NSMutableDictionary *layerDict=[[[[request userInfo] objectForKey:@"layerInfo"] retain] autorelease];
+            NSMutableDictionary *layerDict = [[[[request userInfo] objectForKey:@"layerInfo"] retain] autorelease];
             [delegate didAddOrUpdateLayer:[layerDict objectForKey:@"name"]];
-		}
-	} else {
+        }
+    } else {
         NSLog(@"Delegate does not implement didAddOrUpdateLayer:");
-	}
+    }
 }
 
 - (void)didRequestLoadDeleteLayer:(ASIHTTPRequest *)request
@@ -547,11 +550,11 @@
         if ([request responseStatusCode] == 404) {
             NSLog(@"Response code = 404");
         } else {
-           [delegate didDeleteLayer:[[[[request userInfo] objectForKey:@"layer"] retain] autorelease]];
+            [delegate didDeleteLayer:[[[[request userInfo] objectForKey:@"layer"] retain] autorelease]];
         }
-	} else {
+    } else {
         NSLog(@"Delegate does not implement didDeleteLayer:");
-	}
+    }
 }
 
 - (void)didRequestLoadLoadLayer:(ASIHTTPRequest *)request
@@ -563,10 +566,10 @@
             NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
             [delegate didLoadLayer:[[jsonResponse retain] autorelease]
                           withName:[[[[request userInfo] objectForKey:@"layer"] retain] autorelease]];
-		}
-	} else {
-		NSLog(@"Delegate does not implement didLoadLayer:withName:");
-	}
+        }
+    } else {
+        NSLog(@"Delegate does not implement didLoadLayer:withName:");
+    }
 }
 
 - (void)didRequestLoadLoadLayers:(ASIHTTPRequest *)request
@@ -575,14 +578,13 @@
         if ([request responseStatusCode] == 404) {
             NSLog(@"Response code = 404");
         } else {
-			NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
-			[delegate didLoadLayers:[[[jsonResponse objectForKey:@"layers"] retain] autorelease] 
-						 withCursor:[[[[request userInfo] objectForKey:@"cursor"] retain] autorelease]];
-			
-		}
-	} else {
-		NSLog(@"Delegate does not implement didLoadLayers:withCursor:");
-	}
+            NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
+            [delegate didLoadLayers:[[[jsonResponse objectForKey:@"layers"] retain] autorelease] 
+                         withCursor:[[[[request userInfo] objectForKey:@"cursor"] retain] autorelease]];
+        }
+    } else {
+        NSLog(@"Delegate does not implement didLoadLayers:withCursor:");
+    }
 }
 
 - (void)didAddOrUpdateRecord:(ASIHTTPRequest *)request

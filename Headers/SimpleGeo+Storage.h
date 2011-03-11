@@ -40,6 +40,13 @@
 @interface NSObject (SimpleGeoStorageDelegate)
 
 /*!
+ * Called when a layer was successfully added or updated.
+ *
+ * @param name Layer name.
+ */
+- (void)didAddOrUpdateLayer:(NSString *)name;
+
+/*!
  * Called when a record was successfully added or updated.
  *
  * @param record Record that was added or updated.
@@ -49,14 +56,20 @@
                      inLayer:(NSString *)layer;
 
 /*!
- * Called when a record was successfully added or updated.
+ * Called when records were successfully added or updated.
  *
- * @param record Record that was added or updated.
+ * @param records Records that were added or updated.
  * @param layer  Layer that the record belongs to.
- * @param added  Whether the record was added.
  */
 - (void)didAddOrUpdateRecords:(NSArray *)records
                       inLayer:(NSString *)layer;
+
+/*!
+ * Called when a layer was successfully deleted.
+ *
+ * @param name Layer name.
+ */
+- (void)didDeleteLayer:(NSString *)name;
 
 /*!
  * Called when a record was successfully deleted.
@@ -80,6 +93,24 @@
            forRecordId:(NSString *)recordId
               forQuery:(NSDictionary *)query
                 cursor:(NSString *)cursor;
+
+/*!
+ * Called when layer information was loaded.
+ *
+ * @param layer Layer data.
+ * @param name  Layer name.
+ */
+- (void)didLoadLayer:(NSDictionary *)layer
+            withName:(NSString *)name;
+
+/*!
+ * Called when information about all available layers was loaded.
+ *
+ * @param layers List of NSDictionarys containing layer data.
+ * @param cursor Cursor string (used for pagination).
+ */
+- (void)didLoadLayers:(NSArray *)layers
+           withCursor:(NSString *)cursor;
 
 /*!
  * Called when a record was loaded.
@@ -419,6 +450,58 @@
 
 #pragma mark Layer Manipulation
 
-// It is not currently possible to manipulate layers using the API.
+/*!
+ * Add or update a layer.
+ *
+ * @param name        Layer name.
+ * @param title       Layer title.
+ * @param description Layer description.
+ * @param public      Whether this layer should be public.
+ */
+- (void)addOrUpdateLayer:(NSString *)name
+                   title:(NSString *)title
+             description:(NSString *)description
+                  public:(BOOL)public;
+
+/*!
+ * Add or update a layer.
+ *
+ * @param name         Layer name.
+ * @param title        Layer title.
+ * @param description  Layer description.
+ * @param public       Whether this layer should be public.
+ * @param callbackURLs List of callback URLs.
+ */
+- (void)addOrUpdateLayer:(NSString *)name
+                   title:(NSString *)title
+             description:(NSString *)description
+                  public:(BOOL)public
+            callbackURLs:(NSArray *)callbackURLs;
+
+/*!
+ * Get a list of all available layers.
+ */
+- (void)getLayers;
+
+/*!
+ * Get a list of all available layers.
+ *
+ * @param cursor Cursor string (used for pagination).
+ */
+- (void)getLayersWithCursor:(NSString *)cursor;
+
+/*!
+ * Get information about a specific layer.
+ *
+ * @param layer Layer name.
+ */
+- (void)getLayer:(NSString *)layer;
+
+/*!
+ * Delete a layer.
+ *
+ * @param name Layer name.
+ */
+- (void)deleteLayer:(NSString *)name;
 
 @end

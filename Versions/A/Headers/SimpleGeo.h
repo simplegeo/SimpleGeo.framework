@@ -79,7 +79,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 
 /*!
  * Called when categories have been loaded.
- * @param an array of categories
+ * @param categories An array of categories.
  */
 - (void)didLoadCategories:(NSArray *)categories;
 

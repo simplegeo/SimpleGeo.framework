@@ -89,12 +89,34 @@
                 timeout:0.25];
 }
 
+- (void)testGetPlacesNearWithMultipleResultsAndCount
+{
+    [self prepare];
+	
+    [[self createClient] getPlacesNear:[self point] 
+                                 count:2];
+	
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
 - (void)testGetPlacesNearWithRadiusAndMultipleResults
 {
     [self prepare];
 
     [[self createClient] getPlacesNear:[self point] within:1.5];
 
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.5];
+}
+
+- (void)testGetPlacesNearWithRadiusAndMultipleResultsAndCount
+{
+    [self prepare];
+	
+    [[self createClient] getPlacesNear:[self point]
+                                within:1.5
+                                 count:2];
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.5];
 }
@@ -106,6 +128,17 @@
     [[self createClient] getPlacesNear:[self point]
                               matching:@"öne"];
 
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
+- (void)testGetPlacesNearMatchingWithASingleResultAndCount
+{
+    [self prepare];
+	
+    [[self createClient] getPlacesNear:[self point]
+                              matching:@"öne"
+                                 count:2];
     [self waitForStatus:kGHUnitWaitStatusSuccess
                 timeout:0.25];
 }
@@ -122,6 +155,18 @@
                 timeout:0.25];
 }
 
+- (void)testGetPlacesNearMatchingInCategoryWithCount
+{
+    [self prepare];
+	
+    [[self createClient] getPlacesNear:[self point]
+                              matching:@"burgers"
+                            inCategory:@"Restaurants & Bars"
+                                 count:2];
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
 - (void)testGetPlacesNearAddress
 {
     [self prepare];
@@ -130,6 +175,16 @@
 
     [self waitForStatus:kGHUnitWaitStatusSuccess
                  timeout:0.25];
+}
+
+- (void)testGetPlacesNearAddressWithCount
+{
+    [self prepare];
+	
+    [[self createClient] getPlacesNearAddress:@"41 Decatur St., San Francisco, CA" count:2];
+	
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+				timeout:0.25];
 }
 
 - (void)testUpdatePlace
@@ -211,8 +266,10 @@
     NSString *matching = [query objectForKey:@"matching"];
     NSString *category = [query objectForKey:@"category"];
     double radius = [[query objectForKey:@"radius"] doubleValue];
-
-    if (radius > 0.0f) {
+    int count = [[query objectForKey:@"limit"]intValue];
+	
+	
+    if (radius > 0.0f && count == 25) {
         GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
         GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
         GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
@@ -220,7 +277,7 @@
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearWithRadiusAndMultipleResults)];
-    } else if (!address && !matching && !category) {
+    } else if (!address && !matching && !category && count == 25) {
         GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
         GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 7 places.");
         GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
@@ -230,7 +287,7 @@
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearWithMultipleResults)];
-    } else if ([matching isEqual:@"öne"]) {
+    } else if ([matching isEqual:@"öne"] && count == 25) {
         GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
         GHAssertEqualObjects(matching, @"öne", nil);
         GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
@@ -240,7 +297,7 @@
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearMatchingWithASingleResult)];
-    } else if ([matching isEqual:@"burgers"]) {
+    } else if ([matching isEqual:@"burgers"] && count == 25) {
         GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
         GHAssertEqualObjects(matching, @"burgers", nil);
         GHAssertEqualObjects(category, @"Restaurants & Bars", nil);
@@ -253,7 +310,7 @@
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearMatchingInCategory)];
-    } else if (address) {
+    } else if (address && count == 25) {
         GHAssertEqualObjects(address, @"41 Decatur St., San Francisco, CA", @"Reference address didn't match");
         GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
         GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
@@ -261,6 +318,55 @@
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearAddress)];
+    } else if (radius > 0.0f && count == 2) {
+        GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
+        GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
+        GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
+                             @"Mountain Sun Pub & Brewery", nil);
+		
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetPlacesNearWithRadiusAndMultipleResultsAndCount)];
+    } else if (!address && !matching && !category && count == 2) {
+        GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
+        GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 7 places.");
+        GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
+                             @"Burger Master West Olympia", nil);
+        GHAssertEqualObjects([[[[places features] objectAtIndex:1] properties] objectForKey:@"name"],
+                             @"Red Robin Gourmet Burgers", nil);
+		
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetPlacesNearWithMultipleResultsAndCount)];
+    } else if ([matching isEqual:@"öne"] && count == 2) {
+        GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
+        GHAssertEqualObjects(matching, @"öne", nil);
+        GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
+        NSArray *features = [places features];
+        GHAssertEqualObjects([[[features objectAtIndex:0] properties] objectForKey:@"name"],
+                             @"Burger Master West Olympia", nil);
+		
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetPlacesNearMatchingWithASingleResultAndCount)];
+    } else if ([matching isEqual:@"burgers"] && count == 2) {
+        GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
+        GHAssertEqualObjects(matching, @"burgers", nil);
+        GHAssertEqualObjects(category, @"Restaurants & Bars", nil);
+        GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 7 places.");
+        NSArray *features = [places features];
+        GHAssertEqualObjects([[[features objectAtIndex:0] properties] objectForKey:@"name"],
+                             @"Burger Master West Olympia", nil);
+        GHAssertEqualObjects([[[[places features] objectAtIndex:1] properties] objectForKey:@"name"],
+                             @"Red Robin Gourmet Burgers", nil);
+		
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetPlacesNearMatchingInCategoryWithCount)];
+    } else if (address && count == 2) {
+        GHAssertEqualObjects(address, @"41 Decatur St., San Francisco, CA", @"Reference address didn't match");
+        GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
+        GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
+                             @"Mountain Sun Pub & Brewery", nil);
+		
+        [self notify:kGHUnitWaitStatusSuccess
+         forSelector:@selector(testGetPlacesNearAddressWithCount)];
     }
 }
 

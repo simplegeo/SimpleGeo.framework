@@ -17,7 +17,7 @@
 		5D30FFA0131F0A360089F563 /* SGStoredRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D30FF9D131F0A360089F563 /* SGStoredRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D30FFA1131F0A360089F563 /* SGStoredRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D30FF9E131F0A360089F563 /* SGStoredRecord.m */; };
 		5D30FFA2131F0A360089F563 /* SGStoredRecord+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D30FF9F131F0A360089F563 /* SGStoredRecord+Private.h */; };
-		5DEC2F1713045743001A59C5 /* SGGeometryCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DEC2F1513045743001A59C5 /* SGGeometryCollection.h */; };
+		5DEC2F1713045743001A59C5 /* SGGeometryCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DEC2F1513045743001A59C5 /* SGGeometryCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DEC2F1813045743001A59C5 /* SGGeometryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEC2F1613045743001A59C5 /* SGGeometryCollection.m */; };
 		5DEC2F461304576F001A59C5 /* SimpleGeo+Storage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DEC2F441304576F001A59C5 /* SimpleGeo+Storage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DEC2F471304576F001A59C5 /* SimpleGeo+Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEC2F451304576F001A59C5 /* SimpleGeo+Storage.m */; };

@@ -107,7 +107,8 @@
  * @param point Query point.
  * @param limit Number of results to return.
  */
-- (void)getPlacesNear:(SGPoint *)point count:(int)limit;
+- (void)getPlacesNear:(SGPoint *)point
+                count:(int)limit;
 
 /*!
  * Find places near an address. SimpleGeo will geocode the address for you.
@@ -120,9 +121,10 @@
  * Find places near an address. SimpleGeo will geocode the address for you.
  * (SimpleGeo+Places.h)
  * @param address Query address.
- * @param limit Number of results to return. 
+ * @param limit   Number of results to return. 
  */
-- (void)getPlacesNearAddress:(NSString *)address count:(int)limit;
+- (void)getPlacesNearAddress:(NSString *)address
+                       count:(int)limit;
 
 /*!
  * Find places near a point (SimpleGeo+Places.h).
@@ -136,7 +138,7 @@
  * Find places near a point (SimpleGeo+Places.h).
  * @param point  Query point.
  * @param radius Radius of query (km)
- * @param limit Number of results to return.
+ * @param limit  Number of results to return.
  */
 - (void)getPlacesNear:(SGPoint *)point
                within:(double)radius

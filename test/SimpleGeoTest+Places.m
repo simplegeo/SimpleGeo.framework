@@ -266,7 +266,7 @@
     NSString *matching = [query objectForKey:@"matching"];
     NSString *category = [query objectForKey:@"category"];
     double radius = [[query objectForKey:@"radius"] doubleValue];
-    int count = [[query objectForKey:@"limit"]intValue];
+    int count = [[query objectForKey:@"limit"] intValue];
 	
 	
     if (radius > 0.0f && count == 25) {

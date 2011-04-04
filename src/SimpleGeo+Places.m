@@ -275,7 +275,8 @@
     [self getPlacesNear:point 
                matching:query
              inCategory:category
-                 within:radius count:25];
+                 within:radius
+                  count:0];
 }
 
 - (void)getPlacesNear:(SGPoint *)point
@@ -312,11 +313,13 @@
         NSNumber *objRadius = [NSNumber numberWithDouble:radius];
         [userInfo setObject:objRadius forKey:@"radius"];
     }
-	if (limit>0) {
+
+	if (limit > 0) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%d", @"num", limit]];
         NSNumber *objLimit = [NSNumber numberWithInt:limit];
         [userInfo setObject:objLimit forKey:@"limit"];
 	}
+
     if ([queryParams count] > 0) {
         [endpoint appendFormat:@"?%@", [queryParams componentsJoinedByString:@"&"]];
     }
@@ -333,7 +336,11 @@
                   inCategory:(NSString *)category
                       within:(double)radius
 {
-	[self getPlacesNearAddress:address matching:query inCategory:category within:radius count:25];
+	[self getPlacesNearAddress:address
+                      matching:query
+                    inCategory:category
+                        within:radius
+                         count:0];
 }
 
 - (void)getPlacesNearAddress:(NSString *)address
@@ -351,7 +358,7 @@
                                       @"didRequestPlaces:", @"targetSelector",
                                       address, @"address",
                                       nil];
-    if (address&& ! [address isEqualToString:@""]) {
+    if (address && ! [address isEqualToString:@""]) {
          [queryParams addObject:[NSString stringWithFormat:@"%@=%@",@"address",
                                  [self URLEncodedString:address]]];
 	}
@@ -374,7 +381,7 @@
         [userInfo setObject:objRadius forKey:@"radius"];
     }
 	
-	if (limit>0) {
+	if (limit > 0) {
         [queryParams addObject:[NSString stringWithFormat:@"%@=%d", @"num", limit]];
         NSNumber *objLimit = [NSNumber numberWithInt:limit];
         [userInfo setObject:objLimit forKey:@"limit"];

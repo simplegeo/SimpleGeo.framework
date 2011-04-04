@@ -40,7 +40,7 @@
 		5D5B03711291BD4500399A50 /* SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B036E1291BD4500399A50 /* SGFeature.m */; };
 		5D5B05D012934A9D00399A50 /* NSArray+SGFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5B05CE12934A9D00399A50 /* NSArray+SGFeature.h */; };
 		5D5B05D112934A9D00399A50 /* NSArray+SGFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5B05CF12934A9D00399A50 /* NSArray+SGFeature.m */; };
-		5D687FF312F8D53F001716EA /* SGGeometryCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D687FF112F8D53F001716EA /* SGGeometryCollection.h */; };
+		5D687FF312F8D53F001716EA /* SGGeometryCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D687FF112F8D53F001716EA /* SGGeometryCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D687FF412F8D53F001716EA /* SGGeometryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D687FF212F8D53F001716EA /* SGGeometryCollection.m */; };
 		5D7674B712909AAB006B7D51 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674B612909AAB006B7D51 /* SystemConfiguration.framework */; };
 		5D7674BB12909ABA006B7D51 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674BA12909ABA006B7D51 /* libz.dylib */; };
@@ -80,7 +80,7 @@
 		5DF0868912ADCBC5007A8A60 /* SGPoint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF0868812ADCBC5007A8A60 /* SGPoint+Private.h */; };
 		5DF08A3812AF3DDE007A8A60 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF08A3712AF3DDE007A8A60 /* YAJL.framework */; };
 		5DF08A5812AF3EAE007A8A60 /* YAJL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5DF08A3712AF3DDE007A8A60 /* YAJL.framework */; };
-		5DF08A9D12AF644F007A8A60 /* SGMultiPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF08A9B12AF644F007A8A60 /* SGMultiPolygon.h */; };
+		5DF08A9D12AF644F007A8A60 /* SGMultiPolygon.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF08A9B12AF644F007A8A60 /* SGMultiPolygon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DF08A9E12AF644F007A8A60 /* SGMultiPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF08A9C12AF644F007A8A60 /* SGMultiPolygon.m */; };
 		5DF08AA112AF6544007A8A60 /* SGMultiPolygon+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF08AA012AF6544007A8A60 /* SGMultiPolygon+Private.h */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
@@ -488,22 +488,22 @@
 				5D39921D12A48F3F00EB7B20 /* SimpleGeo+Internal.h in Headers */,
 				5D3994E812A8A8A700EB7B20 /* SGGeometry.h in Headers */,
 				5D3994EF12A8AB4300EB7B20 /* SGPolygon.h in Headers */,
+				5D5AD28012DD1CA9008810F0 /* ASIHTTPRequest+OAuth.h in Headers */,
+				5D12248112F246AA00CB2CC2 /* SimpleGeo+Storage.h in Headers */,
+				5D30FF91131F0A180089F563 /* SGStoredRecord+Private.h in Headers */,
 				5D1C1B9C12A9AD1A0055EC91 /* SimpleGeo+Context.h in Headers */,
 				5DF0864A12ADC878007A8A60 /* SGFeature+Private.h in Headers */,
+				5DF08A9D12AF644F007A8A60 /* SGMultiPolygon.h in Headers */,
+				5D687FF312F8D53F001716EA /* SGGeometryCollection.h in Headers */,
 				5DF0865B12ADC94E007A8A60 /* SGFeatureCollection+Private.h in Headers */,
 				5DF0866D12ADCA9B007A8A60 /* SGGeometry+Private.h in Headers */,
 				5DF0867B12ADCB21007A8A60 /* SGPolygon+Private.h in Headers */,
 				5DF0868912ADCBC5007A8A60 /* SGPoint+Private.h in Headers */,
-				5DF08A9D12AF644F007A8A60 /* SGMultiPolygon.h in Headers */,
 				5DF08AA112AF6544007A8A60 /* SGMultiPolygon+Private.h in Headers */,
-				5D5AD28012DD1CA9008810F0 /* ASIHTTPRequest+OAuth.h in Headers */,
 				5D5AD28812DD1CF5008810F0 /* ASIBase64Transcoder.h in Headers */,
-				5D12248112F246AA00CB2CC2 /* SimpleGeo+Storage.h in Headers */,
-				5D687FF312F8D53F001716EA /* SGGeometryCollection.h in Headers */,
 				EA29A52E1313109D00979D1A /* NSArray+SGGeometry.h in Headers */,
 				5D1408C1131586BB0001417A /* SGGeometryCollection+Private.h in Headers */,
 				5D30FF8F131F0A180089F563 /* SGStoredRecord.h in Headers */,
-				5D30FF91131F0A180089F563 /* SGStoredRecord+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

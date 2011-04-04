@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.2
+
+* Exposed missing headers
+
 ## 1.2.1 - 3/11/11
 
 * Support for layer manipulation

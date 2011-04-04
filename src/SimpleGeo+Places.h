@@ -103,11 +103,26 @@
 - (void)getPlacesNear:(SGPoint *)point;
 
 /*!
+ * Find places near a point (SimpleGeo+Places.h).
+ * @param point Query point.
+ * @param limit Number of results to return.
+ */
+- (void)getPlacesNear:(SGPoint *)point count:(int)limit;
+
+/*!
  * Find places near an address. SimpleGeo will geocode the address for you.
  * (SimpleGeo+Places.h)
  * @param address Query address.
  */
 - (void)getPlacesNearAddress:(NSString *)address;
+
+/*!
+ * Find places near an address. SimpleGeo will geocode the address for you.
+ * (SimpleGeo+Places.h)
+ * @param address Query address.
+ * @param limit Number of results to return. 
+ */
+- (void)getPlacesNearAddress:(NSString *)address count:(int)limit;
 
 /*!
  * Find places near a point (SimpleGeo+Places.h).
@@ -116,6 +131,16 @@
  */
 - (void)getPlacesNear:(SGPoint *)point
                within:(double)radius;
+
+/*!
+ * Find places near a point (SimpleGeo+Places.h).
+ * @param point  Query point.
+ * @param radius Radius of query (km)
+ * @param limit Number of results to return.
+ */
+- (void)getPlacesNear:(SGPoint *)point
+               within:(double)radius
+                count:(int)limit;
 
 /*!
  * Find places near an address. SimpleGeo will geocode the address for you.
@@ -127,12 +152,34 @@
                       within:(double)radius;
 
 /*!
+ * Find places near an address. SimpleGeo will geocode the address for you.
+ * (SimpleGeo+Places.h)
+ * @param address Query address.
+ * @param radius  Radius of query (km)
+ * @param limit   Number of results to return.
+ */
+- (void)getPlacesNearAddress:(NSString *)address
+                      within:(double)radius
+                       count:(int)limit;
+
+/*!
  * Find places near a point matching a query string (SimpleGeo+Places.h).
  * @param point Query point.
  * @param query Query string.
  */
 - (void)getPlacesNear:(SGPoint *)point
              matching:(NSString *)query;
+
+/*!
+ * Find places near a point matching a query string (SimpleGeo+Places.h).
+ * @param point Query point.
+ * @param query Query string.
+ * @param limit Number of results to return.
+ */
+- (void)getPlacesNear:(SGPoint *)point
+             matching:(NSString *)query
+                count:(int)limit;
+
 
 /*!
  * Find places near an address. SimpleGeo will geocode the address for you.
@@ -142,6 +189,17 @@
  */
 - (void)getPlacesNearAddress:(NSString *)address
                     matching:(NSString *)query;
+
+/*!
+ * Find places near an address. SimpleGeo will geocode the address for you.
+ * (SimpleGeo+Places.h)
+ * @param address Query address.
+ * @param query   Query string.
+ * @param limit   Number of results to return.
+ */
+- (void)getPlacesNearAddress:(NSString *)address
+                    matching:(NSString *)query
+                       count:(int)limit;
 
 /*!
  * Find places near a point matching a query string (SimpleGeo+Places.h).
@@ -154,6 +212,18 @@
                within:(double)radius;
 
 /*!
+ * Find places near a point matching a query string (SimpleGeo+Places.h).
+ * @param point  Query point.
+ * @param query  Query string.
+ * @param radius Radius of query (km)
+ * @param limit  Number of results to return.
+ */
+- (void)getPlacesNear:(SGPoint *)point
+             matching:(NSString *)query
+               within:(double)radius
+                count:(int)limit;
+
+/*!
  * Find places near an address. SimpleGeo will geocode the address for you.
  * (SimpleGeo+Places.h)
  * @param address Query address.
@@ -163,6 +233,19 @@
 - (void)getPlacesNearAddress:(NSString *)address
                     matching:(NSString *)query
                       within:(double)radius;
+
+/*!
+ * Find places near an address. SimpleGeo will geocode the address for you.
+ * (SimpleGeo+Places.h)
+ * @param address Query address.
+ * @param query   Query string.
+ * @param radius  Radius of query (km)
+ * @param limit   Number of results to return.
+ */
+- (void)getPlacesNearAddress:(NSString *)address
+                    matching:(NSString *)query
+                      within:(double)radius
+                       count:(int)limit;
 
 /*!
  * Find places near a point matching a query string in a specific category (SimpleGeo+Places.h).
@@ -175,6 +258,18 @@
            inCategory:(NSString *)category;
 
 /*!
+ * Find places near a point matching a query string in a specific category (SimpleGeo+Places.h).
+ * @param point    Query point.
+ * @param query    Query string.
+ * @param category Query category.
+ * @param limit    Number of results to return.
+ */
+- (void)getPlacesNear:(SGPoint *)point
+             matching:(NSString *)query
+           inCategory:(NSString *)category
+                count:(int)limit;
+
+/*!
  * Find places near an address. SimpleGeo will geocode the address for you.
  * (SimpleGeo+Places.h)
  * @param address  Query address.
@@ -184,6 +279,19 @@
 - (void)getPlacesNearAddress:(NSString *)address
                     matching:(NSString *)query
                   inCategory:(NSString *)category;
+
+/*!
+ * Find places near an address. SimpleGeo will geocode the address for you.
+ * (SimpleGeo+Places.h)
+ * @param address  Query address.
+ * @param query    Query string.
+ * @param category Query category.
+ * @param limit    Number of results to return.
+ */
+- (void)getPlacesNearAddress:(NSString *)address
+                    matching:(NSString *)query
+                  inCategory:(NSString *)category
+                       count:(int)limit;
 
 /*!
  * Find places near a point matching a query string in a specific category (SimpleGeo+Places.h).
@@ -198,6 +306,20 @@
                within:(double)radius;
 
 /*!
+ * Find places near a point matching a query string in a specific category (SimpleGeo+Places.h).
+ * @param point    Query point.
+ * @param query    Query string.
+ * @param category Query category.
+ * @param radius   Radius of query (km)
+ * @param limit    Number of results to return.
+ */
+- (void)getPlacesNear:(SGPoint *)point
+             matching:(NSString *)query
+           inCategory:(NSString *)category
+               within:(double)radius
+                count:(int)limit;
+
+/*!
  * Find places near an address. SimpleGeo will geocode the address for you.
  * (SimpleGeo+Places.h)
  * @param address  Query address.
@@ -209,6 +331,21 @@
                     matching:(NSString *)query
                   inCategory:(NSString *)category
                       within:(double)radius;
+
+/*!
+ * Find places near an address. SimpleGeo will geocode the address for you.
+ * (SimpleGeo+Places.h)
+ * @param address  Query address.
+ * @param query    Query string.
+ * @param category Query category.
+ * @param radius   Radius of query (km)
+ * @param limit    Number of results to return.
+ */
+- (void)getPlacesNearAddress:(NSString *)address
+                    matching:(NSString *)query
+                  inCategory:(NSString *)category
+                      within:(double)radius
+                       count:(int)limit;
 
 /*!
  * Update a place in the Places database (SimpleGeo+Places.h).

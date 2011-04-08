@@ -1,8 +1,9 @@
 # Change Log
 
-## 1.2.2
+## 1.2.2 - 4/8/11
 
 * Exposed missing headers
+* Support for `num` parameter in Places (as `count`)
 
 ## 1.2.1 - 3/11/11
 

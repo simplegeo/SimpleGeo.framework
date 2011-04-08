@@ -1,6 +1,6 @@
 BUILD_TARGET=SimpleGeo
 TEST_TARGET=Tests
-SDK=macosx10.5
+SDK=macosx10.6
 COMMAND=xcodebuild
 
 default:

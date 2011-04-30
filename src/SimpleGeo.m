@@ -60,9 +60,9 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
                      consumerSecret:(NSString *)consumerSecret
 {
     return [SimpleGeo clientWithDelegate:delegate
-                               consumerKey:consumerKey
-                            consumerSecret:consumerSecret
-                                       URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];
+                             consumerKey:consumerKey
+                          consumerSecret:consumerSecret
+                                     URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];
 }
 
 + (SimpleGeo *)clientWithDelegate:(id)delegate
@@ -71,9 +71,9 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
                                 URL:(NSURL *)url
 {
     return [[[SimpleGeo alloc] initWithDelegate:delegate
-                                      consumerKey:consumerKey
-                                   consumerSecret:consumerSecret
-                                              URL:url] autorelease];
+                                    consumerKey:consumerKey
+                                 consumerSecret:consumerSecret
+                                            URL:url] autorelease];
 }
 
 #pragma mark Generic Instance Methods

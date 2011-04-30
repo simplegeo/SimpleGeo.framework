@@ -164,19 +164,7 @@
                 return nil;
             }
 
-            for (NSString *key in data) {
-                NSString *selectorString = [NSString stringWithFormat:@"set%@:", [key capitalizedString]];
-                SEL selector = NSSelectorFromString(selectorString);
-
-                // properties with well-known names are defined as @properties;
-                // anything else is ignored
-                // accessor methods shouldn't be used in an init... method (so say the docs), but
-                // there's no other way to achieve this otherwise
-                if ([self respondsToSelector:selector]) {
-                    [self performSelector:selector
-                               withObject:[[[data objectForKey:key] retain] autorelease]];
-                }
-            }
+            [self setValuesForKeysWithDictionary:data];
         }
     }
 
@@ -244,6 +232,13 @@
 - (void)setId:(NSString *)id
 {
     [self setFeatureId:id];
+}
+
+// prevent exceptions from being thrown when JSON responses contain unexpected keys
+- (void)setValue:(id)value
+ forUndefinedKey:(NSString *)key
+{
+    NSLog(@"%@ received a value for an unknown property: %@", [self class], key);
 }
 
 @end

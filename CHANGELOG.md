@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.2.3
+## 1.2.3 - 4/30/11
 
 * Tracked down some Zombies that were causing crashes under mysterious
   conditions (connection failures, mostly)

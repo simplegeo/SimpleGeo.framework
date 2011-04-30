@@ -318,6 +318,7 @@ static NSOperationQueue *sharedQueue = nil;
 		CFRelease(clientCertificateIdentity);
 	}
 	[self cancelLoad];
+    [delegate release];
 	[queue release];
 	[userInfo release];
 	[postBody release];
@@ -615,7 +616,10 @@ static NSOperationQueue *sharedQueue = nil;
 - (void)setDelegate:(id)newDelegate
 {
 	[[self cancelledLock] lock];
-	delegate = newDelegate;
+    if (delegate != newDelegate) {
+        [delegate release];
+        delegate = [newDelegate retain];
+    }
 	[[self cancelledLock] unlock];
 }
 

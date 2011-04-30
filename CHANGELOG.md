@@ -5,6 +5,7 @@
 * Tracked down some Zombies that were causing crashes under mysterious
   conditions (connection failures, mostly)
 * Mild spring cleaning
+* Stripped debug symbols from library to avoid warnings when linking
 
 ## 1.2.2 - 4/8/11
 

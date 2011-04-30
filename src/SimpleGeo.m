@@ -107,7 +107,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
         delegate = aDelegate;
         consumerKey = [key copy];
         consumerSecret = [secret copy];
-        url = [aURL retain];
+        url = [aURL copy];
         NSDictionary *infoDictionary = [[NSBundle bundleForClass:[SimpleGeo class]] infoDictionary];
         userAgent = [[NSString stringWithFormat:@"SimpleGeo/Obj-C %@", [infoDictionary objectForKey:@"CFBundleVersion"]] retain];
     }

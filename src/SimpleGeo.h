@@ -99,11 +99,11 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
     NSString *userAgent;
 }
 
-@property (assign)          id delegate;
-@property (retain,readonly) NSString* consumerKey;
-@property (retain,readonly) NSString* consumerSecret;
-@property (retain,readonly) NSURL* url;
-@property (retain,readonly) NSString *userAgent;
+@property (assign)        id delegate;
+@property (copy,readonly) NSString* consumerKey;
+@property (copy,readonly) NSString* consumerSecret;
+@property (copy,readonly) NSURL* url;
+@property (copy,readonly) NSString *userAgent;
 
 /*!
  * Create a client.

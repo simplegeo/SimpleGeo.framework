@@ -226,19 +226,26 @@
 }
 
 /**
- * This method exists to allow the magic setting-by-selector mechanism to set
- * ids properly.
+ * Alternate setter for KeyValueCoding.
  */
 - (void)setId:(NSString *)id
 {
     [self setFeatureId:id];
 }
 
+/**
+ * Setter for KeyValueCoding.
+ */
+- (void)setType:(NSString *)type
+{
+    // noop; we know this is a feature
+}
+
 // prevent exceptions from being thrown when JSON responses contain unexpected keys
 - (void)setValue:(id)value
  forUndefinedKey:(NSString *)key
 {
-    NSLog(@"%@ received a value for an unknown property: %@", [self class], key);
+    NSLog(@"%@ received a value for an unknown property: %@: %@", [self class], key, value);
 }
 
 @end

@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.3
+
+* Tracked down some Zombies that were causing crashes under mysterious
+  conditions (connection failures, mostly)
+* Mild spring cleaning
+
 ## 1.2.2 - 4/8/11
 
 * Exposed missing headers

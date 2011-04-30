@@ -43,12 +43,6 @@
 
 - (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL
 {
-    static NSString *UserAgent = nil;
-    if (! UserAgent) {
-        NSDictionary *infoDictionary = [[NSBundle bundleForClass:[SimpleGeo class]] infoDictionary];
-        UserAgent = [[NSString stringWithFormat:@"SimpleGeo/Obj-C %@", [infoDictionary objectForKey:@"CFBundleVersion"]] retain];
-    }
-
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:aURL
                                                  consumerKey:consumerKey
                                               consumerSecret:consumerSecret
@@ -56,7 +50,7 @@
                                                  tokenSecret:nil];
     [request setDelegate:self];
     [request setShouldRedirect:NO];
-    [request addRequestHeader:@"User-Agent" value:UserAgent];
+    [request addRequestHeader:@"User-Agent" value:self.userAgent];
     [request addRequestHeader:@"Accept" value:@"application/json, application/javascript, */*"];
 
     return request;

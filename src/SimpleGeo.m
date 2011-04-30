@@ -52,6 +52,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 @synthesize consumerSecret;
 @synthesize delegate;
 @synthesize url;
+@synthesize userAgent;
 
 #pragma mark Class Methods
 
@@ -107,6 +108,8 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
         consumerKey = [key copy];
         consumerSecret = [secret copy];
         url = [aURL retain];
+        NSDictionary *infoDictionary = [[NSBundle bundleForClass:[SimpleGeo class]] infoDictionary];
+        userAgent = [[NSString stringWithFormat:@"SimpleGeo/Obj-C %@", [infoDictionary objectForKey:@"CFBundleVersion"]] retain];
     }
 
     return self;

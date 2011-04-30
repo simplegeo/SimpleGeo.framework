@@ -96,12 +96,14 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
     NSString* consumerKey;
     NSString* consumerSecret;
     NSURL* url;
+    NSString *userAgent;
 }
 
 @property (assign)          id delegate;
 @property (retain,readonly) NSString* consumerKey;
 @property (retain,readonly) NSString* consumerSecret;
 @property (retain,readonly) NSURL* url;
+@property (retain,readonly) NSString *userAgent;
 
 /*!
  * Create a client.
@@ -128,6 +130,14 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 - (id)initWithDelegate:(id)delegate
            consumerKey:(NSString *)consumerKey
         consumerSecret:(NSString *)consumerSecret;
+
+/*! Construct a client with a custom URL. This is the designated initializer
+ * for this class.
+ * @param delegate       Delegate. Must conform to SimpleGeoDelegate and other
+ *                       variants as appropriate.
+ * @param consumerKey    OAuth consumer key.
+ * @param consumerSecret OAuth consumer secret.
+ */
 - (id)initWithDelegate:(id)delegate
            consumerKey:(NSString *)consumerKey
         consumerSecret:(NSString *)consumerSecret

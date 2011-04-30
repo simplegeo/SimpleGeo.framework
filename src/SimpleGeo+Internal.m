@@ -46,7 +46,7 @@
     static NSString *UserAgent = nil;
     if (! UserAgent) {
         NSDictionary *infoDictionary = [[NSBundle bundleForClass:[SimpleGeo class]] infoDictionary];
-        UserAgent = [NSString stringWithFormat:@"SimpleGeo/Obj-C %@", [infoDictionary objectForKey:@"CFBundleVersion"]];
+        UserAgent = [[NSString stringWithFormat:@"SimpleGeo/Obj-C %@", [infoDictionary objectForKey:@"CFBundleVersion"]] retain];
     }
 
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:aURL

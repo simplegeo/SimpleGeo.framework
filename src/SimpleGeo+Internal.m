@@ -49,17 +49,17 @@
         UserAgent = [NSString stringWithFormat:@"SimpleGeo/Obj-C %@", [infoDictionary objectForKey:@"CFBundleVersion"]];
     }
 
-    ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:aURL
-                                                      consumerKey:consumerKey
-                                                   consumerSecret:consumerSecret
-                                                            token:nil
-                                                      tokenSecret:nil];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:aURL
+                                                 consumerKey:consumerKey
+                                              consumerSecret:consumerSecret
+                                                       token:nil
+                                                 tokenSecret:nil];
     [request setDelegate:self];
     [request setShouldRedirect:NO];
     [request addRequestHeader:@"User-Agent" value:UserAgent];
     [request addRequestHeader:@"Accept" value:@"application/json, application/javascript, */*"];
 
-    return [request autorelease];
+    return request;
 }
 
 - (NSDictionary *)markFeature:(SGFeature *)feature

@@ -889,7 +889,7 @@ typedef void (^ASIDataBlock)(NSData *data);
 
 @property (retain,setter=setURL:, nonatomic) NSURL *url;
 @property (retain) NSURL *originalURL;
-@property (retain, nonatomic) id delegate;
+@property (assign, nonatomic) id delegate;
 @property (retain, nonatomic) id queue;
 @property (assign, nonatomic) id uploadProgressDelegate;
 @property (assign, nonatomic) id downloadProgressDelegate;

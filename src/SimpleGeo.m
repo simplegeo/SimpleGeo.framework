@@ -196,6 +196,8 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 
         [self requestFailed:request];
     }
+    
+    [request setDelegate:nil];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
@@ -206,6 +208,8 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     if ([delegate respondsToSelector:@selector(requestDidFail:)]) {
         [delegate requestDidFail:request];
     }
+    
+    [request setDelegate:nil];
 }
 
 #pragma mark Dispatcher Methods

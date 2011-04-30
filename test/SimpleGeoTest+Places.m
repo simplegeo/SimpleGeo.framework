@@ -269,7 +269,7 @@
     int count = [[query objectForKey:@"limit"] intValue];
 	
 	
-    if (radius > 0.0f && count == 25) {
+    if (radius > 0.0f && count == 0) {
         GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
         GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
         GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
@@ -277,7 +277,7 @@
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearWithRadiusAndMultipleResults)];
-    } else if (!address && !matching && !category && count == 25) {
+    } else if (!address && !matching && !category && count == 0) {
         GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
         GHAssertEquals([places count], (NSUInteger) 7, @"Should have been 7 places.");
         GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],
@@ -287,7 +287,7 @@
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearWithMultipleResults)];
-    } else if ([matching isEqual:@"öne"] && count == 25) {
+    } else if ([matching isEqual:@"öne"] && count == 0) {
         GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
         GHAssertEqualObjects(matching, @"öne", nil);
         GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
@@ -297,7 +297,7 @@
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearMatchingWithASingleResult)];
-    } else if ([matching isEqual:@"burgers"] && count == 25) {
+    } else if ([matching isEqual:@"burgers"] && count == 0) {
         GHAssertEqualObjects(point, [self point], @"Reference point didn't match");
         GHAssertEqualObjects(matching, @"burgers", nil);
         GHAssertEqualObjects(category, @"Restaurants & Bars", nil);
@@ -310,7 +310,7 @@
 
         [self notify:kGHUnitWaitStatusSuccess
          forSelector:@selector(testGetPlacesNearMatchingInCategory)];
-    } else if (address && count == 25) {
+    } else if (address && count == 0) {
         GHAssertEqualObjects(address, @"41 Decatur St., San Francisco, CA", @"Reference address didn't match");
         GHAssertEquals([places count], (NSUInteger) 1, @"Should have been 1 place.");
         GHAssertEqualObjects([[[[places features] objectAtIndex:0] properties] objectForKey:@"name"],

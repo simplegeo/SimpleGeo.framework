@@ -47,10 +47,10 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 - (SimpleGeo *)createClient
 {
     NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
-    return [[[SimpleGeo clientWithDelegate:self
-                                 consumerKey:@"consumerKey"
-                              consumerSecret:@"consumerSecret"
-                                         URL:url] retain] autorelease];
+    return [SimpleGeo clientWithDelegate:self
+                             consumerKey:@"consumerKey"
+                          consumerSecret:@"consumerSecret"
+                                     URL:url];
 }
 
 - (SGPoint *)point

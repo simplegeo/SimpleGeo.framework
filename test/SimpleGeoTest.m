@@ -65,8 +65,9 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     NSURL *url = [NSURL URLWithString:SIMPLEGEO_URL_PREFIX];
     GHTestLog(@"SimpleGeo URL prefix: %@", SIMPLEGEO_URL_PREFIX);
     SimpleGeo *client = [SimpleGeo clientWithDelegate:self
-                                              consumerKey:@""
-                                           consumerSecret:@""];
+                                          consumerKey:@"" 
+                                       consumerSecret:@"" 
+                                               useSSL:NO];
 
     GHAssertEqualObjects([client url], url, @"URLs don't match.");
 }
@@ -79,6 +80,20 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
                                            consumerSecret:@""
                                                       URL:url];
 
+    GHAssertEqualObjects([client url], url, @"URLs don't match.");
+}
+
+- (void)testCreateClientWithSSLON
+{
+    NSString *simpleGeoURLPrefix=[NSString stringWithString:SIMPLEGEO_URL_PREFIX];
+    simpleGeoURLPrefix=[simpleGeoURLPrefix stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
+    NSURL *url = [NSURL URLWithString:simpleGeoURLPrefix];
+    GHTestLog(@"SimpleGeo URL prefix: %@", simpleGeoURLPrefix);
+    SimpleGeo *client = [SimpleGeo clientWithDelegate:self
+                                          consumerKey:@"" 
+                                       consumerSecret:@"" 
+                                               useSSL:YES];
+    GHAssertTrue(client.useSSL==YES, @"useSSL should be YES");
     GHAssertEqualObjects([client url], url, @"URLs don't match.");
 }
 

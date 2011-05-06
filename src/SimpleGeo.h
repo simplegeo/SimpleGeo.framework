@@ -97,6 +97,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
     NSString* consumerSecret;
     NSURL* url;
     NSString *userAgent;
+    BOOL useSSL;
 }
 
 @property (assign)        id delegate;
@@ -104,6 +105,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 @property (copy,readonly) NSString* consumerSecret;
 @property (copy,readonly) NSURL* url;
 @property (copy,readonly) NSString *userAgent;
+@property (readonly)      BOOL useSSL;
 
 /*!
  * Create a client.
@@ -115,6 +117,12 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 + (SimpleGeo *)clientWithDelegate:(id)delegate
                       consumerKey:(NSString *)consumerKey
                    consumerSecret:(NSString *)consumerSecret;
+
++ (SimpleGeo *)clientWithDelegate:(id)delegate
+                      consumerKey:(NSString *)consumerKey
+                   consumerSecret:(NSString *)consumerSecret
+                           useSSL:(BOOL)doesUseSSL;
+
 + (SimpleGeo *)clientWithDelegate:(id)delegate
                       consumerKey:(NSString *)consumerKey
                    consumerSecret:(NSString *)consumerSecret
@@ -142,6 +150,20 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
            consumerKey:(NSString *)consumerKey
         consumerSecret:(NSString *)consumerSecret
                    URL:(NSURL *)url;
+
+/*! Construct a client with a custom URL. This is the designated initializer
+ * for this class.
+ * @param delegate       Delegate. Must conform to SimpleGeoDelegate and other
+ *                       variants as appropriate.
+ * @param consumerKey    OAuth consumer key.
+ * @param consumerSecret OAuth consumer secret.
+ * @param doesUseSSL     To turn on or off SSL connection           
+ */
+- (id)initWithDelegate:(id)aDelegate
+           consumerKey:(NSString *)key
+        consumerSecret:(NSString *)secret
+                   URL:(NSURL *)aURL
+                useSSL:(BOOL)doesUseSSL;
 
 /*!
  * Get a feature with a specific handle.

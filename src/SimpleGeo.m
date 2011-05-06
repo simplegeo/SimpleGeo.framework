@@ -53,6 +53,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 @synthesize delegate;
 @synthesize url;
 @synthesize userAgent;
+@synthesize useSSL;
 
 #pragma mark Class Methods
 
@@ -63,7 +64,23 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     return [SimpleGeo clientWithDelegate:delegate
                              consumerKey:consumerKey
                           consumerSecret:consumerSecret
-                                     URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];
+                                  useSSL:YES];
+}
+
++ (SimpleGeo *)clientWithDelegate:(id)delegate
+                      consumerKey:(NSString *)consumerKey
+                   consumerSecret:(NSString *)consumerSecret
+                           useSSL:(BOOL)doesUseSSL
+{
+    NSString *SIMPLEGEO_URL=[NSString stringWithString:SIMPLEGEO_URL_PREFIX];
+    if (doesUseSSL) {
+        SIMPLEGEO_URL=[SIMPLEGEO_URL stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
+    }
+    return [[[SimpleGeo alloc] initWithDelegate:delegate
+                                    consumerKey:consumerKey
+                                 consumerSecret:consumerSecret
+                                            URL:[NSURL URLWithString:SIMPLEGEO_URL]
+                                         useSSL:doesUseSSL] autorelease];
 }
 
 + (SimpleGeo *)clientWithDelegate:(id)delegate
@@ -115,6 +132,26 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     return self;
 }
 
+- (id)initWithDelegate:(id)aDelegate
+           consumerKey:(NSString *)key
+        consumerSecret:(NSString *)secret
+                   URL:(NSURL *)aURL
+                useSSL:(BOOL)doesUseSSL
+{
+    self = [super init];
+    
+    if (self) {
+        delegate = aDelegate;
+        consumerKey = [key copy];
+        consumerSecret = [secret copy];
+        url = [aURL copy];
+        useSSL=doesUseSSL;
+        NSDictionary *infoDictionary = [[NSBundle bundleForClass:[SimpleGeo class]] infoDictionary];
+        userAgent = [[NSString stringWithFormat:@"SimpleGeo/Obj-C %@", [infoDictionary objectForKey:@"CFBundleVersion"]] retain];
+    }
+    
+    return self;
+}
 
 - (void)dealloc
 {

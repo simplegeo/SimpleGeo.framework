@@ -37,7 +37,7 @@
 
 NSString * const SIMPLEGEO_API_VERSION = @"1.0";
 NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
-
+NSString * const SIMPLEGEO_HOSTNAME = @"api.simplegeo.com";
 
 @interface SimpleGeo ()
 
@@ -53,7 +53,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 @synthesize delegate;
 @synthesize url;
 @synthesize userAgent;
-@synthesize useSSL;
+@dynamic    sslEnabled;
 
 #pragma mark Class Methods
 
@@ -72,15 +72,18 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
                    consumerSecret:(NSString *)consumerSecret
                            useSSL:(BOOL)doesUseSSL
 {
-    NSString *SIMPLEGEO_URL=[NSString stringWithString:SIMPLEGEO_URL_PREFIX];
+    
+    NSString *urlScheme;
     if (doesUseSSL) {
-        SIMPLEGEO_URL=[SIMPLEGEO_URL stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
+        urlScheme = @"https";
+    } else {
+        urlScheme = @"http";
     }
-    return [[[SimpleGeo alloc] initWithDelegate:delegate
-                                    consumerKey:consumerKey
-                                 consumerSecret:consumerSecret
-                                            URL:[NSURL URLWithString:SIMPLEGEO_URL]
-                                         useSSL:doesUseSSL] autorelease];
+    NSString *simpleGeoURL = [NSString stringWithFormat:@"%@://%@",urlScheme,SIMPLEGEO_HOSTNAME];
+    return [SimpleGeo clientWithDelegate:delegate
+                             consumerKey:consumerKey
+                          consumerSecret:consumerSecret
+                                     URL:[NSURL URLWithString:simpleGeoURL]];
 }
 
 + (SimpleGeo *)clientWithDelegate:(id)delegate
@@ -110,7 +113,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     return [self initWithDelegate:aDelegate
                       consumerKey:key
                    consumerSecret:secret
-                              URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];
+                              URL:[NSURL URLWithString:[NSString stringWithFormat:@"https://%@",SIMPLEGEO_HOSTNAME]]];
 }
 
 - (id)initWithDelegate:(id)aDelegate
@@ -132,25 +135,9 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     return self;
 }
 
-- (id)initWithDelegate:(id)aDelegate
-           consumerKey:(NSString *)key
-        consumerSecret:(NSString *)secret
-                   URL:(NSURL *)aURL
-                useSSL:(BOOL)doesUseSSL
+- (BOOL)isSSLEnabled
 {
-    self = [super init];
-    
-    if (self) {
-        delegate = aDelegate;
-        consumerKey = [key copy];
-        consumerSecret = [secret copy];
-        url = [aURL copy];
-        useSSL=doesUseSSL;
-        NSDictionary *infoDictionary = [[NSBundle bundleForClass:[SimpleGeo class]] infoDictionary];
-        userAgent = [[NSString stringWithFormat:@"SimpleGeo/Obj-C %@", [infoDictionary objectForKey:@"CFBundleVersion"]] retain];
-    }
-    
-    return self;
+    return [[[[self url] scheme] lowercaseString] isEqualToString:@"https"];
 }
 
 - (void)dealloc

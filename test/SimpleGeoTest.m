@@ -86,14 +86,14 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 - (void)testCreateClientWithSSLON
 {
     NSString *simpleGeoURLPrefix=[NSString stringWithString:SIMPLEGEO_URL_PREFIX];
-    simpleGeoURLPrefix=[simpleGeoURLPrefix stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
+    simpleGeoURLPrefix = [simpleGeoURLPrefix stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
     NSURL *url = [NSURL URLWithString:simpleGeoURLPrefix];
     GHTestLog(@"SimpleGeo URL prefix: %@", simpleGeoURLPrefix);
     SimpleGeo *client = [SimpleGeo clientWithDelegate:self
                                           consumerKey:@"" 
                                        consumerSecret:@"" 
                                                useSSL:YES];
-    GHAssertTrue(client.useSSL==YES, @"useSSL should be YES");
+    GHAssertTrue([client isSSLEnabled] == YES, @"should be YES");
     GHAssertEqualObjects([client url], url, @"URLs don't match.");
 }
 

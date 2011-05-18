@@ -73,6 +73,9 @@
 		5DA3C345128E427C00E128DC /* SGPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA3C343128E427C00E128DC /* SGPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DA3C346128E427C00E128DC /* SGPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3C344128E427C00E128DC /* SGPoint.m */; };
 		5DA3C35A128E449B00E128DC /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA3C359128E449B00E128DC /* GHUnit.framework */; };
+		5DC5739C13837032004E951A /* ASIFormDataRequest+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DC5739A13837032004E951A /* ASIFormDataRequest+OAuth.h */; };
+		5DC5739D13837032004E951A /* ASIFormDataRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC5739B13837032004E951A /* ASIFormDataRequest+OAuth.m */; };
+		5DC5739E13837032004E951A /* ASIFormDataRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC5739B13837032004E951A /* ASIFormDataRequest+OAuth.m */; };
 		5DF0864A12ADC878007A8A60 /* SGFeature+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF0864912ADC878007A8A60 /* SGFeature+Private.h */; };
 		5DF0865B12ADC94E007A8A60 /* SGFeatureCollection+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF0865A12ADC94E007A8A60 /* SGFeatureCollection+Private.h */; };
 		5DF0866D12ADCA9B007A8A60 /* SGGeometry+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF0866C12ADCA9B007A8A60 /* SGGeometry+Private.h */; };
@@ -190,6 +193,8 @@
 		5DA3C353128E448800E128DC /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA3C355128E448800E128DC /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		5DA3C359128E449B00E128DC /* GHUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnit.framework; path = Library/Frameworks/GHUnit.framework; sourceTree = SDKROOT; };
+		5DC5739A13837032004E951A /* ASIFormDataRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ASIFormDataRequest+OAuth.h"; path = "ext/asi-http-request/ASIFormDataRequest+OAuth.h"; sourceTree = "<group>"; };
+		5DC5739B13837032004E951A /* ASIFormDataRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ASIFormDataRequest+OAuth.m"; path = "ext/asi-http-request/ASIFormDataRequest+OAuth.m"; sourceTree = "<group>"; };
 		5DF0864912ADC878007A8A60 /* SGFeature+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGFeature+Private.h"; path = "src/SGFeature+Private.h"; sourceTree = "<group>"; };
 		5DF0865A12ADC94E007A8A60 /* SGFeatureCollection+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGFeatureCollection+Private.h"; path = "src/SGFeatureCollection+Private.h"; sourceTree = "<group>"; };
 		5DF0866C12ADCA9B007A8A60 /* SGGeometry+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SGGeometry+Private.h"; path = "src/SGGeometry+Private.h"; sourceTree = "<group>"; };
@@ -343,6 +348,8 @@
 				5D7676341290EE9F006B7D51 /* ASIHTTPRequestConfig.h */,
 				5D7676351290EE9F006B7D51 /* ASIFormDataRequest.m */,
 				5D7676361290EE9F006B7D51 /* ASIFormDataRequest.h */,
+				5DC5739A13837032004E951A /* ASIFormDataRequest+OAuth.h */,
+				5DC5739B13837032004E951A /* ASIFormDataRequest+OAuth.m */,
 				5D7676371290EE9F006B7D51 /* ASIDownloadCache.h */,
 			);
 			name = ASIHTTPRequest;
@@ -504,6 +511,7 @@
 				EA29A52E1313109D00979D1A /* NSArray+SGGeometry.h in Headers */,
 				5D1408C1131586BB0001417A /* SGGeometryCollection+Private.h in Headers */,
 				5D30FF8F131F0A180089F563 /* SGStoredRecord.h in Headers */,
+				5DC5739C13837032004E951A /* ASIFormDataRequest+OAuth.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +632,7 @@
 				5D1C1B4912A9A5170055EC91 /* SGGeometryTest.m in Sources */,
 				EA29A52D1313109D00979D1A /* NSArray+SGGeometry.m in Sources */,
 				EA29A537131311B700979D1A /* SimpleGeoTest+Storage.m in Sources */,
+				5DC5739E13837032004E951A /* ASIFormDataRequest+OAuth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +664,7 @@
 				5D687FF412F8D53F001716EA /* SGGeometryCollection.m in Sources */,
 				EA29A52F1313109D00979D1A /* NSArray+SGGeometry.m in Sources */,
 				5D30FF90131F0A180089F563 /* SGStoredRecord.m in Sources */,
+				5DC5739D13837032004E951A /* ASIFormDataRequest+OAuth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

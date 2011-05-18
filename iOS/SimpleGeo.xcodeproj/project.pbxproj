@@ -17,6 +17,8 @@
 		5D30FFA0131F0A360089F563 /* SGStoredRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D30FF9D131F0A360089F563 /* SGStoredRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D30FFA1131F0A360089F563 /* SGStoredRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D30FF9E131F0A360089F563 /* SGStoredRecord.m */; };
 		5D30FFA2131F0A360089F563 /* SGStoredRecord+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D30FF9F131F0A360089F563 /* SGStoredRecord+Private.h */; };
+		5DC573A813837047004E951A /* ASIFormDataRequest+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DC573A613837047004E951A /* ASIFormDataRequest+OAuth.h */; };
+		5DC573A913837047004E951A /* ASIFormDataRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC573A713837047004E951A /* ASIFormDataRequest+OAuth.m */; };
 		5DEC2F1713045743001A59C5 /* SGGeometryCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DEC2F1513045743001A59C5 /* SGGeometryCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DEC2F1813045743001A59C5 /* SGGeometryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEC2F1613045743001A59C5 /* SGGeometryCollection.m */; };
 		5DEC2F461304576F001A59C5 /* SimpleGeo+Storage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DEC2F441304576F001A59C5 /* SimpleGeo+Storage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -89,6 +91,8 @@
 		5D79622B12E1164D00B33631 /* Debug-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Debug-iOS.xcconfig"; sourceTree = "<group>"; };
 		5D79623112E1166B00B33631 /* Shared-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Shared-iOS.xcconfig"; sourceTree = "<group>"; };
 		5D79623312E1167500B33631 /* Release-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Release-iOS.xcconfig"; sourceTree = "<group>"; };
+		5DC573A613837047004E951A /* ASIFormDataRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIFormDataRequest+OAuth.h"; sourceTree = "<group>"; };
+		5DC573A713837047004E951A /* ASIFormDataRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIFormDataRequest+OAuth.m"; sourceTree = "<group>"; };
 		5DEC2F1513045743001A59C5 /* SGGeometryCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGGeometryCollection.h; path = ../src/SGGeometryCollection.h; sourceTree = SOURCE_ROOT; };
 		5DEC2F1613045743001A59C5 /* SGGeometryCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGGeometryCollection.m; path = ../src/SGGeometryCollection.m; sourceTree = SOURCE_ROOT; };
 		5DEC2F441304576F001A59C5 /* SimpleGeo+Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SimpleGeo+Storage.h"; path = "../src/SimpleGeo+Storage.h"; sourceTree = SOURCE_ROOT; };
@@ -290,6 +294,8 @@
 				5DF1FB9212C2C6F50097CF47 /* ASIDownloadCache.m */,
 				5DF1FB9312C2C6F50097CF47 /* ASIFormDataRequest.h */,
 				5DF1FB9412C2C6F50097CF47 /* ASIFormDataRequest.m */,
+				5DC573A613837047004E951A /* ASIFormDataRequest+OAuth.h */,
+				5DC573A713837047004E951A /* ASIFormDataRequest+OAuth.m */,
 				5DF1FB9512C2C6F50097CF47 /* ASIHTTPRequest.h */,
 				5DF1FB9612C2C6F50097CF47 /* ASIHTTPRequest.m */,
 				5D1DA88812DD2AB100556B20 /* ASIHTTPRequest+OAuth.h */,
@@ -392,6 +398,7 @@
 				5D1408D5131599480001417A /* NSArray+SGGeometry.h in Headers */,
 				5D30FFA0131F0A360089F563 /* SGStoredRecord.h in Headers */,
 				5D30FFA2131F0A360089F563 /* SGStoredRecord+Private.h in Headers */,
+				5DC573A813837047004E951A /* ASIFormDataRequest+OAuth.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +489,7 @@
 				5DEC2F471304576F001A59C5 /* SimpleGeo+Storage.m in Sources */,
 				5D1408D6131599480001417A /* NSArray+SGGeometry.m in Sources */,
 				5D30FFA1131F0A360089F563 /* SGStoredRecord.m in Sources */,
+				5DC573A913837047004E951A /* ASIFormDataRequest+OAuth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

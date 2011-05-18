@@ -36,11 +36,11 @@
 
 - (NSString *)generateNonce;
 - (NSString *)generateTimestamp;
-- (NSString *)normalizeRequestParameters:(NSDictionary*)params;
+- (NSString *)normalizeRequestParameters:(NSArray *)params;
 - (NSString *)signClearText:(NSString *)text
                  withSecret:(NSString *)secret
                      method:(NSString *)method;
-- (NSString *)signatureBaseStringWithParameters:(NSDictionary *)params;
+- (NSString *)signatureBaseStringWithParameters:(NSArray *)params;
 - (NSString *)URLEncodedString:(NSString *)string;
 - (NSString *)URLDecodedString:(NSString *)string;
 
@@ -109,13 +109,20 @@
     [self setRequestCredentials:newCredentials];
 }
 
+- (NSString *)oauthSignatureMethod
+{
+    return [[self requestCredentials] objectForKey:@"signatureMethod"];
+}
+
 - (void)addOAuthHeaderWithConsumerKey:(NSString *)consumerKey
                        consumerSecret:(NSString *)consumerSecret
                                 token:(NSString *)token
                           tokenSecret:(NSString *)tokenSecret
                       signatureMethod:(NSString *)signatureMethod
 {
-    // convert nil parameters to empty strings
+    // convert nil parameters to empty strings (params may be nil if this method is called
+    // abnormally; i.e. without having been initialized using
+    // initWithURL:consumerKey:consumerSecret:token:tokenSecret)
     if (! consumerKey) {
         consumerKey = @"";
     }
@@ -143,15 +150,54 @@
                                         nil
                                         ];
 
-    NSMutableDictionary *params = [oauthParams mutableCopy];
-
+    // this is an NSArray containing parameter pairs as NSArrays; this is *different*
+    // from ASIFormDataRequest's implementation of postData
+    NSMutableArray *params = [NSMutableArray array];
+    
+    // copy OAuth parameters, since they need to be included in the signature
+    // base string
+    for (id key in oauthParams) {
+        [params addObject:[NSArray arrayWithObjects:
+                           key,
+                           [self URLEncodedString:[oauthParams objectForKey:key]],
+                           nil]];
+    }
+    
     // add in params from the query string
     for (NSString *pair in [[url query] componentsSeparatedByString:@"&"]) {
-        NSArray *kv = [pair componentsSeparatedByString:@"="];
-        [params setObject:[self URLDecodedString:[kv objectAtIndex:1]]
-                   forKey:[self URLDecodedString:[kv objectAtIndex:0]]];
+        [params addObject:[pair componentsSeparatedByString:@"="]];
     }
+    
+    // the post body should have already been assembled at this stage; if it's present,
+    // we may want to include its contents in the signature
+    if ([self postBody]) {
+        // find the header containing the content-type (in case it's capitalized randomly)
+        NSString *contentTypeKey = [[[self requestHeaders] keysOfEntriesPassingTest:^ BOOL (id key, id obj, BOOL *stop) {
+            if ([[((NSString *)key) lowercaseString] isEqualToString:@"content-type"]) {
+                *stop = YES;
+                return true;
+            }
+            
+            return false;
+        }] anyObject];
+        
+        // strip out any charset variants; we only care about the raw content type
+        NSString *contentType = [[[[self requestHeaders] objectForKey:contentTypeKey] componentsSeparatedByString:@";"] objectAtIndex:0];
 
+        // if this is an application/x-www-form-urlencoded body, we should use
+        // its contents for signing
+        if ([contentType isEqualToString:@"application/x-www-form-urlencoded"]) {
+            NSString *requestBody = [[NSString alloc] initWithData:[self postBody]
+                                                          encoding:NSUTF8StringEncoding];
+            
+            for (NSString *pair in [requestBody componentsSeparatedByString:@"&"]) {
+                [params addObject:[pair componentsSeparatedByString:@"="]];
+            }
+            
+            [requestBody release];
+        }
+    }
+    
     NSString *sbs = [self signatureBaseStringWithParameters:params];
     // the assembly of the signature base string is almost always the problem
     // NSLog(@"Signature base string: %@", sbs);
@@ -178,8 +224,6 @@
 
     [self addRequestHeader:@"Authorization"
                      value:[NSString stringWithFormat:@"OAuth realm=\"\", %@", components]];
-
-    [params release];
 }
 
 - (NSString *)generateNonce
@@ -196,24 +240,19 @@
     return [NSString stringWithFormat:@"%d", time(NULL)];
 }
 
-- (NSString *)normalizeRequestParameters:(NSDictionary*)params
+- (NSString *)normalizeRequestParameters:(NSArray *)params
 {
     NSMutableArray *parameterPairs = [NSMutableArray arrayWithCapacity:([params count])];
 
-    NSString *value;
-    for (NSString *param in params) {
-        value = [params objectForKey:param];
-        param = [NSString stringWithFormat:@"%@=%@",
-                 [self URLEncodedString:param],
-                 [self URLEncodedString:value]];
-        [parameterPairs addObject:param];
+    for (NSArray *kv in params) {
+        [parameterPairs addObject:[kv componentsJoinedByString:@"="]];
     }
 
     NSArray *sortedPairs = [parameterPairs sortedArrayUsingSelector:@selector(compare:)];
     return [sortedPairs componentsJoinedByString:@"&"];
 }
 
-- (NSString *)signatureBaseStringWithParameters:(NSDictionary *)params
+- (NSString *)signatureBaseStringWithParameters:(NSArray *)params
 {
     return [NSString stringWithFormat:@"%@&%@&%@",
             requestMethod,
@@ -243,7 +282,7 @@
         char base64Result[32];
         size_t theResultLength = 32;
         ASIBase64EncodeData(result, 20, base64Result, &theResultLength, Base64Flags_Default);
-        return [[[NSString alloc] initWithFormat:@"%s", base64Result] autorelease];
+        return [NSString stringWithFormat:@"%s", base64Result];
     } else {
         return nil;
     }

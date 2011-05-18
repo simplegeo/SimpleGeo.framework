@@ -928,6 +928,8 @@ static NSOperationQueue *sharedQueue = nil;
         [[self requestCredentials] objectForKey:@"consumerSecret"] ||
         [[self requestCredentials] objectForKey:@"token"] ||
         [[self requestCredentials] objectForKey:@"tokenSecret"]) {
+
+        // If so, add an OAuth header
         [self addOAuthHeaderWithConsumerKey:[[self requestCredentials] objectForKey:@"consumerKey"]
                              consumerSecret:[[self requestCredentials] objectForKey:@"consumerSecret"]
                                       token:[[self requestCredentials] objectForKey:@"token"]

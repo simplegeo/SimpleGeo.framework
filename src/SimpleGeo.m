@@ -37,7 +37,7 @@
 
 NSString * const SIMPLEGEO_API_VERSION = @"1.0";
 NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
-
+NSString * const SIMPLEGEO_HOSTNAME = @"api.simplegeo.com";
 
 @interface SimpleGeo ()
 
@@ -53,6 +53,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
 @synthesize delegate;
 @synthesize url;
 @synthesize userAgent;
+@dynamic    sslEnabled;
 
 #pragma mark Class Methods
 
@@ -63,7 +64,26 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     return [SimpleGeo clientWithDelegate:delegate
                              consumerKey:consumerKey
                           consumerSecret:consumerSecret
-                                     URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];
+                                  useSSL:YES];
+}
+
++ (SimpleGeo *)clientWithDelegate:(id)delegate
+                      consumerKey:(NSString *)consumerKey
+                   consumerSecret:(NSString *)consumerSecret
+                           useSSL:(BOOL)doesUseSSL
+{
+    
+    NSString *urlScheme;
+    if (doesUseSSL) {
+        urlScheme = @"https";
+    } else {
+        urlScheme = @"http";
+    }
+    NSString *simpleGeoURL = [NSString stringWithFormat:@"%@://%@",urlScheme,SIMPLEGEO_HOSTNAME];
+    return [SimpleGeo clientWithDelegate:delegate
+                             consumerKey:consumerKey
+                          consumerSecret:consumerSecret
+                                     URL:[NSURL URLWithString:simpleGeoURL]];
 }
 
 + (SimpleGeo *)clientWithDelegate:(id)delegate
@@ -93,7 +113,7 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     return [self initWithDelegate:aDelegate
                       consumerKey:key
                    consumerSecret:secret
-                              URL:[NSURL URLWithString:SIMPLEGEO_URL_PREFIX]];
+                              URL:[NSURL URLWithString:[NSString stringWithFormat:@"https://%@",SIMPLEGEO_HOSTNAME]]];
 }
 
 - (id)initWithDelegate:(id)aDelegate
@@ -115,6 +135,10 @@ NSString * const SIMPLEGEO_URL_PREFIX = @"http://api.simplegeo.com";
     return self;
 }
 
+- (BOOL)isSSLEnabled
+{
+    return [[[[self url] scheme] lowercaseString] isEqualToString:@"https"];
+}
 
 - (void)dealloc
 {

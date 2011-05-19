@@ -48,8 +48,8 @@
  */
 
 extern NSString * const SIMPLEGEO_API_VERSION;
-extern NSString * const SIMPLEGEO_URL_PREFIX;
-
+extern NSString * const SIMPLEGEO_URL_PREFIX __attribute__ ((deprecated));
+extern NSString * const SIMPLEGEO_HOSTNAME;
 
 /*!
  * Informal delegate protocol for core functionality.
@@ -104,6 +104,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 @property (copy,readonly) NSString* consumerSecret;
 @property (copy,readonly) NSURL* url;
 @property (copy,readonly) NSString *userAgent;
+@property (readonly,getter = isSSLEnabled) BOOL sslEnabled;
 
 /*!
  * Create a client.
@@ -115,6 +116,12 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 + (SimpleGeo *)clientWithDelegate:(id)delegate
                       consumerKey:(NSString *)consumerKey
                    consumerSecret:(NSString *)consumerSecret;
+
++ (SimpleGeo *)clientWithDelegate:(id)delegate
+                      consumerKey:(NSString *)consumerKey
+                   consumerSecret:(NSString *)consumerSecret
+                           useSSL:(BOOL)doesUseSSL;
+
 + (SimpleGeo *)clientWithDelegate:(id)delegate
                       consumerKey:(NSString *)consumerKey
                    consumerSecret:(NSString *)consumerSecret
@@ -142,6 +149,11 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
            consumerKey:(NSString *)consumerKey
         consumerSecret:(NSString *)consumerSecret
                    URL:(NSURL *)url;
+
+/*! 
+ * Getter for useSSL.This returns YES/NO depending on URL Scheme
+ */
+- (BOOL)isSSLEnabled;
 
 /*!
  * Get a feature with a specific handle.

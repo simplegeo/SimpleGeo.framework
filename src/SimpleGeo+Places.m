@@ -428,8 +428,8 @@
 {
     if ([delegate respondsToSelector:@selector(didAddPlace:handle:URL:token:)]) {
         NSDictionary *jsonResponse = [[request responseData] yajl_JSON];
-        NSURL *placeURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",
-                                                SIMPLEGEO_URL_PREFIX,
+        NSURL *placeURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@%@",
+                                                SIMPLEGEO_HOSTNAME,
                                                 [jsonResponse objectForKey:@"uri"]]];
 
         [delegate didAddPlace:[[[[request userInfo] objectForKey:@"feature"] retain] autorelease]

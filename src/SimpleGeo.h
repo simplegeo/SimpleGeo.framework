@@ -151,7 +151,7 @@ extern NSString * const SIMPLEGEO_HOSTNAME;
                    URL:(NSURL *)url;
 
 /*! 
- * Getter for useSSL.This returns YES/NO depending on URL Scheme
+ * Is SSL in use by this client?
  */
 - (BOOL)isSSLEnabled;
 

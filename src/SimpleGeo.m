@@ -70,20 +70,24 @@ NSString * const SIMPLEGEO_HOSTNAME = @"api.simplegeo.com";
 + (SimpleGeo *)clientWithDelegate:(id)delegate
                       consumerKey:(NSString *)consumerKey
                    consumerSecret:(NSString *)consumerSecret
-                           useSSL:(BOOL)doesUseSSL
+                           useSSL:(BOOL)useSSL
 {
-    
-    NSString *urlScheme;
-    if (doesUseSSL) {
-        urlScheme = @"https";
+    NSString *scheme;
+
+    if (useSSL) {
+        scheme = @"https";
     } else {
-        urlScheme = @"http";
+        scheme = @"http";
     }
-    NSString *simpleGeoURL = [NSString stringWithFormat:@"%@://%@",urlScheme,SIMPLEGEO_HOSTNAME];
+
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@",
+                                       scheme,
+                                       SIMPLEGEO_HOSTNAME]];
+
     return [SimpleGeo clientWithDelegate:delegate
                              consumerKey:consumerKey
                           consumerSecret:consumerSecret
-                                     URL:[NSURL URLWithString:simpleGeoURL]];
+                                     URL:url];
 }
 
 + (SimpleGeo *)clientWithDelegate:(id)delegate

@@ -62,8 +62,8 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 
 - (void)testCreateClientWithDefaultURL
 {
-    NSURL *url = [NSURL URLWithString:SIMPLEGEO_URL_PREFIX];
-    GHTestLog(@"SimpleGeo URL prefix: %@", SIMPLEGEO_URL_PREFIX);
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", SIMPLEGEO_HOSTNAME]];
+    GHTestLog(@"SimpleGeo URL: %@", url);
     SimpleGeo *client = [SimpleGeo clientWithDelegate:self
                                           consumerKey:@"" 
                                        consumerSecret:@"" 
@@ -75,6 +75,7 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
 - (void)testCreateClientWithURL
 {
     NSURL *url = [NSURL URLWithString:TEST_URL_PREFIX];
+    GHTestLog(@"SimpleGeo URL: %@", url);
     SimpleGeo *client = [SimpleGeo clientWithDelegate:self
                                               consumerKey:@""
                                            consumerSecret:@""
@@ -83,17 +84,16 @@ NSString * const TEST_URL_PREFIX = @"http://localhost:4567/";
     GHAssertEqualObjects([client url], url, @"URLs don't match.");
 }
 
-- (void)testCreateClientWithSSLON
+- (void)testCreateClientUsingSSL
 {
-    NSString *simpleGeoURLPrefix=[NSString stringWithString:SIMPLEGEO_URL_PREFIX];
-    simpleGeoURLPrefix = [simpleGeoURLPrefix stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
-    NSURL *url = [NSURL URLWithString:simpleGeoURLPrefix];
-    GHTestLog(@"SimpleGeo URL prefix: %@", simpleGeoURLPrefix);
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://%@", SIMPLEGEO_HOSTNAME]];
+
     SimpleGeo *client = [SimpleGeo clientWithDelegate:self
                                           consumerKey:@"" 
                                        consumerSecret:@"" 
                                                useSSL:YES];
-    GHAssertTrue([client isSSLEnabled] == YES, @"should be YES");
+
+    GHAssertTrue([client isSSLEnabled], @"SSL should be enabled");
     GHAssertEqualObjects([client url], url, @"URLs don't match.");
 }
 

@@ -225,6 +225,13 @@
     geometry = [[SGGeometry geometryWithGeometry:input] retain];
 }
 
+- (BOOL)isFeature:(SGFeature*)feature {
+    if (self.featureId != nil && [feature featureId] != nil)
+        if ([self.featureId isEqualToString:[feature featureId]])
+            return YES;
+    return NO;
+}
+
 /**
  * Alternate setter for KeyValueCoding.
  */

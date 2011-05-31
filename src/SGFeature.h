@@ -30,7 +30,6 @@
 
 #import "SGGeometry.h"
 
-
 /*!
  * Feature.
  */
@@ -130,6 +129,11 @@
  */
 - (id)initWithGeometry:(SGGeometry *)geometry
             properties:(NSDictionary *)properties;
+
+/*!
+ * Checks if two features are equivalent (same ID).
+ */
+- (BOOL)isFeature:(SGFeature*)feature;
 
 /*!
  * Return an NSDictionary representation of this feature;

@@ -1,8 +1,8 @@
 //
-//  SGMultiPolygon.h
+//  SGGeometry+Mapkit.h
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2010, SimpleGeo Inc.
+//  Copyright (c) 2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,30 +28,20 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import <Foundation/Foundation.h>
 #import "SGGeometry.h"
+#import "SGPolygon+Mapkit.h"
+#import "SGMultiPolygon+Mapkit.h"
 
 /*!
- * MultiPolygon representation.
+ * Category for SGGeometry;
+ * Adds Mapkit features for iOS.
  */
-@interface SGMultiPolygon : SGGeometry {
-  @private
-    // array of SGPolygons
-    NSArray* polygons;
-}
-
-//! Polygons that define this multi-polygon.
-@property (retain,readonly) NSArray* polygons;
+@interface SGGeometry (SGGeometry_Mapkit)
 
 /*!
- * Create a multi-polygon from a set of Polygons.
- * @param polygons Polygons.
+ * Return the geometry as an array of MKOverlays
  */
-+ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons;
-
-/*!
- * Construct a multi-polygon from a set of Polygons.
- * @param polygons Polygons.
- */
-- (id)initWithPolygons:(NSArray *)polygons;
+- (NSArray*)asMKOverlays;
 
 @end

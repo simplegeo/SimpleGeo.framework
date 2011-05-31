@@ -1,8 +1,8 @@
 //
-//  SGMultiPolygon.m
+//  SGPolygon+Mapkit.m
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2010, SimpleGeo Inc.
+//  Copyright (c) 2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,74 +28,34 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGMultiPolygon.h"
-#import "SGPolygon+Private.h"
+#import "SGPolygon+Mapkit.h"
 
-@implementation SGMultiPolygon
+@implementation SGPolygon (SGPolygon_Mapkit)
 
-@synthesize polygons;
+- (MKPolygon*)asMKPolygon {
+    NSMutableArray *holes = [[[NSMutableArray alloc] init] autorelease];
+    for (int i=1; i<[rings count]; i++)
+        [holes addObject:[SGPolygon makeMKPolygon:[self.rings objectAtIndex:i] withInteriorRegions:nil]];
+    return [SGPolygon makeMKPolygon:[self.rings objectAtIndex:0] withInteriorRegions:holes];
+}
 
-+ (SGMultiPolygon *)multiPolygonWithArray:(NSArray *)coordinates
-{
-    NSMutableArray *polygons = [NSMutableArray arrayWithCapacity:[coordinates count]];
+@end
 
-    for (NSArray *polygon in coordinates) {
-        [polygons addObject:[SGPolygon polygonWithArray:polygon]];
+@implementation SGPolygon (hidden)
+
++ (MKPolygon*)makeMKPolygon:(NSArray*)points withInteriorRegions:(NSArray*)holes {
+    // convert SGPoints to CLCoordinates
+    int numPoints = [points count];
+    CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D) * numPoints);
+    for (int i=0; i<numPoints; i++) {
+        SGPoint *point = [points objectAtIndex:i];
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([point latitude], [point longitude]);
+        coordinates[i] = coordinate;
     }
-
-    return [SGMultiPolygon multiPolygonWithPolygons:[NSArray arrayWithArray:polygons]];
-}
-
-+ (SGMultiPolygon *)multiPolygonWithDictionary:(NSDictionary *)dictionary
-{
-    if ([[dictionary objectForKey:@"type"] isEqual:@"MultiPolygon"]) {
-        return [SGMultiPolygon multiPolygonWithArray:[dictionary objectForKey:@"coordinates"]];
-    } else {
-        NSLog(@"%@ could not be converted into a multi-polygon.", dictionary);
-        return nil;
-    }
-}
-
-+ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons
-{
-    return [[[SGMultiPolygon alloc] initWithPolygons:polygons] autorelease];
-}
-
-- (id)init
-{
-    return [self initWithPolygons:nil];
-}
-
-- (id)initWithPolygons:(NSArray *)somePolygons
-{
-    self = [super init];
-
-    if (self) {
-        polygons = [somePolygons retain];
-    }
-
-    return self;
-}
-
-- (void)dealloc
-{
-    [polygons release];
-    [super dealloc];
-}
-
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"<SGMultiPolygon: %@>", polygons];
-}
-
-- (BOOL)isEqual:(id)object
-{
-    return [[object polygons] isEqual:polygons];
-}
-
-- (NSUInteger)hash
-{
-    return [polygons hash];
+    // make the MKPolygon
+    MKPolygon *polygon = [MKPolygon polygonWithCoordinates:coordinates count:numPoints interiorPolygons:holes];
+    free(coordinates);
+    return polygon;
 }
 
 @end

@@ -30,7 +30,6 @@
 
 #import "SGPoint.h"
 
-
 @implementation SGPoint
 
 @synthesize latitude;

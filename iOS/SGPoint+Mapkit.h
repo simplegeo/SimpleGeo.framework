@@ -1,8 +1,8 @@
 //
-//  SGMultiPolygon.h
+//  SGPoint+Mapkit.h
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2010, SimpleGeo Inc.
+//  Copyright (c) 2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,30 +28,19 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
+#import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+#import "SGPoint.h"
 
 /*!
- * MultiPolygon representation.
+ * Category for SGPoint;
+ * Adds Mapkit features for iOS.
  */
-@interface SGMultiPolygon : SGGeometry {
-  @private
-    // array of SGPolygons
-    NSArray* polygons;
-}
-
-//! Polygons that define this multi-polygon.
-@property (retain,readonly) NSArray* polygons;
+@interface SGPoint (SGPoint_Mapkit)
 
 /*!
- * Create a multi-polygon from a set of Polygons.
- * @param polygons Polygons.
+ * Transform the point to CLLocationCoordinate2D.
  */
-+ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons;
-
-/*!
- * Construct a multi-polygon from a set of Polygons.
- * @param polygons Polygons.
- */
-- (id)initWithPolygons:(NSArray *)polygons;
+- (CLLocationCoordinate2D)coordinate;
 
 @end

@@ -1,8 +1,8 @@
 //
-//  SGMultiPolygon.m
+//  SGMultiPolygon+Mapkit.m
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2010, SimpleGeo Inc.
+//  Copyright (c) 2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,74 +28,17 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGMultiPolygon.h"
-#import "SGPolygon+Private.h"
+#import "SGMultiPolygon+Mapkit.h"
 
-@implementation SGMultiPolygon
+@implementation SGMultiPolygon (SGMultiPolygon_Mapkit)
 
-@synthesize polygons;
-
-+ (SGMultiPolygon *)multiPolygonWithArray:(NSArray *)coordinates
-{
-    NSMutableArray *polygons = [NSMutableArray arrayWithCapacity:[coordinates count]];
-
-    for (NSArray *polygon in coordinates) {
-        [polygons addObject:[SGPolygon polygonWithArray:polygon]];
+- (NSArray*)asMKPolygons {
+    NSMutableArray *mkPolygons = [[[NSMutableArray alloc] init] autorelease];
+    // for each polygon, get the MKPolygon and add it to the array
+    for (SGPolygon *polygon in self.polygons) {
+        [mkPolygons addObject:[polygon asMKPolygon]];
     }
-
-    return [SGMultiPolygon multiPolygonWithPolygons:[NSArray arrayWithArray:polygons]];
-}
-
-+ (SGMultiPolygon *)multiPolygonWithDictionary:(NSDictionary *)dictionary
-{
-    if ([[dictionary objectForKey:@"type"] isEqual:@"MultiPolygon"]) {
-        return [SGMultiPolygon multiPolygonWithArray:[dictionary objectForKey:@"coordinates"]];
-    } else {
-        NSLog(@"%@ could not be converted into a multi-polygon.", dictionary);
-        return nil;
-    }
-}
-
-+ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons
-{
-    return [[[SGMultiPolygon alloc] initWithPolygons:polygons] autorelease];
-}
-
-- (id)init
-{
-    return [self initWithPolygons:nil];
-}
-
-- (id)initWithPolygons:(NSArray *)somePolygons
-{
-    self = [super init];
-
-    if (self) {
-        polygons = [somePolygons retain];
-    }
-
-    return self;
-}
-
-- (void)dealloc
-{
-    [polygons release];
-    [super dealloc];
-}
-
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"<SGMultiPolygon: %@>", polygons];
-}
-
-- (BOOL)isEqual:(id)object
-{
-    return [[object polygons] isEqual:polygons];
-}
-
-- (NSUInteger)hash
-{
-    return [polygons hash];
+    return mkPolygons;
 }
 
 @end

@@ -31,7 +31,18 @@
 #import "ASIHTTPRequest.h"
 #import "SGFeature.h"
 #import "SGFeatureCollection.h"
-#import "SGPoint.h"
+
+#if TARGET_OS_IPHONE
+    #import "SGGeometry+Mapkit.h"
+    #import "SGPoint+Mapkit.h"
+    #import "SGPolygon+Mapkit.h"
+    #import "SGMultiPolygon+Mapkit.h"
+#else
+    #import "SGGeometry.h"
+    #import "SGPoint.h"
+    #import "SGPolygon.h"
+    #import "SGMultiPolygon.h"
+#endif
 
 /*!
  * \mainpage
@@ -178,3 +189,4 @@ extern NSString * const SIMPLEGEO_HOSTNAME;
 
 #import "SimpleGeo+Context.h"
 #import "SimpleGeo+Places.h"
+#import "SimpleGeo+Storage.h"

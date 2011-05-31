@@ -30,7 +30,6 @@
 
 #import "SGGeometry.h"
 
-
 /*!
  * Polygon representation.
  */

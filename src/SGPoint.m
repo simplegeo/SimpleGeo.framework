@@ -89,6 +89,15 @@
     return self;
 }
 
+- (BOOL)isInsidePolygon:(SGGeometry*)polygon
+{
+    if ([polygon isKindOfClass:[SGPolygon class]])
+        return [(SGPolygon*)polygon containsPoint:self];
+    else if ([polygon isKindOfClass:[SGMultiPolygon class]])
+        return [(SGMultiPolygon*)polygon containsPoint:self];
+    return NO;
+}
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"<SGPoint: %f, %f>", latitude, longitude];

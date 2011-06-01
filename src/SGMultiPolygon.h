@@ -30,6 +30,8 @@
 
 #import "SGGeometry.h"
 
+@class SGPoint;
+
 /*!
  * MultiPolygon representation.
  */
@@ -53,5 +55,11 @@
  * @param polygons Polygons.
  */
 - (id)initWithPolygons:(NSArray *)polygons;
+
+/*!
+ * Determine if a given point lies within the bounds of the polygon.
+ * @param point Point to check.
+ */
+- (BOOL)containsPoint:(SGPoint *)point;
 
 @end

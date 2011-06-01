@@ -32,7 +32,8 @@
 
 @implementation SGGeometry (SGGeometry_Mapkit)
 
-- (NSArray*)asMKOverlays {
+- (NSArray*)asMKOverlays
+{
     NSMutableArray *overlays = [[[NSMutableArray alloc] init] autorelease];
     if ([self isKindOfClass:[SGPolygon class]])
         [overlays addObject:[(SGPolygon*)self asMKPolygon]];

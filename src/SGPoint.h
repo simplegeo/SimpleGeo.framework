@@ -29,6 +29,8 @@
 //
 
 #import "SGGeometry.h"
+#import "SGPolygon.h"
+#import "SGMultiPolygon.h"
 
 /*!
  * Point representation.
@@ -61,5 +63,11 @@
  */
 - (id)initWithLatitude:(double)latitude
              longitude:(double)longitude;
+
+/*!
+ * Determine if the point lies within a given polygon.
+ * @param polygon Polygon to check.
+ */
+- (BOOL)isInsidePolygon:(SGGeometry*)polygon;
 
 @end

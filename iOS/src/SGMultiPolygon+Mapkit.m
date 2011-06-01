@@ -32,7 +32,8 @@
 
 @implementation SGMultiPolygon (SGMultiPolygon_Mapkit)
 
-- (NSArray*)asMKPolygons {
+- (NSArray*)asMKPolygons
+{
     NSMutableArray *mkPolygons = [[[NSMutableArray alloc] init] autorelease];
     // for each polygon, get the MKPolygon and add it to the array
     for (SGPolygon *polygon in self.polygons) {

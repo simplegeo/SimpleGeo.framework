@@ -32,7 +32,8 @@
 
 @implementation SGPoint (SGPoint_Mapkit)
 
-- (CLLocationCoordinate2D)coordinate {
+- (CLLocationCoordinate2D)coordinate
+{
     return CLLocationCoordinate2DMake(self.latitude, self.longitude);
 }
 

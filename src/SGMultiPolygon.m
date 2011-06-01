@@ -77,6 +77,14 @@
     return self;
 }
 
+-(BOOL)containsPoint:(id)point
+{
+    for (SGPolygon *polygon in polygons)
+        if ([polygon containsPoint:point])
+            return YES;
+    return NO;
+}
+
 - (void)dealloc
 {
     [polygons release];

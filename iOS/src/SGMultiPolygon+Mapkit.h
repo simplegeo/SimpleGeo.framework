@@ -29,6 +29,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SGGeometry+Mapkit.h"
 #import "SGMultiPolygon.h"
 #import "SGPolygon+Mapkit.h"
 
@@ -41,6 +42,6 @@
 /*!
  * Return an equivalent array of MKPolygons
  */
-- (NSArray*)asMKPolygons;
+- (NSArray *)asMKPolygons;
 
 @end

@@ -31,6 +31,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "SGGeometry+Mapkit.h"
 #import "SGPolygon.h"
 #import "SGPoint.h"
 
@@ -43,10 +44,11 @@
 /*!
  * Return an equivalent MKPolygon
  */
-- (MKPolygon*)asMKPolygon;
+- (MKPolygon *)asMKPolygon;
 
 @end
 
-@interface SGPolygon (hidden)
-+ (MKPolygon*)makeMKPolygon:(NSArray*)points withInteriorRegions:(NSArray*)holes;
+@interface SGPolygon (Private)
++ (MKPolygon *)makeMKPolygon:(NSArray *)points
+        withInteriorRegions:(NSArray *)holes;
 @end

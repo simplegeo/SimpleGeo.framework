@@ -133,7 +133,7 @@
 /*!
  * Checks if two features are equivalent (same ID).
  */
-- (BOOL)isFeature:(SGFeature*)feature;
+- (BOOL)isEqualToFeature:(SGFeature*)feature;
 
 /*!
  * Return an NSDictionary representation of this feature;

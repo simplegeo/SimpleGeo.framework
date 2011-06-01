@@ -32,7 +32,7 @@
 
 @implementation SGPolygon (SGPolygon_Mapkit)
 
-- (MKPolygon*)asMKPolygon
+- (MKPolygon *)asMKPolygon
 {
     NSMutableArray *holes = [[[NSMutableArray alloc] init] autorelease];
     for (int i=1; i<[rings count]; i++)
@@ -40,11 +40,17 @@
     return [SGPolygon makeMKPolygon:[self.rings objectAtIndex:0] withInteriorRegions:holes];
 }
 
+- (NSArray *)overlays
+{
+    return [NSArray arrayWithObject:[self asMKPolygon]];
+}
+
 @end
 
 @implementation SGPolygon (hidden)
 
-+ (MKPolygon*)makeMKPolygon:(NSArray*)points withInteriorRegions:(NSArray*)holes
++ (MKPolygon*)makeMKPolygon:(NSArray*)points
+        withInteriorRegions:(NSArray*)holes
 {
     // convert SGPoints to CLCoordinates
     int numPoints = [points count];

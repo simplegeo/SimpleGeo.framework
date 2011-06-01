@@ -68,6 +68,6 @@
  * Determine if the point lies within a given polygon.
  * @param polygon Polygon to check.
  */
-- (BOOL)isInsidePolygon:(SGGeometry*)polygon;
+- (BOOL)isInsidePolygon:(SGGeometry *)polygon;
 
 @end

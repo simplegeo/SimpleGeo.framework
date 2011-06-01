@@ -32,7 +32,7 @@
 
 @implementation SGMultiPolygon (SGMultiPolygon_Mapkit)
 
-- (NSArray*)asMKPolygons
+- (NSArray *)asMKPolygons
 {
     NSMutableArray *mkPolygons = [[[NSMutableArray alloc] init] autorelease];
     // for each polygon, get the MKPolygon and add it to the array
@@ -40,6 +40,11 @@
         [mkPolygons addObject:[polygon asMKPolygon]];
     }
     return mkPolygons;
+}
+
+- (NSArray *)overlays
+{
+    return [self asMKPolygons];
 }
 
 @end

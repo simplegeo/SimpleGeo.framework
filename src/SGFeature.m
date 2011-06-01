@@ -209,6 +209,30 @@
     return [[self asDictionary] description];
 }
 
+- (BOOL)isFeature:(SGFeature*)feature {
+    if (self.featureId != nil && [feature featureId] != nil)
+        if ([self.featureId isEqualToString:[feature featureId]])
+            return YES;
+    return NO;
+}
+
+- (BOOL) isEqual:(id)object
+{
+    if (object == self) return YES;
+    if (!object || ![object isKindOfClass:[self class]]) return NO;
+    return [self isEqualToFeature:(SGFeature*)object];
+}
+
+- (BOOL)isEqualToFeature:(SGFeature*)feature
+{
+    return [featureId isEqualToString:[feature featureId]];
+}
+
+- (NSUInteger)hash
+{
+    return [featureId hash];
+}
+
 - (id)JSON
 {
     return [self asDictionary];
@@ -223,13 +247,6 @@
 {
     [geometry release];
     geometry = [[SGGeometry geometryWithGeometry:input] retain];
-}
-
-- (BOOL)isFeature:(SGFeature*)feature {
-    if (self.featureId != nil && [feature featureId] != nil)
-        if ([self.featureId isEqualToString:[feature featureId]])
-            return YES;
-    return NO;
 }
 
 /**

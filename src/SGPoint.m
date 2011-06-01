@@ -89,7 +89,7 @@
     return self;
 }
 
-- (BOOL)isInsidePolygon:(SGGeometry*)polygon
+- (BOOL)isInsidePolygon:(SGGeometry *)polygon
 {
     if ([polygon isKindOfClass:[SGPolygon class]])
         return [(SGPolygon*)polygon containsPoint:self];
@@ -103,7 +103,7 @@
     return [NSString stringWithFormat:@"<SGPoint: %f, %f>", latitude, longitude];
 }
 
-- (BOOL) isEqual:(id)object
+- (BOOL)isEqual:(id)object
 {
     return latitude == [object latitude] && longitude == [object longitude];
 }

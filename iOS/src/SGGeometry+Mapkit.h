@@ -42,6 +42,6 @@
 /*!
  * Return the geometry as an array of MKOverlays
  */
-- (NSArray*)asMKOverlays;
+- (NSArray *)overlays;
 
 @end

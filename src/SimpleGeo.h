@@ -32,16 +32,16 @@
 #import "SGFeature.h"
 #import "SGFeatureCollection.h"
 
+#import "SGGeometry.h"
+#import "SGPoint.h"
+#import "SGPolygon.h"
+#import "SGMultiPolygon.h"
+
 #if TARGET_OS_IPHONE
     #import "SGGeometry+Mapkit.h"
     #import "SGPoint+Mapkit.h"
     #import "SGPolygon+Mapkit.h"
-    #import "SGMultiPolygon+Mapkit.h"
-#else
-    #import "SGGeometry.h"
-    #import "SGPoint.h"
-    #import "SGPolygon.h"
-    #import "SGMultiPolygon.h"
+    #import "SGMultiPolygon+Mapkit.h"    
 #endif
 
 /*!

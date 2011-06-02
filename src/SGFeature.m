@@ -209,13 +209,6 @@
     return [[self asDictionary] description];
 }
 
-- (BOOL)isFeature:(SGFeature*)feature {
-    if (self.featureId != nil && [feature featureId] != nil)
-        if ([self.featureId isEqualToString:[feature featureId]])
-            return YES;
-    return NO;
-}
-
 - (BOOL) isEqual:(id)object
 {
     if (object == self) return YES;

@@ -39,7 +39,7 @@
     for (SGPolygon *polygon in self.polygons) {
         [mkPolygons addObject:[polygon asMKPolygon]];
     }
-    return mkPolygons;
+    return [NSArray arrayWithArray:mkPolygons];
 }
 
 - (NSArray *)overlays

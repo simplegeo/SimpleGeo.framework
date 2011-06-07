@@ -41,7 +41,7 @@
                        [NSString stringWithFormat:@"/%@/context/%f,%f.json",
                         SIMPLEGEO_API_VERSION,
                         [point latitude], [point longitude]]];
-
+    
     ASIHTTPRequest *request = [self requestWithURL:endpoint];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                           @"didRequestContext:", @"targetSelector",

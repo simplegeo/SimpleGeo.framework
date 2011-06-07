@@ -33,7 +33,6 @@
 #import "SGPolygon+Private.h"
 #import "SGMultiPolygon+Private.h"
 
-
 @implementation SGGeometry
 
 + (SGGeometry *)geometryWithGeometry:(id)geometry

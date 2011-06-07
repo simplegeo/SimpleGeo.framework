@@ -294,6 +294,10 @@
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                         @"didRequestPlaces:", @"targetSelector",
                                         point, @"point",
+                                     query, @"matching",
+                                     category, @"category",
+                                     [NSNumber numberWithDouble:radius], @"radius",
+                                     [NSNumber numberWithInt:limit], @"limit",
                                       nil];
 
     if (query && ! [query isEqual:@""]) {
@@ -357,6 +361,10 @@
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                       @"didRequestPlaces:", @"targetSelector",
                                       address, @"address",
+                                      query, @"matching",
+                                     category, @"category",
+                                     [NSNumber numberWithDouble:radius], @"radius",
+                                     [NSNumber numberWithInt:limit], @"limit",
                                       nil];
     if (address && ! [address isEqualToString:@""]) {
          [queryParams addObject:[NSString stringWithFormat:@"%@=%@",@"address",

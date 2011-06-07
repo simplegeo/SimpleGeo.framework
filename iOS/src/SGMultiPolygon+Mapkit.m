@@ -1,8 +1,8 @@
 //
-//  SGPoint.h
+//  SGMultiPolygon+Mapkit.m
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2010, SimpleGeo Inc.
+//  Copyright (c) 2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,46 +28,23 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
-#import "SGPolygon.h"
-#import "SGMultiPolygon.h"
+#import "SGMultiPolygon+Mapkit.h"
 
-/*!
- * Point representation.
- */
-@interface SGPoint : SGGeometry
+@implementation SGMultiPolygon (SGMultiPolygon_Mapkit)
+
+- (NSArray *)asMKPolygons
 {
-  @private
-    double latitude;
-    double longitude;
+    NSMutableArray *mkPolygons = [[[NSMutableArray alloc] init] autorelease];
+    // for each polygon, get the MKPolygon and add it to the array
+    for (SGPolygon *polygon in self.polygons) {
+        [mkPolygons addObject:[polygon asMKPolygon]];
+    }
+    return [NSArray arrayWithArray:mkPolygons];
 }
 
-//! Latitude (y coordinate).
-@property (readonly) double latitude;
-
-//! Longitude (x coordinate).
-@property (readonly) double longitude;
-
-/*!
- * Create a point from a pair of coordinates.
- * @param latitude Latitude.
- * @param longitude Longitude.
- */
-+ (SGPoint *)pointWithLatitude:(double)latitude
-                     longitude:(double)longitude;
-
-/*!
- * Construct a point from a pair of coordinates.
- * @param latitude Latitude.
- * @param longitude Longitude.
- */
-- (id)initWithLatitude:(double)latitude
-             longitude:(double)longitude;
-
-/*!
- * Determine if the point lies within a given polygon.
- * @param polygon Polygon to check.
- */
-- (BOOL)isInsidePolygon:(SGGeometry *)polygon;
+- (NSArray *)overlays
+{
+    return [self asMKPolygons];
+}
 
 @end

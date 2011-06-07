@@ -65,6 +65,11 @@
  */
 - (id)initWithRecords:(NSArray *)someRecords;
 
+/*!
+ * Return the FeatureCollection as a dictiuonary.
+ */
+- (NSDictionary *)asDictionary;
+
 //! Gets the number of features in this collection.
 - (NSUInteger)count;
 

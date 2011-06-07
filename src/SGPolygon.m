@@ -82,6 +82,21 @@
     return self;
 }
 
+- (BOOL)containsPoint:(SGPoint*)point
+{
+    BOOL contains = NO;
+    for (NSArray *ring in rings) {
+        for (int p=0; p<[ring count]-1; p++) {
+            SGPoint *thisPoint = [ring objectAtIndex:p];
+            SGPoint *nextPoint = [ring objectAtIndex:p+1];
+            if (([thisPoint latitude]<[point latitude] && [nextPoint latitude]>=[point latitude]) || ([nextPoint latitude]<[point latitude] && [thisPoint latitude]>=[point latitude]))
+                if ([thisPoint longitude]+([point latitude]-[thisPoint latitude])/([nextPoint latitude]-[thisPoint latitude])*([nextPoint longitude]-[thisPoint longitude])<[point longitude])
+                    contains = !contains;
+        }
+    }
+    return contains;
+}
+
 - (void)dealloc
 {
     [rings release];

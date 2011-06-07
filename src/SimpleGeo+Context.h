@@ -57,6 +57,7 @@
  * @param point Query point.
  */
 - (void)getContextForPoint:(SGPoint *)point;
+- (void)getContextForPoint:(SGPoint *)point;
 
 /*!
  * Get Context information for an address. SimpleGeo will geocode the address

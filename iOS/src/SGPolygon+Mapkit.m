@@ -1,8 +1,8 @@
 //
-//  SGPoint.h
+//  SGPolygon+Mapkit.m
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2010, SimpleGeo Inc.
+//  Copyright (c) 2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,46 +28,42 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
-#import "SGPolygon.h"
-#import "SGMultiPolygon.h"
+#import "SGPolygon+Mapkit.h"
 
-/*!
- * Point representation.
- */
-@interface SGPoint : SGGeometry
+@implementation SGPolygon (SGPolygon_Mapkit)
+
+- (MKPolygon *)asMKPolygon
 {
-  @private
-    double latitude;
-    double longitude;
+    NSMutableArray *holes = [[[NSMutableArray alloc] init] autorelease];
+    for (int i=1; i<[rings count]; i++)
+        [holes addObject:[SGPolygon makeMKPolygon:[self.rings objectAtIndex:i] withInteriorRegions:nil]];
+    return [SGPolygon makeMKPolygon:[self.rings objectAtIndex:0] withInteriorRegions:holes];
 }
 
-//! Latitude (y coordinate).
-@property (readonly) double latitude;
+- (NSArray *)overlays
+{
+    return [NSArray arrayWithObject:[self asMKPolygon]];
+}
 
-//! Longitude (x coordinate).
-@property (readonly) double longitude;
+@end
 
-/*!
- * Create a point from a pair of coordinates.
- * @param latitude Latitude.
- * @param longitude Longitude.
- */
-+ (SGPoint *)pointWithLatitude:(double)latitude
-                     longitude:(double)longitude;
+@implementation SGPolygon (hidden)
 
-/*!
- * Construct a point from a pair of coordinates.
- * @param latitude Latitude.
- * @param longitude Longitude.
- */
-- (id)initWithLatitude:(double)latitude
-             longitude:(double)longitude;
-
-/*!
- * Determine if the point lies within a given polygon.
- * @param polygon Polygon to check.
- */
-- (BOOL)isInsidePolygon:(SGGeometry *)polygon;
++ (MKPolygon*)makeMKPolygon:(NSArray*)points
+        withInteriorRegions:(NSArray*)holes
+{
+    // convert SGPoints to CLCoordinates
+    int numPoints = [points count];
+    CLLocationCoordinate2D* coordinates = malloc(sizeof(CLLocationCoordinate2D) * numPoints);
+    for (int i=0; i<numPoints; i++) {
+        SGPoint *point = [points objectAtIndex:i];
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([point latitude], [point longitude]);
+        coordinates[i] = coordinate;
+    }
+    // make the MKPolygon
+    MKPolygon *polygon = [MKPolygon polygonWithCoordinates:coordinates count:numPoints interiorPolygons:holes];
+    free(coordinates);
+    return polygon;
+}
 
 @end

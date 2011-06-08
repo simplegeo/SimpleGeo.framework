@@ -209,14 +209,14 @@
     return [[self asDictionary] description];
 }
 
-- (BOOL) isEqual:(id)object
+- (BOOL)isEqual:(id)object
 {
     if (object == self) return YES;
     if (!object || ![object isKindOfClass:[self class]]) return NO;
-    return [self isEqualToFeature:(SGFeature*)object];
+    return [self isEqualToFeature:(SGFeature *)object];
 }
 
-- (BOOL)isEqualToFeature:(SGFeature*)feature
+- (BOOL)isEqualToFeature:(SGFeature *)feature
 {
     return [featureId isEqualToString:[feature featureId]];
 }

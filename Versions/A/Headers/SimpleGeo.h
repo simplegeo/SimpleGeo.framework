@@ -31,7 +31,18 @@
 #import "ASIHTTPRequest.h"
 #import "SGFeature.h"
 #import "SGFeatureCollection.h"
+
+#import "SGGeometry.h"
 #import "SGPoint.h"
+#import "SGPolygon.h"
+#import "SGMultiPolygon.h"
+
+#if TARGET_OS_IPHONE
+    #import "SGGeometry+Mapkit.h"
+    #import "SGPoint+Mapkit.h"
+    #import "SGPolygon+Mapkit.h"
+    #import "SGMultiPolygon+Mapkit.h"    
+#endif
 
 /*!
  * \mainpage
@@ -48,8 +59,8 @@
  */
 
 extern NSString * const SIMPLEGEO_API_VERSION;
-extern NSString * const SIMPLEGEO_URL_PREFIX;
-
+extern NSString * const SIMPLEGEO_URL_PREFIX __attribute__ ((deprecated));
+extern NSString * const SIMPLEGEO_HOSTNAME;
 
 /*!
  * Informal delegate protocol for core functionality.
@@ -104,6 +115,7 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 @property (copy,readonly) NSString* consumerSecret;
 @property (copy,readonly) NSURL* url;
 @property (copy,readonly) NSString *userAgent;
+@property (readonly,getter = isSSLEnabled) BOOL sslEnabled;
 
 /*!
  * Create a client.
@@ -115,6 +127,12 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 + (SimpleGeo *)clientWithDelegate:(id)delegate
                       consumerKey:(NSString *)consumerKey
                    consumerSecret:(NSString *)consumerSecret;
+
++ (SimpleGeo *)clientWithDelegate:(id)delegate
+                      consumerKey:(NSString *)consumerKey
+                   consumerSecret:(NSString *)consumerSecret
+                           useSSL:(BOOL)doesUseSSL;
+
 + (SimpleGeo *)clientWithDelegate:(id)delegate
                       consumerKey:(NSString *)consumerKey
                    consumerSecret:(NSString *)consumerSecret
@@ -143,6 +161,11 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
         consumerSecret:(NSString *)consumerSecret
                    URL:(NSURL *)url;
 
+/*! 
+ * Is SSL in use by this client?
+ */
+- (BOOL)isSSLEnabled;
+
 /*!
  * Get a feature with a specific handle.
  * @param handle Handle of feature being queried for.
@@ -166,3 +189,4 @@ extern NSString * const SIMPLEGEO_URL_PREFIX;
 
 #import "SimpleGeo+Context.h"
 #import "SimpleGeo+Places.h"
+#import "SimpleGeo+Storage.h"

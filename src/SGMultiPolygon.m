@@ -77,7 +77,7 @@
     return self;
 }
 
--(BOOL)containsPoint:(id)point
+-(BOOL)containsPoint:(SGPoint *)point
 {
     for (SGPolygon *polygon in polygons)
         if ([polygon containsPoint:point])

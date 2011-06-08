@@ -37,6 +37,12 @@
 @interface NSObject (SimpleGeoPlaceDelegate)
 
 /*!
+ * Called when a places request is made.
+ * @param request The manufactured request.
+ */
+- (void)didRequestPlaces:(ASIHTTPRequest *)request;
+
+/*!
  * Called when a feature was successfully added to the Places database.
  * @param feature Feature that was added.
  * @param handle  Assigned handle.

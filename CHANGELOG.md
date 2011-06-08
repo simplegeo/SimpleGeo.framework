@@ -1,5 +1,20 @@
 # Change Log
 
+## 1.3.0
+
+* SSL support (this will be automatically enabled unless you specify `NO` in
+  the `clientWithDelegate:consumerKey:consumerSecret:useSSL:` convenience
+  constructor)
+* Deprecated `SIMPLEGEO_URL_PREFIX` in favor of `SIMPLEGEO_HOSTNAME`
+* Added the following Mapkit convenience methods for iOS:
+    * `- (CLLocationCoordinate2D)coordinate` (`SGPoint`)
+    * `- (NSArray *)overlays` (`SGGeometry`)
+    * `- (MKPolygon *)asMKPolygon` (`SGPolygon`)
+    * `- (NSArray *)asMKPolygons` (`SGMultiPolygon`)
+* Improved `SGFeature` `isEqual:` to match on feature ids.
+* Added `containsPoint:` to `SGPolygon` and `SGMultiPolygon`
+* Added `isInsidePolygon:` to `SGPoint`
+
 ## 1.2.3 - 4/30/11
 
 * Tracked down some Zombies that were causing crashes under mysterious

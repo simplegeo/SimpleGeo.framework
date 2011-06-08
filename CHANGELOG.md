@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.3.0
+## 1.3.0 - 6/8/11
 
 * SSL support (this will be automatically enabled unless you specify `NO` in
   the `clientWithDelegate:consumerKey:consumerSecret:useSSL:` convenience

@@ -10,14 +10,14 @@
 
 ## Build
 
-* build the OS X framework:
+Build the OS X framework:
 
     $ make
     $ cd build/Release
     $ tar zcf /tmp/SimpleGeo-x.x.x.tgz SimpleGeo.framework
     $ cd -
 
-* build the iOS framework:
+Build the iOS framework:
 
     $ cd iOS
     $ make dist
@@ -26,24 +26,24 @@
 
 ## Docs
 
-* `make docs`
-* copy docs into `{VERSION}/` in `gh-pages` branch:
+Build the docs and the docset:
+
+    $ make docs
+    $ cd docs/html
+    $ make
+    $ tar zcf /tmp/SimpleGeo-x.x.x-docset.tgz
+    $ cd -
+
+Copy docs into `{VERSION}/` in `gh-pages` branch:
 
     $ git checkout gh-pages
     $ mkdir x.x.x
     $ cp -R docs/html/* x.x.x/
     $ git commit -m "Docs for x.x.x"
 
-* build and upload docset to GitHub:
-
-    $ cd docs/html
-    $ make
-    $ tar zcf /tmp/SimpleGeo-x.x.x-docset.tgz
-    $ cd -
-
 ## Framework branches
 
-* copy framework build into `framework` branch:
+Copy the framework build into `framework` branch:
 
     $ git checkout framework
     $ rm -rf *
@@ -51,16 +51,16 @@
     $ mv SimpleGeo.framework/* .
     $ rmdir SimpleGeo.framework
 
-* sanity check it:
+Sanity check it:
 
     $ git status
 
-* commit and tag framework branch w/ version:
+Commit and tag the framework branch w/ version:
 
     $ git commit -am "Version x.x.x"
     $ git tag x.x.x-framework
 
-* copy iOS framework build into `framework-ios` branch:
+Copy the iOS framework build into `framework-ios` branch:
 
     $ git checkout framework-ios
     $ rm -rf *
@@ -68,22 +68,22 @@
     $ mv SimpleGeo.framework/* .
     $ rmdir SimpleGeo.framework
 
-* sanity check it:
+Sanity check it:
 
     $ git status
 
-* commit and tag iOS framework branch w/ version:
+Commit and tag the iOS framework branch w/ version:
 
     $ git commit -am "Version x.x.x"
     $ git tag x.x.x-framework-ios
 
 ## Push branches to GitHub
 
-* reset your repository:
+Reset your repository:
 
     $ git checkout master
 
-* push to GitHub (make sure that all 4 branches get sent):
+Push to GitHub (make sure that all 4 branches get sent):
 
     $ git push
     $ git push --tags

@@ -36,6 +36,7 @@
 
 @synthesize created;
 @synthesize layer;
+@synthesize distance;
 
 + (SGStoredRecord *)recordWithDictionary:(NSDictionary *)data
 {
@@ -149,6 +150,7 @@
 
 - (void)dealloc
 {
+    [distance release];
     [layer release];
     [super dealloc];
 }

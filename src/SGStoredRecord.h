@@ -38,6 +38,8 @@
 {
     NSTimeInterval created;
     NSString *layer;
+    
+    NSNumber *distance;
 }
 
 //! Created at timestamp (Unix epoch)
@@ -45,6 +47,10 @@
 
 //! Layer name
 @property (retain,readonly) NSString *layer;
+
+//! Distance (in meters) from the query point. This is only present if the
+//  feature was generated from a nearby request.
+@property (retain, readonly) NSNumber *distance;
 
 
 /*!

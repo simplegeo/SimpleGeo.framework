@@ -1,3 +1,9 @@
 [submodule "server"]
 	path = server
-	url = git://github.com/simplegeo/simplegeo-test-server.git
+  url = git://github.com/simplegeo/simplegeo-test-server.git
+[submodule "ext/asi-http-request-oauth"]
+	path = ext/asi-http-request-oauth
+	url = https://github.com/keybuk/asi-http-request-oauth.git
+[submodule "ext/asi-http-request"]
+	path = ext/asi-http-request
+	url = https://github.com/dsmith/asi-http-request.git

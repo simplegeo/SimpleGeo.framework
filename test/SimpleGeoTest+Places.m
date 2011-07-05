@@ -155,6 +155,20 @@
                 timeout:0.25];
 }
 
+- (void)testGetPlacesLocaleze
+{
+    [self prepare];
+
+    [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:@"de", @"en", @"fr", nil] forKey:@"AppleLanguages"];
+
+    [[self createClient] getPlacesNear:[self point]
+                              matching:@"burgers"
+                            inCategory:@"Restaurants & Bars"];
+    
+    [self waitForStatus:kGHUnitWaitStatusSuccess
+                timeout:0.25];
+}
+
 - (void)testGetPlacesNearMatchingInCategoryWithCount
 {
     [self prepare];

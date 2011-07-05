@@ -43,15 +43,16 @@
 
 - (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL
 {
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:aURL
-                                                 consumerKey:consumerKey
-                                              consumerSecret:consumerSecret
-                                                       token:nil
-                                                 tokenSecret:nil];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:aURL];
     [request setDelegate:self];
     [request setShouldRedirect:NO];
     [request addRequestHeader:@"User-Agent" value:self.userAgent];
     [request addRequestHeader:@"Accept" value:@"application/json, application/javascript, */*"];
+    [request signRequestWithClientIdentifier:consumerKey
+                                      secret:consumerSecret
+                             tokenIdentifier:nil
+                                      secret:nil
+                                 usingMethod:ASIOAuthHMAC_SHA1SignatureMethod];
 
     return request;
 }

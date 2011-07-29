@@ -54,6 +54,7 @@ NSString * const SIMPLEGEO_HOSTNAME = @"api.simplegeo.com";
 @synthesize url;
 @synthesize userAgent;
 @dynamic    sslEnabled;
+@dynamic    requestTimeout;
 
 #pragma mark Class Methods
 
@@ -150,6 +151,16 @@ NSString * const SIMPLEGEO_HOSTNAME = @"api.simplegeo.com";
     [consumerSecret release];
     [url release];
     [super dealloc];
+}
+
+- (void)setRequestTimeout:(NSTimeInterval)requestTimeout
+{
+    [ASIHTTPRequest setDefaultTimeOutSeconds:requestTimeout];
+}
+
+- (NSTimeInterval)requestTimeout
+{
+    return [ASIHTTPRequest defaultTimeOutSeconds];
 }
 
 #pragma mark Common API Calls

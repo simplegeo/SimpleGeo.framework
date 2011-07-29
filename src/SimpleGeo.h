@@ -117,6 +117,10 @@ extern NSString * const SIMPLEGEO_HOSTNAME;
 @property (copy,readonly) NSString *userAgent;
 @property (readonly,getter = isSSLEnabled) BOOL sslEnabled;
 
+// Not the best place for this since its a global setting
+// instead of specific to each request.
+@property (assign) NSTimeInterval requestTimeout;
+
 /*!
  * Create a client.
  * @param delegate       Delegate. Must conform to SimpleGeoDelegate and other

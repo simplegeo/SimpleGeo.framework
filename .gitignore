@@ -1,5 +1,4 @@
 # Xcode
-build/*
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -26,4 +25,10 @@ Icon?
 .Trashes
 
 # Project-specific ignores
-docs/
+Project/Mac/Build
+Project/iOS/Build
+Project/Mac/Tests/Resources/GHUnit.framework
+Project/Mac/Tests/SimpleGeoTestSettings.h
+Documentation/html
+Documentation/docset
+Documentation/docset-installed.txt

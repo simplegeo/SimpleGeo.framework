@@ -5,8 +5,8 @@
 * update version numbers (`Global.xcconfig`, `Doxyfile`)
 * run tests
 * update `CHANGELOG.md` and add release date
-* commit w/ "x.x.x release" message
 * tag release version (`git tag x.x.x`)
+* commit w/ "x.x.x release" message
 
 ## Build
 

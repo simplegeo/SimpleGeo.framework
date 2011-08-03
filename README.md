@@ -1,114 +1,77 @@
 # SimpleGeo.framework
 
-This is an Objective-C client library for the SimpleGeo API, suitable for use
-in both Mac OS X and iOS applications.
+`SimpleGeo.framework` is an Objective-C client library for the SimpleGeo API, suitable for use in both Mac OS X and iOS applications.
 
-`SimpleGeo.framework` embeds a slightly modified (but still compatible) version
-of [ASIHTTPRequest](http://allseeing-i.com/ASIHTTPRequest/), so that will
-become available when you introduce this as a dependency. Change any and all
-instances of `#import "ASIHTTPRequest.h"` with `#import
-<SimpleGeo/ASIHTTPRequest.h>`.
+## Downloading the Framework
+
+`SimpleGeo.framework` is available as either a [downloadable ZIP
+file](https://github.com/simplegeo/SimpleGeo.framework/downloads) or a branch suitable for use as a [git
+submodule](http://book.git-scm.com/5_submodules.html). In either case, you'll want to place the framework in a subdirectory beneath your app.
+
+Here's an example of adding `SimpleGeo.framework` as a submodule:
+
+    $ git submodule add -b framework-ios \
+      git://github.com/simplegeo/SimpleGeo.framework.git Resources/SimpleGeo.framework
+
+## Embedding in an iOS Application
+
+Once `SimpleGeo.framework` has been placed in a subdirectory beneath your app, drag it into your Xcode project; it will show up as a linked framework.
+
+Add the following additional frameworks to your project by clicking on your Target, choosing the "Build Phases" tab, and using the `+` button at the bottom of the "Linked Libraries" section:
+
+* Foundation
+* UIKit
+* CoreGraphics
+* CFNetwork
+* SystemConfiguration
+* MobileCoreServices
+* CoreLocation
+* MapKit
+* libz
+* SimpleGeo (if it's not already present)
+
+Non-system frameworks must be statically linked to your application (iOS does not allow embedded frameworks), so you'll need to add `-ObjC` and `-all_load` to "Other Linker Flags" (accessible via the "Linking" section under your Target's  "Build Settings" tab).
+
+[SimpleGeo-iOS](https://github.com/simplegeo/SimpleGeo-iOS) is an example of an iOS application built using `SimpleGeo.framework`.
 
 ## Embedding in a Cocoa Application
 
-In order to embed `SimpleGeo.framework` into a Cocoa application, you'll first
-have to add [`YAJL.framework`](https://github.com/gabriel/yajl-objc/downloads)
-to your project and follow Apple's instructions for [Embedding a Private
-Framework in Your Application
-Bundle](http://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPFrameworks/Tasks/CreatingFrameworks.html#//apple_ref/doc/uid/20002258-106880).
+Once `SimpleGeo.framework` has been placed in a subdirectory beneath your app, drag it into your Xcode project; it will show up as a linked framework.
 
-`SimpleGeo.framework` is available as either a [downloadable ZIP
-file](https://github.com/simplegeo/SimpleGeo.framework/downloads) or a branch
-suitable for use as a [git
-submodule](http://book.git-scm.com/5_submodules.html). In either case, you'll
-want to put it in a subdirectory beneath your app. Here's an example of adding
-it as a submodule:
-
-    $ git submodule add -b framework \
-      git://github.com/simplegeo/SimpleGeo.framework.git ext/SimpleGeo.framework
-
-Once it's been added to `ext/`, drag it into your Xcode project and it will
-show up as a linked Framework.
-
-Add the following additional frameworks to your project by right-clicking on
-the target, choosing the "General" tab, and using the `+` button at the bottom
-of the window to add "Linked Libraries":
+Add the following additional frameworks to your project by clicking on your Target, choosing the "Build Phases" tab, and using the `+` button at the bottom of the "Linked Libraries" section:
 
 * CoreServices
 * SystemConfiguration
 * libz
-* YAJL (if it's not already present)
 * SimpleGeo (if it's not already present)
 
-[SimpleApp](https://github.com/simplegeo/SimpleApp) is an example of a Cocoa
-application built using this framework.
+[SimpleGeo-Mac](https://github.com/simplegeo/SimpleGeo-Mac) is an example of a Cocoa application built using `SimpleGeo.framework`.
 
-## Embedding in an iOS Application
+## Getting Started
 
-In order to embed `SimpleGeo.framework` into an iOS application, you'll first
-have to add [`YAJL.framework`](https://github.com/gabriel/yajl-objc/downloads)
-(the iOS variant) to your project.
+If you'd like help getting started with some basic tutorials, visit our [Objective-C tutorials](https://simplegeo.com/docs/tutorials/objective-c) page.
 
-`SimpleGeo.framework` is available as either a [downloadable ZIP
-file](https://github.com/simplegeo/SimpleGeo.framework/downloads) or a branch
-suitable for use as a [git
-submodule](http://book.git-scm.com/5_submodules.html). In either case, you'll
-want to put it in a subdirectory beneath your app. Here's an example of adding
-it as a submodule:
+## Working from Source
 
-    $ git submodule add -b framework-ios \
-      git://github.com/simplegeo/SimpleGeo.framework.git ext/SimpleGeo.framework
+You may download and modify the `SimpleGeo.framework` source code to meet custom needs. If you make edits that may be appreciated by others, please submit a GitHub pull request.
 
-Once it's been added to `ext/`, drag it into your Xcode project and it will
-show up as a linked Framework.
+### Downloading Dependencies
 
-Add the following additional frameworks to your project by right-clicking on
-the target, choosing the "General" tab, and using the `+` button at the bottom
-of the window to add "Linked Libraries":
+`SimpleGeo.framework` depends on the following codebases:
 
-* Foundation
-* UIKit
-* CFNetwork
-* SystemConfiguration
-* MobileCoreServices
-* CoreGraphics
-* libz
-* YAJL (if it's not already present)
-* SimpleGeo (if it's not already present)
+* [`ASIHTTPRequest`](http://allseeing-i.com/ASIHTTPRequest/) (a git submodule)
+* [`ASIHTTPRequest+OAuth`](https://github.com/AlterTap/asi-http-request-oauth) (a git submodule)
+* [`JSONKit`](https://github.com/johnezang/JSONKit) (a git submodule)
+* [`GHUnit.framework`](https://github.com/gabriel/gh-unit/downloads) (for testing)
 
-Non-system frameworks must be statically linked to your application (iOS does
-not allow embedded frameworks), so you'll need to add `-ObjC` and `-all_load`
-to your "Linker Flags" (accessible via the "Build" tab in the Target Info
-window).
+An included script can get you up and running quickly. To download and update dependencies, simply run:
 
-[SimpleGeo-iPhone](https://github.com/simplegeo/SimpleGeo-iPhone) is an example
-of an iOS application built using this framework.
+	./Scripts/update-dependencies
 
-## Developing
+The script does the following:
 
-### Getting Started
-
-In order to run the framework tests, you'll need to install `GHUnit.framework`
-into `/Library/Frameworks` (or somewhere similar). Look for the most recent
-version of `GHUnit-*.zip` on the [gh-unit](https://github.com/gabriel/gh-unit)
-[Downloads page](https://github.com/gabriel/gh-unit/downloads).
-
-For network tests to succeed, you'll want to clone and start the mock SimpleGeo
-server:
-
-    $ git submodule update --init
-    $ ruby -rubygems server/server.rb
-
-If it worked, it should say something like:
-
-    == Sinatra/1.1.0 has taken the stage on 4567 for development with backup from Mongrel
-
-If it failed, install the dependencies and try again:
-
-    $ sudo gem install oauth json sinatra
-
-To actually run the tests, choose "Tests" as the *Active Target* (via the
-*Project* menu) and click "Build and Run".
+* Downloads [`GHUnit.framework`](https://github.com/gabriel/gh-unit/downloads) into the framework's Resources/ directory
+* Runs `$ git submodule update --init` to download and update the [`ASIHTTPRequest`](http://allseeing-i.com/ASIHTTPRequest/), [`ASIHTTPRequest+OAuth`](https://github.com/AlterTap/asi-http-request-oauth), and [`JSONKit`](https://github.com/johnezang/JSONKit) submodules. If git is not installed, the appropriate files are simply downloaded into the framework's Resources/ directory.
 
 ### Building for OS X
 
@@ -116,7 +79,7 @@ To generate a usable `SimpleGeo.framework` for OS X from the command-line:
 
     $ make
 
-The resulting Framework will be in `build/Release`.
+The resulting framework will appear in `build/Release`.
 
 ### Building for iOS
 
@@ -125,23 +88,16 @@ To generate a usable `SimpleGeo.framework` for iOS from the command-line:
     $ cd iOS
     $ make
 
-The resulting Framework will be in `iOS/build/Release-iphoneos`.
+The resulting framework will appear in `iOS/build/Release-iphoneos`.
 
-Building from the command-line will create an über-Universal Framework, built
-for `armv6`, `armv7` devices *as well as the Simulator*.
+Building from the command-line will create an über-Universal framework, built for `armv6` and `armv7` devices as well as the iOS Simulator.
 
 ### Docs
 
-To generate docs, make sure you've got `doxygen` installed (`brew install
-doxygen`, for example), then:
+To generate html docs and install a handy Xcode docset:
 
-    $ make docs
+    $ ./appledoc .
 
-If you'd like a handy-dandy Xcode docset:
+## Support
 
-    $ cd docs/html/
-    $ make
-
-You can either run `make install` in `docs/html/` to install the docset into
-your home directory, or you can do whatever you wish with the
-`SimpleGeo.docset` that was created there.
+`SimpleGeo.framework` is fully supported by SimpleGeo. If you have any questions, comments, or bug reports, please contact us via our Google Groups [support page.](https://groups.google.com/forum/#!forum/simplegeo)

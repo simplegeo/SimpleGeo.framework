@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" 
+    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>--ignore</key>
+    <array>
+        <string>Project/Mac/Tests</string>
+        <string>.*</string>
+        <string>Project/Shared/Resources</string>
+        <string>Project/Mac/Build</string>
+        <string>Project/iOS/Build</string>
+        <string>*+Private.h</string>
+        <string>*+Private.m</string>
+        <string>*+Internal.h</string>
+        <string>*+Internal.m</string>
+    </array>
+    <key>--project-name</key>
+    <string>SimpleGeo.framework</string>
+    <key>--project-company</key>
+    <string>SimpleGeo</string>
+    <key>--company-id</key>
+    <string>com.simplegeo</string>
+    <key>--output</key>
+    <string>.</string>
+    <key>--templates</key>
+    <string>Templates</string>
+    <key>--create-docset</key>
+    <true/>
+    <key>--install-docset</key>
+    <true/>
+    <key>--create-html</key>
+    <true/>
+    <key>--prefix-merged-sections</key>
+    <true/>
+    <key>--keep-intermediate-files</key>
+    <true/>
+    <key>--no-repeat-first-par</key>
+    <true/>
+</dict>
+</plist>

@@ -76,8 +76,8 @@ The script does the following:
 
 To generate a usable `SimpleGeo.framework` for iOS from the command-line:
 
-	$ cd Project/iOS
-	$ make
+    $ cd Project/iOS
+    $ make
 
 The resulting framework will appear in `Project/iOS/Build/Release-iphoneos`.
 
@@ -87,8 +87,8 @@ Building from the command-line will create an über-Universal framework, built f
 
 To generate a usable `SimpleGeo.framework` for OS X from the command-line:
 
-	$ cd Project/Mac
-   $ make
+    $ cd Project/Mac
+    $ make
 
 The resulting framework will appear in `Project/Build/Release`.
 
@@ -96,8 +96,8 @@ The resulting framework will appear in `Project/Build/Release`.
 
 To generate html docs and install a handy Xcode docset:
 
-	$ cd Documentation
-   $ make
+    $ cd Documentation
+    $ make
 
 ## Support
 

@@ -59,10 +59,8 @@ You may download and modify the `SimpleGeo.framework` source code to meet custom
 
 `SimpleGeo.framework` depends on the following codebases:
 
-* [`ASIHTTPRequest`](http://allseeing-i.com/ASIHTTPRequest/) (a git submodule)
-* [`ASIHTTPRequest+OAuth`](https://github.com/AlterTap/asi-http-request-oauth) (a git submodule)
-* [`JSONKit`](https://github.com/johnezang/JSONKit) (a git submodule)
-* [`GHUnit.framework`](https://github.com/gabriel/gh-unit/downloads) (for testing)
+* [`SGObjCHTTP`](https://github.com/simplegeo/SGObjCHTTP) (a git submodule)
+* [`GHUnit.framework`](https://github.com/gabriel/gh-unit/downloads) (a testing framework)
 
 An included script can get you up and running quickly. To download and update dependencies, simply run:
 
@@ -70,33 +68,36 @@ An included script can get you up and running quickly. To download and update de
 
 The script does the following:
 
-* Downloads [`GHUnit.framework`](https://github.com/gabriel/gh-unit/downloads) into the framework's Resources/ directory
-* Runs `$ git submodule update --init` to download and update the [`ASIHTTPRequest`](http://allseeing-i.com/ASIHTTPRequest/), [`ASIHTTPRequest+OAuth`](https://github.com/AlterTap/asi-http-request-oauth), and [`JSONKit`](https://github.com/johnezang/JSONKit) submodules. If git is not installed, the appropriate files are simply downloaded into the framework's Resources/ directory.
-
-### Building for OS X
-
-To generate a usable `SimpleGeo.framework` for OS X from the command-line:
-
-    $ make
-
-The resulting framework will appear in `build/Release`.
+* Downloads [`GHUnit.framework`](https://github.com/gabriel/gh-unit/downloads) into the framework's Project/Mac/Tests/Resources/ directory
+* Runs `$ git submodule update --init` to download and update the [`SGObjCHTTP`](https://github.com/simplegeo/SGObjCHTTP) submodule.
+* Runs `$ git submodule update --init` for [`SGObjCHTTP`](https://github.com/simplegeo/SGObjCHTTP) sub-dependencies.
 
 ### Building for iOS
 
 To generate a usable `SimpleGeo.framework` for iOS from the command-line:
 
-    $ cd iOS
-    $ make
+	$ cd Project/iOS
+	$ make
 
-The resulting framework will appear in `iOS/build/Release-iphoneos`.
+The resulting framework will appear in `Project/iOS/Build/Release-iphoneos`.
 
 Building from the command-line will create an über-Universal framework, built for `armv6` and `armv7` devices as well as the iOS Simulator.
+
+### Building for OS X
+
+To generate a usable `SimpleGeo.framework` for OS X from the command-line:
+
+	$ cd Project/Mac
+   $ make
+
+The resulting framework will appear in `Project/Build/Release`.
 
 ### Docs
 
 To generate html docs and install a handy Xcode docset:
 
-    $ ./appledoc .
+	$ cd Documentation
+   $ make
 
 ## Support
 

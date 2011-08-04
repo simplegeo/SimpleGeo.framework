@@ -1,3 +1,4 @@
+import os
 import urllib2
 import json
 
@@ -105,6 +106,10 @@ output = '\
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\
 //\n\n' + output
 
-outputFile = open('../Classes/Client/Params/SGCategories.h','w+')
+script_path = os.path.realpath(__file__)
+base_path = script_path.split('Scripts')[0]
+output_path = base_path + 'Project/Shared/Classes/Client/Params/SGCategories.h'
+
+outputFile = open(output_path,'w+')
 outputFile.write(output)
 outputFile.close()

@@ -5,11 +5,11 @@
 <dict>
     <key>--ignore</key>
     <array>
-        <string>Tests</string>
+        <string>Project/Mac/Tests</string>
         <string>.*</string>
-        <string>Resources</string>
-        <string>build</string>
-        <string>iOS/build</string>
+        <string>Project/Shared/Resources</string>
+        <string>Project/Mac/Build</string>
+        <string>Project/iOS/Build</string>
         <string>*+Private.h</string>
         <string>*+Private.m</string>
         <string>*+Internal.h</string>
@@ -22,9 +22,9 @@
     <key>--company-id</key>
     <string>com.simplegeo</string>
     <key>--output</key>
-    <string>Documentation</string>
+    <string>.</string>
     <key>--templates</key>
-    <string>Documentation/Templates</string>
+    <string>Templates</string>
     <key>--create-docset</key>
     <true/>
     <key>--install-docset</key>

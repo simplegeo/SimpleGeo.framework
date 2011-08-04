@@ -1,8 +1,8 @@
 //
-//  SGGeometry+Mapkit.h
+//  SGPoint+Internal.h
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2011, SimpleGeo Inc.
+//  Copyright (c) 2010, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,17 +28,20 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
+#import "SGPoint.h"
 
-/*!
- * Category for SGGeometry.
- * Adds Mapkit features for iOS
- */
-@interface SGGeometry (Mapkit)
+@interface SGPoint (Private)
 
-/*!
- * The Geometry as an array of MKOverlays
+/**
+ * Create a point from an array of coordinates [lon, lat]
+ * @param point Point array
  */
-- (NSArray *)overlays;
++ (SGPoint *)pointWithArray:(NSArray *)point;
+
+/**
+ * Construct a point from an array of coordinates [lon, lat]
+ * @param point Point array
+ */
+- (id)initWithArray:(NSArray *)point;
 
 @end

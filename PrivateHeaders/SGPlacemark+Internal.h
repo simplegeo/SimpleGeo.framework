@@ -1,8 +1,8 @@
 //
-//  SGGeometry+Mapkit.h
-//  SimpleGeo.framework
+//  SGPlacemark+Internal.h
+//  SimpleGeo
 //
-//  Copyright (c) 2011, SimpleGeo Inc.
+//  Copyright (c) 2010-2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,17 +28,10 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
+#import "SGPlacemark.h"
 
-/*!
- * Category for SGGeometry.
- * Adds Mapkit features for iOS
- */
-@interface SGGeometry (Mapkit)
+@interface SGPlacemark (Internal)
 
-/*!
- * The Geometry as an array of MKOverlays
- */
-- (NSArray *)overlays;
+- (id)initWithGeoJSON:(NSDictionary *)geoJSONDictionary;
 
 @end

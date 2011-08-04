@@ -1,8 +1,8 @@
 //
-//  SGGeometry+Mapkit.h
+//  SGPlacesQuery.h
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2011, SimpleGeo Inc.
+//  Copyright (c) 2010, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,17 +28,26 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
+#import "SGNearbyQuery.h"
 
-/*!
- * Category for SGGeometry.
- * Adds Mapkit features for iOS
+/**
+ * An SGContextQuery object stores query information for a SimpleGeo Places API request.
+ * To make a Places request, create an SGPlacesQuery object and call [SimpleGeo getPlacesForQuery:callback:].
+ *
+ * - Specify a *search string* to simultaneously search place names, tags, and categories.
+ * - Specify *categories* to constrain results to particular categories of Places.
  */
-@interface SGGeometry (Mapkit)
+@interface SGPlacesQuery : SGNearbyQuery
+{
+    @private
+    NSString *searchString;
+    NSArray *categories;
+}
 
-/*!
- * The Geometry as an array of MKOverlays
- */
-- (NSArray *)overlays;
+/// Seach string for query
+@property (nonatomic, retain) NSString *searchString;
+
+/// Categories to query
+@property (nonatomic, retain) NSArray *categories;
 
 @end

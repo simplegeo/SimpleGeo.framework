@@ -1,5 +1,5 @@
 //
-//  SGStoredRecord.h
+//  SGPlace.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2011, SimpleGeo Inc.
@@ -28,69 +28,71 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeoObject.h"
+#import "SGFeature.h"
 @class SGPoint;
+@class SGAddress;
 
 /**
- * An SGStoredRecord object represents a record in a SimpleGeo Storage layer.
- * Like any SGGeoObject, a SGStoredRecord object stores a geometry (specifically, a point) and a properties dictionary.
- * A SGStoredRecord object also stores the name of its associated layer and a creation date.
- * If the SGStoredRecord originated from an API query response, it will also store a distance value (its distance from the query point).
+ * An SGPlace object represents a place in the SimpleGeo Places database.
+ * Places are SGFeatures with an associated *address* and *tag array.*
+ * SGPlace objects usually originate from a SimpleGeo Places API request,
+ * although you can also create them explicitly yourself if you would like to add a private Place to the database.
  */
-@interface SGStoredRecord : SGGeoObject
+@interface SGPlace : SGFeature
 {
     @private
-    // required
-    NSString *layer;
-    // optional
-    NSDate *created;
-    // from API
-    NSDictionary *layerLink;
+    SGAddress *address;
+    NSMutableArray *tags;
+    BOOL isPrivate;
 }
 
-/// Record location
+/// Place location
 @property (nonatomic, readonly) SGPoint *point;
 
-/// Layer name
-@property (nonatomic, retain) NSString *layer;
+/// Place address
+@property (nonatomic, readonly) SGAddress *address;
 
-/// Record timestamp
-@property (nonatomic, retain) NSDate *created;
+/// Place tags
+@property (nonatomic, retain, setter = setMutableTags:) NSMutableArray *tags;
 
-/// API URL for the record layer.
-// Only present if the record originated from an API request
-@property (nonatomic, readonly) NSDictionary *layerLink;
+/// Place visibility
+@property (nonatomic, assign) BOOL isPrivate;
 
 #pragma mark -
 #pragma mark Instantiation
 
 /**
- * Create an SGStoredRecord with an ID, point, and layer
- * @param identifier    Record ID
- * @param point         Record location
- * @param layerName     Record layer
+ * Create an SGPlace with a name, and location
+ * @param name          Place name
+ * @param point         Place location
  */
-+ (SGStoredRecord *)recordWithID:(NSString *)identifier
-                           point:(SGPoint *)point
-                           layer:(NSString *)layerName;
++ (SGPlace *)placeWithName:(NSString *)name
+                     point:(SGPoint *)point;
 
 /**
- * Create an SGStoredRecord from a dictionary that
+ * Construct an SGPlace from a dictionary that
  * abides by the GeoJSON Feature specification.
- * Note: geoJSON Feature must contain a "layer"
+ * Note: geoJSON Feature must contain a "name"
  * key and value in the property dictionary
  * @param geoJSONFeature    Feature dictionary
  */
-+ (SGStoredRecord *)recordWithGeoJSON:(NSDictionary *)geoJSONFeature;
++ (SGPlace *)placeWithGeoJSON:(NSDictionary *)geoJSONFeature;
 
 /**
- * Construct an SGStoredRecord with an ID, point, and layer
- * @param identifier    Record ID
- * @param point         Record location
- * @param layerName     Record layer
+ * Construct an SGPlace with a name and location
+ * @param name          Place name
+ * @param point         Place location
  */
-- (id)initWithID:(NSString *)identifier
-           point:(SGPoint *)point
-           layer:(NSString *)layerName;
+- (id)initWithName:(NSString *)name
+             point:(SGPoint *)point;
+
+#pragma mark -
+#pragma mark Convenience
+
+/**
+ * Set tags from an immutable array of tags
+ * @param tags          Tags
+ */
+- (void)setTags:(NSMutableArray *)tags;
 
 @end

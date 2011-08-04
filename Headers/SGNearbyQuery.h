@@ -1,8 +1,8 @@
 //
-//  SGGeometry+Mapkit.h
+//  SGNearbyQuery.h
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2011, SimpleGeo Inc.
+//  Copyright (c) 2010, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,17 +28,29 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
+#import "SGQuery.h"
 
-/*!
- * Category for SGGeometry.
- * Adds Mapkit features for iOS
+/**
+ * SGNearbyQuery serves as an abstract class for a nearby API request.
+ * With an SGNearby query, you may:
+ *
+ * - Constrain results with a *radius*
+ * - Limit the number of results with a *limit*
+ *
+ * @warning *Important:* You should never create an SGNearbyQuery directly,
+ * but instead create an SGContextQuery or SGStorageQuery object (both are subclasses of SGNearbyQuery).
  */
-@interface SGGeometry (Mapkit)
+@interface SGNearbyQuery : SGQuery
+{
+    @private
+    double radius;
+    int limit;
+}
 
-/*!
- * The Geometry as an array of MKOverlays
- */
-- (NSArray *)overlays;
+/// Max radius to query
+@property (nonatomic, assign) double radius;
+
+/// Limit for the number of items returned
+@property (nonatomic, assign) int limit;
 
 @end

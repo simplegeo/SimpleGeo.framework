@@ -31,36 +31,70 @@
 #import "SGGeometry.h"
 
 @class SGPoint;
+@class SGEnvelope;
 
-/*!
- * Polygon representation.
+/**
+ * An SGPolygon object stores information about a polygon.
+ * Point information is stored in an array of *rings.*
+ * The first ring of points represents the polygon's *boundary.*
+ * Additional rings contain information about *holes* in the polygon.
  */
-@interface SGPolygon : SGGeometry
+@interface SGPolygon : SGGeometry <SGRegionGeometry>
 {
-  @private
-    // array of arrays of SGPoints
-    NSArray* rings;
+    @private
+    NSArray *rings;
 }
 
-//! LinearRings that define this polygon.
-@property (retain,readonly) NSArray* rings;
+/// LinearRings that define this polygon
+@property (nonatomic, retain) NSArray *rings;
 
-/*!
- * Create a polygon from a set of LinearRings.
- * @param rings LinearRings.
+/// Bounding box for the polygon
+@property (nonatomic, readonly) SGEnvelope *envelope;
+
+#pragma mark -
+#pragma mark Instantiation
+
+/**
+ * Create a polygon from a set of LinearRings of SGPoints
+ * @param rings LinearRings
  */
 + (SGPolygon *)polygonWithRings:(NSArray *)rings;
 
-/*!
- * Construct a polygon from a set of LinearRings.
- * @param rings LinearRings.
+/**
+ * Create a polygon from a boundary ring and
+ * and array of hole rings of SGPoints
+ * @param boundary  Boundary ring
+ * @param holes     Hole rings
+ */
++ (SGPolygon *)polygonWithBoundary:(NSArray *)boundary
+                             holes:(NSArray *)holes;
+
+/**
+ * Construct a polygon from a set of LinearRings
+ * @param rings LinearRings
  */
 - (id)initWithRings:(NSArray *)rings;
 
-/*!
- * Determine if a given point lies within the bounds of the polygon.
- * @param point Point to check.
+/**
+ * Construct a polygon from a boundary ring and
+ * and array of hole rings
+ * @param boundary  Boundary ring
+ * @param holes     Hole rings
  */
-- (BOOL)containsPoint:(SGPoint *)point;
+- (id)initWithBoundary:(NSArray *)boundary
+                 holes:(NSArray *)holes;
+
+#pragma mark -
+#pragma mark Convenience
+
+/**
+ * Boundary ring
+ */
+- (NSArray *)boundary;
+
+/**
+ * Array of hole rings
+ */
+- (NSArray *)holes;
 
 @end

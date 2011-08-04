@@ -1,5 +1,5 @@
 //
-//  SimpleGeo+Internal.h
+//  SGContextQuery.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,16 +28,34 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SimpleGeo.h"
+#import "SGQuery.h"
 
+/**
+ * An SGContextQuery object stores query information for a SimpleGeo Context API request.
+ * To make a Context request, create an SGContextQuery object and call [SimpleGeo getContextForQuery:callback:].
+ *
+ * - Specify *filters* to request only specific parts of a full Context response.
+ * - Specify *feature categories* to limit the types of polygons returned in the response.
+ */
+@interface SGContextQuery : SGQuery
+{
+    @private
+    NSArray *featureCategories;
+    NSArray *featureSubcategories;
+    NSArray *filters;
+    NSArray *acsTableIDs;
+}
 
-@interface SimpleGeo (Internal)
+/// Feature categories to include in the Context response
+@property (nonatomic, retain) NSArray *featureCategories;
 
-- (NSURL *)endpointForString:(NSString *)path;
-- (ASIHTTPRequest *)requestWithURL:(NSURL *)aURL;
-- (NSDictionary *)markFeature:(SGFeature *)feature
-                      private:(BOOL)private;
-- (NSString *)URLEncodedString:(NSString *)string;
-- (NSString *)URLDecodedString:(NSString *)string;
+/// Feature subcategories to include in the Context response
+@property (nonatomic, retain) NSArray *featureSubcategories;
+
+/// Filters for returning only part of a Context response
+@property (nonatomic, retain) NSArray *filters;
+
+/// ACS [demographics tables](https://simplegeo.com/docs/api-endpoints/simplegeo-context#demographics) to include in the Context response;
+@property (nonatomic, retain) NSArray *acsTableIDs;
 
 @end

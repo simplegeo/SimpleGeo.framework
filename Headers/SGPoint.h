@@ -32,42 +32,45 @@
 #import "SGPolygon.h"
 #import "SGMultiPolygon.h"
 
-/*!
- * Point representation.
+/**
+ * An SGPoint object stores information about a geometric coordinate.
+ * In addition to latitude and longitude, an SGPoint object may store an associated date
+ * if it originates from a SimpleGeo Storage _record history request._
  */
 @interface SGPoint : SGGeometry
 {
-  @private
+    @private
     double latitude;
     double longitude;
+    NSDate *created;
 }
 
-//! Latitude (y coordinate).
-@property (readonly) double latitude;
+/// Latitude (y coordinate)
+@property (nonatomic, assign) double latitude;
 
-//! Longitude (x coordinate).
-@property (readonly) double longitude;
+/// Longitude (x coordinate)
+@property (nonatomic, assign) double longitude;
 
-/*!
- * Create a point from a pair of coordinates.
- * @param latitude Latitude.
- * @param longitude Longitude.
+/// Date created
+@property (nonatomic, retain) NSDate *created;
+
+#pragma mark -
+#pragma mark Instantiation
+
+/**
+ * Create a point from a pair of coordinates
+ * @param latitude Latitude
+ * @param longitude Longitude
  */
-+ (SGPoint *)pointWithLatitude:(double)latitude
-                     longitude:(double)longitude;
++ (SGPoint *)pointWithLat:(double)latitude
+                      lon:(double)longitude;
 
-/*!
- * Construct a point from a pair of coordinates.
- * @param latitude Latitude.
- * @param longitude Longitude.
+/**
+ * Construct a point from a pair of coordinates
+ * @param latitude Latitude
+ * @param longitude Longitude
  */
-- (id)initWithLatitude:(double)latitude
-             longitude:(double)longitude;
-
-/*!
- * Determine if the point lies within a given polygon.
- * @param polygon Polygon to check.
- */
-- (BOOL)isInsidePolygon:(SGGeometry *)polygon;
+- (id)initWithLat:(double)latitude
+              lon:(double)longitude;
 
 @end

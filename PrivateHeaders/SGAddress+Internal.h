@@ -1,6 +1,6 @@
 //
-//  SGFeatureCollection.h
-//  SimpleGeo.framework
+//  SGAddress+Internal.h
+//  SimpleGeo
 //
 //  Copyright (c) 2010-2011, SimpleGeo Inc.
 //  All rights reserved.
@@ -28,49 +28,14 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import "SGAddress.h"
 
-/*!
- * Collections of Features.
+@interface SGAddress (Internal)
+
+/**
+ * Extract address from a dictionary
+ * @param dictionary    Dictionary containing an address
  */
-@interface SGFeatureCollection : NSObject
-{
-  @private
-    NSArray* features;
-}
-
-//! Collected Features.
-@property (retain,readonly) NSArray* features;
-
-/*!
- * Create a FeatureCollection from a list of Features.
- * @param features List of Features.
- */
-+ (SGFeatureCollection *)featureCollectionWithFeatures:(NSArray *)features;
-
-/*!
- * Create a FeatureCollection from a list of Records.
- * @param records List of Records.
- */
-+ (SGFeatureCollection *)featureCollectionWithRecords:(NSArray *)records;
-
-/*!
- * Construct a FeatureCollection from a list of Features.
- * @param features List of Features.
- */
-- (id)initWithFeatures:(NSArray *)features;
-
-/*!
- * Construct a FeatureCollection from a list of Records.
- * @param someRecords List of Records.
- */
-- (id)initWithRecords:(NSArray *)someRecords;
-
-/*!
- * Return the FeatureCollection as a dictiuonary.
- */
-- (NSDictionary *)asDictionary;
-
-//! Gets the number of features in this collection.
-- (NSUInteger)count;
++ (SGAddress *)addressStrippedFromDictionary:(NSMutableDictionary *)dictionary;
 
 @end

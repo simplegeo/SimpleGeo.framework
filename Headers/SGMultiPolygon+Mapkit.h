@@ -28,19 +28,16 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <Foundation/Foundation.h>
-#import "SGGeometry+Mapkit.h"
 #import "SGMultiPolygon.h"
-#import "SGPolygon+Mapkit.h"
 
 /*!
- * Category for SGMultiPolygon;
- * Adds Mapkit features for iOS.
+ * Category for SGMultiPolygon.
+ * Adds Mapkit features for iOS
  */
-@interface SGMultiPolygon (SGMultiPolygon_Mapkit)
+@interface SGMultiPolygon (Mapkit)
 
 /*!
- * Return an equivalent array of MKPolygons
+ * An equivalent array of MKPolygons
  */
 - (NSArray *)asMKPolygons;
 

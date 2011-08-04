@@ -1,8 +1,8 @@
 //
-//  SGGeometry+Mapkit.h
+//  SimpleGeo+Features.h
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2011, SimpleGeo Inc.
+//  Copyright (c) 2010, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,17 +28,54 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
+#import "SimpleGeo.h"
+@class SGCallback;
 
-/*!
- * Category for SGGeometry.
- * Adds Mapkit features for iOS
+/**
+ * Client support for Feature API
  */
-@interface SGGeometry (Mapkit)
+@interface SimpleGeo (Features)
 
-/*!
- * The Geometry as an array of MKOverlays
+#pragma mark -
+#pragma mark Requests
+
+/**
+ * Get a feature with a specific handle
+ * @param handle    Feature handle
+ * @param zoom      Zoom (complexity of returned geometry) (optional)
+ * @param callback  Request callback
  */
-- (NSArray *)overlays;
+- (void)getFeatureWithHandle:(NSString *)handle
+                        zoom:(NSNumber *)zoom
+                    callback:(SGCallback *)callback;
+
+/**
+ * Get the overall list of SimpleGeo categories
+ * @param callback  Request callback
+ */
+- (void)getCategoriesWithCallback:(SGCallback *)callback;
+
+/**
+ * Get annotations attached to a feature
+ * @param handle        Feature handle
+ * @param callback  Request callback
+ */
+- (void)getAnnotationsForFeature:(NSString *)handle
+                        callback:(SGCallback *)callback;
+
+#pragma mark -
+#pragma mark Manipulations
+
+/**
+ * Annotate a feature
+ * @param handle        Feature handle
+ * @param annotation    Annotation list
+ * @param isPrivate     Annotation privacy
+ * @param callback  Request callback
+ */
+- (void)annotateFeature:(NSString *)handle
+         withAnnotation:(NSDictionary *)annotation
+              isPrivate:(BOOL)isPrivate
+               callback:(SGCallback *)callback;
 
 @end

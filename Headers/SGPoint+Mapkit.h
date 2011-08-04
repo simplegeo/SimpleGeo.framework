@@ -28,18 +28,17 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "SGPoint.h"
 
 /*!
- * Category for SGPoint;
- * Adds Mapkit features for iOS.
+ * Category for SGPoint.
+ * Adds Mapkit features for iOS
  */
-@interface SGPoint (SGPoint_Mapkit)
+@interface SGPoint (Mapkit)
 
 /*!
- * Transform the point to CLLocationCoordinate2D.
+ * An equivalent Core Location coordinate
  */
 - (CLLocationCoordinate2D)coordinate;
 

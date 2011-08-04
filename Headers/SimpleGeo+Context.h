@@ -29,40 +29,23 @@
 //
 
 #import "SimpleGeo.h"
+@class SGContextQuery;
+@class SGCallback;
 
-
-/*!
- * Informal delegate protocol for Context functionality.
- */
-@interface NSObject (SimpleGeoContextDelegate)
-
-/*!
- * Called when Context information has been loaded.
- * @param context Context response.
- * @param query   Query information.
- */
-- (void)didLoadContext:(NSDictionary *)context
-              forQuery:(NSDictionary *)query;
-
-@end
-
-
-/*!
- * Client support for the Places API.
+/**
+ * Client support for Context API
  */
 @interface SimpleGeo (Context)
 
-/*!
- * Get Context information for a specific point. (SimpleGeo+Context.h)
- * @param point Query point.
- */
-- (void)getContextForPoint:(SGPoint *)point;
+#pragma mark -
+#pragma mark Requests
 
-/*!
- * Get Context information for an address. SimpleGeo will geocode the address
- * for you. (SimpleGeo+Context.h)
- * @param address Query address.
+/**
+ * Get Context matching an SGContextQuery
+ * @param query     Query for the request
+ * @param callback  Request callback
  */
-- (void)getContextForAddress:(NSString *)address;
+- (void)getContextForQuery:(SGContextQuery *)query
+                  callback:(SGCallback *)callback;
 
 @end

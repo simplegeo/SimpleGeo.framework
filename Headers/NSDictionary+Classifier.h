@@ -1,5 +1,5 @@
 //
-//  SGGeometry+Mapkit.h
+//  NSDictionary+Classifier.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2011, SimpleGeo Inc.
@@ -28,17 +28,40 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
+#import "SGCategories.h"
 
-/*!
- * Category for SGGeometry.
- * Adds Mapkit features for iOS
+/**
+ * This category on NSDictionary allows you to easily create a SimpleGeo classifier -
+ * a dictionary with *"type,"* *"category,"* and *"subcategory"* top-level keys.
+ * More importantly, accessor methods allow for easier access to key values,
+ * returning nil if no key exists or if the value is null.
  */
-@interface SGGeometry (Mapkit)
+@interface NSDictionary (Classifier)
 
-/*!
- * The Geometry as an array of MKOverlays
+/**
+ * Create a dictionary that conforms to the SimpleGeo
+ * classifier protocol for Features
+ * @param type          Feature type
+ * @param category      Feature category
+ * @param subcategory   Feature subcategory
  */
-- (NSArray *)overlays;
++ (NSDictionary *)classifierWithType:(SGFeatureType)type
+                            category:(SGFeatureCategory)category
+                         subcategory:(SGFeatureSubcategory)subcategory;
+
+/**
+ * Retreive the feature type
+ */
+- (SGFeatureType)classifierType;
+
+/**
+ * Retreive the feature category
+ */
+- (SGFeatureCategory)classifierCategory;
+
+/**
+ * Retreive the feature subcategory
+ */
+- (SGFeatureSubcategory)classifierSubcategory;
 
 @end

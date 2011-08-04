@@ -1,5 +1,5 @@
 //
-//  SGFeature.h
+//  SGGeoObject.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,45 +28,73 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeoObject.h"
+#import "SGGeometry.h"
 
 /**
- * An SGFeature object represents a *named* and *classified* SGGeoObject with a *unique identifier.*
- * In practice, SGFeatures represent SimpleGeo polygons (e.g., neighborhoods or states).
+ * An SGGeoObject represents a basic geo object.
+ * SGGeoObjects store a geometry (SGPoint, SGPolygon, SGMultiPolygon, or SGEnvelope) and a property dictionary.
+ * An example of a very basic geo object is an intersection.
  */
-@interface SGFeature : SGGeoObject
+@interface SGGeoObject : NSObject
 {
     @private
     // required
-    NSString *name;
+    SGGeometry *geometry;
     // optional
-    NSMutableArray *classifiers;
+    NSString *identifier;
+    NSMutableDictionary *properties;
+    // from request
+    NSDictionary *selfLink;
+    NSNumber *distance;
 }
 
-/// Feature name
-@property (nonatomic, retain) NSString *name;
+/// Object geometry
+@property (nonatomic, readonly) SGGeometry *geometry;
 
-/// Feature classifiers
-@property (nonatomic, retain, setter = setMutableClassifiers:) NSMutableArray *classifiers;
+/// Object ID
+@property (nonatomic, retain) NSString *identifier;
 
-#pragma mark -
-#pragma mark Convenience
+/// Object properties
+@property (nonatomic, retain, setter = setMutableProperties:) NSMutableDictionary *properties;
 
-/**
- * Set classifiers from an immutable array of
- * classifier dictionaries
- * @param classifiers       Classifiers
- */
-- (void)setClassifiers:(NSArray *)classifiers;
+/// API URL for the Object.
+/// Only present if the Object originated from an API request
+@property (nonatomic, readonly) NSDictionary *selfLink;
+
+/// Distance (in meters) from the query point.
+/// Valid for SGGeoObjects with point geometry
+/// Only present if the Object originated from a nearby request
+@property (nonatomic, readonly) NSNumber *distance;
 
 #pragma mark -
 #pragma mark Instantiation
 
 /**
- * Create an SGFeature from a dictionary that
+ * Construct an SGGeoObject with a geometry
+ * @param geometry          Object geometry
+ */
+- (id)initWithGeometry:(SGGeometry *)geometry;
+
+/**
+ * Construct an SGGeoObject from a dictionary that
  * abides by the GeoJSON Feature specification
  * @param geoJSONFeature    Feature dictionary
  */
-+ (SGFeature *)featureWithGeoJSON:(NSDictionary *)geoJSONFeature;
+- (id)initWithGeoJSON:(NSDictionary *)geoJSONFeature;
+
+#pragma mark -
+#pragma mark Convenience
+
+/**
+ * Set properties from an immutable properties dictionary
+ * @param properties        Feature properties
+ */
+- (void)setProperties:(NSDictionary *)properties;
+
+/**
+ * Dictionary representation of the SGGeoObject that
+ * conforms to the geoJSON Feature specification
+ */
+- (NSDictionary *)asGeoJSON;
 
 @end

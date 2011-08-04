@@ -1,5 +1,5 @@
 //
-//  SGMultiPolygon.h
+//  SGPlacesQuery.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,41 +28,26 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
-
-@class SGPoint;
-@class SGEnvelope;
+#import "SGNearbyQuery.h"
 
 /**
- * An SGMultiPolygon object stores information about a multi-polygon — an array of SGPolygons representing a single feature.
+ * An SGContextQuery object stores query information for a SimpleGeo Places API request.
+ * To make a Places request, create an SGPlacesQuery object and call [SimpleGeo getPlacesForQuery:callback:].
  *
- * A good example of a multi-polygon is the state of Hawaii, a single feature composed of many polygons.
+ * - Specify a *search string* to simultaneously search place names, tags, and categories.
+ * - Specify *categories* to constrain results to particular categories of Places.
  */
-@interface SGMultiPolygon : SGGeometry <SGRegionGeometry>
+@interface SGPlacesQuery : SGNearbyQuery
 {
     @private
-    NSArray *polygons;
+    NSString *searchString;
+    NSArray *categories;
 }
 
-/// Polygons that define this multi-polygon
-@property (nonatomic, retain) NSArray *polygons;
+/// Seach string for query
+@property (nonatomic, retain) NSString *searchString;
 
-/// Bounding box for the multi-polygon
-@property (nonatomic, readonly) SGEnvelope *envelope;
-
-#pragma mark -
-#pragma mark Instantiation
-
-/**
- * Create a multi-polygon from a set of Polygons
- * @param polygons Polygons
- */
-+ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons;
-
-/**
- * Construct a multi-polygon from a set of Polygons
- * @param polygons Polygons
- */
-- (id)initWithPolygons:(NSArray *)polygons;
+/// Categories to query
+@property (nonatomic, retain) NSArray *categories;
 
 @end

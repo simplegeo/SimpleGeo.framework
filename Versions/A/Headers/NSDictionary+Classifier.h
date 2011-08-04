@@ -1,8 +1,8 @@
 //
-//  SGMultiPolygon.h
+//  NSDictionary+Classifier.h
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2010, SimpleGeo Inc.
+//  Copyright (c) 2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,41 +28,40 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
-
-@class SGPoint;
-@class SGEnvelope;
+#import "SGCategories.h"
 
 /**
- * An SGMultiPolygon object stores information about a multi-polygon — an array of SGPolygons representing a single feature.
- *
- * A good example of a multi-polygon is the state of Hawaii, a single feature composed of many polygons.
+ * This category on NSDictionary allows you to easily create a SimpleGeo classifier -
+ * a dictionary with *"type,"* *"category,"* and *"subcategory"* top-level keys.
+ * More importantly, accessor methods allow for easier access to key values,
+ * returning nil if no key exists or if the value is null.
  */
-@interface SGMultiPolygon : SGGeometry <SGRegionGeometry>
-{
-    @private
-    NSArray *polygons;
-}
-
-/// Polygons that define this multi-polygon
-@property (nonatomic, retain) NSArray *polygons;
-
-/// Bounding box for the multi-polygon
-@property (nonatomic, readonly) SGEnvelope *envelope;
-
-#pragma mark -
-#pragma mark Instantiation
+@interface NSDictionary (Classifier)
 
 /**
- * Create a multi-polygon from a set of Polygons
- * @param polygons Polygons
+ * Create a dictionary that conforms to the SimpleGeo
+ * classifier protocol for Features
+ * @param type          Feature type
+ * @param category      Feature category
+ * @param subcategory   Feature subcategory
  */
-+ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons;
++ (NSDictionary *)classifierWithType:(SGFeatureType)type
+                            category:(SGFeatureCategory)category
+                         subcategory:(SGFeatureSubcategory)subcategory;
 
 /**
- * Construct a multi-polygon from a set of Polygons
- * @param polygons Polygons
+ * Retreive the feature type
  */
-- (id)initWithPolygons:(NSArray *)polygons;
+- (SGFeatureType)classifierType;
+
+/**
+ * Retreive the feature category
+ */
+- (SGFeatureCategory)classifierCategory;
+
+/**
+ * Retreive the feature subcategory
+ */
+- (SGFeatureSubcategory)classifierSubcategory;
 
 @end

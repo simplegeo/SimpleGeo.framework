@@ -28,165 +28,76 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "ASIHTTPRequest.h"
-#import "SGFeature.h"
-#import "SGFeatureCollection.h"
+// Requests
+#import "SGHTTPClient.h"
 
+// Geometry
 #import "SGGeometry.h"
 #import "SGPoint.h"
+#import "SGEnvelope.h"
 #import "SGPolygon.h"
 #import "SGMultiPolygon.h"
 
 #if TARGET_OS_IPHONE
+    // Mapkit Additions
     #import "SGGeometry+Mapkit.h"
     #import "SGPoint+Mapkit.h"
     #import "SGPolygon+Mapkit.h"
-    #import "SGMultiPolygon+Mapkit.h"    
+    #import "SGMultiPolygon+Mapkit.h"   
+    #import "SGEnvelope+Mapkit.h"
 #endif
 
-/*!
- * \mainpage
- *
- * \section intro_sec Introduction
- *
- * Hi, you've reached the documentation for SimpleGeo's Objective-C client.
- *
- * For more information, please look at the Class documentation.
- *
- * You can also
- * <a href="https://github.com/simplegeo/SimpleGeo.framework/downloads">download
- * an Xcode docset</a>.
- */
+// Objects
+#import "SGAddress.h"
+#import "SGPlacemark.h"
+#import "SGContext.h"
+#import "SGLayer.h"
 
-extern NSString * const SIMPLEGEO_API_VERSION;
-extern NSString * const SIMPLEGEO_URL_PREFIX __attribute__ ((deprecated));
-extern NSString * const SIMPLEGEO_HOSTNAME;
+// Query Objects
+#import "SGContextQuery.h"
+#import "SGPlacesQuery.h"
+#import "SGStorageQuery.h"
 
-/*!
- * Informal delegate protocol for core functionality.
- */
-@interface NSObject (SimpleGeoDelegate)
+// Geo Objects
+#import "SGGeoObject.h"
+#import "SGFeature.h"
+#import "SGPlace.h"
+#import "SGStoredRecord.h"
 
-/*!
- * Called when a feature has been loaded. feature will be nil if it could not
- * be found.
- * @param feature Feature that was loaded.
- * @param handle  Handle used to request this feature.
- */
-- (void)didLoadFeature:(SGFeature *)feature
-                handle:(NSString *)handle;
+// Helpers
+#import "SGTypes.h"
+#import "SGCategories.h"
+#import "NSArray+SGCollection.h"
+#import "NSDictionary+Classifier.h"
 
-/*!
- * Called when a request has finished. (optional)
- * @param request Request instance.
+/**
+ A SimpleGeo object acts as a client for all API requests.
+ A SimpleGeo object is created with SimpleGeo credentials (an OAuth consumer key and secret).
+ All API requests are made by calling methods in this class.
+ 
+    // Create the client
+    SimpleGeo *client = [SimpleGeo clientWithConsumerKey:@"key"
+                                          consumerSecret:@"secret"];
+    // Example request
+    [client getContextForQuery:query callback:callback];
  */
-- (void)requestDidFinish:(ASIHTTPRequest *)request;
+@interface SimpleGeo: SGHTTPClient
 
-/*!
- * Called when a request has failed. (optional)
- * @param request Request instance.
- */
-- (void)requestDidFail:(ASIHTTPRequest *)request;
+#pragma mark -
+#pragma mark Instantiation
 
-/*!
- * Called when categories have been loaded.
- * @param categories An array of categories.
+/**
+ * Create a client for making requests
+ * @param consumerKey    OAuth consumer key
+ * @param consumerSecret OAuth consumer secret
  */
-- (void)didLoadCategories:(NSArray *)categories;
++ (SimpleGeo *)clientWithConsumerKey:(NSString *)consumerKey
+                      consumerSecret:(NSString *)consumerSecret;
 
 @end
 
-
-/*!
- * SimpleGeo client interface.
- */
-@interface SimpleGeo : NSObject
-{
-  @private
-    id delegate;
-    NSString* consumerKey;
-    NSString* consumerSecret;
-    NSURL* url;
-    NSString *userAgent;
-}
-
-@property (assign)        id delegate;
-@property (copy,readonly) NSString* consumerKey;
-@property (copy,readonly) NSString* consumerSecret;
-@property (copy,readonly) NSURL* url;
-@property (copy,readonly) NSString *userAgent;
-@property (readonly,getter = isSSLEnabled) BOOL sslEnabled;
-
-/*!
- * Create a client.
- * @param delegate       Delegate. Must conform to SimpleGeoDelegate and other
- *                       variants as appropriate.
- * @param consumerKey    OAuth consumer key.
- * @param consumerSecret OAuth consumer secret.
- */
-+ (SimpleGeo *)clientWithDelegate:(id)delegate
-                      consumerKey:(NSString *)consumerKey
-                   consumerSecret:(NSString *)consumerSecret;
-
-+ (SimpleGeo *)clientWithDelegate:(id)delegate
-                      consumerKey:(NSString *)consumerKey
-                   consumerSecret:(NSString *)consumerSecret
-                           useSSL:(BOOL)doesUseSSL;
-
-+ (SimpleGeo *)clientWithDelegate:(id)delegate
-                      consumerKey:(NSString *)consumerKey
-                   consumerSecret:(NSString *)consumerSecret
-                              URL:(NSURL *)url;
-
-/*!
- * Construct a client.
- * @param delegate       Delegate. Must conform to SimpleGeoDelegate and other
- *                       variants as appropriate.
- * @param consumerKey    OAuth consumer key.
- * @param consumerSecret OAuth consumer secret.
- */
-- (id)initWithDelegate:(id)delegate
-           consumerKey:(NSString *)consumerKey
-        consumerSecret:(NSString *)consumerSecret;
-
-/*! Construct a client with a custom URL. This is the designated initializer
- * for this class.
- * @param delegate       Delegate. Must conform to SimpleGeoDelegate and other
- *                       variants as appropriate.
- * @param consumerKey    OAuth consumer key.
- * @param consumerSecret OAuth consumer secret.
- */
-- (id)initWithDelegate:(id)delegate
-           consumerKey:(NSString *)consumerKey
-        consumerSecret:(NSString *)consumerSecret
-                   URL:(NSURL *)url;
-
-/*! 
- * Is SSL in use by this client?
- */
-- (BOOL)isSSLEnabled;
-
-/*!
- * Get a feature with a specific handle.
- * @param handle Handle of feature being queried for.
- */
-- (void)getFeatureWithHandle:(NSString *)handle;
-
-/*!
- * Get a feature with a specific handle.
- * @param handle Handle of feature being queried for.
- * @param zoom   Zoom level to determine complexity of returned feature.
- */
-- (void)getFeatureWithHandle:(NSString *)handle
-                        zoom:(int)zoom;
-
-/*!
- * Get the overall list of categories.
- */
-- (void)getCategories;
-
-@end
-
+// Services
 #import "SimpleGeo+Context.h"
+#import "SimpleGeo+Features.h"
 #import "SimpleGeo+Places.h"
 #import "SimpleGeo+Storage.h"

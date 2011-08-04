@@ -1,5 +1,5 @@
 //
-//  SGMultiPolygon.h
+//  SimpleGeo+Features.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,41 +28,54 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
-
-@class SGPoint;
-@class SGEnvelope;
+#import "SimpleGeo.h"
+@class SGCallback;
 
 /**
- * An SGMultiPolygon object stores information about a multi-polygon — an array of SGPolygons representing a single feature.
- *
- * A good example of a multi-polygon is the state of Hawaii, a single feature composed of many polygons.
+ * Client support for Feature API
  */
-@interface SGMultiPolygon : SGGeometry <SGRegionGeometry>
-{
-    @private
-    NSArray *polygons;
-}
-
-/// Polygons that define this multi-polygon
-@property (nonatomic, retain) NSArray *polygons;
-
-/// Bounding box for the multi-polygon
-@property (nonatomic, readonly) SGEnvelope *envelope;
+@interface SimpleGeo (Features)
 
 #pragma mark -
-#pragma mark Instantiation
+#pragma mark Requests
 
 /**
- * Create a multi-polygon from a set of Polygons
- * @param polygons Polygons
+ * Get a feature with a specific handle
+ * @param handle    Feature handle
+ * @param zoom      Zoom (complexity of returned geometry) (optional)
+ * @param callback  Request callback
  */
-+ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons;
+- (void)getFeatureWithHandle:(NSString *)handle
+                        zoom:(NSNumber *)zoom
+                    callback:(SGCallback *)callback;
 
 /**
- * Construct a multi-polygon from a set of Polygons
- * @param polygons Polygons
+ * Get the overall list of SimpleGeo categories
+ * @param callback  Request callback
  */
-- (id)initWithPolygons:(NSArray *)polygons;
+- (void)getCategoriesWithCallback:(SGCallback *)callback;
+
+/**
+ * Get annotations attached to a feature
+ * @param handle        Feature handle
+ * @param callback  Request callback
+ */
+- (void)getAnnotationsForFeature:(NSString *)handle
+                        callback:(SGCallback *)callback;
+
+#pragma mark -
+#pragma mark Manipulations
+
+/**
+ * Annotate a feature
+ * @param handle        Feature handle
+ * @param annotation    Annotation list
+ * @param isPrivate     Annotation privacy
+ * @param callback  Request callback
+ */
+- (void)annotateFeature:(NSString *)handle
+         withAnnotation:(NSDictionary *)annotation
+              isPrivate:(BOOL)isPrivate
+               callback:(SGCallback *)callback;
 
 @end

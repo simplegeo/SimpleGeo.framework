@@ -1,55 +1,34 @@
 //
 //  ASIHTTPRequest+OAuth.h
 //
-//  Copyright (c) 2011, SimpleGeo Inc.
-//  All rights reserved.
-//
-// Redistribution and use in source and binary forms, with or without
-// modification, are permitted provided that the following conditions are met:
-//     * Redistributions of source code must retain the above copyright
-//       notice, this list of conditions and the following disclaimer.
-//     * Redistributions in binary form must reproduce the above copyright
-//       notice, this list of conditions and the following disclaimer in the
-//       documentation and/or other materials provided with the distribution.
-//     * Neither the name of the <organization> nor the
-//       names of its contributors may be used to endorse or promote products
-//       derived from this software without specific prior written permission.
-//
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-// DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
-// DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-// (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-// LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-// ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-// SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//  Created by Scott James Remnant on 6/1/11.
+//  Copyright 2011 Scott James Remnant <scott@netsplit.com>. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 
 #import "ASIHTTPRequest.h"
 
-@interface ASIHTTPRequest (OAuth)
 
-+ (id)requestWithURL:(NSURL *)newURL
-         consumerKey:(NSString *)consumerKey
-      consumerSecret:(NSString *)consumerSecret
-               token:(NSString *)token
-         tokenSecret:(NSString *)tokenSecret;
+typedef enum _ASIOAuthSignatureMethod {
+    ASIOAuthPlaintextSignatureMethod,
+    ASIOAuthHMAC_SHA1SignatureMethod,
+} ASIOAuthSignatureMethod;
 
-- (id)initWithURL:(NSURL *)newURL
-      consumerKey:(NSString *)consumerKey
-   consumerSecret:(NSString *)consumerSecret
-            token:(NSString *)token
-      tokenSecret:(NSString *)tokenSecret;
 
-- (void)addOAuthHeaderWithConsumerKey:(NSString *)consumerKey
-                       consumerSecret:(NSString *)consumerSecret
-                                token:(NSString *)token
-                          tokenSecret:(NSString *)tokenSecret
-                      signatureMethod:(NSString *)signatureMethod;
+@interface ASIHTTPRequest (ASIHTTPRequest_OAuth)
 
-- (void)setOAuthSignatureMethod:(NSString *)signatureMethod;
+- (void)signRequestWithClientIdentifier:(NSString *)clientIdentifier
+                                 secret:(NSString *)clientSecret
+                        tokenIdentifier:(NSString *)tokenIdentifier
+                                 secret:(NSString *)tokenSecret
+                            usingMethod:(ASIOAuthSignatureMethod)signatureMethod;
+
+- (void)signRequestWithClientIdentifier:(NSString *)clientIdentifier
+                                 secret:(NSString *)clientSecret
+                        tokenIdentifier:(NSString *)tokenIdentifier
+                                 secret:(NSString *)tokenSecret
+                               verifier:(NSString *)verifier
+                            usingMethod:(ASIOAuthSignatureMethod)signatureMethod;
 
 @end

@@ -1,8 +1,8 @@
 //
-//  SGStoredRecord+Private.h
-//  SimpleGeo.framework
+//  SGPlacemark+Internal.h
+//  SimpleGeo
 //
-//  Copyright (c) 2011, SimpleGeo Inc.
+//  Copyright (c) 2010-2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,10 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGStoredRecord.h"
+#import "SGPlacemark.h"
 
+@interface SGPlacemark (Internal)
 
-@interface SGStoredRecord (Private)
-
-+ (SGStoredRecord *)recordWithDictionary:(NSDictionary *)data;
-- (id)initWithId:(NSString *)id
-      dictionary:(NSDictionary *)data;
+- (id)initWithGeoJSON:(NSDictionary *)geoJSONDictionary;
 
 @end

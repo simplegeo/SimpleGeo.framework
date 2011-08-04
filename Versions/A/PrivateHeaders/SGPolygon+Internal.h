@@ -1,8 +1,8 @@
 //
-//  SGGeometryCollection.h
+//  SGPolygon+Internal.h
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2011, SimpleGeo Inc.
+//  Copyright (c) 2010, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,34 +28,20 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
+#import "SGPolygon.h"
 
+@interface SGPolygon (Private)
 
-/*!
- * Collections of Geometries.
+/**
+ * Create a polygon from an array of coordinates
+ * @param polygon Polygon array
  */
-@interface SGGeometryCollection : NSObject
-{
-  @private
-    NSArray* geometries;
-}
++ (SGPolygon *)polygonWithArray:(NSArray *)polygon;
 
-//! Collected Geometries.
-@property (retain,readonly) NSArray* geometries;
-
-/*!
- * Create a GeometryCollection from a list of Geometries.
- * @param geometries List of Geometries.
+/**
+ * Create a polygon from an array of coordinates
+ * @param polygon Polygon array
  */
-+ (SGGeometryCollection *)geometryCollectionWithGeometries:(NSArray *)geometries;
-
-/*!
- * Create a GeometryCollection from a list of Geometries.
- * @param geometries List of Geometries.
- */
-- (id)initWithGeometries:(NSArray *)geometries;
-
-//! Gets the number of geometries in this collection.
-- (NSUInteger)count;
+- (id)initWithArray:(NSArray *)polygon;
 
 @end

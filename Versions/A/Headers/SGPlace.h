@@ -1,8 +1,8 @@
 //
-//  SGPolygon.h
+//  SGPlace.h
 //  SimpleGeo.framework
 //
-//  Copyright (c) 2010, SimpleGeo Inc.
+//  Copyright (c) 2011, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,73 +28,71 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
-
+#import "SGFeature.h"
 @class SGPoint;
-@class SGEnvelope;
+@class SGAddress;
 
 /**
- * An SGPolygon object stores information about a polygon.
- * Point information is stored in an array of *rings.*
- * The first ring of points represents the polygon's *boundary.*
- * Additional rings contain information about *holes* in the polygon.
+ * An SGPlace object represents a place in the SimpleGeo Places database.
+ * Places are SGFeatures with an associated *address* and *tag array.*
+ * SGPlace objects usually originate from a SimpleGeo Places API request,
+ * although you can also create them explicitly yourself if you would like to add a private Place to the database.
  */
-@interface SGPolygon : SGGeometry <SGRegionGeometry>
+@interface SGPlace : SGFeature
 {
     @private
-    NSArray *rings;
+    SGAddress *address;
+    NSMutableArray *tags;
+    BOOL isPrivate;
 }
 
-/// LinearRings that define this polygon
-@property (nonatomic, retain) NSArray *rings;
+/// Place location
+@property (nonatomic, readonly) SGPoint *point;
 
-/// Bounding box for the polygon
-@property (nonatomic, readonly) SGEnvelope *envelope;
+/// Place address
+@property (nonatomic, readonly) SGAddress *address;
+
+/// Place tags
+@property (nonatomic, retain, setter = setMutableTags:) NSMutableArray *tags;
+
+/// Place visibility
+@property (nonatomic, assign) BOOL isPrivate;
 
 #pragma mark -
 #pragma mark Instantiation
 
 /**
- * Create a polygon from a set of LinearRings of SGPoints
- * @param rings LinearRings
+ * Create an SGPlace with a name, and location
+ * @param name          Place name
+ * @param point         Place location
  */
-+ (SGPolygon *)polygonWithRings:(NSArray *)rings;
++ (SGPlace *)placeWithName:(NSString *)name
+                     point:(SGPoint *)point;
 
 /**
- * Create a polygon from a boundary ring and
- * and array of hole rings of SGPoints
- * @param boundary  Boundary ring
- * @param holes     Hole rings
+ * Construct an SGPlace from a dictionary that
+ * abides by the GeoJSON Feature specification.
+ * Note: geoJSON Feature must contain a "name"
+ * key and value in the property dictionary
+ * @param geoJSONFeature    Feature dictionary
  */
-+ (SGPolygon *)polygonWithBoundary:(NSArray *)boundary
-                             holes:(NSArray *)holes;
++ (SGPlace *)placeWithGeoJSON:(NSDictionary *)geoJSONFeature;
 
 /**
- * Construct a polygon from a set of LinearRings
- * @param rings LinearRings
+ * Construct an SGPlace with a name and location
+ * @param name          Place name
+ * @param point         Place location
  */
-- (id)initWithRings:(NSArray *)rings;
-
-/**
- * Construct a polygon from a boundary ring and
- * and array of hole rings
- * @param boundary  Boundary ring
- * @param holes     Hole rings
- */
-- (id)initWithBoundary:(NSArray *)boundary
-                 holes:(NSArray *)holes;
+- (id)initWithName:(NSString *)name
+             point:(SGPoint *)point;
 
 #pragma mark -
 #pragma mark Convenience
 
 /**
- * Boundary ring
+ * Set tags from an immutable array of tags
+ * @param tags          Tags
  */
-- (NSArray *)boundary;
-
-/**
- * Array of hole rings
- */
-- (NSArray *)holes;
+- (void)setTags:(NSMutableArray *)tags;
 
 @end

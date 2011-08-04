@@ -1,5 +1,5 @@
 //
-//  SGMultiPolygon.h
+//  SGTypes.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,41 +28,24 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
+#pragma mark Default Limits
 
-@class SGPoint;
-@class SGEnvelope;
+#define SGDefaultLimit 25
+#define SGDefaultRadius 10.0
 
-/**
- * An SGMultiPolygon object stores information about a multi-polygon — an array of SGPolygons representing a single feature.
- *
- * A good example of a multi-polygon is the state of Hawaii, a single feature composed of many polygons.
- */
-@interface SGMultiPolygon : SGGeometry <SGRegionGeometry>
-{
-    @private
-    NSArray *polygons;
-}
+#pragma mark Context Filters
 
-/// Polygons that define this multi-polygon
-@property (nonatomic, retain) NSArray *polygons;
+typedef NSString * SGContextFilter;
+extern SGContextFilter const SGContextFilterQuery;
+extern SGContextFilter const SGContextFilterFeatures;
+extern SGContextFilter const SGContextFilterWeather;
+extern SGContextFilter const SGContextFilterAddress;
+extern SGContextFilter const SGContextFilterDemographics;
+extern SGContextFilter const SGContextFilterIntersections;
 
-/// Bounding box for the multi-polygon
-@property (nonatomic, readonly) SGEnvelope *envelope;
+#pragma mark Storage Sort Orders
 
-#pragma mark -
-#pragma mark Instantiation
-
-/**
- * Create a multi-polygon from a set of Polygons
- * @param polygons Polygons
- */
-+ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons;
-
-/**
- * Construct a multi-polygon from a set of Polygons
- * @param polygons Polygons
- */
-- (id)initWithPolygons:(NSArray *)polygons;
-
-@end
+typedef NSString * SGSortOrder;
+extern SGSortOrder const SGSortOrderDistance;
+extern SGSortOrder const SGSortOrderCreatedAscending;
+extern SGSortOrder const SGSortOrderCreatedDescending;

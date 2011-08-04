@@ -1,5 +1,5 @@
 //
-//  SGMultiPolygon.h
+//  SGEnvelope.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -29,40 +29,62 @@
 //
 
 #import "SGGeometry.h"
-
 @class SGPoint;
-@class SGEnvelope;
 
 /**
- * An SGMultiPolygon object stores information about a multi-polygon — an array of SGPolygons representing a single feature.
- *
- * A good example of a multi-polygon is the state of Hawaii, a single feature composed of many polygons.
+ * An SGEnvelope object represents a geometric envelope, or bounding box.
+ * Envelopes may be used to create a Context or Storage query.
+ * An Envelope may also be useful when displaying results on a map since it can represent a map's visible bounds.
  */
-@interface SGMultiPolygon : SGGeometry <SGRegionGeometry>
+@interface SGEnvelope : SGGeometry <SGRegionGeometry>
 {
     @private
-    NSArray *polygons;
+    double north;
+    double west;
+    double south;
+    double east;
 }
 
-/// Polygons that define this multi-polygon
-@property (nonatomic, retain) NSArray *polygons;
+/// Northern latitude (top coordinate)
+@property (nonatomic, assign) double north;
 
-/// Bounding box for the multi-polygon
-@property (nonatomic, readonly) SGEnvelope *envelope;
+/// Southern latitude (bottom coordinate)
+@property (nonatomic, assign) double south;
+
+/// Western longitude (left coordinate)
+@property (nonatomic, assign) double west;
+
+/// Eastern longitude (right coordinate)
+@property (nonatomic, assign) double east;
+
+/// Center coordinate
+@property (nonatomic, readonly) SGPoint *center;
 
 #pragma mark -
 #pragma mark Instantiation
 
 /**
- * Create a multi-polygon from a set of Polygons
- * @param polygons Polygons
+ * Create a bounding box from edge coordinates
+ * @param northernLat   Northern latitude
+ * @param westernLon    Western longitude
+ * @param southernLat   Southern latitude
+ * @param easternLon    Eastern longitude
  */
-+ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons;
++ (SGEnvelope *)envelopeWithNorth:(double)northernLat
+                             west:(double)westernLon
+                            south:(double)southernLat
+                             east:(double)easternLon;
 
 /**
- * Construct a multi-polygon from a set of Polygons
- * @param polygons Polygons
+ * Construct a bounding box from edge coordinates
+ * @param northernLat   Northern latitude
+ * @param westernLon    Western longitude
+ * @param southernLat   Southern latitude
+ * @param easternLon    Eastern longitude
  */
-- (id)initWithPolygons:(NSArray *)polygons;
+- (id)initWithWithNorth:(double)northernLat
+                   west:(double)westernLon
+                  south:(double)southernLat
+                   east:(double)easternLon;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  SGMultiPolygon.h
+//  SGQuery.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,41 +28,70 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
-
 @class SGPoint;
 @class SGEnvelope;
 
 /**
- * An SGMultiPolygon object stores information about a multi-polygon — an array of SGPolygons representing a single feature.
+ * SGQuery serves as an abstract class for a complex SimpleGeo API request.
+ * Queries may be created with a point, envelope, or address and appended with additional constraints.
  *
- * A good example of a multi-polygon is the state of Hawaii, a single feature composed of many polygons.
+ * @warning *Important:* You should never create an SGQuery object directly;
+ * rather, you should create an SGContextQuery, SGPlacesQuery, or SGStorageQuery object instead.
  */
-@interface SGMultiPolygon : SGGeometry <SGRegionGeometry>
+@interface SGQuery : NSObject
 {
     @private
-    NSArray *polygons;
+    SGPoint *point;
+    NSString *address;
+    SGEnvelope *envelope;
 }
 
-/// Polygons that define this multi-polygon
-@property (nonatomic, retain) NSArray *polygons;
+/// Point for a point-based API query
+@property (nonatomic, readonly) SGPoint *point;
 
-/// Bounding box for the multi-polygon
+/// Address for an address-based API query
+@property (nonatomic, readonly) NSString *address;
+
+/// Envelope for a bounding box API query
 @property (nonatomic, readonly) SGEnvelope *envelope;
 
 #pragma mark -
 #pragma mark Instantiation
 
 /**
- * Create a multi-polygon from a set of Polygons
- * @param polygons Polygons
+ * Create a point-based API query
+ * @param point Point
  */
-+ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons;
++ (id)queryWithPoint:(SGPoint *)point;
 
 /**
- * Construct a multi-polygon from a set of Polygons
- * @param polygons Polygons
+ * Create an address-based API query
+ * @param address Address
  */
-- (id)initWithPolygons:(NSArray *)polygons;
++ (id)queryWithAddress:(NSString *)address;
+
+/**
+ * Create an a bounding box API query
+ * @param envelope Bounding box
+ */
++ (id)queryWithEnvelope:(SGEnvelope *)envelope;
+
+/**
+ * Construct a point-based API query
+ * @param point Point
+ */
+- (id)initWithPoint:(SGPoint *)point;
+
+/**
+ * Construct an address-based API query
+ * @param address Address
+ */
+- (id)initWithAddress:(NSString *)address;
+
+/**
+ * Construct a bounding box API query
+ * @param envelope Bounding box
+ */
+- (id)initWithEnvelope:(SGEnvelope *)envelope;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  SGMultiPolygon.h
+//  SimpleGeo+Internal.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,41 +28,50 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
+@class SimpleGeo;
 
-@class SGPoint;
-@class SGEnvelope;
+extern NSString *SG_API_VERSION;
+extern NSString *SG_MAIN_URL;
 
-/**
- * An SGMultiPolygon object stores information about a multi-polygon — an array of SGPolygons representing a single feature.
- *
- * A good example of a multi-polygon is the state of Hawaii, a single feature composed of many polygons.
- */
-@interface SGMultiPolygon : SGGeometry <SGRegionGeometry>
-{
-    @private
-    NSArray *polygons;
-}
-
-/// Polygons that define this multi-polygon
-@property (nonatomic, retain) NSArray *polygons;
-
-/// Bounding box for the multi-polygon
-@property (nonatomic, readonly) SGEnvelope *envelope;
+@interface SimpleGeo (Internal)
 
 #pragma mark -
-#pragma mark Instantiation
+#pragma mark Request
 
 /**
- * Create a multi-polygon from a set of Polygons
- * @param polygons Polygons
+ * Send an API request
+ * @param type      Request type
+ * @param file      Request URL
+ * @param params    Request parameters
+ * @param callback  Request callback
  */
-+ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons;
+- (void)sendHTTPRequest:(NSString *)type
+                 toFile:(NSString *)file
+             withParams:(id)params 
+               callback:(SGCallback *)callback;
 
 /**
- * Construct a multi-polygon from a set of Polygons
- * @param polygons Polygons
+ * Send an API request
+ * @param type      Request type
+ * @param file      Request URL
+ * @param params    Request parameters
+ * @param version   API version
+ * @param callback  Request callback
  */
-- (id)initWithPolygons:(NSArray *)polygons;
+- (void)sendHTTPRequest:(NSString *)type
+                 toFile:(NSString *)file
+             withParams:(id)params 
+                version:(NSString *)version
+               callback:(SGCallback *)callback;
+
+#pragma mark -
+#pragma mark Helpers
+
+/**
+ * Generate the base endpoint for a query, depending
+ * on whether it is a point, address, or envelope query
+ * @param query     Query object
+ */
+- (NSString *)baseEndpointForQuery:(SGQuery *)query;
 
 @end

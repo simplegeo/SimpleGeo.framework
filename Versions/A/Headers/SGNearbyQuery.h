@@ -1,5 +1,5 @@
 //
-//  SGMultiPolygon.h
+//  SGNearbyQuery.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,41 +28,29 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
-
-@class SGPoint;
-@class SGEnvelope;
+#import "SGQuery.h"
 
 /**
- * An SGMultiPolygon object stores information about a multi-polygon — an array of SGPolygons representing a single feature.
+ * SGNearbyQuery serves as an abstract class for a nearby API request.
+ * With an SGNearby query, you may:
  *
- * A good example of a multi-polygon is the state of Hawaii, a single feature composed of many polygons.
+ * - Constrain results with a *radius*
+ * - Limit the number of results with a *limit*
+ *
+ * @warning *Important:* You should never create an SGNearbyQuery directly,
+ * but instead create an SGContextQuery or SGStorageQuery object (both are subclasses of SGNearbyQuery).
  */
-@interface SGMultiPolygon : SGGeometry <SGRegionGeometry>
+@interface SGNearbyQuery : SGQuery
 {
     @private
-    NSArray *polygons;
+    double radius;
+    int limit;
 }
 
-/// Polygons that define this multi-polygon
-@property (nonatomic, retain) NSArray *polygons;
+/// Max radius to query
+@property (nonatomic, assign) double radius;
 
-/// Bounding box for the multi-polygon
-@property (nonatomic, readonly) SGEnvelope *envelope;
-
-#pragma mark -
-#pragma mark Instantiation
-
-/**
- * Create a multi-polygon from a set of Polygons
- * @param polygons Polygons
- */
-+ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons;
-
-/**
- * Construct a multi-polygon from a set of Polygons
- * @param polygons Polygons
- */
-- (id)initWithPolygons:(NSArray *)polygons;
+/// Limit for the number of items returned
+@property (nonatomic, assign) int limit;
 
 @end

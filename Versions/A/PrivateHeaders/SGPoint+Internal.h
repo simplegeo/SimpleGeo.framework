@@ -1,5 +1,5 @@
 //
-//  SGMultiPolygon.h
+//  SGPoint+Internal.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,41 +28,20 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGGeometry.h"
+#import "SGPoint.h"
 
-@class SGPoint;
-@class SGEnvelope;
-
-/**
- * An SGMultiPolygon object stores information about a multi-polygon — an array of SGPolygons representing a single feature.
- *
- * A good example of a multi-polygon is the state of Hawaii, a single feature composed of many polygons.
- */
-@interface SGMultiPolygon : SGGeometry <SGRegionGeometry>
-{
-    @private
-    NSArray *polygons;
-}
-
-/// Polygons that define this multi-polygon
-@property (nonatomic, retain) NSArray *polygons;
-
-/// Bounding box for the multi-polygon
-@property (nonatomic, readonly) SGEnvelope *envelope;
-
-#pragma mark -
-#pragma mark Instantiation
+@interface SGPoint (Private)
 
 /**
- * Create a multi-polygon from a set of Polygons
- * @param polygons Polygons
+ * Create a point from an array of coordinates [lon, lat]
+ * @param point Point array
  */
-+ (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons;
++ (SGPoint *)pointWithArray:(NSArray *)point;
 
 /**
- * Construct a multi-polygon from a set of Polygons
- * @param polygons Polygons
+ * Construct a point from an array of coordinates [lon, lat]
+ * @param point Point array
  */
-- (id)initWithPolygons:(NSArray *)polygons;
+- (id)initWithArray:(NSArray *)point;
 
 @end

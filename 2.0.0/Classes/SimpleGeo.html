@@ -1,0 +1,1572 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SimpleGeo Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+		    <div id="doc_header" role="banner">
+		        <a href="../index.html"><img src="../img/logo.png" /></a>
+		        <a href="https://simplegeo.com/docs/tutorials/objective-c" target="_new"><img class="nav_img" alt="Help" src="../img/help.png" /></a>
+		        <a href="../hierarchy.html"><img class="nav_img" alt="Hierarchy" src="../img/hierarchy.png" /></a>
+		        <a href="../index.html"><img class="nav_img" alt="Index" src="../img/home.png" /></a>
+		    </div>
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SimpleGeo Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/clientWithConsumerKey:consumerSecret:">&nbsp;&nbsp;&nbsp;&nbsp;+ clientWithConsumerKey:consumerSecret:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addOrUpdateLayer:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- addOrUpdateLayer:callback:</option>
+	
+	<option value="//api/name/addOrUpdateRecord:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- addOrUpdateRecord:callback:</option>
+	
+	<option value="//api/name/addOrUpdateRecords:inLayer:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- addOrUpdateRecords:inLayer:callback:</option>
+	
+	<option value="//api/name/addPlace:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- addPlace:callback:</option>
+	
+	<option value="//api/name/annotateFeature:withAnnotation:isPrivate:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- annotateFeature:withAnnotation:isPrivate:callback:</option>
+	
+	<option value="//api/name/deleteLayer:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- deleteLayer:callback:</option>
+	
+	<option value="//api/name/deletePlace:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- deletePlace:callback:</option>
+	
+	<option value="//api/name/deleteRecord:inLayer:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- deleteRecord:inLayer:callback:</option>
+	
+	<option value="//api/name/getAnnotationsForFeature:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- getAnnotationsForFeature:callback:</option>
+	
+	<option value="//api/name/getCategoriesWithCallback:">&nbsp;&nbsp;&nbsp;&nbsp;- getCategoriesWithCallback:</option>
+	
+	<option value="//api/name/getContextForQuery:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- getContextForQuery:callback:</option>
+	
+	<option value="//api/name/getFeatureWithHandle:zoom:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- getFeatureWithHandle:zoom:callback:</option>
+	
+	<option value="//api/name/getHistoryForRecord:inLayer:limit:cursor:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- getHistoryForRecord:inLayer:limit:cursor:callback:</option>
+	
+	<option value="//api/name/getLayer:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- getLayer:callback:</option>
+	
+	<option value="//api/name/getLayersWithCallback:">&nbsp;&nbsp;&nbsp;&nbsp;- getLayersWithCallback:</option>
+	
+	<option value="//api/name/getLayersWithCursor:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- getLayersWithCursor:callback:</option>
+	
+	<option value="//api/name/getPlacesForQuery:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- getPlacesForQuery:callback:</option>
+	
+	<option value="//api/name/getRecord:inLayer:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- getRecord:inLayer:callback:</option>
+	
+	<option value="//api/name/getRecordsForQuery:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- getRecordsForQuery:callback:</option>
+	
+	<option value="//api/name/updatePlace:withPlace:callback:">&nbsp;&nbsp;&nbsp;&nbsp;- updatePlace:withPlace:callback:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Storage Methods">Storage Methods</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Features Methods">Features Methods</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Places Methods">Places Methods</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Context Methods">Context Methods</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clientWithConsumerKey:consumerSecret:">clientWithConsumerKey:consumerSecret:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addOrUpdateLayer:callback:">addOrUpdateLayer:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addOrUpdateRecord:callback:">addOrUpdateRecord:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addOrUpdateRecords:inLayer:callback:">addOrUpdateRecords:inLayer:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addPlace:callback:">addPlace:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/annotateFeature:withAnnotation:isPrivate:callback:">annotateFeature:withAnnotation:isPrivate:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deleteLayer:callback:">deleteLayer:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deletePlace:callback:">deletePlace:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deleteRecord:inLayer:callback:">deleteRecord:inLayer:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getAnnotationsForFeature:callback:">getAnnotationsForFeature:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getCategoriesWithCallback:">getCategoriesWithCallback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getContextForQuery:callback:">getContextForQuery:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getFeatureWithHandle:zoom:callback:">getFeatureWithHandle:zoom:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getHistoryForRecord:inLayer:limit:cursor:callback:">getHistoryForRecord:inLayer:limit:cursor:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getLayer:callback:">getLayer:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getLayersWithCallback:">getLayersWithCallback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getLayersWithCursor:callback:">getLayersWithCursor:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getPlacesForQuery:callback:">getPlacesForQuery:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getRecord:inLayer:callback:">getRecord:inLayer:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getRecordsForQuery:callback:">getRecordsForQuery:callback:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updatePlace:withPlace:callback:">updatePlace:withPlace:callback:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SimpleGeo Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SimpleGeo Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">SGHTTPClient</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SimpleGeo.h<br />SimpleGeo.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A <a href="SimpleGeo.html">SimpleGeo</a> object acts as a client for all API requests.
+A <a href="SimpleGeo.html">SimpleGeo</a> object is created with <a href="SimpleGeo.html">SimpleGeo</a> credentials (an OAuth consumer key and secret).
+All API requests are made by calling methods in this class.</p>
+
+<pre><code>// Create the client
+SimpleGeo *client = [SimpleGeo clientWithConsumerKey:@"key"
+                                      consumerSecret:@"secret"];
+// Example request
+[client getContextForQuery:query callback:callback];
+</code></pre>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clientWithConsumerKey:consumerSecret:">+&nbsp;clientWithConsumerKey:consumerSecret:</a></code>
+		<span class="tooltip"><p>Create a client for making requests</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Storage Methods" name="task_Storage Methods"></a>
+						<h3 class="subsubtitle task-title">Storage Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getRecord:inLayer:callback:">&ndash;&nbsp;getRecord:inLayer:callback:</a></code>
+		<span class="tooltip"><p>Request a record by ID</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getRecordsForQuery:callback:">&ndash;&nbsp;getRecordsForQuery:callback:</a></code>
+		<span class="tooltip"><p>Get records matching an <a href="../Classes/SGStorageQuery.html">SGStorageQuery</a></p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getHistoryForRecord:inLayer:limit:cursor:callback:">&ndash;&nbsp;getHistoryForRecord:inLayer:limit:cursor:callback:</a></code>
+		<span class="tooltip"><p>Get location history for a record</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addOrUpdateRecord:callback:">&ndash;&nbsp;addOrUpdateRecord:callback:</a></code>
+		<span class="tooltip"><p>Add or update a record; If a record already exists with the provided ID, it
+will be updated, otherwise it will be added</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addOrUpdateRecords:inLayer:callback:">&ndash;&nbsp;addOrUpdateRecords:inLayer:callback:</a></code>
+		<span class="tooltip"><p>Add or update a collection of records</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deleteRecord:inLayer:callback:">&ndash;&nbsp;deleteRecord:inLayer:callback:</a></code>
+		<span class="tooltip"><p>Delete a record</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getLayer:callback:">&ndash;&nbsp;getLayer:callback:</a></code>
+		<span class="tooltip"><p>Get information about a specific layer</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getLayersWithCallback:">&ndash;&nbsp;getLayersWithCallback:</a></code>
+		<span class="tooltip"><p>Get a list of all available layers</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getLayersWithCursor:callback:">&ndash;&nbsp;getLayersWithCursor:callback:</a></code>
+		<span class="tooltip"><p>Get a list of all available layers</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addOrUpdateLayer:callback:">&ndash;&nbsp;addOrUpdateLayer:callback:</a></code>
+		<span class="tooltip"><p>Add or update a layer</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deleteLayer:callback:">&ndash;&nbsp;deleteLayer:callback:</a></code>
+		<span class="tooltip"><p>Delete a layer</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Features Methods" name="task_Features Methods"></a>
+						<h3 class="subsubtitle task-title">Features Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getFeatureWithHandle:zoom:callback:">&ndash;&nbsp;getFeatureWithHandle:zoom:callback:</a></code>
+		<span class="tooltip"><p>Get a feature with a specific handle</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getCategoriesWithCallback:">&ndash;&nbsp;getCategoriesWithCallback:</a></code>
+		<span class="tooltip"><p>Get the overall list of <a href="SimpleGeo.html">SimpleGeo</a> categories</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getAnnotationsForFeature:callback:">&ndash;&nbsp;getAnnotationsForFeature:callback:</a></code>
+		<span class="tooltip"><p>Get annotations attached to a feature</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/annotateFeature:withAnnotation:isPrivate:callback:">&ndash;&nbsp;annotateFeature:withAnnotation:isPrivate:callback:</a></code>
+		<span class="tooltip"><p>Annotate a feature</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Places Methods" name="task_Places Methods"></a>
+						<h3 class="subsubtitle task-title">Places Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getPlacesForQuery:callback:">&ndash;&nbsp;getPlacesForQuery:callback:</a></code>
+		<span class="tooltip"><p>Find places matching an <a href="../Classes/SGPlacesQuery.html">SGPlacesQuery</a></p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addPlace:callback:">&ndash;&nbsp;addPlace:callback:</a></code>
+		<span class="tooltip"><p>Add a feature to the Places database</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/updatePlace:withPlace:callback:">&ndash;&nbsp;updatePlace:withPlace:callback:</a></code>
+		<span class="tooltip"><p>Update a place in the Places database</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deletePlace:callback:">&ndash;&nbsp;deletePlace:callback:</a></code>
+		<span class="tooltip"><p>Delete a place from the Places database</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Context Methods" name="task_Context Methods"></a>
+						<h3 class="subsubtitle task-title">Context Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getContextForQuery:callback:">&ndash;&nbsp;getContextForQuery:callback:</a></code>
+		<span class="tooltip"><p>Get Context matching an <a href="../Classes/SGContextQuery.html">SGContextQuery</a></p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/clientWithConsumerKey:consumerSecret:" title="clientWithConsumerKey:consumerSecret:"></a>
+	<h3 class="subsubtitle method-title">clientWithConsumerKey:consumerSecret:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a client for making requests</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (SimpleGeo *)clientWithConsumerKey:(NSString *)<em>consumerKey</em> consumerSecret:(NSString *)<em>consumerSecret</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>consumerKey</em></dt>
+			<dd><p>OAuth consumer key</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>consumerSecret</em></dt>
+			<dd><p>OAuth consumer secret</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addOrUpdateLayer:callback:" title="addOrUpdateLayer:callback:"></a>
+	<h3 class="subsubtitle method-title">addOrUpdateLayer:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add or update a layer</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addOrUpdateLayer:(SGLayer *)<em>layer</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layer</em></dt>
+			<dd><p>Layer</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Storage.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addOrUpdateRecord:callback:" title="addOrUpdateRecord:callback:"></a>
+	<h3 class="subsubtitle method-title">addOrUpdateRecord:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add or update a record; If a record already exists with the provided ID, it
+will be updated, otherwise it will be added</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addOrUpdateRecord:(SGStoredRecord *)<em>record</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>record</em></dt>
+			<dd><p>Record to add or update</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Storage.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addOrUpdateRecords:inLayer:callback:" title="addOrUpdateRecords:inLayer:callback:"></a>
+	<h3 class="subsubtitle method-title">addOrUpdateRecords:inLayer:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add or update a collection of records</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addOrUpdateRecords:(NSArray *)<em>records</em> inLayer:(NSString *)<em>layerName</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>records</em></dt>
+			<dd><p>List of records to add or update</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layerName</em></dt>
+			<dd><p>Layer name</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Storage.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addPlace:callback:" title="addPlace:callback:"></a>
+	<h3 class="subsubtitle method-title">addPlace:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a feature to the Places database</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addPlace:(SGPlace *)<em>place</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>place</em></dt>
+			<dd><p>Place to add</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Places.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/annotateFeature:withAnnotation:isPrivate:callback:" title="annotateFeature:withAnnotation:isPrivate:callback:"></a>
+	<h3 class="subsubtitle method-title">annotateFeature:withAnnotation:isPrivate:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Annotate a feature</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)annotateFeature:(NSString *)<em>handle</em> withAnnotation:(NSDictionary *)<em>annotation</em> isPrivate:(BOOL)<em>isPrivate</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>handle</em></dt>
+			<dd><p>Feature handle</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>annotation</em></dt>
+			<dd><p>Annotation list</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>isPrivate</em></dt>
+			<dd><p>Annotation privacy</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Features.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/deleteLayer:callback:" title="deleteLayer:callback:"></a>
+	<h3 class="subsubtitle method-title">deleteLayer:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Delete a layer</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)deleteLayer:(NSString *)<em>layerName</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layerName</em></dt>
+			<dd><p>Layer name</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Storage.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/deletePlace:callback:" title="deletePlace:callback:"></a>
+	<h3 class="subsubtitle method-title">deletePlace:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Delete a place from the Places database</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)deletePlace:(NSString *)<em>identifier</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>identifier</em></dt>
+			<dd><p>Place ID</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Places.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/deleteRecord:inLayer:callback:" title="deleteRecord:inLayer:callback:"></a>
+	<h3 class="subsubtitle method-title">deleteRecord:inLayer:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Delete a record</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)deleteRecord:(NSString *)<em>recordID</em> inLayer:(NSString *)<em>layerName</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>recordID</em></dt>
+			<dd><p>Record ID</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layerName</em></dt>
+			<dd><p>Layer name</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Storage.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getAnnotationsForFeature:callback:" title="getAnnotationsForFeature:callback:"></a>
+	<h3 class="subsubtitle method-title">getAnnotationsForFeature:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get annotations attached to a feature</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)getAnnotationsForFeature:(NSString *)<em>handle</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>handle</em></dt>
+			<dd><p>Feature handle</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Features.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getCategoriesWithCallback:" title="getCategoriesWithCallback:"></a>
+	<h3 class="subsubtitle method-title">getCategoriesWithCallback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get the overall list of <a href="SimpleGeo.html">SimpleGeo</a> categories</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)getCategoriesWithCallback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Features.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getContextForQuery:callback:" title="getContextForQuery:callback:"></a>
+	<h3 class="subsubtitle method-title">getContextForQuery:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get Context matching an <a href="../Classes/SGContextQuery.html">SGContextQuery</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)getContextForQuery:(SGContextQuery *)<em>query</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>query</em></dt>
+			<dd><p>Query for the request</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Context.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getFeatureWithHandle:zoom:callback:" title="getFeatureWithHandle:zoom:callback:"></a>
+	<h3 class="subsubtitle method-title">getFeatureWithHandle:zoom:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get a feature with a specific handle</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)getFeatureWithHandle:(NSString *)<em>handle</em> zoom:(NSNumber *)<em>zoom</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>handle</em></dt>
+			<dd><p>Feature handle</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>zoom</em></dt>
+			<dd><p>Zoom (complexity of returned geometry) (optional)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Features.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getHistoryForRecord:inLayer:limit:cursor:callback:" title="getHistoryForRecord:inLayer:limit:cursor:callback:"></a>
+	<h3 class="subsubtitle method-title">getHistoryForRecord:inLayer:limit:cursor:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get location history for a record</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)getHistoryForRecord:(NSString *)<em>recordID</em> inLayer:(NSString *)<em>layerName</em> limit:(NSNumber *)<em>limit</em> cursor:(NSString *)<em>cursor</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>recordID</em></dt>
+			<dd><p>Record ID</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layerName</em></dt>
+			<dd><p>Layer name</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>limit</em></dt>
+			<dd><p>Number of results to return</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cursor</em></dt>
+			<dd><p>Cursor string (used for pagination)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Storage.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getLayer:callback:" title="getLayer:callback:"></a>
+	<h3 class="subsubtitle method-title">getLayer:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get information about a specific layer</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)getLayer:(NSString *)<em>layerName</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layerName</em></dt>
+			<dd><p>Layer name</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Storage.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getLayersWithCallback:" title="getLayersWithCallback:"></a>
+	<h3 class="subsubtitle method-title">getLayersWithCallback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get a list of all available layers</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)getLayersWithCallback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Storage.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getLayersWithCursor:callback:" title="getLayersWithCursor:callback:"></a>
+	<h3 class="subsubtitle method-title">getLayersWithCursor:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get a list of all available layers</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)getLayersWithCursor:(NSString *)<em>cursor</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cursor</em></dt>
+			<dd><p>Cursor string (used for pagination)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Storage.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getPlacesForQuery:callback:" title="getPlacesForQuery:callback:"></a>
+	<h3 class="subsubtitle method-title">getPlacesForQuery:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Find places matching an <a href="../Classes/SGPlacesQuery.html">SGPlacesQuery</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)getPlacesForQuery:(SGPlacesQuery *)<em>query</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>query</em></dt>
+			<dd><p>Request query</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Places.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getRecord:inLayer:callback:" title="getRecord:inLayer:callback:"></a>
+	<h3 class="subsubtitle method-title">getRecord:inLayer:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Request a record by ID</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)getRecord:(NSString *)<em>recordID</em> inLayer:(NSString *)<em>layerName</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>recordID</em></dt>
+			<dd><p>Record ID</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layerName</em></dt>
+			<dd><p>Layer name</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Storage.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getRecordsForQuery:callback:" title="getRecordsForQuery:callback:"></a>
+	<h3 class="subsubtitle method-title">getRecordsForQuery:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get records matching an <a href="../Classes/SGStorageQuery.html">SGStorageQuery</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)getRecordsForQuery:(SGStorageQuery *)<em>query</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>query</em></dt>
+			<dd><p>Query</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Storage.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/updatePlace:withPlace:callback:" title="updatePlace:withPlace:callback:"></a>
+	<h3 class="subsubtitle method-title">updatePlace:withPlace:callback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Update a place in the Places database</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)updatePlace:(NSString *)<em>identifier</em> withPlace:(SGPlace *)<em>place</em> callback:(SGCallback *)<em>callback</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>identifier</em></dt>
+			<dd><p>Place ID</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>place</em></dt>
+			<dd><p>The updated Place</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callback</em></dt>
+			<dd><p>Request callback</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SimpleGeo+Places.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 SimpleGeo. All rights reserved. (Last updated: 2011-08-03)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>

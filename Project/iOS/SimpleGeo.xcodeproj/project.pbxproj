@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A685D7D13FC290A0041F56E /* SGPreprocessorMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A685D7C13FC290A0041F56E /* SGPreprocessorMacros.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		940B3F3813EA13CF0022B5EF /* SGCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B3EF713EA13CF0022B5EF /* SGCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		940B3F3913EA13CF0022B5EF /* SGTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B3EF813EA13CF0022B5EF /* SGTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		940B3F3A13EA13CF0022B5EF /* SGTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B3EF913EA13CF0022B5EF /* SGTypes.m */; };
@@ -114,6 +115,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A685D7C13FC290A0041F56E /* SGPreprocessorMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPreprocessorMacros.h; sourceTree = "<group>"; };
 		5DF1FB8512C2C5B60097CF47 /* SimpleGeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleGeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF1FB8612C2C5B60097CF47 /* SimpleGeo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleGeo-Info.plist"; sourceTree = "<group>"; };
 		940B3EF713EA13CF0022B5EF /* SGCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGCategories.h; sourceTree = "<group>"; };
@@ -255,6 +257,14 @@
 			name = SimpleGeo;
 			sourceTree = "<group>";
 		};
+		4A685D7A13FC28F20041F56E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				4A685D7C13FC290A0041F56E /* SGPreprocessorMacros.h */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		5D79622A12E1163D00B33631 /* Build Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +288,7 @@
 		940B3EF413EA13CF0022B5EF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4A685D7A13FC28F20041F56E /* Utility */,
 				940B3EF513EA13CF0022B5EF /* Client */,
 				940B3F1113EA13CF0022B5EF /* Model */,
 			);
@@ -617,6 +628,7 @@
 				940B3F5413EA13CF0022B5EF /* SGAddress+Internal.h in Headers */,
 				940B3F5713EA13CF0022B5EF /* SGPlacemark+Internal.h in Headers */,
 				940B3F6813EA13CF0022B5EF /* SGPoint+Internal.h in Headers */,
+				4A685D7D13FC290A0041F56E /* SGPreprocessorMacros.h in Headers */,
 				940B3F6B13EA13CF0022B5EF /* SGPolygon+Internal.h in Headers */,
 				940B3F8913EA13F50022B5EF /* SimpleGeo-Prefix.pch in Headers */,
 				940B478813EA15310022B5EF /* SGObjCHTTP-Prefix.pch in Headers */,
@@ -650,7 +662,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "SimpleGeo" */;
 			compatibilityVersion = "Xcode 3.2";

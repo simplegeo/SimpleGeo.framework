@@ -30,6 +30,8 @@
 
 #import "SGLayer.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGLayer
 
 @synthesize name, title, description, callbackURLs, isPublic, created, updated;
@@ -42,15 +44,15 @@
                description:(NSString *)description
                callbackURLs:(NSArray *)callbackURLs
 {
-   return [[[SGLayer alloc] initWithName:name
-                                   title:title
-                             description:description
-                            callbackURLs:callbackURLs] autorelease];
+   return SG_AUTORELEASE([[SGLayer alloc] initWithName:name
+                                                 title:title
+                                           description:description
+                                          callbackURLs:callbackURLs]);
 }
 
 + (SGLayer *)layerWithDictionary:(NSDictionary *)layerDictionary
 {
-    return [[[SGLayer alloc] initWithDictionary:layerDictionary] autorelease];
+    return SG_AUTORELEASE([[SGLayer alloc] initWithDictionary:layerDictionary]);
 }
 
 - (id)initWithName:(NSString *)aName
@@ -60,9 +62,9 @@
 {
     self = [super init];
     if (self) {
-        name = [aName retain];
-        title = [aTitle retain];
-        description = [aDescription retain];
+        name = SG_RETAIN(aName);
+        title = SG_RETAIN(aTitle);
+        description = SG_RETAIN(aDescription);
         callbackURLs = [someCallbackURLs mutableCopy];
     }
     return self;
@@ -72,16 +74,16 @@
 {
     self = [super init];
     if (self) {
-        name = [[layerDictionary objectForKey:@"name"] retain];
-        title = [[layerDictionary objectForKey:@"title"] retain];
-        description = [[layerDictionary objectForKey:@"description"] retain];
+        name = SG_RETAIN([layerDictionary objectForKey:@"name"]);
+        title = SG_RETAIN([layerDictionary objectForKey:@"title"]);
+        description = SG_RETAIN([layerDictionary objectForKey:@"description"]);
         callbackURLs = [[layerDictionary objectForKey:@"callback_urls"] mutableCopy];
-        NSNumber *publicValue = [layerDictionary objectForKey:@"public"];
+        NSNumber *publicValue = SG_RETAIN([layerDictionary objectForKey:@"public"]);
         if (publicValue) isPublic = [publicValue boolValue];
         NSNumber *createdEpoch = [layerDictionary objectForKey:@"created"];
-        if (createdEpoch) created = [[NSDate dateWithTimeIntervalSince1970:[createdEpoch doubleValue]] retain];
+        if (createdEpoch) created = SG_RETAIN([NSDate dateWithTimeIntervalSince1970:[createdEpoch doubleValue]]);
         NSNumber *updatedEpoch = [layerDictionary objectForKey:@"updated"];
-        if (updatedEpoch) updated = [[NSDate dateWithTimeIntervalSince1970:[updatedEpoch doubleValue]] retain];
+        if (updatedEpoch) updated = SG_RETAIN([NSDate dateWithTimeIntervalSince1970:[updatedEpoch doubleValue]]);
     }
     return self;
 }
@@ -127,12 +129,12 @@
 
 - (void)dealloc
 {
-    [name release];
-    [title release];
-    [description release];
-    [callbackURLs release];
-    [created release];
-    [updated release];
+    SG_RELEASE(name);
+    SG_RELEASE(title);
+    SG_RELEASE(description);
+    SG_RELEASE(callbackURLs);
+    SG_RELEASE(created);
+    SG_RELEASE(updated);
     [super dealloc];
 }
 

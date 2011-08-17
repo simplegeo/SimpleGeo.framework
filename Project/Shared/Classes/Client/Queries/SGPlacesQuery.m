@@ -29,6 +29,7 @@
 //
 
 #import "SGPlacesQuery.h"
+#import "SGPreprocessorMacros.h"
 
 @implementation SGPlacesQuery
 
@@ -39,8 +40,8 @@
 
 - (void)dealloc
 {
-    [searchString release];
-    [categories release];
+    SG_RELEASE(searchString);
+    SG_RELEASE(categories);
     [super dealloc];
 }
 

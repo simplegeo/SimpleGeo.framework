@@ -31,6 +31,8 @@
 #import "SGGeoObject.h"
 #import "SGGeometry.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGGeoObject
 
 @synthesize identifier, geometry, properties, distance, selfLink;
@@ -42,7 +44,7 @@
 {
     self = [super init];
     if (self) {
-        geometry = [aGeometry retain];
+        geometry = SG_RETAIN(aGeometry);
     }
     return self;
 }
@@ -57,15 +59,15 @@
         [self setProperties:[geoJSONFeature objectForKey:@"properties"]];
         // self link
         NSDictionary *selfLinkDict = [geoJSONFeature objectForKey:@"selfLink"];
-        if (selfLinkDict) selfLink = [[selfLinkDict objectForKey:@"href"] retain];
+        if (selfLinkDict) selfLink = SG_RETAIN([selfLinkDict objectForKey:@"href"]);
         else {
-            selfLink = [[properties objectForKey:@"href"] retain];
+            selfLink = SG_RETAIN([properties objectForKey:@"href"]);
             [properties removeObjectForKey:@"href"];
         }
         // distance
-        distance = [[geoJSONFeature objectForKey:@"distance"] retain];
+        distance = SG_RETAIN([geoJSONFeature objectForKey:@"distance"]);
         if (!distance) {
-            distance = [[properties objectForKey:@"distance"] retain];
+            distance = SG_RETAIN([properties objectForKey:@"distance"]);
             [properties removeObjectForKey:@"distance"];
         }
     }
@@ -82,8 +84,8 @@
 
 - (void)setMutableProperties:(NSMutableDictionary *)someProperties
 {
-    [properties release];
-    properties = [someProperties retain];
+    SG_RELEASE(properties);
+    properties = SG_RETAIN(someProperties);
 }
 
 - (NSDictionary *)asGeoJSON
@@ -123,11 +125,11 @@
 
 - (void)dealloc
 {
-    [geometry release];
-    [identifier release];
-    [properties release];
-    [distance release];
-    [selfLink release];
+    SG_RELEASE(geometry);
+    SG_RELEASE(identifier);
+    SG_RELEASE(properties);
+    SG_RELEASE(distance);
+    SG_RELEASE(selfLink);
     [super dealloc];
 }
 

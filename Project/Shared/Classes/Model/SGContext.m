@@ -35,6 +35,8 @@
 #import "SGPlacemark+Internal.h"
 #import "NSArray+SGCollection.h"
 
+#import "SGPreprocessorMacros.h"
+
 @interface SGContext ()
 - (NSArray *)generateFeatures:(NSArray *)contextFeatures;
 @end
@@ -45,7 +47,7 @@
 
 + (SGContext *)contextWithDictionary:(NSDictionary *)dictionary
 {
-    return [[[SGContext alloc] initWithDictionary:dictionary] autorelease];
+    return SG_AUTORELEASE([[SGContext alloc] initWithDictionary:dictionary]);
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary
@@ -54,23 +56,23 @@
     if (self) {
         // timestamp
         NSNumber *epochDate = [dictionary objectForKey:@"timestamp"];
-        if (epochDate) timestamp = [[NSDate dateWithTimeIntervalSince1970:[epochDate doubleValue]] retain];
+        if (epochDate) timestamp = SG_RETAIN([NSDate dateWithTimeIntervalSince1970:[epochDate doubleValue]]);
         // query
         query = [[dictionary objectForKey:@"query"] retain];
         // address
         NSDictionary *addressResponse = [dictionary objectForKey:@"address"];
         if (addressResponse) address = [[SGPlacemark alloc] initWithGeoJSON:addressResponse];
         // features
-        features = [[self generateFeatures:[dictionary objectForKey:@"features"]] retain];
+        features = SG_RETAIN([self generateFeatures:[dictionary objectForKey:@"features"]]);
         // demographics
-        demographics = [[dictionary objectForKey:@"demographics"] retain];
+        demographics = SG_RETAIN([dictionary objectForKey:@"demographics"]);
         // intersections
         NSArray *intersectionsResponse = [dictionary objectForKey:@"intersections"];
         if (intersectionsResponse)
-            intersections = [[NSArray arrayWithSGCollection:[NSDictionary dictionaryWithObject:intersectionsResponse forKey:@"features"] 
-                                                       type:SGCollectionTypeObjects] retain];
+            intersections = SG_RETAIN([NSArray arrayWithSGCollection:[NSDictionary dictionaryWithObject:intersectionsResponse forKey:@"features"] 
+                                                       type:SGCollectionTypeObjects]);
         // weather
-        weather = [[dictionary objectForKey:@"weather"] retain];
+        weather = SG_RETAIN([dictionary objectForKey:@"weather"]);
     }
     return self;
 }
@@ -99,13 +101,13 @@
 
 - (void)dealloc
 {
-    [timestamp release];
-    [query release];
-    [address release];
-    [features release];
-    [demographics release];
-    [intersections release];
-    [weather release];
+    SG_RELEASE(timestamp);
+    SG_RELEASE(query);
+    SG_RELEASE(address);
+    SG_RELEASE(features);
+    SG_RELEASE(demographics);
+    SG_RELEASE(intersections);
+    SG_RELEASE(weather);
     [super dealloc];
 }
 

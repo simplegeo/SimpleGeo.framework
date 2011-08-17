@@ -30,17 +30,18 @@
 
 #import "NSDictionary+Classifier.h"
 
+
 @implementation NSDictionary (Classifier)
 
 + (NSDictionary *)classifierWithType:(SGFeatureType)type
                             category:(SGFeatureCategory)category
                          subcategory:(SGFeatureSubcategory)subcategory
 {
-    return [[[NSDictionary alloc] initWithObjectsAndKeys:
-             type, @"type",
-             category, @"category",
-             subcategory, @"subcategory",
-             nil] autorelease];
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+                           type, @"type",
+                            category, @"category",
+                           subcategory, @"subcategory",
+                           nil];
 }
 
 - (SGFeatureType)classifierType {

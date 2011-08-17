@@ -31,6 +31,8 @@
 #import "SGStoredRecord.h"
 #import "SGPoint.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGStoredRecord
 
 @synthesize layer, created, layerLink;
@@ -42,14 +44,14 @@
                            point:(SGPoint *)point
                            layer:(NSString *)layerName
 {
-    return [[[SGStoredRecord alloc] initWithID:identifier
+    return SG_AUTORELEASE([[SGStoredRecord alloc] initWithID:identifier
                                         point:point
-                                        layer:layerName] autorelease];
+                                        layer:layerName]);
 }
 
 + (SGStoredRecord *)recordWithGeoJSON:(NSDictionary *)geoJSONFeature
 {
-    return [[[SGStoredRecord alloc] initWithGeoJSON:geoJSONFeature] autorelease];
+    return SG_AUTORELEASE([[SGStoredRecord alloc] initWithGeoJSON:geoJSONFeature]);
 }
 
 - (id)initWithID:(NSString *)anIdentifier
@@ -59,7 +61,7 @@
     self = [super initWithGeometry:point];
     if (self) {
         [self setIdentifier:anIdentifier];
-        layer = [layerName retain];
+        layer = SG_RETAIN(layerName);
     }
     return self;
 }
@@ -69,14 +71,14 @@
     self = [super initWithGeoJSON:geoJSONFeature];
     if (self) {        
         // layer
-        layer = [[self.properties objectForKey:@"layer"] retain];
+        layer = SG_RETAIN([self.properties objectForKey:@"layer"]);
         [self.properties removeObjectForKey:@"layer"];
         // created
         NSNumber *epoch = [geoJSONFeature objectForKey:@"created"];
         if (epoch) created = [[NSDate alloc] initWithTimeIntervalSince1970:[epoch intValue]];
         // layerLink
         NSDictionary *layerLinkDict = [geoJSONFeature objectForKey:@"layerLink"];
-        if (layerLinkDict) layerLink = [[layerLinkDict objectForKey:@"href"] retain];
+        if (layerLinkDict) layerLink = SG_RETAIN([layerLinkDict objectForKey:@"href"]);
     }
     return self;
 }
@@ -119,9 +121,9 @@
 
 - (void)dealloc
 {
-    [layer release];
-    [created release];
-    [layerLink release];
+    SG_RELEASE(layer);
+    SG_RELEASE(created);
+    SG_RELEASE(layerLink);
     [super dealloc];
 }
 

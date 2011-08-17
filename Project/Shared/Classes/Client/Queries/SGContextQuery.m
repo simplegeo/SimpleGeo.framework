@@ -29,6 +29,7 @@
 //
 
 #import "SGContextQuery.h"
+#import "SGPreprocessorMacros.h"
 
 @implementation SGContextQuery
 
@@ -39,10 +40,10 @@
 
 - (void)dealloc
 {
-    [featureCategories release];
-    [featureSubcategories release];
-    [filters release];
-    [acsTableIDs release];
+    SG_RELEASE(featureCategories);
+    SG_RELEASE(featureSubcategories);
+    SG_RELEASE(filters);
+    SG_RELEASE(acsTableIDs);
     [super dealloc];
 }
 

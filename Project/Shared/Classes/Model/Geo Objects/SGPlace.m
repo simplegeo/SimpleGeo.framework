@@ -33,6 +33,8 @@
 #import "SGAddress.h"
 #import "SGAddress+Internal.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGPlace
 
 @synthesize address, tags, isPrivate;
@@ -43,13 +45,12 @@
 + (SGPlace *)placeWithName:(NSString *)name
                      point:(SGPoint *)point
 {
-    return [[[SGPlace alloc] initWithName:name
-                                    point:point] autorelease];
+    return SG_AUTORELEASE([[SGPlace alloc] initWithName:name point:point]);
 }
 
 + (SGPlace *)placeWithGeoJSON:(NSDictionary *)geoJSONFeature
 {
-    return [[[SGPlace alloc] initWithGeoJSON:geoJSONFeature] autorelease];
+    return SG_AUTORELEASE([[SGPlace alloc] initWithGeoJSON:geoJSONFeature]);
 }
 
 - (id)initWithName:(NSString *)aName
@@ -67,7 +68,7 @@
     self = [super initWithGeoJSON:geoJSONFeature];
     if (self) {
         // address
-        address = [[SGAddress addressStrippedFromDictionary:self.properties] retain];
+        address = SG_RETAIN([SGAddress addressStrippedFromDictionary:self.properties]);
         // tags
         tags = [[NSMutableArray alloc] init];
         [tags addObjectsFromArray:[self.properties objectForKey:@"tags"]];
@@ -95,8 +96,8 @@
 
 - (void)setMutableTags:(NSMutableArray *)someTags
 {
-    [tags release];
-    tags = [someTags retain];
+    SG_RELEASE(tags);
+    tags = SG_RETAIN(someTags);
 }
 
 - (NSDictionary *)asGeoJSON
@@ -113,7 +114,7 @@
 
 - (void)dealloc
 {
-    [tags release];
+    SG_RELEASE(tags);
     [super dealloc];
 }
 

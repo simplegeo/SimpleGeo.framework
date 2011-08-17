@@ -31,6 +31,8 @@
 #import "SimpleGeo+Features.h"
 #import "SimpleGeo+Internal.h"
 
+#import "SGPreprocessorMacros.h"
+
 #import "JSONKit.h"
 
 @implementation SimpleGeo (Features)
@@ -87,3 +89,5 @@
 }
 
 @end
+
+SG_CATEGORY(SimpleGeoFeatures)

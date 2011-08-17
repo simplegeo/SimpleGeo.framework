@@ -30,12 +30,6 @@
 
 #define SG_CATEGORY(name) @interface SG_CATEGORY_##name @end @implementation SG_CATEGORY_##name @end
 
-#if __IPHONE_OS_VERSION_MIN_ALLOWED > __IPHONE_4_3
-#define SG_RELEASE(a)           a
-#define SG_RETAIN(a)            a
-#define SG_AUTORELEASE(a)       a
-#else
 #define SG_RELEASE(a)           [a release]
 #define SG_RETAIN(a)            [a retain]
 #define SG_AUTORELEASE(a)       [a autorelease]
-#endif

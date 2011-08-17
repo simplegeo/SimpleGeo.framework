@@ -34,6 +34,7 @@
 #import "NSArray+SGCollection.h"
 #import "SGLayer.h"
 #import "JSONKit.h"
+#import "SGPreprocessorMacros.h"
 
 static NSString *storageAPIVersion = @"0.1";
 
@@ -196,3 +197,5 @@ static NSString *storageAPIVersion = @"0.1";
 }
 
 @end
+
+SG_CATEGORY(SimpleGeoStorage)

@@ -32,6 +32,8 @@
 #import "SGPolygon+Mapkit.h"
 #import "SGPoint.h"
 
+#import "SGPreprocessorMacros.h"
+
 @interface SGPolygon (Private)
 + (MKPolygon *)makeMKPolygon:(NSArray *)points
          withInteriorRegions:(NSArray *)holes;
@@ -70,3 +72,5 @@
 }
 
 @end
+
+SG_CATEGORY(SGPolygonMapKit)

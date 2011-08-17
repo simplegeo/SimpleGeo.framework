@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.0.1 8/17/11
+
+* Wrapped all memory management methods within a pre-processor macro
+* No longer required to set `all_load` or `ObjC` as other linking flags
+
 ## 2.0 - 8/3/11
 
 Complete rewrite. SGQuery object, new SGObject model, streamlined request methods, SGCallbacks with block support, and much more.

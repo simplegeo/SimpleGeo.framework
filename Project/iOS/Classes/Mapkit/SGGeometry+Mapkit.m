@@ -30,6 +30,8 @@
 
 #import "SGGeometry+Mapkit.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGGeometry (Mapkit)
 
 - (NSArray *)overlays
@@ -39,3 +41,5 @@
 }
 
 @end
+
+SG_CATEGORY(SGGeometryMapKit)

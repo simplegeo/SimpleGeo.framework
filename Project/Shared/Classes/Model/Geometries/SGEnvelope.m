@@ -109,9 +109,9 @@
 - (NSDictionary *)asGeoJSON
 {
     return [NSDictionary dictionaryWithObject:[NSArray arrayWithObjects:
-                                               [NSNumber numberWithDouble:north],
-                                               [NSNumber numberWithDouble:west],
                                                [NSNumber numberWithDouble:south],
+                                               [NSNumber numberWithDouble:west],
+                                               [NSNumber numberWithDouble:north],
                                                [NSNumber numberWithDouble:east],
                                                nil] forKey:@"bbox"];
 }

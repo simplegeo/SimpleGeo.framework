@@ -54,7 +54,7 @@
     NSArray *objects;
     if (collectionType == SGCollectionTypePoints) objects = [collection objectForKey:@"geometries"];
     else objects = [collection objectForKey:@"features"];
-    
+
     NSMutableArray *output = [NSMutableArray arrayWithCapacity:[objects count]];
     if (objects) {
         for (NSDictionary *object in objects) {

@@ -1,8 +1,12 @@
 # Change Log
 
+## 2.0.1 - 8/22/11
+
+* Fixed a bug in the bounding box query for nearby records
+
 ## 2.0 - 8/3/11
 
-Complete rewrite. SGQuery object, new SGObject model, streamlined request methods, SGCallbacks with block support, and much more.
+* Complete rewrite. SGQuery object, new SGObject model, streamlined request methods, SGCallbacks with block support, and much more.
 
 ## 1.3.0 - 6/8/11
 

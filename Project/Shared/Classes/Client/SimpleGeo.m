@@ -51,11 +51,9 @@ NSString *SG_MAIN_URL = @"https://api.simplegeo.com";
     if (query.point) return [NSString stringWithFormat:@"%f,%f",
                              query.point.latitude,
                              query.point.longitude];
-    else if (query.envelope) return [NSString stringWithFormat:@"%f,%f,%f,%f",
-                                     query.envelope.north,
-                                     query.envelope.west,
-                                     query.envelope.south,
-                                     query.envelope.east];
+    else if (query.envelope) return [NSString stringWithFormat:@"%f,%f",
+                                     [query.envelope.center latitude],
+                                     [query.envelope.center longitude]];
     else return [NSString stringWithFormat:@"address"];
 }
 

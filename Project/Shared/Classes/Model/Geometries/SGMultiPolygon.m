@@ -34,6 +34,8 @@
 #import "SGPoint.h"
 #import "SGEnvelope.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGMultiPolygon
 
 @synthesize polygons;
@@ -43,19 +45,19 @@
 
 + (SGMultiPolygon *)multiPolygonWithPolygons:(NSArray *)polygons
 {
-    return [[[SGMultiPolygon alloc] initWithPolygons:polygons] autorelease];
+    return SG_AUTORELEASE([[SGMultiPolygon alloc] initWithPolygons:polygons]);
 }
 
 + (SGGeometry *)geometryWithGeoJSON:(NSDictionary *)geoJSONGeometry
 {
-    return [[[SGMultiPolygon alloc] initWithGeoJSON:geoJSONGeometry] autorelease];
+    return SG_AUTORELEASE([[SGMultiPolygon alloc] initWithGeoJSON:geoJSONGeometry]);
 }
 
 - (id)initWithPolygons:(NSArray *)somePolygons
 {
     self = [super init];
     if (self) {
-        polygons = [somePolygons retain];
+        polygons = SG_RETAIN(somePolygons);
     }
     return self;
 }
@@ -139,7 +141,7 @@
 
 - (void)dealloc
 {
-    [polygons release];
+    SG_RELEASE(polygons);
     [super dealloc];
 }
 

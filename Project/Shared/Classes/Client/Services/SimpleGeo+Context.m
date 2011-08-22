@@ -31,6 +31,7 @@
 #import "SimpleGeo+Context.h"
 #import "SimpleGeo+Internal.h"
 #import "SGContextQuery.h"
+#import "SGPreprocessorMacros.h"
 
 @implementation SimpleGeo (Context)
 
@@ -55,3 +56,5 @@
 }
 
 @end
+
+SG_CATEGORY(SimpleGeoContext)

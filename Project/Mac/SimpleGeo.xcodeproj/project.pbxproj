@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A685D8913FC40070041F56E /* SGPreprocessorMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A685D8813FC40070041F56E /* SGPreprocessorMacros.h */; };
 		5D4A7BA212F2170C00A2C443 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674BA12909ABA006B7D51 /* libz.dylib */; };
 		5D4A7BA612F2172900A2C443 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8C15E6129DE86E002F8C01 /* AppKit.framework */; };
 		5D4A7BAD12F2174A00A2C443 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674B612909AAB006B7D51 /* SystemConfiguration.framework */; };
@@ -140,6 +141,7 @@
 
 /* Begin PBXFileReference section */
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		4A685D8813FC40070041F56E /* SGPreprocessorMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPreprocessorMacros.h; sourceTree = "<group>"; };
 		5D7674B612909AAB006B7D51 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5D7674BA12909ABA006B7D51 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5D7674BC12909ACB006B7D51 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
@@ -323,6 +325,15 @@
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
 		};
+		4A685D8713FC40070041F56E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				4A685D8813FC40070041F56E /* SGPreprocessorMacros.h */,
+			);
+			name = Utility;
+			path = ../Shared/Classes/Utility;
+			sourceTree = "<group>";
+		};
 		5D79620C12E114A700B33631 /* Build Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +359,7 @@
 		5DF0867212ADCAF5007A8A60 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4A685D8713FC40070041F56E /* Utility */,
 				940B38B113EA0A180022B5EF /* Client */,
 				940B38CD13EA0A180022B5EF /* Model */,
 			);
@@ -660,6 +672,7 @@
 				940B392713EA0A180022B5EF /* SGPolygon+Internal.h in Headers */,
 				9487074613EA187900FDD91E /* SimpleGeo-Prefix.pch in Headers */,
 				9487075D13EA211800FDD91E /* SGObjCHTTP-Prefix.pch in Headers */,
+				4A685D8913FC40070041F56E /* SGPreprocessorMacros.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

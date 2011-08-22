@@ -30,6 +30,8 @@
 
 #import "SGPoint+Mapkit.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGPoint (Mapkit)
 
 - (CLLocationCoordinate2D)coordinate
@@ -38,3 +40,5 @@
 }
 
 @end
+
+SG_CATEGORY(SGPointMapkit)

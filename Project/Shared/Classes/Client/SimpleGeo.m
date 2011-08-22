@@ -30,6 +30,7 @@
 
 #import "SimpleGeo.h"
 #import "SimpleGeo+Internal.h"
+#import "SGPreprocessorMacros.h"
 
 NSString *SG_API_VERSION = @"1.0";
 NSString *SG_MAIN_URL = @"https://api.simplegeo.com";
@@ -42,8 +43,7 @@ NSString *SG_MAIN_URL = @"https://api.simplegeo.com";
 + (SimpleGeo *)clientWithConsumerKey:(NSString *)key
                       consumerSecret:(NSString *)secret
 {
-    return [[[SimpleGeo alloc] initWithConsumerKey:key
-                                    consumerSecret:secret] autorelease];
+    return SG_AUTORELEASE([[SimpleGeo alloc] initWithConsumerKey:key consumerSecret:secret]);
 }
 
 - (NSString *)baseEndpointForQuery:(SGQuery *)query

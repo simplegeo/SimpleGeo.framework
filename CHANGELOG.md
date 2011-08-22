@@ -3,6 +3,8 @@
 ## 2.0.1 - 8/22/11
 
 * Fixed a bug in the bounding box query for nearby records
+* Wrapped all memory management methods within a pre-processor macro
+* No longer required to set `all_load` or `ObjC` as other linking flags
 
 ## 2.0 - 8/3/11
 

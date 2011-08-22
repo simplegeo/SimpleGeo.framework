@@ -31,6 +31,8 @@
 #import "SGPoint.h"
 #import "SGPoint+Internal.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGPoint
 
 @synthesize latitude, longitude, created;
@@ -41,13 +43,13 @@
 + (SGPoint *)pointWithLat:(double)latitude
                       lon:(double)longitude
 {
-    return [[[SGPoint alloc] initWithLat:latitude
-                                     lon:longitude] autorelease];
+    return SG_AUTORELEASE([[SGPoint alloc] initWithLat:latitude
+                                                   lon:longitude]);
 }
 
 + (SGGeometry *)geometryWithGeoJSON:(NSDictionary *)geoJSONGeometry
 {
-    return [[[SGPoint alloc] initWithGeoJSON:geoJSONGeometry] autorelease];
+    return SG_AUTORELEASE([[SGPoint alloc] initWithGeoJSON:geoJSONGeometry]);
 }
 
 - (id)initWithLat:(double)aLatitude
@@ -118,7 +120,7 @@
 
 + (SGPoint *)pointWithArray:(NSArray *)point
 {
-    return [[[SGPoint alloc] initWithArray:point] autorelease];
+    return SG_AUTORELEASE([[SGPoint alloc] initWithArray:point]);
 }
 
 - (id)initWithArray:(NSArray *)point
@@ -131,7 +133,7 @@
 
 - (void)dealloc
 {
-    [created release];
+    SG_RELEASE(created);
     [super dealloc];
 }
 

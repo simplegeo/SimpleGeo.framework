@@ -29,6 +29,7 @@
 //
 
 #import "SGStorageQuery.h"
+#import "SGPreprocessorMacros.h"
 
 @interface SGStorageQuery ()
 @property (nonatomic, retain, readwrite) NSDate *startDate;
@@ -45,22 +46,19 @@
 + (SGStorageQuery *)queryWithPoint:(SGPoint *)point
                              layer:(NSString *)layer
 {
-    return [[[SGStorageQuery alloc] initWithPoint:point
-                                            layer:layer] autorelease];
+    return SG_AUTORELEASE([[SGStorageQuery alloc] initWithPoint:point layer:layer]);
 }
 
 + (SGStorageQuery *)queryWithAddress:(NSString *)address
                                layer:(NSString *)layer
 {
-    return [[[SGStorageQuery alloc] initWithAddress:address
-                                              layer:layer] autorelease];
+    return SG_AUTORELEASE([[SGStorageQuery alloc] initWithAddress:address layer:layer]);
 }
 
 + (SGStorageQuery *)queryWithEnvelope:(SGEnvelope *)envelope
                                 layer:(NSString *)layer
 {
-    return [[[SGStorageQuery alloc] initWithEnvelope:envelope
-                                               layer:layer] autorelease];
+    return SG_AUTORELEASE([[SGStorageQuery alloc] initWithEnvelope:envelope layer:layer]);
 }
 
 - (id)initWithPoint:(SGPoint *)aPoint
@@ -68,7 +66,7 @@
 {
     self = [self initWithPoint:aPoint];
     if (self) {
-        layer = [aLayer retain];
+        layer = SG_RETAIN(aLayer);
     }
     return self;
 }
@@ -78,7 +76,7 @@
 {
     self = [self initWithAddress:anAddress];
     if (self) {
-        layer = [aLayer retain];
+        layer = SG_RETAIN(aLayer);
     }
     return self;
 }
@@ -88,7 +86,7 @@
 {
     self = [self initWithEnvelope:anEnvelope];
     if (self) {
-        layer = [aLayer retain];
+        layer = SG_RETAIN(aLayer);
     }
     return self;
 }
@@ -108,11 +106,11 @@
 
 - (void)dealloc
 {
-    [layer release];
-    [cursor release];
-    [sortType release];
-    [startDate release];
-    [endDate release];
+    SG_RELEASE(layer);
+    SG_RELEASE(cursor);
+    SG_RELEASE(sortType);
+    SG_RELEASE(startDate);
+    SG_RELEASE(endDate);
     [super dealloc];
 }
 

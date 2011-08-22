@@ -1,8 +1,8 @@
 //
-//  SGEnvelope+Mapkit.m
-//  SimpleGeo
+//  SGPreprocessorMacros.h
+//  SimpleGeo.framework
 //
-//  Copyright (c) 2010-2011, SimpleGeo Inc.
+//  Copyright (c) 2010, SimpleGeo Inc.
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,39 +28,8 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <CoreLocation/CoreLocation.h>
-#import "SGEnvelope+Mapkit.h"
+#define SG_CATEGORY(name) @interface SG_CATEGORY_##name @end @implementation SG_CATEGORY_##name @end
 
-#import "SGPreprocessorMacros.h"
-
-@implementation SGEnvelope (Mapkit)
-
-- (MKMapRect)mapRect
-{
-    MKMapPoint nw = MKMapPointForCoordinate(CLLocationCoordinate2DMake(north, west));
-    MKMapPoint se = MKMapPointForCoordinate(CLLocationCoordinate2DMake(south, east));
-    MKMapRect mapBounds = MKMapRectMake(nw.x, nw.y, (se.x-nw.x), (se.y-nw.y));
-    return mapBounds;
-}
-
-- (MKPolygon *)asMKPolygon
-{
-    CLLocationCoordinate2D coordinates[5] = {
-        CLLocationCoordinate2DMake(north, west),
-        CLLocationCoordinate2DMake(north, east),
-        CLLocationCoordinate2DMake(south, east),
-        CLLocationCoordinate2DMake(south, west),
-        CLLocationCoordinate2DMake(north, west)};
-    MKPolygon *polygon = [MKPolygon polygonWithCoordinates:coordinates count:5 interiorPolygons:nil];
-    free(coordinates);
-    return polygon;
-}
-
-- (NSArray *)overlays
-{
-    return [NSArray arrayWithObject:[self asMKPolygon]];
-}
-
-@end
-
-SG_CATEGORY(SGEnvelopeMapkit)
+#define SG_RELEASE(a)           [a release]
+#define SG_RETAIN(a)            [a retain]
+#define SG_AUTORELEASE(a)       [a autorelease]

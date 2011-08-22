@@ -35,6 +35,7 @@
 #import "SGPlace.h"
 #import "SGStoredRecord.h"
 #import "SGLayer.h"
+#import "SGPreprocessorMacros.h"
 
 @implementation NSArray (SGCollection)
 
@@ -44,8 +45,7 @@
 + (NSArray *)arrayWithSGCollection:(NSDictionary *)collection
                               type:(SGCollectionType)collectionType
 {
-    return [[[NSArray alloc] initWithSGCollection:collection
-                                            type:collectionType] autorelease];
+    return SG_AUTORELEASE([[NSArray alloc] initWithSGCollection:collection type:collectionType]);
 }
 
 - (id)initWithSGCollection:(NSDictionary *)collection
@@ -63,7 +63,7 @@
                     [output addObject:[SGGeometry geometryWithGeoJSON:object]];
                     break;
                 case SGCollectionTypeObjects:
-                    [output addObject:[[[SGGeoObject alloc] initWithGeoJSON:object] autorelease]];
+                    [output addObject:SG_AUTORELEASE([[SGGeoObject alloc] initWithGeoJSON:object])];
                     break;
                 case SGCollectionTypeFeatures:
                     [output addObject:[SGFeature featureWithGeoJSON:object]];
@@ -109,3 +109,5 @@
 }
 
 @end
+
+SG_CATEGORY(NSArraySGCollection)

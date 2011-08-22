@@ -30,6 +30,8 @@
 
 #import "SGFeature.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGFeature
 
 @synthesize name, classifiers;
@@ -39,7 +41,7 @@
 
 + (SGFeature *)featureWithGeoJSON:(NSDictionary *)geoJSONFeature
 {
-    return [[[SGFeature alloc] initWithGeoJSON:geoJSONFeature] autorelease];
+    return SG_AUTORELEASE([[SGFeature alloc] initWithGeoJSON:geoJSONFeature]);
 }
 
 - (id)initWithGeoJSON:(NSDictionary *)geoJSONFeature
@@ -47,7 +49,7 @@
     self = [super initWithGeoJSON:geoJSONFeature];
     if (self) {
         // name
-        name = [[self.properties objectForKey:@"name"] retain];
+        name = SG_RETAIN([self.properties objectForKey:@"name"]);
         [self.properties removeObjectForKey:@"name"];
         // classifiers
         NSArray *someClassifiers = [self.properties objectForKey:@"classifiers"];
@@ -68,8 +70,8 @@
 
 - (void)setMutableClassifiers:(NSMutableArray *)someClassifiers
 {
-    [classifiers release];
-    classifiers = [someClassifiers retain];
+    SG_RELEASE(classifiers);
+    classifiers = SG_RETAIN(someClassifiers);
 }
 
 - (NSDictionary *)asGeoJSON
@@ -86,8 +88,8 @@
 
 - (void)dealloc
 {
-    [name release];
-    [classifiers release];
+    SG_RELEASE(name);
+    SG_RELEASE(classifiers);
     [super dealloc];
 }
 

@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.0.2 - 8/23/11
+
+* armv6 was missing from the compiled iOS static library
+
 ## 2.0.1 - 8/22/11
 
 * Fixed a bug in the bounding box query for nearby records

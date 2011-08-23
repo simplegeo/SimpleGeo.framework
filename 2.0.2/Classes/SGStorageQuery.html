@@ -1,0 +1,905 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SGStorageQuery Class Reference</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+		    <div id="doc_header" role="banner">
+		        <a href="../index.html"><img src="../img/logo.png" /></a>
+		        <a href="https://simplegeo.com/docs/tutorials/objective-c" target="_new"><img class="nav_img" alt="Help" src="../img/help.png" /></a>
+		        <a href="../hierarchy.html"><img class="nav_img" alt="Hierarchy" src="../img/hierarchy.png" /></a>
+		        <a href="../index.html"><img class="nav_img" alt="Index" src="../img/home.png" /></a>
+		    </div>
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SGStorageQuery Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/cursor">&nbsp;&nbsp;&nbsp;&nbsp;cursor</option>
+	
+	<option value="//api/name/endDate">&nbsp;&nbsp;&nbsp;&nbsp;endDate</option>
+	
+	<option value="//api/name/layer">&nbsp;&nbsp;&nbsp;&nbsp;layer</option>
+	
+	<option value="//api/name/sortType">&nbsp;&nbsp;&nbsp;&nbsp;sortType</option>
+	
+	<option value="//api/name/startDate">&nbsp;&nbsp;&nbsp;&nbsp;startDate</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/queryWithAddress:layer:">&nbsp;&nbsp;&nbsp;&nbsp;+ queryWithAddress:layer:</option>
+	
+	<option value="//api/name/queryWithEnvelope:layer:">&nbsp;&nbsp;&nbsp;&nbsp;+ queryWithEnvelope:layer:</option>
+	
+	<option value="//api/name/queryWithPoint:layer:">&nbsp;&nbsp;&nbsp;&nbsp;+ queryWithPoint:layer:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/initWithAddress:layer:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithAddress:layer:</option>
+	
+	<option value="//api/name/initWithEnvelope:layer:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithEnvelope:layer:</option>
+	
+	<option value="//api/name/initWithPoint:layer:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithPoint:layer:</option>
+	
+	<option value="//api/name/setDateRangeFrom:to:">&nbsp;&nbsp;&nbsp;&nbsp;- setDateRangeFrom:to:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cursor">cursor</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endDate">endDate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/layer">layer</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sortType">sortType</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startDate">startDate</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queryWithAddress:layer:">queryWithAddress:layer:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queryWithEnvelope:layer:">queryWithEnvelope:layer:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queryWithPoint:layer:">queryWithPoint:layer:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithAddress:layer:">initWithAddress:layer:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithEnvelope:layer:">initWithEnvelope:layer:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithPoint:layer:">initWithPoint:layer:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setDateRangeFrom:to:">setDateRangeFrom:to:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SGStorageQuery Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SGStorageQuery Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="../Classes/SGNearbyQuery.html">SGNearbyQuery</a> : <a href="../Classes/SGQuery.html">SGQuery</a> : NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SGStorageQuery.h<br />SGStorageQuery.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>An SGStorageQuery object stores query information for a SimpleGeo Storage API request.
+To make a Storage request, create an SGStorageQuery object and call <a href="../Classes/SimpleGeo.html#//api/name/getRecordsForQuery:callback:">[SimpleGeo getRecordsForQuery:callback:]</a>.</p>
+
+<ul>
+<li>Specify the Storage <strong><a href="#//api/name/layer">layer</a></strong> you wish to query (required).</li>
+<li>Specify <strong>start/end dates</strong> to constrain your query to records created in a certain timeframe.</li>
+<li>Specify a <strong>sort type</strong> to control the order by which results are returned.</li>
+</ul>
+
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/layer">&nbsp;&nbsp;layer</a></code>
+		<span class="tooltip"><p>Layer to query</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cursor">&nbsp;&nbsp;cursor</a></code>
+		<span class="tooltip"><p>Cursor for paginating query results</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sortType">&nbsp;&nbsp;sortType</a></code>
+		<span class="tooltip"><p>Sorting method for query</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/startDate">&nbsp;&nbsp;startDate</a></code>
+		<span class="tooltip"><p>Start date for query</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/endDate">&nbsp;&nbsp;endDate</a></code>
+		<span class="tooltip"><p>End date for query</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/queryWithPoint:layer:">+&nbsp;queryWithPoint:layer:</a></code>
+		<span class="tooltip"><p>Create a point-based Storage query</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/queryWithAddress:layer:">+&nbsp;queryWithAddress:layer:</a></code>
+		<span class="tooltip"><p>Create an address-based Storage query</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/queryWithEnvelope:layer:">+&nbsp;queryWithEnvelope:layer:</a></code>
+		<span class="tooltip"><p>Construct an envelope-based Storage query</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithPoint:layer:">&ndash;&nbsp;initWithPoint:layer:</a></code>
+		<span class="tooltip"><p>Construct a point-based Storage query</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithAddress:layer:">&ndash;&nbsp;initWithAddress:layer:</a></code>
+		<span class="tooltip"><p>Construct an address-based Storage query</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithEnvelope:layer:">&ndash;&nbsp;initWithEnvelope:layer:</a></code>
+		<span class="tooltip"><p>Construct an envelope-based Storage query</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setDateRangeFrom:to:">&ndash;&nbsp;setDateRangeFrom:to:</a></code>
+		<span class="tooltip"><p>Set a date range</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/cursor" title="cursor"></a>
+	<h3 class="subsubtitle method-title">cursor</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Cursor for paginating query results</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSString *cursor</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SGStorageQuery.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/endDate" title="endDate"></a>
+	<h3 class="subsubtitle method-title">endDate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>End date for query</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain, readonly) NSDate *endDate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SGStorageQuery.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/layer" title="layer"></a>
+	<h3 class="subsubtitle method-title">layer</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Layer to query</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSString *layer</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SGStorageQuery.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sortType" title="sortType"></a>
+	<h3 class="subsubtitle method-title">sortType</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sorting method for query</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) SGSortOrder sortType</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SGStorageQuery.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/startDate" title="startDate"></a>
+	<h3 class="subsubtitle method-title">startDate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Start date for query</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain, readonly) NSDate *startDate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SGStorageQuery.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/queryWithAddress:layer:" title="queryWithAddress:layer:"></a>
+	<h3 class="subsubtitle method-title">queryWithAddress:layer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create an address-based Storage query</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (SGStorageQuery *)queryWithAddress:(NSString *)<em>address</em> layer:(NSString *)<em>layer</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>address</em></dt>
+			<dd><p>Address</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layer</em></dt>
+			<dd><p>Layer</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SGStorageQuery.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/queryWithEnvelope:layer:" title="queryWithEnvelope:layer:"></a>
+	<h3 class="subsubtitle method-title">queryWithEnvelope:layer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Construct an envelope-based Storage query</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (SGStorageQuery *)queryWithEnvelope:(SGEnvelope *)<em>envelope</em> layer:(NSString *)<em>layer</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>envelope</em></dt>
+			<dd><p>Envelope</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layer</em></dt>
+			<dd><p>Layer</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SGStorageQuery.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/queryWithPoint:layer:" title="queryWithPoint:layer:"></a>
+	<h3 class="subsubtitle method-title">queryWithPoint:layer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a point-based Storage query</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (SGStorageQuery *)queryWithPoint:(SGPoint *)<em>point</em> layer:(NSString *)<em>layer</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>point</em></dt>
+			<dd><p>Point</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layer</em></dt>
+			<dd><p>Layer</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SGStorageQuery.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithAddress:layer:" title="initWithAddress:layer:"></a>
+	<h3 class="subsubtitle method-title">initWithAddress:layer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Construct an address-based Storage query</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithAddress:(NSString *)<em>address</em> layer:(NSString *)<em>layer</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>address</em></dt>
+			<dd><p>Address</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layer</em></dt>
+			<dd><p>Layer</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SGStorageQuery.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithEnvelope:layer:" title="initWithEnvelope:layer:"></a>
+	<h3 class="subsubtitle method-title">initWithEnvelope:layer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Construct an envelope-based Storage query</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithEnvelope:(SGEnvelope *)<em>envelope</em> layer:(NSString *)<em>layer</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>envelope</em></dt>
+			<dd><p>Envelope</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layer</em></dt>
+			<dd><p>Layer</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SGStorageQuery.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithPoint:layer:" title="initWithPoint:layer:"></a>
+	<h3 class="subsubtitle method-title">initWithPoint:layer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Construct a point-based Storage query</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithPoint:(SGPoint *)<em>point</em> layer:(NSString *)<em>layer</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>point</em></dt>
+			<dd><p>Point</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layer</em></dt>
+			<dd><p>Layer</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SGStorageQuery.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setDateRangeFrom:to:" title="setDateRangeFrom:to:"></a>
+	<h3 class="subsubtitle method-title">setDateRangeFrom:to:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set a date range</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)setDateRangeFrom:(NSDate *)<em>startDate</em> to:(NSDate *)<em>endDate</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>startDate</em></dt>
+			<dd><p>Start date</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>endDate</em></dt>
+			<dd><p>End date</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SGStorageQuery.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 SimpleGeo. All rights reserved. (Last updated: 2011-08-23)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>

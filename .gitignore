@@ -12,6 +12,7 @@
 xcuserdata
 profile
 *.moved-aside
+*.tgz
 
 # OS X
 .DS_Store

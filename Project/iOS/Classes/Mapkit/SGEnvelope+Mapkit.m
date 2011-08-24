@@ -33,6 +33,29 @@
 
 @implementation SGEnvelope (Mapkit)
 
+#pragma mark -
+#pragma mark Instantiation
+
++ (SGEnvelope *)envelopeWithMapRect:(MKMapRect)mapRect
+{
+    return [[[SGEnvelope alloc] initWithMapRect:mapRect] autorelease];
+}
+
+- (id)initWithMapRect:(MKMapRect)mapRect
+{
+    MKMapPoint nwMapPoint = MKMapPointMake(mapRect.origin.x, mapRect.origin.y);
+    MKMapPoint seMapPoint = MKMapPointMake(mapRect.origin.x + mapRect.size.width, mapRect.origin.y + mapRect.size.height);
+    CLLocationCoordinate2D nwCoord = MKCoordinateForMapPoint(nwMapPoint);
+    CLLocationCoordinate2D seCoord = MKCoordinateForMapPoint(seMapPoint);
+    return [self initWithWithNorth:nwCoord.latitude
+                              west:nwCoord.longitude
+                             south:seCoord.latitude
+                              east:seCoord.longitude];
+}
+
+#pragma mark -
+#pragma mark Convenience
+
 - (MKMapRect)mapRect
 {
     MKMapPoint nw = MKMapPointForCoordinate(CLLocationCoordinate2DMake(north, west));

@@ -33,6 +33,7 @@
 #import "SGPlacesQuery.h"
 #import "SGPlace.h"
 #import "JSONKit.h"
+#import "SGPreprocessorMacros.h"
 
 @implementation SimpleGeo (Places)
 
@@ -90,3 +91,5 @@
 }
 
 @end
+
+SG_CATEGORY(SimpleGeoPlaces)

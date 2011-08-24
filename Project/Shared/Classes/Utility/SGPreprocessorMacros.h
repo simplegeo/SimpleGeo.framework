@@ -1,5 +1,5 @@
 //
-//  SGPlacesQuery.m
+//  SGPreprocessorMacros.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,21 +28,8 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SGPlacesQuery.h"
-#import "SGPreprocessorMacros.h"
+#define SG_CATEGORY(name) @interface SG_CATEGORY_##name @end @implementation SG_CATEGORY_##name @end
 
-@implementation SGPlacesQuery
-
-@synthesize searchString, categories;
-
-#pragma mark -
-#pragma mark Memory
-
-- (void)dealloc
-{
-    SG_RELEASE(searchString);
-    SG_RELEASE(categories);
-    [super dealloc];
-}
-
-@end
+#define SG_RELEASE(a)           [a release]
+#define SG_RETAIN(a)            [a retain]
+#define SG_AUTORELEASE(a)       [a autorelease]

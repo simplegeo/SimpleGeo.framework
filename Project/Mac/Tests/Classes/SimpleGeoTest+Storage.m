@@ -207,7 +207,19 @@
 {
     [self prepare];
     SGStorageQuery *query = [SGStorageQuery queryWithEnvelope:[self envelope] layer:SGTestLayer];
-    [[self client] getRecordsForQuery:query callback:[self delegateCallbacks]];
+    SGSuccessBlock sBlock = ^(id response) {
+        NSArray *features = [response objectForKey:@"features"];
+        GHAssertNotNil(features, @"the feature collection should contain features");
+        GHAssertTrue([features count] > 0, @"there should be more than 0 features");
+        [self notify:kGHUnitWaitStatusSuccess];
+    };
+    
+    SGFailureBlock fBlock = ^(NSError *error) {
+        GHTestLog(@"%@", error);
+        [self notify:kGHUnitWaitStatusFailure];
+    };
+    
+    [[self client] getRecordsForQuery:query callback:[SGCallback callbackWithSuccessBlock:sBlock failureBlock:fBlock]];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
 }
 

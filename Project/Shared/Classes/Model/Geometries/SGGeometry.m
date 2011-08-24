@@ -34,6 +34,8 @@
 #import "SGPolygon.h"
 #import "SGMultiPolygon.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGGeometry
 
 #pragma mark -
@@ -41,7 +43,7 @@
 
 + (SGGeometry *)geometryWithGeoJSON:(NSDictionary *)geoJSONGeometry
 {
-    return [[[SGGeometry alloc] initWithGeoJSON:geoJSONGeometry] autorelease];
+    return SG_AUTORELEASE([[SGGeometry alloc] initWithGeoJSON:geoJSONGeometry]);
 }
 
 - (id)initWithGeoJSON:(NSDictionary *)geoJSONGeometry

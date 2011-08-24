@@ -1,0 +1,73 @@
+# !/bin/bash
+#
+# This script will create and tag the Mac OS X
+# and iOS frameworks for the passed in version.
+#
+# Note: This script should only be executed when
+# it is necessary to generate a new release.
+
+VERSION=$1
+DEBUG=$2
+
+if [ -z "$VERSION" ]
+then
+  echo "Please specify a version"
+  exit 1
+fi
+
+echo "Using ${VERSION} for building..."
+
+TOP_DIR=`pwd`
+
+TMP_IOS_FILE=/tmp/SimpleGeo-$VERSION.tgz
+TMP_MAC_FILE=/tmp/SimpleGeo-iOS-$VERSION.tgz
+TMP_DOC_FILE=/tmp/SimpleGeo-$VERSION-docset.tgz
+
+# Build Mac OS X Framework
+cd Project/Mac
+make
+cd build/Release
+tar zcf $TMP_MAC_FILE SimpleGeo.framework
+cd $TOP_DIR
+
+# Build iOS Framework
+cd Project/iOS
+make dist
+mv SimpleGeo-iOS.tgz $TMP_IOS_FILE
+cd $TOP_DIR
+
+# Documentation
+cd Documentation
+make
+cd html
+tar zcf $TM_DOC_FILE
+cd $TOP_DIR
+git checkout gh-pages
+mkdir $VERSION
+cp -R Documentation/html/* $VERSION/
+git add $VERSION/
+git commit -m "Docs for ${VERSION}"
+
+# Update Mac OS X Framework
+git checkout framework
+rm -rf *
+tar zxf $TMP_MAC_FILE
+mv SimpleGeo.framework/* .
+rmdir SimpleGeo.framework
+git add *
+git commit -am "Version $VERSION"
+git tag $VERSION-framework
+
+# Update iOS Framework
+git checkout framework-ios
+rm -rf *
+tar zxf $TMP_IOS_FILE
+mv SimpleGeo.framework/* .
+rmdir SimpleGeo.framework
+git commit -am "Version $VERSION"
+git tag $VERSION-framework-ios
+
+# Push it out to the remote repository
+git checkout master
+git push
+git push --tags

@@ -31,6 +31,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "SGEnvelope+Mapkit.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGEnvelope (Mapkit)
 
 #pragma mark -
@@ -83,3 +85,5 @@
 }
 
 @end
+
+SG_CATEGORY(SGEnvelopeMapkit)

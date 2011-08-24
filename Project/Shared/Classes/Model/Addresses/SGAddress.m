@@ -30,6 +30,8 @@
 
 #import "SGAddress.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGAddress
 
 @synthesize street, city, county, province, postalCode, ISOcountryCode;
@@ -49,27 +51,27 @@
         // street
         NSString *component = [dictionary objectForKey:@"address"];
         if (component && [component isKindOfClass:[NSString class]])
-            street = [component retain];
+            street = SG_RETAIN(component);
         // locality
         component = [dictionary objectForKey:@"city"];
         if (component && [component isKindOfClass:[NSString class]])
-            city = [component retain];
+            city = SG_RETAIN(component);
         // administraive area
         component = [dictionary objectForKey:@"province"];
         if (component && [component isKindOfClass:[NSString class]])
-            province = [component retain];
+            province = SG_RETAIN(component);
         // subadministrative area
         component = [dictionary objectForKey:@"county"];
         if (component && [component isKindOfClass:[NSString class]])
-            county = [component retain];
+            county = SG_RETAIN(component);
         // postalcode
         component = [dictionary objectForKey:@"postcode"];
         if (component && [component isKindOfClass:[NSString class]])
-            postalCode = [component retain];
+            postalCode = SG_RETAIN(component);
         // iso country code
         component = [dictionary objectForKey:@"country"];
         if (component && [component isKindOfClass:[NSString class]])
-            ISOcountryCode = [component retain];
+            ISOcountryCode = SG_RETAIN(component);
     }
     return self;
 }
@@ -126,12 +128,12 @@
 
 - (void)dealloc
 {
-    [street release];
-    [city release];
-    [county release];
-    [province release];
-    [postalCode release];
-    [ISOcountryCode release];
+    SG_RELEASE(street);
+    SG_RELEASE(city);
+    SG_RELEASE(county);
+    SG_RELEASE(province);
+    SG_RELEASE(postalCode);
+    SG_RELEASE(ISOcountryCode);
     [super dealloc];
 }
 

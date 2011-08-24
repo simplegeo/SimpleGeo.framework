@@ -31,6 +31,8 @@
 #import "SGMultiPolygon+Mapkit.h"
 #import "SGPolygon+Mapkit.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGMultiPolygon (Mapkit)
 
 - (NSArray *)asMKPolygons
@@ -49,3 +51,5 @@
 }
 
 @end
+
+SG_CATEGORY(SGMultiPolygonMapKit)

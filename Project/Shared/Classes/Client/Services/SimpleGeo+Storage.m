@@ -34,6 +34,7 @@
 #import "NSArray+SGCollection.h"
 #import "SGLayer.h"
 #import "JSONKit.h"
+#import "SGPreprocessorMacros.h"
 
 static NSString *storageAPIVersion = @"0.1";
 
@@ -66,6 +67,10 @@ static NSString *storageAPIVersion = @"0.1";
     [parameters setValue:[NSString stringWithFormat:@"%d", query.limit] forKey:@"limit"];
     if (query.startDate) [parameters setValue:[NSString stringWithFormat:@"%f", [query.startDate timeIntervalSince1970]] forKey:@"start"];
     if (query.endDate) [parameters setValue:[NSString stringWithFormat:@"%f", [query.endDate timeIntervalSince1970]] forKey:@"end"];
+    if (query.envelope) {
+        NSDictionary *geoJSON = [query.envelope asGeoJSON];
+        [parameters setValue:[[geoJSON objectForKey:@"bbox"] componentsJoinedByString:@","] forKey:@"bbox"];
+    }
     
     NSString *url = [NSString stringWithFormat:@"/records/%@/nearby/%@", query.layer, [self baseEndpointForQuery:query]];
 
@@ -196,3 +201,5 @@ static NSString *storageAPIVersion = @"0.1";
 }
 
 @end
+
+SG_CATEGORY(SimpleGeoStorage)

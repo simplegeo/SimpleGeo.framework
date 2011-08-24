@@ -34,6 +34,8 @@
 #import "SGPoint+Internal.h"
 #import "SGEnvelope.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGPolygon
 
 @synthesize rings;
@@ -43,26 +45,25 @@
 
 + (SGPolygon *)polygonWithRings:(NSArray *)rings
 {
-    return [[[SGPolygon alloc] initWithRings:rings] autorelease];
+    return SG_AUTORELEASE([[SGPolygon alloc] initWithRings:rings]);
 }
 
 + (SGPolygon *)polygonWithBoundary:(NSArray *)boundary
                              holes:(NSArray *)holes
 {
-    return [[[SGPolygon alloc] initWithBoundary:boundary
-                                          holes:holes] autorelease];
+    return SG_AUTORELEASE([[SGPolygon alloc] initWithBoundary:boundary holes:holes]);
 }
 
 + (SGGeometry *)geometryWithGeoJSON:(NSDictionary *)geoJSONGeometry
 {
-    return [[[SGPolygon alloc] initWithGeoJSON:geoJSONGeometry] autorelease];
+    return SG_AUTORELEASE([[SGPolygon alloc] initWithGeoJSON:geoJSONGeometry]);
 }
 
 - (id)initWithRings:(NSArray *)someRings
 {
     self = [super init];
     if (self) {
-        rings = [someRings retain];
+        rings = SG_RETAIN(someRings);
     }
     return self;
 }
@@ -173,7 +174,7 @@
 
 + (SGPolygon *)polygonWithArray:(NSArray *)polygon
 {
-    return [[[SGPolygon alloc] initWithArray:polygon] autorelease];
+    return SG_AUTORELEASE([[SGPolygon alloc] initWithArray:polygon]);
 }
 
 - (id)initWithArray:(NSArray *)polygon
@@ -194,7 +195,7 @@
 
 - (void)dealloc
 {
-    [rings release];
+    SG_RELEASE(rings);
     [super dealloc];
 }
 

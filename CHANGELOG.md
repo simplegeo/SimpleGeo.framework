@@ -1,8 +1,18 @@
 # Change Log
 
+## 2.0.2 - 8/23/11
+
+* armv6 was missing from the compiled iOS static library
+
+## 2.0.1 - 8/22/11
+
+* Fixed a bug in the bounding box query for nearby records
+* Wrapped all memory management methods within a pre-processor macro
+* No longer required to set `all_load` or `ObjC` as other linking flags
+
 ## 2.0 - 8/3/11
 
-Complete rewrite. SGQuery object, new SGObject model, streamlined request methods, SGCallbacks with block support, and much more.
+* Complete rewrite. SGQuery object, new SGObject model, streamlined request methods, SGCallbacks with block support, and much more.
 
 ## 1.3.0 - 6/8/11
 

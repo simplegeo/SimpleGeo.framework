@@ -31,6 +31,8 @@
 #import "SGEnvelope.h"
 #import "SGPoint.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGEnvelope
 
 @synthesize north, east, south, west;
@@ -43,10 +45,10 @@
                             south:(double)southernLat
                              east:(double)easternLon
 {
-    return [[[SGEnvelope alloc] initWithWithNorth:northernLat
-                                             west:westernLon
-                                            south:southernLat
-                                             east:easternLon] autorelease];
+    return SG_AUTORELEASE([[SGEnvelope alloc] initWithWithNorth:northernLat
+                                                           west:westernLon
+                                                          south:southernLat
+                                                           east:easternLon]);;
 }
 
 - (id)initWithWithNorth:(double)northernLat
@@ -109,9 +111,9 @@
 - (NSDictionary *)asGeoJSON
 {
     return [NSDictionary dictionaryWithObject:[NSArray arrayWithObjects:
-                                               [NSNumber numberWithDouble:north],
-                                               [NSNumber numberWithDouble:west],
                                                [NSNumber numberWithDouble:south],
+                                               [NSNumber numberWithDouble:west],
+                                               [NSNumber numberWithDouble:north],
                                                [NSNumber numberWithDouble:east],
                                                nil] forKey:@"bbox"];
 }

@@ -31,6 +31,7 @@
 #import "SGQuery.h"
 #import "SGPoint.h"
 #import "SGEnvelope.h"
+#import "SGPreprocessorMacros.h"
 
 @implementation SGQuery
 
@@ -41,24 +42,24 @@
 
 + (id)queryWithPoint:(SGPoint *)point
 {
-    return [[[self alloc] initWithPoint:point] autorelease];
+    return SG_AUTORELEASE([[self alloc] initWithPoint:point]);
 }
 
 + (id)queryWithAddress:(NSString *)address
 {
-    return [[[self alloc] initWithAddress:address] autorelease];
+    return SG_AUTORELEASE([[self alloc] initWithAddress:address]);
 }
 
 + (id)queryWithEnvelope:(SGEnvelope *)envelope
 {
-    return [[[self alloc] initWithEnvelope:envelope] autorelease];
+    return SG_AUTORELEASE([[self alloc] initWithEnvelope:envelope]);
 }
 
 - (id)initWithPoint:(SGPoint *)aPoint
 {
     self = [self init];
     if (self) {
-        point = [aPoint retain];
+        point = SG_RETAIN(aPoint);
     }
     return self;
 }
@@ -67,7 +68,7 @@
 {
     self = [self init];
     if (self) {
-        address = [anAddress retain];
+        address = SG_RETAIN(anAddress);
     }
     return self;
 }
@@ -76,7 +77,7 @@
 {
     self = [self init];
     if (self) {
-        envelope = [anEnvelope retain];
+        envelope = SG_RETAIN(anEnvelope);
     }
     return self;
 }
@@ -85,9 +86,9 @@
 #pragma mark Memory
 
 - (void)dealloc {
-    [point release];
-    [address release];
-    [envelope release];
+    SG_RELEASE(point);
+    SG_RELEASE(address);
+    SG_RELEASE(envelope);
     [super dealloc];
 }
 

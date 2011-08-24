@@ -30,7 +30,6 @@ Add the following additional frameworks to your project by clicking on your Targ
 * libz
 * SimpleGeo (if it's not already present)
 
-Non-system frameworks must be statically linked to your application (iOS does not allow embedded frameworks), so you'll need to add `-ObjC` and `-all_load` to "Other Linker Flags" (accessible via the "Linking" section under your Target's  "Build Settings" tab).
 
 [SimpleGeo-iOS](https://github.com/simplegeo/SimpleGeo-iOS) is an example of an iOS application built using `SimpleGeo.framework`.
 

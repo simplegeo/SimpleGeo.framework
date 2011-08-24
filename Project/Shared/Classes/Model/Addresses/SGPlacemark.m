@@ -31,6 +31,8 @@
 #import "SGPlacemark.h"
 #import "SGPoint.h"
 
+#import "SGPreprocessorMacros.h"
+
 @implementation SGPlacemark
 
 @synthesize point, distance;
@@ -40,15 +42,15 @@
     self = [super initWithDictionary:[geoJSONDictionary objectForKey:@"properties"]];
     if (self) {
         point = [[SGPoint alloc] initWithGeoJSON:[geoJSONDictionary objectForKey:@"geometry"]];
-        distance = [[[geoJSONDictionary objectForKey:@"properties"] objectForKey:@"distance"] retain];
+        distance = SG_RETAIN([[geoJSONDictionary objectForKey:@"properties"] objectForKey:@"distance"]);
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [point release];
-    [distance release];
+    SG_RELEASE(point);
+    SG_RELEASE(distance);
     [super dealloc];
 }
 

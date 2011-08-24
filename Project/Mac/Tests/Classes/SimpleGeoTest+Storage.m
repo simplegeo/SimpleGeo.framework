@@ -146,7 +146,7 @@
                         [self recordSimpleMoved],
                         [self recordWithCreationDate],
                         [self recordWithProperties],
-                        [self recordWithFakeProperties],
+//                        [self recordWithFakeProperties],
                         nil];
     [[self client] addOrUpdateRecords:records
                               inLayer:SGTestLayer

@@ -32,7 +32,7 @@
 #import "SimpleGeo+Internal.h"
 #import "SGContextQuery.h"
 #import "SGPreprocessorMacros.h"
-#import "JSONKit.h"
+#import "SGJSONKit.h"
 
 @implementation SimpleGeo (Context)
 

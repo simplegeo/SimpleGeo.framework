@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.0.3 - 8/25/11
+
+* Namespaced all 3rd-party libraries
+
 ## 2.0.2 - 8/23/11
 
 * armv6 was missing from the compiled iOS static library

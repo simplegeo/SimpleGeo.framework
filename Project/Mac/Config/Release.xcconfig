@@ -1,8 +1,0 @@
-//
-//  Release.xcconfig
-//  SimpleGeo
-//
-
-#include "Shared.xcconfig"
-
-DEBUG_INFORMATION_FORMAT = dwarf-with-dsym

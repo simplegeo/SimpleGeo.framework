@@ -1,2 +1,0 @@
-default:
-	./appledoc AppledocSettings.plist ../

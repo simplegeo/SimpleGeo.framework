@@ -33,7 +33,7 @@
 #import "SGStorageQuery.h"
 #import "NSArray+SGCollection.h"
 #import "SGLayer.h"
-#import "JSONKit.h"
+#import "SGJSONKit.h"
 #import "SGPreprocessorMacros.h"
 
 @implementation SimpleGeo (Storage)

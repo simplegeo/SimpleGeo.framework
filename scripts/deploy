@@ -26,6 +26,10 @@ TMP_DOC_FILE=/tmp/SimpleGeo-$VERSION-docset.tgz
 # Build Mac OS X Framework
 cd Project/Mac
 make
+if [ $? != 0 ]; then
+  echo "Failed to make Mac OS X framework"
+  exit 1
+fi
 cd build/Release
 tar zcf $TMP_MAC_FILE SimpleGeo.framework
 cd $TOP_DIR
@@ -33,12 +37,20 @@ cd $TOP_DIR
 # Build iOS Framework
 cd Project/iOS
 make dist
+if [ $? != 0 ]; then
+  echo "Failed to make iOS framework"
+  exit 1
+fi
 mv SimpleGeo-iOS.tgz $TMP_IOS_FILE
 cd $TOP_DIR
 
 # Documentation
 cd Documentation
 make
+if [ $? != 0 ]; then
+  echo "Failed to make documentation for framework"
+  exit 1
+fi
 cd html
 tar zcf $TM_DOC_FILE
 cd $TOP_DIR

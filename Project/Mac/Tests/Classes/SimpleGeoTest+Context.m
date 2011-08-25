@@ -32,6 +32,9 @@
 #import "SimpleGeo+Context.h"
 #import "NSArray+SGCollection.h"
 
+#define SGTestFeatureHandlePolygon @"SG_09n1rkpq25DU5aZeaCAHtG_37.775330_-122.402276"
+#define SGTestFeatureHandleMultiPolygon @"SG_1mNfKHr5aXH7LWgmZL8Uq7_37.759717_-122.693971"
+
 #pragma mark Context Test Data
 
 @interface SimpleGeoTest (ContextData)
@@ -149,6 +152,77 @@
                                            }
                                            [self requestDidSucceed:response];
                                        } failureBlock:[self failureBlock]]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
+@end
+
+@interface FeatureTests : SimpleGeoTest
+@end
+@implementation FeatureTests
+
+#pragma mark Feature Request & Conversion Tests
+
+- (void)testGetPolygonFeatureWithZoomAndConvert
+{
+    [self prepare];
+    [[self client] getFeatureWithHandle:SGTestFeatureHandlePolygon
+                                   zoom:[NSNumber numberWithInt:5]
+                               callback:[SGCallback callbackWithSuccessBlock:
+                                         ^(id response) {
+                                             SGFeature *feature = [SGFeature featureWithGeoJSON:(NSDictionary *)response];
+                                             SGLog(@"SGFeature: %@", feature);
+                                             [self checkSGFeatureConversion:response object:feature];
+                                             [self requestDidSucceed:response];
+                                         } failureBlock:[self failureBlock]]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
+- (void)testGetMultiPolygonFeatureAndConvert
+{
+    [self prepare];
+    [[self client] getFeatureWithHandle:SGTestFeatureHandleMultiPolygon
+                                   zoom:nil
+                               callback:[SGCallback callbackWithSuccessBlock:
+                                         ^(id response) {
+                                             SGFeature *feature = [SGFeature featureWithGeoJSON:(NSDictionary *)response];
+                                             SGLog(@"SGFeature: %@", feature);
+                                             [self checkSGFeatureConversion:response object:feature];
+                                             [self requestDidSucceed:response];
+                                         } failureBlock:[self failureBlock]]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
+- (void)testGetAnnotationsForFeature
+{
+    [self prepare];
+    [[self client] getAnnotationsForFeature:SGTestFeatureHandlePolygon
+                                   callback:[self delegateCallbacks]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
+- (void)testAnnotateFeature
+{
+    [self prepare];
+    NSDictionary *testAnnotations = [NSDictionary dictionaryWithObject:[NSDictionary dictionaryWithObject:@"testing" forKey:@"testNote"]
+                                                                forKey:@"testAnnotations"];
+    [[self client] annotateFeature:SGTestFeatureHandlePolygon
+                    withAnnotation:testAnnotations
+                         isPrivate:YES
+                          callback:[self delegateCallbacks]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
+- (void)testCheckAnnotationsForFeature
+{
+    [self prepare];
+    [[self client] getAnnotationsForFeature:SGTestFeatureHandlePolygon
+                                   callback:[SGCallback callbackWithSuccessBlock:
+                                             ^(id response) {
+                                                 GHAssertEqualObjects([[[(NSDictionary *)response objectForKey:@"private"] objectForKey:@"testAnnotations"] objectForKey:@"testNote"],
+                                                                      @"testing", @"Feature's annotation should contain our annotation");
+                                                 [self requestDidSucceed:response];
+                                             } failureBlock:[self failureBlock]]];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
 }
 

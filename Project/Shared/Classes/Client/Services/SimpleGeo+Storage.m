@@ -36,8 +36,6 @@
 #import "JSONKit.h"
 #import "SGPreprocessorMacros.h"
 
-static NSString *storageAPIVersion = @"0.1";
-
 @implementation SimpleGeo (Storage)
 
 #pragma mark -
@@ -52,7 +50,7 @@ static NSString *storageAPIVersion = @"0.1";
     [self sendHTTPRequest:@"GET"
                     toFile:url
                withParams:nil
-                  version:storageAPIVersion
+                  version:self.storageVersion
                  callback:callback];
 }
 
@@ -63,21 +61,29 @@ static NSString *storageAPIVersion = @"0.1";
     [parameters setValue:query.address forKey:@"address"];
     [parameters setValue:query.cursor forKey:@"cursor"];
     [parameters setValue:query.sortType forKey:@"order"];
-    [parameters setValue:[NSString stringWithFormat:@"%f", query.radius] forKey:@"radius"];
-    [parameters setValue:[NSString stringWithFormat:@"%d", query.limit] forKey:@"limit"];
+    if (query.radius > 0.0f) [parameters setValue:[NSString stringWithFormat:@"%f", query.radius] forKey:@"radius"];
+    if (query.limit > 0) [parameters setValue:[NSString stringWithFormat:@"%d", query.limit] forKey:@"limit"];
     if (query.startDate) [parameters setValue:[NSString stringWithFormat:@"%f", [query.startDate timeIntervalSince1970]] forKey:@"start"];
     if (query.endDate) [parameters setValue:[NSString stringWithFormat:@"%f", [query.endDate timeIntervalSince1970]] forKey:@"end"];
     if (query.envelope) {
         NSDictionary *geoJSON = [query.envelope asGeoJSON];
         [parameters setValue:[[geoJSON objectForKey:@"bbox"] componentsJoinedByString:@","] forKey:@"bbox"];
     }
+    [parameters setValue:query.propertyType forKey:@"prop.type"];
+    [parameters setValue:query.propertyName forKey:@"prop.name"];
+    if ([query.propertyType isEqual:@"boolean"])
+        if ([(NSNumber *)query.propertyValue boolValue]) [parameters setValue:@"true" forKey:@"prop.equals"];
+        else [parameters setValue:@"false" forKey:@"prop.equals"];        
+        else [parameters setValue:query.propertyValue forKey:@"prop.equals"];
+    [parameters setValue:query.propertyStartValue forKey:@"prop.start"];
+    [parameters setValue:query.propertyEndValue forKey:@"prop.end"];
     
     NSString *url = [NSString stringWithFormat:@"/records/%@/nearby/%@", query.layer, [self baseEndpointForQuery:query]];
 
     [self sendHTTPRequest:@"GET"
                    toFile:url
                withParams:parameters
-                  version:storageAPIVersion     
+                  version:self.storageVersion     
                  callback:callback];
 }
 
@@ -96,7 +102,7 @@ static NSString *storageAPIVersion = @"0.1";
     [self sendHTTPRequest:@"GET"
                     toFile:url
                withParams:parameters
-                  version:storageAPIVersion
+                  version:self.storageVersion
                  callback:callback];
 }
 
@@ -122,7 +128,7 @@ static NSString *storageAPIVersion = @"0.1";
     [self sendHTTPRequest:@"POST"
                     toFile:url
                withParams:[featureCollection JSONData]
-                  version:storageAPIVersion
+                  version:self.storageVersion
                  callback:callback];
 }
 
@@ -135,7 +141,7 @@ static NSString *storageAPIVersion = @"0.1";
     [self sendHTTPRequest:@"DELETE"
                     toFile:url
                withParams:nil
-                  version:storageAPIVersion     
+                  version:self.storageVersion     
                  callback:callback];
 }
 
@@ -150,7 +156,7 @@ static NSString *storageAPIVersion = @"0.1";
     [self sendHTTPRequest:@"GET"
                     toFile:url
                withParams:nil
-                  version:storageAPIVersion
+                  version:self.storageVersion
                  callback:callback];
 }
 
@@ -169,7 +175,7 @@ static NSString *storageAPIVersion = @"0.1";
     [self sendHTTPRequest:@"GET"
                     toFile:@"/layers"
                withParams:parameters
-                  version:storageAPIVersion
+                  version:self.storageVersion
                  callback:callback];
 }
 
@@ -184,7 +190,7 @@ static NSString *storageAPIVersion = @"0.1";
     [self sendHTTPRequest:@"PUT"
                     toFile:url
                withParams:[[layer asDictionary] JSONData]
-                  version:storageAPIVersion
+                  version:self.storageVersion
                  callback:callback];
 }
 
@@ -196,7 +202,7 @@ static NSString *storageAPIVersion = @"0.1";
     [self sendHTTPRequest:@"DELETE"
                     toFile:url
                withParams:nil
-                  version:storageAPIVersion
+                  version:self.storageVersion
                  callback:callback];
 }
 

@@ -103,7 +103,7 @@
 - (NSDictionary *)asGeoJSON
 {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super asGeoJSON];
-    [dictionary addEntriesFromDictionary:[address asDictionary]]; // address
+    [[dictionary objectForKey:@"properties"] addEntriesFromDictionary:[address asDictionary]]; // address
     [[dictionary objectForKey:@"properties"] setValue:tags forKey:@"tags"]; // tags
     if (isPrivate) [[dictionary objectForKey:@"properties"] setValue:@"true" forKey:@"private"]; // visibility
     return dictionary;

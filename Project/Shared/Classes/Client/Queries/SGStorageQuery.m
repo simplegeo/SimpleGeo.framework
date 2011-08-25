@@ -34,11 +34,14 @@
 @interface SGStorageQuery ()
 @property (nonatomic, retain, readwrite) NSDate *startDate;
 @property (nonatomic, retain, readwrite) NSDate *endDate;
+@property (nonatomic, retain, readwrite) SGStoredPropertyType propertyType;
+@property (nonatomic, retain, readwrite) NSString *propertyName;
+@property (nonatomic, retain, readwrite) NSObject *propertyValue;
 @end
 
 @implementation SGStorageQuery
 
-@synthesize layer, cursor, sortType, startDate, endDate;
+@synthesize layer, cursor, sortType, startDate, endDate, propertyType, propertyName, propertyValue, propertyStartValue, propertyEndValue;
 
 #pragma mark -
 #pragma mark Instantiation
@@ -101,6 +104,23 @@
     self.endDate = anEndDate;
 }
 
+- (void)setProperty:(NSString *)property
+             ofType:(SGStoredPropertyType)type
+{
+    [self setProperty:property
+               ofType:type
+               equals:nil];
+}
+
+- (void)setProperty:(NSString *)property
+             ofType:(SGStoredPropertyType)type
+             equals:(NSObject *)value
+{
+    self.propertyType = type;
+    self.propertyName = property;
+    self.propertyValue = value;
+}
+
 #pragma mark -
 #pragma mark Memory
 
@@ -111,6 +131,11 @@
     SG_RELEASE(sortType);
     SG_RELEASE(startDate);
     SG_RELEASE(endDate);
+    SG_RELEASE(propertyType);
+    SG_RELEASE(propertyName);
+    SG_RELEASE(propertyValue);
+    SG_RELEASE(propertyStartValue);
+    SG_RELEASE(propertyEndValue);
     [super dealloc];
 }
 

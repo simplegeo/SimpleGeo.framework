@@ -40,6 +40,16 @@
 #pragma mark -
 #pragma mark Requests
 
+- (void)getPlace:(NSString *)identifier
+        callback:(SGCallback *)callback
+{    
+    [self sendHTTPRequest:@"GET"
+                   toFile:[NSString stringWithFormat:@"/features/%@", identifier]
+               withParams:nil
+                  version:self.placesVersion
+                 callback:callback];
+}
+
 - (void)getPlacesForQuery:(SGPlacesQuery *)query
                  callback:(SGCallback *)callback
 {  
@@ -47,13 +57,20 @@
     [parameters setValue:query.address forKey:@"address"];
     [parameters setValue:query.searchString forKey:@"q"];
     [parameters setValue:query.categories forKey:@"category"];
-    [parameters setValue:[NSString stringWithFormat:@"%f", query.radius] forKey:@"radius"];
-    [parameters setValue:[NSString stringWithFormat:@"%d", query.limit] forKey:@"num"];
-                  
+    if (query.radius > 0.0f) [parameters setValue:[NSString stringWithFormat:@"%f", query.radius] forKey:@"radius"];
+    if (query.limit > 0) [parameters setValue:[NSString stringWithFormat:@"%d", query.limit] forKey:@"num"];
+    
+    NSString *file;
+    if ([self.placesVersion isEqual:@"1.0"])
+        file = [NSString stringWithFormat:@"/places/%@",[self baseEndpointForQuery:query]];
+    else
+        file = [NSString stringWithFormat:@"/features/%@",[self baseEndpointForQuery:query]];
+        
     [self sendHTTPRequest:@"GET"
-                    toFile:[NSString stringWithFormat:@"/places/%@",[self baseEndpointForQuery:query]]
-             withParams:parameters
-               callback:callback];
+                   toFile:file
+               withParams:parameters
+                  version:self.placesVersion
+                 callback:callback];
 }
 
 #pragma mark -
@@ -63,12 +80,12 @@
         callback:(SGCallback *)callback
 {
     NSString *urlString = [NSString stringWithFormat:@"%@/%@/places", 
-                           SG_MAIN_URL, SG_API_VERSION, nil];
+                           self.apiURL, self.placesVersion, nil];
     
     [self sendHTTPRequest:@"POST"
                     toURL:[NSURL URLWithString:urlString]
                withParams:[[place asGeoJSON] JSONData]
-                 callback:callback];    
+                 callback:callback];
 }
 
 - (void)updatePlace:(NSString *)identifier
@@ -78,6 +95,7 @@
     [self sendHTTPRequest:@"POST"
                    toFile:[NSString stringWithFormat:@"/features/%@", identifier]
                withParams:[[place asGeoJSON] JSONData]
+                  version:self.placesVersion
                  callback:callback];
 }
 
@@ -87,6 +105,7 @@
     [self sendHTTPRequest:@"DELETE"
                    toFile:[NSString stringWithFormat:@"/features/%@", identifier]
                withParams:nil
+                  version:self.placesVersion
                  callback:callback];
 }
 

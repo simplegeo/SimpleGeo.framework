@@ -78,8 +78,8 @@
         title = SG_RETAIN([layerDictionary objectForKey:@"title"]);
         description = SG_RETAIN([layerDictionary objectForKey:@"description"]);
         callbackURLs = [[layerDictionary objectForKey:@"callback_urls"] mutableCopy];
-        NSNumber *publicValue = SG_RETAIN([layerDictionary objectForKey:@"public"]);
-        if (publicValue) isPublic = [publicValue boolValue];
+        BOOL publicValue = [[layerDictionary objectForKey:@"public"] boolValue];
+        if (publicValue) isPublic = publicValue;
         NSNumber *createdEpoch = [layerDictionary objectForKey:@"created"];
         if (createdEpoch) created = SG_RETAIN([NSDate dateWithTimeIntervalSince1970:[createdEpoch doubleValue]]);
         NSNumber *updatedEpoch = [layerDictionary objectForKey:@"updated"];

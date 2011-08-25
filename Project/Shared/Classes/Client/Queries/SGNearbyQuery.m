@@ -35,17 +35,4 @@
 
 @synthesize radius, limit;
 
-#pragma mark -
-#pragma mark Instantiation
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        radius = SGDefaultRadius;
-        limit = SGDefaultLimit;
-    }
-    return self;
-}
-
 @end

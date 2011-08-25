@@ -39,8 +39,16 @@ SGContextFilter const SGContextFilterAddress = @"address";
 SGContextFilter const SGContextFilterDemographics = @"demographics";
 SGContextFilter const SGContextFilterIntersections = @"intersections";
 
+#pragma mark Storage Property Types
+
+SGStoredPropertyType const SGStoredPropertyTypeBoolean = @"boolean";
+SGStoredPropertyType const SGStoredPropertyTypeNumber = @"number";
+SGStoredPropertyType const SGStoredPropertyTypeString = @"string";
+
 #pragma mark Storage Sort Orders
 
 SGSortOrder const SGSortOrderDistance = @"";
 SGSortOrder const SGSortOrderCreatedAscending = @"created";
 SGSortOrder const SGSortOrderCreatedDescending = @"-created";
+SGSortOrder const SGSortOrderPropertyAscending = @"property";
+SGSortOrder const SGSortOrderPropertyDescending = @"-property";

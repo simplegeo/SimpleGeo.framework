@@ -28,11 +28,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#pragma mark Default Limits
-
-#define SGDefaultLimit 25
-#define SGDefaultRadius 10.0
-
 #pragma mark Context Filters
 
 typedef NSString * SGContextFilter;
@@ -43,9 +38,18 @@ extern SGContextFilter const SGContextFilterAddress;
 extern SGContextFilter const SGContextFilterDemographics;
 extern SGContextFilter const SGContextFilterIntersections;
 
+#pragma mark Storage Property Types
+
+typedef NSString * SGStoredPropertyType;
+extern SGStoredPropertyType const SGStoredPropertyTypeBoolean;
+extern SGStoredPropertyType const SGStoredPropertyTypeNumber;
+extern SGStoredPropertyType const SGStoredPropertyTypeString;
+
 #pragma mark Storage Sort Orders
 
 typedef NSString * SGSortOrder;
 extern SGSortOrder const SGSortOrderDistance;
 extern SGSortOrder const SGSortOrderCreatedAscending;
 extern SGSortOrder const SGSortOrderCreatedDescending;
+extern SGSortOrder const SGSortOrderPropertyAscending;
+extern SGSortOrder const SGSortOrderPropertyDescending;

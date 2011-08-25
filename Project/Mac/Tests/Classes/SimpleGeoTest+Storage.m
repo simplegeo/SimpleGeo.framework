@@ -32,8 +32,7 @@
 #import "SimpleGeo+Storage.h"
 #import "NSArray+SGCollection.h"
 
-#define SGTestRecordID @"Simple Test Record"
-#define SGTestLayer @"com.simplegeo.testing.ios"
+#define SGTestRecordID @"SimpleTestRecord"
 #define SGTestNumRecords 4
 #define SGTestLayersCursor @"ImVkdS5jb2x1bWJpYS5jaWVzaW4uZ3B3My5wZGVucy4yMDEwYSI="
 #define SGTestPropStringKey @"stringKey"
@@ -92,7 +91,7 @@
                                                     layer:SGTestLayer];
     [record setProperties:[NSDictionary dictionaryWithObjectsAndKeys:
                            @"fake", SGTestPropStringKey,
-                           [NSNumber numberWithInt:69], SGTestPropNumberKey,
+                           [NSNumber numberWithDouble:69.0], SGTestPropNumberKey,
                            [NSNumber numberWithBool:NO], SGTestPropBooleanKey,
                            nil]];
     return record;
@@ -259,6 +258,7 @@
     SGStorageQuery *query = [SGStorageQuery queryWithPoint:[self point] layer:SGTestLayer];
     [query setDateRangeFrom:[[self recordWithCreationDate].created dateByAddingTimeInterval:-1]
                          to:[[self recordWithCreationDate].created dateByAddingTimeInterval:1]];
+    [query setSortType:SGSortOrderCreatedDescending];
     [[self client] getRecordsForQuery:query
                              callback:[SGCallback callbackWithSuccessBlock:
                                        ^(id response) {
@@ -278,8 +278,7 @@
                                 cursor:nil
                               callback:[SGCallback callbackWithSuccessBlock:
                                         ^(id response) {
-                                            NSObject *cursor = [(NSDictionary *)response objectForKey:@"next_cursor"];
-                                            if ([cursor isKindOfClass:[NSString class]]) [self setRecordHistoryCursor:(NSString *)cursor];
+                                            GHTestLog(@"%@", response);
                                             GHAssertGreaterThan((int)[[(NSDictionary *)response objectForKey:@"geometries"] count], 0,
                                                                 @"Should return at least one geometry");
                                             GHAssertLessThanOrEqual((int)[[(NSDictionary *)response objectForKey:@"geometries"] count],
@@ -290,19 +289,76 @@
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
 }
 
-- (void)testGetRecordHistoryWithCursor
+#pragma mark -
+#pragma mark Property Querying Tests
+
+- (void)testGetRecordsMatchingKey
 {
     [self prepare];
-    [[self client] getHistoryForRecord:SGTestRecordID
-                               inLayer:SGTestLayer
-                                 limit:nil
-                                cursor:self.recordHistoryCursor
-                              callback:[SGCallback callbackWithSuccessBlock:
-                                        ^(id response) {
-                                            GHAssertGreaterThan((int)[[(NSDictionary *)response objectForKey:@"geometries"] count], 0,
-                                                                @"Should return at least one geometry");
-                                            [self requestDidSucceed:response];
-                                        } failureBlock:[self failureBlock]]];
+    SGStorageQuery *query = [SGStorageQuery queryWithPoint:[self point] layer:SGTestLayer];
+    [query setProperty:SGTestPropNumberKey
+                ofType:SGStoredPropertyTypeNumber];
+    [query setSortType:SGSortOrderPropertyDescending];
+    [[self client] getRecordsForQuery:query
+                             callback:[SGCallback callbackWithSuccessBlock:
+                                       ^(id response) {
+                                           GHAssertEquals((int)[[(NSDictionary *)response objectForKey:@"features"] count],
+                                                          2, @"Should return two matching records");
+                                           [self requestDidSucceed:response];
+                                       } failureBlock:[self failureBlock]]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
+- (void)testGetRecordsMatchingStringProperty
+{
+    [self prepare];
+    SGStorageQuery *query = [SGStorageQuery queryWithPoint:[self point] layer:SGTestLayer];
+    [query setProperty:SGTestPropStringKey
+                ofType:SGStoredPropertyTypeString
+                equals:SGTestPropStringValue];
+    [[self client] getRecordsForQuery:query
+                             callback:[SGCallback callbackWithSuccessBlock:
+                                       ^(id response) {
+                                           GHTestLog(@"%@",response);
+                                           GHAssertEquals((int)[[(NSDictionary *)response objectForKey:@"features"] count],
+                                                          1, @"Should return one matching record");
+                                           [self requestDidSucceed:response];
+                                       } failureBlock:[self failureBlock]]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
+- (void)testGetRecordsMatchingBooleanProperty
+{
+    [self prepare];
+    SGStorageQuery *query = [SGStorageQuery queryWithPoint:[self point] layer:SGTestLayer];
+    [query setProperty:SGTestPropBooleanKey
+                ofType:SGStoredPropertyTypeBoolean
+                equals:SGTestPropBooleanValue];
+    [query setSortType:SGSortOrderDistance];
+    [[self client] getRecordsForQuery:query
+                             callback:[SGCallback callbackWithSuccessBlock:
+                                       ^(id response) {
+                                           GHAssertEquals((int)[[(NSDictionary *)response objectForKey:@"features"] count],
+                                                          1, @"Should return one matching record");
+                                           [self requestDidSucceed:response];
+                                       } failureBlock:[self failureBlock]]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
+- (void)testGetRecordsMatchingNumberPropertyRange
+{
+    [self prepare];
+    SGStorageQuery *query = [SGStorageQuery queryWithPoint:[self point] layer:SGTestLayer];
+    [query setProperty:SGTestPropNumberKey ofType:SGStoredPropertyTypeNumber];
+    [query setPropertyStartValue:[NSNumber numberWithDouble:1.0]];
+    [query setPropertyEndValue:[NSNumber numberWithDouble:2.0]];
+    [[self client] getRecordsForQuery:query
+                             callback:[SGCallback callbackWithSuccessBlock:
+                                       ^(id response) {
+                                           GHAssertEquals((int)[[(NSDictionary *)response objectForKey:@"features"] count],
+                                                          1, @"Should return one matching record");
+                                           [self requestDidSucceed:response];
+                                       } failureBlock:[self failureBlock]]];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
 }
 
@@ -356,7 +412,7 @@
 - (void)test__DeleteLayer
 {
     [self prepare];
-    [[self client] deleteLayer:@"com.simplegeo.testing.ios"
+    [[self client] deleteLayer:SGTestLayer
                       callback:[self delegateCallbacks]];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
 }

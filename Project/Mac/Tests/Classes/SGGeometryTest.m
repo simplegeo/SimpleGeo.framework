@@ -33,6 +33,7 @@
 #import "SGPoint.h"
 #import "SGPolygon.h"
 #import "SGMultiPolygon.h"
+#import "SGEnvelope.h"
 
 @interface SGGeometryTest : GHTestCase { }
 @end

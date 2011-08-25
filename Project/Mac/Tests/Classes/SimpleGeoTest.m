@@ -39,16 +39,7 @@ static SimpleGeo *sharedClient = nil;
 
 @implementation SimpleGeoTest
 
-@synthesize addedPlaceIDs, recordHistoryCursor, failureBlock;
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        addedPlaceIDs = [[NSMutableArray array] retain];
-    }
-    return self;
-}
+@synthesize failureBlock;
 
 - (BOOL)shouldRunOnMainThread
 {
@@ -59,9 +50,12 @@ static SimpleGeo *sharedClient = nil;
 
 - (SimpleGeo *)client
 {
-    if(!sharedClient)
+    if(!sharedClient) {
         sharedClient = [[SimpleGeo clientWithConsumerKey:SGTestKey
                                           consumerSecret:SGTestSecret] retain];
+        [sharedClient setPlacesVersion:SGTestPlacesVersion];
+        [sharedClient setApiURL:SGTestApiURL];
+    }
     return sharedClient;
 }
 
@@ -94,16 +88,6 @@ static SimpleGeo *sharedClient = nil;
                                   failureMethod:@selector(requestDidFail:)] autorelease];
 }
 
-- (SGFailureBlock)failureBlock
-{
-    return [[^(NSError *error) {
-        GHTestLog(@"%@", error.description);
-        [self notify:kGHUnitWaitStatusFailure];
-    } copy] autorelease];
-}
-
-#pragma mark Basic Handler Delegate Methods
-
 - (void)requestDidSucceed:(NSObject *)response
 {
     GHTestLog(@"%@", response);
@@ -114,6 +98,14 @@ static SimpleGeo *sharedClient = nil;
 {
     GHTestLog(@"%@", error.description);
     [self notify:kGHUnitWaitStatusFailure];
+}
+
+- (SGFailureBlock)failureBlock
+{
+    return [[^(NSError *error) {
+        GHTestLog(@"%@", error.description);
+        [self notify:kGHUnitWaitStatusFailure];
+    } copy] autorelease];
 }
 
 #pragma mark Basic Check Methods
@@ -150,7 +142,7 @@ static SimpleGeo *sharedClient = nil;
     // remove API-specific top-level keys from the response
     NSMutableDictionary *cleanResponse = [NSMutableDictionary dictionary];
     [cleanResponse setValue:[alteredResponse objectForKey:@"type"] forKey:@"type"];
-    [cleanResponse setValue:[alteredResponse objectForKey:@"features"] forKey:@"features"];
+    if (type != SGCollectionTypePoints) [cleanResponse setValue:[alteredResponse objectForKey:@"features"] forKey:@"features"];
     [cleanResponse setValue:[alteredResponse objectForKey:@"geometries"] forKey:@"geometries"];
     
     // compare
@@ -167,6 +159,15 @@ static SimpleGeo *sharedClient = nil;
     [propsDict removeObjectForKey:@"distance"];
     [propsDict removeObjectForKey:@"href"];
     [object setObject:propsDict forKey:@"properties"];
+}
+
+#pragma mark General Tests
+
+- (void)testGetCategories
+{
+    [self prepare];
+    [[self client] getCategoriesWithCallback:[self delegateCallbacks]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];    
 }
 
 @end

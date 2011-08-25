@@ -33,12 +33,16 @@
 
 #define SGTestPlacesLatitude 22.917923
 #define SGTestPlacesLongitude -125.859375
+#define SGTestFeatureHandlePoint @"00000ba3-164c-45f9-b232-2bc5aac8f72a"
+#define SGTestFeatureHandleLegacyPoint @"SG_7gm91gq6GfsVja5zFsRz6x_37.771718_-122.405139"
 
 #pragma mark Places Add/Update Tests
 
 @interface PlacesEditTests : SimpleGeoTest
 @end
 @implementation PlacesEditTests
+
+#pragma mark Place Add/Remove Tests
 
 - (void)testAddDeletePlace
 {
@@ -76,6 +80,36 @@
 @end
 @implementation PlacesGetTests
 
+- (void)testGetSGPlaceAndConvert
+{
+    [self prepare];
+    [[self client] getFeatureWithHandle:SGTestFeatureHandleLegacyPoint
+                                   zoom:nil
+                               callback:[SGCallback callbackWithSuccessBlock:
+                                         ^(id response) {
+                                             SGPlace *place = [SGPlace placeWithGeoJSON:(NSDictionary *)response];
+                                             SGLog(@"SGPlace: %@", place);
+                                             [self checkSGFeatureConversion:(NSDictionary *)response object:place];
+                                             [self requestDidSucceed:response];
+                                         } failureBlock:[self failureBlock]]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
+/* Places 1.2 Only */
+- (void)testGetFactualPlaceAndConvert
+{
+    [self prepare];
+    [[self client] getPlace:SGTestFeatureHandlePoint
+                   callback:[SGCallback callbackWithSuccessBlock:
+                             ^(id response) {
+                                 SGPlace *place = [SGPlace placeWithGeoJSON:(NSDictionary *)response];
+                                 SGLog(@"SGPlace: %@", place);
+                                 [self checkSGFeatureConversion:(NSDictionary *)response object:place];
+                                 [self requestDidSucceed:response];
+                             } failureBlock:[self failureBlock]]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
 - (void)testGetPlacesForPoint
 {
     [self prepare];
@@ -92,15 +126,13 @@
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
 }
 
-/*
-COMING SOON
 - (void)testGetPlacesForEnvelope
 {
     [self prepare];
     SGPlacesQuery *query = [SGPlacesQuery queryWithEnvelope:[self envelope]];
     [[self client] getPlacesForQuery:query callback:[self delegateCallbacks]];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
-}*/
+}
 
 - (void)testGetPlacesWithLimitsAndConvertFeatureCollection
 {
@@ -132,6 +164,23 @@ COMING SOON
                                       ^(id response) {
                                           NSArray *places = [NSArray arrayWithSGCollection:(NSDictionary *)response type:SGCollectionTypePlaces];
                                           GHAssertEquals((int)[places count], 1, @"query should return one matching place");
+                                          [self requestDidSucceed:response];
+                                      } failureBlock:[self failureBlock]]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
+/* Places 1.2 Only */
+- (void)testFulltextSearchPlaces
+{
+    [self prepare];
+    SGPlacesQuery *query = [SGPlacesQuery query];
+    [query setCategories:[NSArray arrayWithObject:SGPlaceSubcategoryOfficeBuilding]];
+    [query setSearchString:@"SimpleGeo"];
+    [[self client] getPlacesForQuery:query
+                            callback:[SGCallback callbackWithSuccessBlock:
+                                      ^(id response) {
+                                          NSArray *places = [NSArray arrayWithSGCollection:(NSDictionary *)response type:SGCollectionTypePlaces];
+                                          GHAssertEquals((int)[places count], 2, @"query should return two matching places");
                                           [self requestDidSucceed:response];
                                       } failureBlock:[self failureBlock]]];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];

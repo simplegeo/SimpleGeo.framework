@@ -32,10 +32,9 @@
 #import "SimpleGeo+Internal.h"
 #import "SGPreprocessorMacros.h"
 
-NSString *SG_API_VERSION = @"1.0";
-NSString *SG_MAIN_URL = @"https://api.simplegeo.com";
-
 @implementation SimpleGeo
+
+@synthesize storageVersion, contextVersion, placesVersion, apiURL;
 
 #pragma mark -
 #pragma mark Instantiation
@@ -43,8 +42,29 @@ NSString *SG_MAIN_URL = @"https://api.simplegeo.com";
 + (SimpleGeo *)clientWithConsumerKey:(NSString *)key
                       consumerSecret:(NSString *)secret
 {
-    return SG_AUTORELEASE([[SimpleGeo alloc] initWithConsumerKey:key consumerSecret:secret]);
+    SimpleGeo *client = [[SimpleGeo alloc] initWithConsumerKey:key consumerSecret:secret];
+    [client setStorageVersion:@"0.1"];
+    [client setContextVersion:@"1.0"];
+    [client setPlacesVersion:@"1.2"];
+    [client setApiURL:@"https://api.simplegeo.com"];
+    return SG_AUTORELEASE(client);
 }
+
+#pragma mark -
+#pragma mark Requests
+
+- (void)getCategoriesWithCallback:(SGCallback *)callback
+{    
+    
+    [self sendHTTPRequest:@"GET"
+                   toFile:@"/features/categories"
+               withParams:nil
+                  version:self.contextVersion
+                 callback:callback];
+}
+
+#pragma mark -
+#pragma mark Helpers
 
 - (NSString *)baseEndpointForQuery:(SGQuery *)query
 {
@@ -54,19 +74,8 @@ NSString *SG_MAIN_URL = @"https://api.simplegeo.com";
     else if (query.envelope) return [NSString stringWithFormat:@"%f,%f",
                                      [query.envelope.center latitude],
                                      [query.envelope.center longitude]];
-    else return [NSString stringWithFormat:@"address"];
-}
-
-- (void)sendHTTPRequest:(NSString *)type
-                 toFile:(NSString *)file
-             withParams:(id)params 
-               callback:(SGCallback *)callback
-{
-    [self sendHTTPRequest:type
-                   toFile:file
-               withParams:params
-                  version:SG_API_VERSION
-                 callback:callback];
+    else if (query.address) return [NSString stringWithFormat:@"address"];
+    else return [NSString stringWithFormat:@"search"];
 }
 
 - (void)sendHTTPRequest:(NSString *)type
@@ -76,13 +85,25 @@ NSString *SG_MAIN_URL = @"https://api.simplegeo.com";
                callback:(SGCallback *)callback
 {
     NSString *urlString = [NSString stringWithFormat:@"%@/%@%@.json", 
-                           SG_MAIN_URL, version, 
+                           self.apiURL, version, 
                            [file stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], nil];
 
     [self sendHTTPRequest:type
                     toURL:[NSURL URLWithString:urlString]
                withParams:params 
                  callback:callback];
+}
+
+#pragma mark -
+#pragma mark Memory
+
+- (void)dealloc
+{
+    SG_RELEASE(storageVersion);
+    SG_RELEASE(placesVersion);
+    SG_RELEASE(contextVersion);
+    SG_RELEASE(apiURL);
+    [super dealloc];
 }
 
 @end

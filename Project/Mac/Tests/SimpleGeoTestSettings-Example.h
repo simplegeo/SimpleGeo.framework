@@ -32,22 +32,28 @@
 
 #define SGTestKey @""
 #define SGTestSecret @""
+#define SGTestApiURL @"https://api.simplegeo.com"
+#define SGTestPlacesVersion @"1.2"
 
 /* REQUEST HANDLING */
 
-#define SGTestTimeout 3.0
+#define SGTestTimeout 5.0
 
 /* LOCATIONS */
 
 #define SGTestLatitude 37.772445
 #define SGTestLongitude -122.405698
 #define SGTestAddress @"41 Decatur Street, San Francisco, CA"
-#define SGTestEnvelopeNorth 37.798255
-#define SGTestEnvelopeWest -122.436533
-#define SGTestEnvelopeSouth 37.772445
-#define SGTestEnvelopeEast -122.405698
+#define SGTestEnvelopeNorth 37.79
+#define SGTestEnvelopeWest -122.42
+#define SGTestEnvelopeSouth 37.75
+#define SGTestEnvelopeEast -122.38
 
 /* NEARBY */
 
 #define SGTestRadius 1.0
 #define SGTestLimit 1
+
+/* STORAGE LAYER */
+
+#define SGTestLayer @"com.simplegeo.testing.ios"

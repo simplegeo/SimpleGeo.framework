@@ -40,6 +40,11 @@
 #pragma mark -
 #pragma mark Instantiation
 
++ (id)query
+{
+    return SG_AUTORELEASE([[self alloc] init]);
+}
+
 + (id)queryWithPoint:(SGPoint *)point
 {
     return SG_AUTORELEASE([[self alloc] initWithPoint:point]);

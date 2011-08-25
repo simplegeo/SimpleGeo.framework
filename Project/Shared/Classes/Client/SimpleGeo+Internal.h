@@ -30,25 +30,10 @@
 
 @class SimpleGeo;
 
-extern NSString *SG_API_VERSION;
-extern NSString *SG_MAIN_URL;
-
 @interface SimpleGeo (Internal)
 
 #pragma mark -
 #pragma mark Request
-
-/**
- * Send an API request
- * @param type      Request type
- * @param file      Request URL
- * @param params    Request parameters
- * @param callback  Request callback
- */
-- (void)sendHTTPRequest:(NSString *)type
-                 toFile:(NSString *)file
-             withParams:(id)params 
-               callback:(SGCallback *)callback;
 
 /**
  * Send an API request

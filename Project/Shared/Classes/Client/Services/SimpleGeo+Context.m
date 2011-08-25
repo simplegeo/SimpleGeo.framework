@@ -32,6 +32,7 @@
 #import "SimpleGeo+Internal.h"
 #import "SGContextQuery.h"
 #import "SGPreprocessorMacros.h"
+#import "JSONKit.h"
 
 @implementation SimpleGeo (Context)
 
@@ -52,6 +53,49 @@
     [self sendHTTPRequest:@"GET"
                    toFile:[NSString stringWithFormat:@"/context/%@",[self baseEndpointForQuery:query]]
                withParams:parameters
+                  version:self.contextVersion
+                 callback:callback];
+}
+
+- (void)getFeatureWithHandle:(NSString *)handle
+                        zoom:(NSNumber *)zoom
+                    callback:(SGCallback *)callback
+{    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    if (zoom) [parameters setValue:[NSString stringWithFormat:@"%d",[zoom intValue]] forKey:@"zoom"];
+    
+    [self sendHTTPRequest:@"GET"
+                   toFile:[NSString stringWithFormat:@"/features/%@", handle]
+               withParams:parameters
+                  version:self.contextVersion
+                 callback:callback];
+}
+
+- (void)getAnnotationsForFeature:(NSString *)handle
+                        callback:(SGCallback *)callback
+{
+    [self sendHTTPRequest:@"GET"
+                   toFile:[NSString stringWithFormat:@"/features/%@/annotations", handle]
+               withParams:nil
+                  version:self.contextVersion
+                 callback:callback];
+}
+
+#pragma mark -
+#pragma mark Manipulations
+
+- (void)annotateFeature:(NSString *)handle
+         withAnnotation:(NSDictionary *)annotation
+              isPrivate:(BOOL)isPrivate
+               callback:(SGCallback *)callback
+{    
+    NSMutableDictionary *annotationDict = [NSMutableDictionary dictionaryWithObject:annotation forKey:@"annotations"];
+    [annotationDict setValue:[NSNumber numberWithBool:isPrivate] forKey:@"private"];
+    
+    [self sendHTTPRequest:@"POST"
+                   toFile:[NSString stringWithFormat:@"/features/%@/annotations", handle]
+               withParams:[annotationDict JSONData]
+                  version:self.contextVersion
                  callback:callback];
 }
 

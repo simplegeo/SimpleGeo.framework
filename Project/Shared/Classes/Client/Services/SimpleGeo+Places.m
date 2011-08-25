@@ -32,7 +32,7 @@
 #import "SimpleGeo+Internal.h"
 #import "SGPlacesQuery.h"
 #import "SGPlace.h"
-#import "JSONKit.h"
+#import "SGJSONKit.h"
 #import "SGPreprocessorMacros.h"
 
 @implementation SimpleGeo (Places)

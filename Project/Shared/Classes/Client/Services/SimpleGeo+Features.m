@@ -33,7 +33,7 @@
 
 #import "SGPreprocessorMacros.h"
 
-#import "JSONKit.h"
+#import "SGJSONKit.h"
 
 @implementation SimpleGeo (Features)
 

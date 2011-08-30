@@ -1,23 +1,30 @@
 //
-//  ASIDownloadCache.h
-//  Part of ASIHTTPRequest -> http://allseeing-i.com/ASIHTTPRequest
+//  SGASIDownloadCache.h
+//  Part of SGASIHTTPRequest -> http://allseeing-i.com/SGASIHTTPRequest
 //
 //  Created by Ben Copsey on 01/05/2010.
 //  Copyright 2010 All-Seeing Interactive. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "ASICacheDelegate.h"
+// !!! NOTE !!!
+//
+// The content has been modified in order to address
+// namespacing issues.
+//
+// !!! NOTE !!!
 
-@interface ASIDownloadCache : NSObject <ASICacheDelegate> {
+#import <Foundation/Foundation.h>
+#import "SGASICacheDelegate.h"
+
+@interface SGASIDownloadCache : NSObject <SGASICacheDelegate> {
 	
 	// The default cache policy for this cache
-	// Requests that store data in the cache will use this cache policy if their cache policy is set to ASIUseDefaultCachePolicy
-	// Defaults to ASIAskServerIfModifiedWhenStaleCachePolicy
-	ASICachePolicy defaultCachePolicy;
+	// Requests that store data in the cache will use this cache policy if their cache policy is set to SGASIUseDefaultCachePolicy
+	// Defaults to SGASIAskServerIfModifiedWhenStaleCachePolicy
+	SGASICachePolicy defaultCachePolicy;
 	
 	// The directory in which cached data will be stored
-	// Defaults to a directory called 'ASIHTTPRequestCache' in the temporary directory
+	// Defaults to a directory called 'SGASIHTTPRequestCache' in the temporary directory
 	NSString *storagePath;
 	
 	// Mediates access to the cache
@@ -27,15 +34,15 @@
 	BOOL shouldRespectCacheControlHeaders;
 }
 
-// Returns a static instance of an ASIDownloadCache
+// Returns a static instance of an SGASIDownloadCache
 // In most circumstances, it will make sense to use this as a global cache, rather than creating your own cache
-// To make ASIHTTPRequests use it automatically, use [ASIHTTPRequest setDefaultCache:[ASIDownloadCache sharedCache]];
+// To make SGASIHTTPRequests use it automatically, use [SGASIHTTPRequest setDefaultCache:[SGASIDownloadCache sharedCache]];
 + (id)sharedCache;
 
 // A helper function that determines if the server has requested data should not be cached by looking at the request's response headers
-+ (BOOL)serverAllowsResponseCachingForRequest:(ASIHTTPRequest *)request;
++ (BOOL)serverAllowsResponseCachingForRequest:(SGASIHTTPRequest *)request;
 
-@property (assign, nonatomic) ASICachePolicy defaultCachePolicy;
+@property (assign, nonatomic) SGASICachePolicy defaultCachePolicy;
 @property (retain, nonatomic) NSString *storagePath;
 @property (retain) NSRecursiveLock *accessLock;
 @property (assign) BOOL shouldRespectCacheControlHeaders;

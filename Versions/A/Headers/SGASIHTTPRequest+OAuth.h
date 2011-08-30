@@ -1,34 +1,41 @@
 //
-//  ASIHTTPRequest+OAuth.h
+//  SGASIHTTPRequest+OAuth.h
 //
 //  Created by Scott James Remnant on 6/1/11.
 //  Copyright 2011 Scott James Remnant <scott@netsplit.com>. All rights reserved.
 //
 
+// !!! NOTE !!!
+//
+// The content has been modified in order to address
+// namespacing issues.
+//
+// !!! NOTE !!!
+
 #import <Foundation/Foundation.h>
 
-#import "ASIHTTPRequest.h"
+#import "SGASIHTTPRequest.h"
 
 
-typedef enum _ASIOAuthSignatureMethod {
-    ASIOAuthPlaintextSignatureMethod,
-    ASIOAuthHMAC_SHA1SignatureMethod,
-} ASIOAuthSignatureMethod;
+typedef enum _SGASIOAuthSignatureMethod {
+    SGASIOAuthPlaintextSignatureMethod,
+    SGASIOAuthHMAC_SHA1SignatureMethod,
+} SGASIOAuthSignatureMethod;
 
 
-@interface ASIHTTPRequest (ASIHTTPRequest_OAuth)
+@interface SGASIHTTPRequest (SGASIHTTPRequest_OAuth)
 
 - (void)signRequestWithClientIdentifier:(NSString *)clientIdentifier
                                  secret:(NSString *)clientSecret
                         tokenIdentifier:(NSString *)tokenIdentifier
                                  secret:(NSString *)tokenSecret
-                            usingMethod:(ASIOAuthSignatureMethod)signatureMethod;
+                            usingMethod:(SGASIOAuthSignatureMethod)signatureMethod;
 
 - (void)signRequestWithClientIdentifier:(NSString *)clientIdentifier
                                  secret:(NSString *)clientSecret
                         tokenIdentifier:(NSString *)tokenIdentifier
                                  secret:(NSString *)tokenSecret
                                verifier:(NSString *)verifier
-                            usingMethod:(ASIOAuthSignatureMethod)signatureMethod;
+                            usingMethod:(SGASIOAuthSignatureMethod)signatureMethod;
 
 @end

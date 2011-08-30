@@ -45,20 +45,20 @@ mv SimpleGeo-iOS.tgz $TMP_IOS_FILE
 cd $TOP_DIR
 
 # Documentation
-cd Documentation
-make
-if [ $? != 0 ]; then
-  echo "Failed to make documentation for framework"
-  exit 1
-fi
-cd html
-tar zcf $TM_DOC_FILE
-cd $TOP_DIR
-git checkout gh-pages
-mkdir $VERSION
-cp -R Documentation/html/* $VERSION/
-git add $VERSION/
-git commit -m "Docs for ${VERSION}"
+#cd Documentation
+#make
+#if [ $? != 0 ]; then
+#  echo "Failed to make documentation for framework"
+#  exit 1
+#fi
+#cd html
+#tar zcf $TM_DOC_FILE
+#cd $TOP_DIR
+#git checkout gh-pages
+#mkdir $VERSION
+#cp -R Documentation/html/* $VERSION/
+#git add $VERSION/
+#git commit -m "Docs for ${VERSION}"
 
 # Update Mac OS X Framework
 git checkout framework

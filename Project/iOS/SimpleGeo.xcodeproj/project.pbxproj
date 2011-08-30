@@ -8,37 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		4A685D7D13FC290A0041F56E /* SGPreprocessorMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A685D7C13FC290A0041F56E /* SGPreprocessorMacros.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		4AFD5ED71405C1FA007B61EF /* SGCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5ED51405C1FA007B61EF /* SGCallback.h */; };
+		4AFD5ED71405C1FA007B61EF /* SGCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5ED51405C1FA007B61EF /* SGCallback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFD5ED81405C1FA007B61EF /* SGCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5ED61405C1FA007B61EF /* SGCallback.m */; };
-		4AFD5EFD1405C207007B61EF /* SGASICacheDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EDB1405C207007B61EF /* SGASICacheDelegate.h */; };
-		4AFD5EFE1405C207007B61EF /* SGASIDataCompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EDC1405C207007B61EF /* SGASIDataCompressor.h */; };
+		4AFD5EFD1405C207007B61EF /* SGASICacheDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EDB1405C207007B61EF /* SGASICacheDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4AFD5EFE1405C207007B61EF /* SGASIDataCompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EDC1405C207007B61EF /* SGASIDataCompressor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFD5EFF1405C207007B61EF /* SGASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5EDD1405C207007B61EF /* SGASIDataCompressor.m */; };
-		4AFD5F001405C207007B61EF /* SGASIDataDecompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EDE1405C207007B61EF /* SGASIDataDecompressor.h */; };
+		4AFD5F001405C207007B61EF /* SGASIDataDecompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EDE1405C207007B61EF /* SGASIDataDecompressor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFD5F011405C207007B61EF /* SGASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5EDF1405C207007B61EF /* SGASIDataDecompressor.m */; };
-		4AFD5F021405C207007B61EF /* SGASIDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EE01405C207007B61EF /* SGASIDownloadCache.h */; };
+		4AFD5F021405C207007B61EF /* SGASIDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EE01405C207007B61EF /* SGASIDownloadCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFD5F031405C207007B61EF /* SGASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5EE11405C207007B61EF /* SGASIDownloadCache.m */; };
-		4AFD5F041405C207007B61EF /* SGASIFormDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EE21405C207007B61EF /* SGASIFormDataRequest.h */; };
+		4AFD5F041405C207007B61EF /* SGASIFormDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EE21405C207007B61EF /* SGASIFormDataRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFD5F051405C207007B61EF /* SGASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5EE31405C207007B61EF /* SGASIFormDataRequest.m */; };
-		4AFD5F061405C207007B61EF /* SGASIHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EE41405C207007B61EF /* SGASIHTTPRequest.h */; };
+		4AFD5F061405C207007B61EF /* SGASIHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EE41405C207007B61EF /* SGASIHTTPRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFD5F071405C207007B61EF /* SGASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5EE51405C207007B61EF /* SGASIHTTPRequest.m */; };
-		4AFD5F081405C207007B61EF /* SGASIHTTPRequestConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EE61405C207007B61EF /* SGASIHTTPRequestConfig.h */; };
-		4AFD5F091405C207007B61EF /* SGASIHTTPRequestDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EE71405C207007B61EF /* SGASIHTTPRequestDelegate.h */; };
-		4AFD5F0A1405C207007B61EF /* SGASIInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EE81405C207007B61EF /* SGASIInputStream.h */; };
+		4AFD5F081405C207007B61EF /* SGASIHTTPRequestConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EE61405C207007B61EF /* SGASIHTTPRequestConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4AFD5F091405C207007B61EF /* SGASIHTTPRequestDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EE71405C207007B61EF /* SGASIHTTPRequestDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4AFD5F0A1405C207007B61EF /* SGASIInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EE81405C207007B61EF /* SGASIInputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFD5F0B1405C207007B61EF /* SGASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5EE91405C207007B61EF /* SGASIInputStream.m */; };
-		4AFD5F0C1405C207007B61EF /* SGASINetworkQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EEA1405C207007B61EF /* SGASINetworkQueue.h */; };
+		4AFD5F0C1405C207007B61EF /* SGASINetworkQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EEA1405C207007B61EF /* SGASINetworkQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFD5F0D1405C207007B61EF /* SGASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5EEB1405C207007B61EF /* SGASINetworkQueue.m */; };
-		4AFD5F0E1405C207007B61EF /* SGASIProgressDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EEC1405C207007B61EF /* SGASIProgressDelegate.h */; };
-		4AFD5F101405C207007B61EF /* SGReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EEE1405C207007B61EF /* SGReachability.h */; };
+		4AFD5F0E1405C207007B61EF /* SGASIProgressDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EEC1405C207007B61EF /* SGASIProgressDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4AFD5F101405C207007B61EF /* SGReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EEE1405C207007B61EF /* SGReachability.h */; settings = {ATTRIBUTES = (); }; };
 		4AFD5F111405C207007B61EF /* SGReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5EEF1405C207007B61EF /* SGReachability.m */; };
-		4AFD5F131405C207007B61EF /* SGASIFormDataRequest+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EF21405C207007B61EF /* SGASIFormDataRequest+OAuth.h */; };
+		4AFD5F131405C207007B61EF /* SGASIFormDataRequest+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EF21405C207007B61EF /* SGASIFormDataRequest+OAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFD5F141405C207007B61EF /* SGASIFormDataRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5EF31405C207007B61EF /* SGASIFormDataRequest+OAuth.m */; };
-		4AFD5F151405C207007B61EF /* SGASIHTTPRequest+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EF41405C207007B61EF /* SGASIHTTPRequest+OAuth.h */; };
+		4AFD5F151405C207007B61EF /* SGASIHTTPRequest+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EF41405C207007B61EF /* SGASIHTTPRequest+OAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFD5F161405C207007B61EF /* SGASIHTTPRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5EF51405C207007B61EF /* SGASIHTTPRequest+OAuth.m */; };
-		4AFD5F171405C207007B61EF /* SGNSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EF61405C207007B61EF /* SGNSData+Base64.h */; };
+		4AFD5F171405C207007B61EF /* SGNSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EF61405C207007B61EF /* SGNSData+Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFD5F181405C207007B61EF /* SGNSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5EF71405C207007B61EF /* SGNSData+Base64.m */; };
-		4AFD5F191405C207007B61EF /* SGNSString+URLEncode.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EF81405C207007B61EF /* SGNSString+URLEncode.h */; };
+		4AFD5F191405C207007B61EF /* SGNSString+URLEncode.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EF81405C207007B61EF /* SGNSString+URLEncode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFD5F1A1405C207007B61EF /* SGNSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5EF91405C207007B61EF /* SGNSString+URLEncode.m */; };
-		4AFD5F1B1405C207007B61EF /* SGJSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EFB1405C207007B61EF /* SGJSONKit.h */; };
+		4AFD5F1B1405C207007B61EF /* SGJSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFD5EFB1405C207007B61EF /* SGJSONKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFD5F1C1405C207007B61EF /* SGJSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD5EFC1405C207007B61EF /* SGJSONKit.m */; };
 		940B3F3813EA13CF0022B5EF /* SGCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B3EF713EA13CF0022B5EF /* SGCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		940B3F3913EA13CF0022B5EF /* SGTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B3EF813EA13CF0022B5EF /* SGTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -580,16 +580,6 @@
 				940B3F8013EA13E70022B5EF /* SGGeometry+Mapkit.h in Headers */,
 				940B3F8213EA13E70022B5EF /* SGMultiPolygon+Mapkit.h in Headers */,
 				940B3F8413EA13E70022B5EF /* SGPoint+Mapkit.h in Headers */,
-				940B3F8613EA13E70022B5EF /* SGPolygon+Mapkit.h in Headers */,
-				940B468D13EA15310022B5EF /* SGHTTPClient.h in Headers */,
-				940B3F4D13EA13CF0022B5EF /* SimpleGeo+Internal.h in Headers */,
-				940B3F5413EA13CF0022B5EF /* SGAddress+Internal.h in Headers */,
-				940B3F5713EA13CF0022B5EF /* SGPlacemark+Internal.h in Headers */,
-				940B3F6813EA13CF0022B5EF /* SGPoint+Internal.h in Headers */,
-				4A685D7D13FC290A0041F56E /* SGPreprocessorMacros.h in Headers */,
-				940B3F6B13EA13CF0022B5EF /* SGPolygon+Internal.h in Headers */,
-				940B3F8913EA13F50022B5EF /* SimpleGeo-Prefix.pch in Headers */,
-				940B478813EA15310022B5EF /* SGObjCHTTP-Prefix.pch in Headers */,
 				4AFD5ED71405C1FA007B61EF /* SGCallback.h in Headers */,
 				4AFD5EFD1405C207007B61EF /* SGASICacheDelegate.h in Headers */,
 				4AFD5EFE1405C207007B61EF /* SGASIDataCompressor.h in Headers */,
@@ -602,12 +592,22 @@
 				4AFD5F0A1405C207007B61EF /* SGASIInputStream.h in Headers */,
 				4AFD5F0C1405C207007B61EF /* SGASINetworkQueue.h in Headers */,
 				4AFD5F0E1405C207007B61EF /* SGASIProgressDelegate.h in Headers */,
-				4AFD5F101405C207007B61EF /* SGReachability.h in Headers */,
 				4AFD5F131405C207007B61EF /* SGASIFormDataRequest+OAuth.h in Headers */,
 				4AFD5F151405C207007B61EF /* SGASIHTTPRequest+OAuth.h in Headers */,
 				4AFD5F171405C207007B61EF /* SGNSData+Base64.h in Headers */,
 				4AFD5F191405C207007B61EF /* SGNSString+URLEncode.h in Headers */,
 				4AFD5F1B1405C207007B61EF /* SGJSONKit.h in Headers */,
+				940B3F8613EA13E70022B5EF /* SGPolygon+Mapkit.h in Headers */,
+				940B468D13EA15310022B5EF /* SGHTTPClient.h in Headers */,
+				940B3F4D13EA13CF0022B5EF /* SimpleGeo+Internal.h in Headers */,
+				940B3F5413EA13CF0022B5EF /* SGAddress+Internal.h in Headers */,
+				940B3F5713EA13CF0022B5EF /* SGPlacemark+Internal.h in Headers */,
+				940B3F6813EA13CF0022B5EF /* SGPoint+Internal.h in Headers */,
+				4A685D7D13FC290A0041F56E /* SGPreprocessorMacros.h in Headers */,
+				940B3F6B13EA13CF0022B5EF /* SGPolygon+Internal.h in Headers */,
+				940B3F8913EA13F50022B5EF /* SimpleGeo-Prefix.pch in Headers */,
+				940B478813EA15310022B5EF /* SGObjCHTTP-Prefix.pch in Headers */,
+				4AFD5F101405C207007B61EF /* SGReachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

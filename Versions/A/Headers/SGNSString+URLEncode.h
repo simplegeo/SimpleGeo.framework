@@ -5,10 +5,17 @@
 //  Copyright 2011 Scott James Remnant <scott@netsplit.com>. All rights reserved.
 //
 
+// !!! NOTE !!!
+//
+// The content has been modified in order to address
+// namespacing issues.
+//
+// !!! NOTE !!!
+
 #import <Foundation/Foundation.h>
 
 
-@interface NSString (NSString_URLEncode)
+@interface NSString (SGNSString_URLEncode)
 
 - (NSString *)encodeForURL;
 - (NSString *)encodeForURLReplacingSpacesWithPlus;

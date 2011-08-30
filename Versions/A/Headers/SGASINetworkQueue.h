@@ -1,16 +1,23 @@
 //
-//  ASINetworkQueue.h
-//  Part of ASIHTTPRequest -> http://allseeing-i.com/ASIHTTPRequest
+//  SGASINetworkQueue.h
+//  Part of SGASIHTTPRequest -> http://allseeing-i.com/SGASIHTTPRequest
 //
 //  Created by Ben Copsey on 07/11/2008.
 //  Copyright 2008-2009 All-Seeing Interactive. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "ASIHTTPRequestDelegate.h"
-#import "ASIProgressDelegate.h"
+// !!! NOTE !!!
+//
+// The content has been modified in order to address
+// namespacing issues.
+//
+// !!! NOTE !!!
 
-@interface ASINetworkQueue : NSOperationQueue <ASIProgressDelegate, ASIHTTPRequestDelegate, NSCopying> {
+#import <Foundation/Foundation.h>
+#import "SGASIHTTPRequestDelegate.h"
+#import "SGASIProgressDelegate.h"
+
+@interface SGASINetworkQueue : NSOperationQueue <SGASIProgressDelegate, SGASIHTTPRequestDelegate, NSCopying> {
 	
 	// Delegate will get didFail + didFinish messages (if set)
 	id delegate;
@@ -81,7 +88,7 @@
 // Used internally to manage HEAD requests when showAccurateProgress is YES, do not use!
 - (void)addHEADOperation:(NSOperation *)operation;
 
-// All ASINetworkQueues are paused when created so that total size can be calculated before the queue starts
+// All SGASINetworkQueues are paused when created so that total size can be calculated before the queue starts
 // This method will start the queue
 - (void)go;
 

@@ -21,20 +21,27 @@
 //     distribution.
 //
 
+// !!! NOTE !!!
+//
+// The content has been modified in order to address
+// namespacing issues.
+//
+// !!! NOTE !!!
+
 #import <Foundation/Foundation.h>
 
-void *NewBase64Decode(
+void *SGNewBase64Decode(
 	const char *inputBuffer,
 	size_t length,
 	size_t *outputLength);
 
-char *NewBase64Encode(
+char *SGNewBase64Encode(
 	const void *inputBuffer,
 	size_t length,
 	bool separateLines,
 	size_t *outputLength);
 
-@interface NSData (Base64)
+@interface NSData (SGBase64)
 
 + (NSData *)dataFromBase64String:(NSString *)aString;
 - (NSString *)base64EncodedString;

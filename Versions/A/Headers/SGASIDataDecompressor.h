@@ -1,19 +1,26 @@
 //
-//  ASIDataDecompressor.h
-//  Part of ASIHTTPRequest -> http://allseeing-i.com/ASIHTTPRequest
+//  SGASIDataDecompressor.h
+//  Part of SGASIHTTPRequest -> http://allseeing-i.com/SGASIHTTPRequest
 //
 //  Created by Ben Copsey on 17/08/2010.
 //  Copyright 2010 All-Seeing Interactive. All rights reserved.
 //
 
-// This is a helper class used by ASIHTTPRequest to handle inflating (decompressing) data in memory and on disk
+// This is a helper class used by SGASIHTTPRequest to handle inflating (decompressing) data in memory and on disk
 // You may also find it helpful if you need to inflate data and files yourself - see the class methods below
 // Most of the zlib stuff is based on the sample code by Mark Adler available at http://zlib.net
+
+// !!! NOTE !!!
+//
+// The content has been modified in order to address
+// namespacing issues.
+//
+// !!! NOTE !!!
 
 #import <Foundation/Foundation.h>
 #import <zlib.h>
 
-@interface ASIDataDecompressor : NSObject {
+@interface SGASIDataDecompressor : NSObject {
 	BOOL streamReady;
 	z_stream zStream;
 }

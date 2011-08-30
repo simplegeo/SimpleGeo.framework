@@ -1,22 +1,29 @@
 //
-//  ASIFormDataRequest.h
-//  Part of ASIHTTPRequest -> http://allseeing-i.com/ASIHTTPRequest
+//  SGASIFormDataRequest.h
+//  Part of SGASIHTTPRequest -> http://allseeing-i.com/SGASIHTTPRequest
 //
 //  Created by Ben Copsey on 07/11/2008.
 //  Copyright 2008-2009 All-Seeing Interactive. All rights reserved.
 //
 
+// !!! NOTE !!!
+//
+// The content has been modified in order to address
+// namespacing issues.
+//
+// !!! NOTE !!!
+
 #import <Foundation/Foundation.h>
-#import "ASIHTTPRequest.h"
-#import "ASIHTTPRequestConfig.h"
+#import "SGASIHTTPRequest.h"
+#import "SGASIHTTPRequestConfig.h"
 
-typedef enum _ASIPostFormat {
-    ASIMultipartFormDataPostFormat = 0,
-    ASIURLEncodedPostFormat = 1
+typedef enum _SGASIPostFormat {
+    SGASIMultipartFormDataPostFormat = 0,
+    SGASIURLEncodedPostFormat = 1
 	
-} ASIPostFormat;
+} SGASIPostFormat;
 
-@interface ASIFormDataRequest : ASIHTTPRequest <NSCopying> {
+@interface SGASIFormDataRequest : SGASIHTTPRequest <NSCopying> {
 
 	// Parameters that will be POSTed to the url
 	NSMutableArray *postData;
@@ -24,12 +31,12 @@ typedef enum _ASIPostFormat {
 	// Files that will be POSTed to the url
 	NSMutableArray *fileData;
 	
-	ASIPostFormat postFormat;
+	SGASIPostFormat postFormat;
 	
 	NSStringEncoding stringEncoding;
 	
 #if DEBUG_FORM_DATA_REQUEST
-	// Will store a string version of the request body that will be printed to the console when ASIHTTPREQUEST_DEBUG is set in GCC_PREPROCESSOR_DEFINITIONS
+	// Will store a string version of the request body that will be printed to the console when SGASIHTTPREQUEST_DEBUG is set in GCC_PREPROCESSOR_DEFINITIONS
 	NSString *debugBodyString;
 #endif
 	
@@ -71,6 +78,6 @@ typedef enum _ASIPostFormat {
 - (void)setData:(id)data withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key;
 
 
-@property (assign) ASIPostFormat postFormat;
+@property (assign) SGASIPostFormat postFormat;
 @property (assign) NSStringEncoding stringEncoding;
 @end

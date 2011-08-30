@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.0.4 - 8/30/11
+
+* 3rd-party header files were missing from the compiled frameworks
+
 ## 2.0.3 - 8/25/11
 
 * Namespaced all 3rd-party libraries

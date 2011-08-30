@@ -78,6 +78,7 @@ rm -rf *
 tar zxf $TMP_IOS_FILE
 mv SimpleGeo.framework/* .
 rmdir SimpleGeo.framework
+git add *
 git commit -am "Version $VERSION"
 git tag -f $VERSION-framework-ios
 

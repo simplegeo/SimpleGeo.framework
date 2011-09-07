@@ -1,6 +1,6 @@
 /*
  
- File: Reachability.h
+ File: SGReachability.h
  Abstract: Basic demonstration of how to use the SystemConfiguration Reachablity APIs.
  
  Version: 2.0.4ddg
@@ -8,7 +8,7 @@
 
 /*
  Significant additions made by Andrew W. Donoho, August 11, 2009.
- This is a derived work of Apple's Reachability v2.0 class.
+ This is a derived work of Apple's SGReachability v2.0 class.
  
  The below license is the new BSD license with the OSI recommended personalizations.
  <http://www.opensource.org/licenses/bsd-license.php>
@@ -47,7 +47,7 @@
 
 /*
  
- Apple's Original License on Reachability v2.0
+ Apple's Original License on SGReachability v2.0
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple Inc.
  ("Apple") in consideration of your agreement to the following terms, and your
@@ -72,7 +72,7 @@
  derivative works or by other works in which the Apple Software may be
  incorporated.
  
- The Apple Software is provided by Apple on an "AS IS" basis.  APPLE MAKES NO
+ The Apple Software is provided by Apple on an "AS IS" bSGASIs.  APPLE MAKES NO
  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE IMPLIED
  WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS FOR A PARTICULAR
  PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND OPERATION ALONE OR IN
@@ -102,6 +102,13 @@
  
  A multiple convenience test methods have been added.
  */
+
+// !!! NOTE !!!
+//
+// The content has been modified in order to address
+// namespacing issues.
+//
+// !!! NOTE !!!
 
 #import <Foundation/Foundation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
@@ -134,7 +141,7 @@ extern NSString *const kInternetConnection;
 extern NSString *const kLocalWiFiConnection;
 extern NSString *const kReachabilityChangedNotification;
 
-@interface Reachability: NSObject {
+@interface SGReachability: NSObject {
 	
 @private
 	NSString                *key_;
@@ -145,27 +152,27 @@ extern NSString *const kReachabilityChangedNotification;
 @property (copy) NSString *key; // Atomic because network operations are asynchronous.
 
 // Designated Initializer.
-- (Reachability *) initWithReachabilityRef: (SCNetworkReachabilityRef) ref;
+- (SGReachability *) initWithReachabilityRef: (SCNetworkReachabilityRef) ref;
 
 // Use to check the reachability of a particular host name. 
-+ (Reachability *) reachabilityWithHostName: (NSString*) hostName;
++ (SGReachability *) reachabilityWithHostName: (NSString*) hostName;
 
 // Use to check the reachability of a particular IP address. 
-+ (Reachability *) reachabilityWithAddress: (const struct sockaddr_in*) hostAddress;
++ (SGReachability *) reachabilityWithAddress: (const struct sockaddr_in*) hostAddress;
 
 // Use to check whether the default route is available.  
 // Should be used to, at minimum, establish network connectivity.
-+ (Reachability *) reachabilityForInternetConnection;
++ (SGReachability *) reachabilityForInternetConnection;
 
 // Use to check whether a local wifi connection is available.
-+ (Reachability *) reachabilityForLocalWiFi;
++ (SGReachability *) reachabilityForLocalWiFi;
 
 //Start listening for reachability notifications on the current run loop.
 - (BOOL) startNotifier;
 - (void)  stopNotifier;
 
 // Comparison routines to enable choosing actions in a notification.
-- (BOOL) isEqual: (Reachability *) r;
+- (BOOL) isEqual: (SGReachability *) r;
 
 // These are the status tests.
 - (NetworkStatus) currentReachabilityStatus;

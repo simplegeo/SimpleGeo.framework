@@ -82,22 +82,49 @@
     [client getContextForQuery:query callback:callback];
  */
 @interface SimpleGeo: SGHTTPClient
+{
+    @private
+    NSString *storageVersion;
+    NSString *contextVersion;
+    NSString *placesVersion;
+    NSString *apiURL;
+}
+
+/// API version for SimpleGeo Storage
+@property (nonatomic, retain) NSString *storageVersion;
+
+/// API version for SimpleGeo Context
+@property (nonatomic, retain) NSString *contextVersion;
+
+/// API version for SimpleGeo Places
+@property (nonatomic, retain) NSString *placesVersion;
+
+/// API URL
+@property (nonatomic, retain) NSString *apiURL;
 
 #pragma mark -
 #pragma mark Instantiation
 
 /**
  * Create a client for making requests
- * @param consumerKey    OAuth consumer key
- * @param consumerSecret OAuth consumer secret
+ * @param consumerKey       OAuth consumer key
+ * @param consumerSecret    OAuth consumer secret
  */
 + (SimpleGeo *)clientWithConsumerKey:(NSString *)consumerKey
                       consumerSecret:(NSString *)consumerSecret;
+
+#pragma mark -
+#pragma mark Requests
+
+/**
+ * Get the overall list of SimpleGeo categories
+ * @param callback  Request callback
+ */
+- (void)getCategoriesWithCallback:(SGCallback *)callback;
 
 @end
 
 // Services
 #import "SimpleGeo+Context.h"
-#import "SimpleGeo+Features.h"
 #import "SimpleGeo+Places.h"
 #import "SimpleGeo+Storage.h"

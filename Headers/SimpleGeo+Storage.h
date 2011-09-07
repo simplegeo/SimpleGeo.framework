@@ -33,8 +33,6 @@
 @class SGStorageQuery;
 @class SGCallback;
 
-extern NSString * const SG_API_VERSION_STORAGE;
-
 /**
  * Client support for Storage API
  */

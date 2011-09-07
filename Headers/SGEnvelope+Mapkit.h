@@ -31,7 +31,29 @@
 #import <MapKit/MapKit.h>
 #import "SGEnvelope.h"
 
+/*!
+ * Category for SGEnvelope.
+ * Adds Mapkit features for iOS
+ */
 @interface SGEnvelope (Mapkit)
+
+#pragma mark -
+#pragma mark Instantiation
+
+/**
+ * Create a bounding box from an MKMapRect
+ * @param mapRect   Map rectangle
+ */
++ (SGEnvelope *)envelopeWithMapRect:(MKMapRect)mapRect;
+
+/**
+ * Construct a bounding box from an MKMapRect
+ * @param mapRect   Map rectangle
+ */
+- (id)initWithMapRect:(MKMapRect)mapRect;
+
+#pragma mark -
+#pragma mark Convenience
 
 - (MKMapRect)mapRect;
 

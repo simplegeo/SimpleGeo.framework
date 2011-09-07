@@ -1,5 +1,5 @@
 //
-//  SimpleGeo+Features.h
+//  SGPreprocessorMacros.h
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -28,54 +28,8 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "SimpleGeo.h"
-@class SGCallback;
+#define SG_CATEGORY(name) @interface SG_CATEGORY_##name @end @implementation SG_CATEGORY_##name @end
 
-/**
- * Client support for Feature API
- */
-@interface SimpleGeo (Features)
-
-#pragma mark -
-#pragma mark Requests
-
-/**
- * Get a feature with a specific handle
- * @param handle    Feature handle
- * @param zoom      Zoom (complexity of returned geometry) (optional)
- * @param callback  Request callback
- */
-- (void)getFeatureWithHandle:(NSString *)handle
-                        zoom:(NSNumber *)zoom
-                    callback:(SGCallback *)callback;
-
-/**
- * Get the overall list of SimpleGeo categories
- * @param callback  Request callback
- */
-- (void)getCategoriesWithCallback:(SGCallback *)callback;
-
-/**
- * Get annotations attached to a feature
- * @param handle        Feature handle
- * @param callback  Request callback
- */
-- (void)getAnnotationsForFeature:(NSString *)handle
-                        callback:(SGCallback *)callback;
-
-#pragma mark -
-#pragma mark Manipulations
-
-/**
- * Annotate a feature
- * @param handle        Feature handle
- * @param annotation    Annotation list
- * @param isPrivate     Annotation privacy
- * @param callback  Request callback
- */
-- (void)annotateFeature:(NSString *)handle
-         withAnnotation:(NSDictionary *)annotation
-              isPrivate:(BOOL)isPrivate
-               callback:(SGCallback *)callback;
-
-@end
+#define SG_RELEASE(a)           [a release]
+#define SG_RETAIN(a)            [a retain]
+#define SG_AUTORELEASE(a)       [a autorelease]

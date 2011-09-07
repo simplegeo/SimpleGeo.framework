@@ -44,8 +44,6 @@
     NSString *layer;
     // optional
     NSDate *created;
-    // from API
-    NSDictionary *layerLink;
 }
 
 /// Record location
@@ -56,10 +54,6 @@
 
 /// Record timestamp
 @property (nonatomic, retain) NSDate *created;
-
-/// API URL for the record layer.
-// Only present if the record originated from an API request
-@property (nonatomic, readonly) NSDictionary *layerLink;
 
 #pragma mark -
 #pragma mark Instantiation

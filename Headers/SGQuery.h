@@ -59,6 +59,11 @@
 #pragma mark Instantiation
 
 /**
+ * Create a non-geo search query
+ */
++ (id)query;
+
+/**
  * Create a point-based API query
  * @param point Point
  */

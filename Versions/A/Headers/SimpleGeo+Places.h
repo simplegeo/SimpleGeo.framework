@@ -42,6 +42,17 @@
 #pragma mark Requests
 
 /**
+ * Request a place by its ID.
+ * Note: this method only works with Places > v1.2 (the Factual dataset).
+ * If working with Places 1.0 (the old SimpleGeo dataset),
+ * use getFeatureWithHandle:zoom:callback:
+ * @param identifier    Factual place ID
+ * @param callback      Request callback
+ */
+- (void)getPlace:(NSString *)identifier
+        callback:(SGCallback *)callback;
+
+/**
  * Find places matching an SGPlacesQuery
  * @param query     Request query
  * @param callback  Request callback

@@ -48,6 +48,12 @@
     
     NSDate *startDate;
     NSDate *endDate;
+    
+    SGStoredPropertyType propertyType;
+    NSString *propertyName;
+    NSObject *propertyValue;
+    NSObject *propertyStartValue;
+    NSObject *propertyEndValue;
 }
 
 /// Layer to query
@@ -64,6 +70,21 @@
 
 /// End date for query
 @property (nonatomic, retain, readonly) NSDate *endDate;
+
+/// Property type for property filtering
+@property (nonatomic, retain, readonly) SGStoredPropertyType propertyType;
+
+/// Property name for property filtering
+@property (nonatomic, retain, readonly) NSString *propertyName;
+
+/// Property value for property filtering
+@property (nonatomic, retain, readonly) NSObject *propertyValue;
+
+/// Property start value for range-based property filtering
+@property (nonatomic, retain) NSObject *propertyStartValue;
+
+/// Property end value for a range-based property filtering
+@property (nonatomic, retain) NSObject *propertyEndValue;
 
 #pragma mark -
 #pragma mark Instantiation
@@ -126,5 +147,23 @@
  */
 - (void)setDateRangeFrom:(NSDate *)startDate
                       to:(NSDate *)endDate;
+
+/**
+ * Set a property name by which to query
+ * @param property  Property name
+ * @param type      Property type
+ */
+- (void)setProperty:(NSString *)property
+             ofType:(SGStoredPropertyType)type;
+
+/**
+ * Set a property name and value by which to query
+ * @param property  Property name
+ * @param type      Property type
+ * @param value     Property value
+ */
+- (void)setProperty:(NSString *)property
+             ofType:(SGStoredPropertyType)type
+             equals:(NSObject *)value;
 
 @end

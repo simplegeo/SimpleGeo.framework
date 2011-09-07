@@ -44,7 +44,6 @@
     NSString *identifier;
     NSMutableDictionary *properties;
     // from request
-    NSDictionary *selfLink;
     NSNumber *distance;
 }
 
@@ -56,10 +55,6 @@
 
 /// Object properties
 @property (nonatomic, retain, setter = setMutableProperties:) NSMutableDictionary *properties;
-
-/// API URL for the Object.
-/// Only present if the Object originated from an API request
-@property (nonatomic, readonly) NSDictionary *selfLink;
 
 /// Distance (in meters) from the query point.
 /// Valid for SGGeoObjects with point geometry

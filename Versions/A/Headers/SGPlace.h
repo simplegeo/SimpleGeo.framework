@@ -43,6 +43,7 @@
     @private
     SGAddress *address;
     NSMutableArray *tags;
+    NSMutableArray *categories;
     BOOL isPrivate;
 }
 
@@ -54,6 +55,9 @@
 
 /// Place tags
 @property (nonatomic, retain, setter = setMutableTags:) NSMutableArray *tags;
+
+/// Place categories (v1.2+)
+@property (nonatomic, retain, setter = setMutableCategories:) NSMutableArray *categories;
 
 /// Place visibility
 @property (nonatomic, assign) BOOL isPrivate;
@@ -90,9 +94,15 @@
 #pragma mark Convenience
 
 /**
- * Set tags from an immutable array of tags
- * @param tags          Tags
+ * Set tags
+ * @param tags          Place tags
  */
-- (void)setTags:(NSMutableArray *)tags;
+- (void)setTags:(NSArray *)tags;
+
+/**
+ * Set categories
+ * @param categories    Place categories
+ */
+- (void)setCategories:(NSArray *)categories;
 
 @end

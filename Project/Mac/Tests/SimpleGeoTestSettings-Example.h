@@ -33,7 +33,6 @@
 #define SGTestKey @""
 #define SGTestSecret @""
 #define SGTestApiURL @"https://api.simplegeo.com"
-#define SGTestPlacesVersion @"1.2"
 
 /* REQUEST HANDLING */
 
@@ -51,7 +50,7 @@
 
 /* NEARBY */
 
-#define SGTestRadius 1.0
+#define SGTestRadius 1000.0 // meters
 #define SGTestLimit 1
 
 /* STORAGE LAYER */

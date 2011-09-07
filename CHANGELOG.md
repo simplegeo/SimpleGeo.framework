@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.1.0 - 9/7/11
+
+* Storage property querying
+* Removed selfLink/layerLink from models
+* Refactored SGAddress to use an address dictionary
+
 ## 2.0.4 - 8/30/11
 
 * 3rd-party header files were missing from the compiled frameworks

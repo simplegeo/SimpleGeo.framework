@@ -35,7 +35,7 @@
 
 @implementation SGGeoObject
 
-@synthesize identifier, geometry, properties, distance, selfLink;
+@synthesize identifier, geometry, properties, distance;
 
 #pragma mark -
 #pragma mark Instantiation
@@ -57,13 +57,6 @@
         geometry = [[SGGeometry alloc] initWithGeoJSON:[geoJSONFeature objectForKey:@"geometry"]];
         identifier = [[geoJSONFeature objectForKey:@"id"] retain];
         [self setProperties:[geoJSONFeature objectForKey:@"properties"]];
-        // self link
-        NSDictionary *selfLinkDict = [geoJSONFeature objectForKey:@"selfLink"];
-        if (selfLinkDict) selfLink = SG_RETAIN([selfLinkDict objectForKey:@"href"]);
-        else {
-            selfLink = SG_RETAIN([properties objectForKey:@"href"]);
-            [properties removeObjectForKey:@"href"];
-        }
         // distance
         distance = SG_RETAIN([geoJSONFeature objectForKey:@"distance"]);
         if (!distance) {
@@ -95,8 +88,6 @@
     [dictionary setValue:[geometry asGeoJSON] forKey:@"geometry"];
     [dictionary setValue:identifier forKey:@"id"];
     [dictionary setValue:[NSMutableDictionary dictionaryWithDictionary:properties] forKey:@"properties"];
-    // if (selfLink) [dictionary setValue:[NSDictionary dictionaryWithObject:selfLink forKey:@"href"] forKey:@"selfLink"]; // self link
-    // [dictionary setValue:distance forKey:@"distance"]; // distance
     return dictionary;
 }
 
@@ -129,7 +120,6 @@
     SG_RELEASE(identifier);
     SG_RELEASE(properties);
     SG_RELEASE(distance);
-    SG_RELEASE(selfLink);
     [super dealloc];
 }
 

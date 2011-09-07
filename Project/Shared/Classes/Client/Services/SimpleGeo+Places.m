@@ -44,7 +44,7 @@
         callback:(SGCallback *)callback
 {    
     [self sendHTTPRequest:@"GET"
-                   toFile:[NSString stringWithFormat:@"/features/%@", identifier]
+                   toFile:[NSString stringWithFormat:@"/places/%@", identifier]
                withParams:nil
                   version:self.placesVersion
                  callback:callback];
@@ -56,25 +56,29 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:query.address forKey:@"address"];
     [parameters setValue:query.searchString forKey:@"q"];
-    [parameters setValue:query.categories forKey:@"category"];
-    if (query.radius > 0.0f) [parameters setValue:[NSString stringWithFormat:@"%f", query.radius] forKey:@"radius"];
-    if (query.limit > 0) [parameters setValue:[NSString stringWithFormat:@"%d", query.limit] forKey:@"num"];
-    
-    NSString *file;
-    if ([self.placesVersion isEqual:@"1.0"])
-        file = [NSString stringWithFormat:@"/places/%@",[self baseEndpointForQuery:query]];
-    else
-        file = [NSString stringWithFormat:@"/features/%@",[self baseEndpointForQuery:query]];
-        
+    [parameters setValue:query.categories forKey:@"category"];    
+    if (query.radius > 0.0f) {
+        NSString *radiusString;
+        if ([self.placesVersion isEqual:@"1.0"]) radiusString = [NSString stringWithFormat:@"%f", query.radius];
+        else radiusString = [NSString stringWithFormat:@"%d", (int)query.radius];
+        [parameters setValue:radiusString forKey:@"radius"];
+    }
+    if (query.limit > 0) {
+        NSString *limitString;
+        if ([self.placesVersion isEqual:@"1.0"]) limitString = @"num";
+        else limitString = @"limit";
+        [parameters setValue:[NSString stringWithFormat:@"%d", query.limit] forKey:limitString];
+    }
+
     [self sendHTTPRequest:@"GET"
-                   toFile:file
+                   toFile:[NSString stringWithFormat:@"/places/%@",[self baseEndpointForQuery:query]]
                withParams:parameters
                   version:self.placesVersion
                  callback:callback];
 }
 
 #pragma mark -
-#pragma mark Manipulations
+#pragma mark Manipulations (v1.0)
 
 - (void)addPlace:(SGPlace *)place
         callback:(SGCallback *)callback

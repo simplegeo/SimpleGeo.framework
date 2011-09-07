@@ -79,7 +79,6 @@
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super asGeoJSON];    
     [[dictionary objectForKey:@"properties"] setValue:name forKey:@"name"]; // name
     [[dictionary objectForKey:@"properties"] setValue:classifiers forKey:@"classifiers"]; // classifiers
-    
     return dictionary;
 }
 

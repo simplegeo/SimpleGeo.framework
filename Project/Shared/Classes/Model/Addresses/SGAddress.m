@@ -34,7 +34,7 @@
 
 @implementation SGAddress
 
-@synthesize street, city, county, province, postalCode, ISOcountryCode;
+@synthesize addressDictionary;
 
 #pragma mark -
 #pragma mark Instantiation
@@ -48,32 +48,65 @@
 {
     self = [super init];
     if (self) {
-        // street
-        NSString *component = [dictionary objectForKey:@"address"];
-        if (component && [component isKindOfClass:[NSString class]])
-            street = SG_RETAIN(component);
-        // locality
-        component = [dictionary objectForKey:@"city"];
-        if (component && [component isKindOfClass:[NSString class]])
-            city = SG_RETAIN(component);
-        // administraive area
-        component = [dictionary objectForKey:@"province"];
-        if (component && [component isKindOfClass:[NSString class]])
-            province = SG_RETAIN(component);
-        // subadministrative area
-        component = [dictionary objectForKey:@"county"];
-        if (component && [component isKindOfClass:[NSString class]])
-            county = SG_RETAIN(component);
-        // postalcode
-        component = [dictionary objectForKey:@"postcode"];
-        if (component && [component isKindOfClass:[NSString class]])
-            postalCode = SG_RETAIN(component);
-        // iso country code
-        component = [dictionary objectForKey:@"country"];
-        if (component && [component isKindOfClass:[NSString class]])
-            ISOcountryCode = SG_RETAIN(component);
+        addressDictionary = [[NSMutableDictionary dictionary] retain];
+        for (NSString *key in [SGAddress candidateKeys]) {
+            NSObject *value = [dictionary objectForKey:key];
+            if ([value isKindOfClass:[NSString class]])
+                [addressDictionary setValue:value forKey:key];
+        }
     }
     return self;
+}
+
+#pragma mark -
+#pragma mark Getters
+
++ (NSArray *)candidateKeys
+{
+    return [NSArray arrayWithObjects:
+            @"address",
+            @"city",
+            @"locality",
+            @"province",
+            @"region",
+            @"county",
+            @"postcode",
+            @"country",
+            nil];
+}
+
+- (NSString *)street
+{
+    return [self.addressDictionary objectForKey:@"address"];
+}
+
+- (NSString *)city
+{
+    NSString *city = [self.addressDictionary objectForKey:@"city"];
+    if (!city) city = [self.addressDictionary objectForKey:@"locality"];
+    return city;
+}
+
+- (NSString *)county
+{
+    return [self.addressDictionary objectForKey:@"county"];
+}
+
+- (NSString *)province
+{
+    NSString *province = [self.addressDictionary objectForKey:@"province"];
+    if (!province) province = [self.addressDictionary objectForKey:@"region"];
+    return province;
+}
+
+- (NSString *)postalCode
+{
+    return [self.addressDictionary objectForKey:@"postcode"];
+}
+
+- (NSString *)country
+{
+    return [self.addressDictionary objectForKey:@"country"];
 }
 
 #pragma mark -
@@ -83,30 +116,18 @@
                     withStreet:(BOOL)includeStreet
 {
     NSMutableArray *components = [NSMutableArray array];
-    if (includeStreet && street) [components addObject:street];
-    if (city) [components addObject:city];
+    if (includeStreet && self.street) [components addObject:self.street];
+    if (self.city) [components addObject:self.city];
     NSMutableArray *localityComponents = [NSMutableArray array];
-    if (addressFormat == SGAddressFormatUSFull && county)
-        [localityComponents addObject:county];
-    if (province) [localityComponents addObject:province];
-    if ((addressFormat == SGAddressFormatUSNormal || addressFormat == SGAddressFormatUSFull) && postalCode)
-        [localityComponents addObject:postalCode];
+    if (addressFormat == SGAddressFormatUSFull && self.county)
+        [localityComponents addObject:self.county];
+    if (self.province) [localityComponents addObject:self.province];
+    if ((addressFormat == SGAddressFormatUSNormal || addressFormat == SGAddressFormatUSFull) && self.postalCode)
+        [localityComponents addObject:self.postalCode];
     [components addObject:[localityComponents componentsJoinedByString:@" "]];
-    if ((addressFormat == SGAddressFormatUSNormal || addressFormat == SGAddressFormatUSFull) && ISOcountryCode)
-        [components addObject:ISOcountryCode];
+    if ((addressFormat == SGAddressFormatUSNormal || addressFormat == SGAddressFormatUSFull) && self.country)
+        [components addObject:self.country];
     return [components componentsJoinedByString:@", "];
-}
-
-- (NSDictionary *)asDictionary
-{
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    [dictionary setValue:street forKey:@"address"];
-    [dictionary setValue:city forKey:@"city"];
-    [dictionary setValue:county forKey:@"county"];
-    [dictionary setValue:province forKey:@"province"];
-    [dictionary setValue:postalCode forKey:@"postcode"];
-    [dictionary setValue:ISOcountryCode forKey:@"country"];
-    return dictionary;
 }
 
 #pragma mark -
@@ -115,25 +136,13 @@
 + (SGAddress *)addressStrippedFromDictionary:(NSMutableDictionary *)dictionary
 {
     SGAddress *address = [SGAddress addressWithDictionary:dictionary];
-    [dictionary removeObjectsForKeys:[NSMutableArray arrayWithObjects:
-                                      @"address",
-                                      @"city",
-                                      @"county",
-                                      @"province",
-                                      @"postcode",
-                                      @"country",
-                                      nil]];
+    [dictionary removeObjectsForKeys:[SGAddress candidateKeys]];
     return address;
 }
 
 - (void)dealloc
 {
-    SG_RELEASE(street);
-    SG_RELEASE(city);
-    SG_RELEASE(county);
-    SG_RELEASE(province);
-    SG_RELEASE(postalCode);
-    SG_RELEASE(ISOcountryCode);
+    SG_RELEASE(addressDictionary);
     [super dealloc];
 }
 

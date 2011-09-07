@@ -53,10 +53,16 @@ static SimpleGeo *sharedClient = nil;
     if(!sharedClient) {
         sharedClient = [[SimpleGeo clientWithConsumerKey:SGTestKey
                                           consumerSecret:SGTestSecret] retain];
-        [sharedClient setPlacesVersion:SGTestPlacesVersion];
         [sharedClient setApiURL:SGTestApiURL];
     }
     return sharedClient;
+}
+
+- (SimpleGeo *)placesClient:(NSString *)version
+{
+    SimpleGeo *client = self.client;
+    [client setPlacesVersion:version];
+    return client;
 }
 
 - (SGPoint *)point
@@ -67,7 +73,7 @@ static SimpleGeo *sharedClient = nil;
 
 - (SGPoint *)outlierPoint
 {
-    return [SGPoint pointWithLat:SGTestLatitude+SGTestRadius/50.0f
+    return [SGPoint pointWithLat:SGTestLatitude+20.0f
                              lon:SGTestLongitude];
 }
 
@@ -154,10 +160,10 @@ static SimpleGeo *sharedClient = nil;
     [object removeObjectForKey:@"distance"];
     [object removeObjectForKey:@"selfLink"];
     [object removeObjectForKey:@"layerLink"];
+    [object setObject:@"Feature" forKey:@"type"]; // TODO
     
     NSMutableDictionary *propsDict = [NSMutableDictionary dictionaryWithDictionary:[object objectForKey:@"properties"]];
     [propsDict removeObjectForKey:@"distance"];
-    [propsDict removeObjectForKey:@"href"];
     [object setObject:propsDict forKey:@"properties"];
 }
 

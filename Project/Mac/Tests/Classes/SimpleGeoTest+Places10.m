@@ -1,5 +1,5 @@
 //
-//  SimpleGeoTest+Places.m
+//  SimpleGeoTest+Places10.m
 //  SimpleGeo.framework
 //
 //  Copyright (c) 2010, SimpleGeo Inc.
@@ -31,25 +31,34 @@
 #import "SimpleGeoTest.h"
 #import "SimpleGeo+Places.h"
 
-#define SGTestPlacesLatitude 22.917923
-#define SGTestPlacesLongitude -125.859375
-#define SGTestFeatureHandlePoint @"00000ba3-164c-45f9-b232-2bc5aac8f72a"
-#define SGTestFeatureHandleLegacyPoint @"SG_7gm91gq6GfsVja5zFsRz6x_37.771718_-122.405139"
+#define SGTestPlacesEditLatitude 22.917923
+#define SGTestPlacesEditLongitude -125.859375
+#define SGTestPlaceID @"SG_7gm91gq6GfsVja5zFsRz6x_37.771718_-122.405139"
+#define SGTestPlacesRadius 1.0 // km
+#define SGTestPlaceSearchString @"SimpleGeo"
+#define SGTestPlaceCategory SGPlaceCategoryOfficeBuilding
+
+@interface Places10Tests : SimpleGeoTest
+@end
+@implementation Places10Tests
+
+#pragma mark Set Up Places 1.0
+
+- (SimpleGeo *)client
+{
+    SimpleGeo *client = super.client;
+    [client setPlacesVersion:@"1.0"];
+    return client;
+}
 
 #pragma mark Places Add/Update Tests
-
-@interface PlacesEditTests : SimpleGeoTest
-@end
-@implementation PlacesEditTests
-
-#pragma mark Place Add/Remove Tests
 
 - (void)testAddDeletePlace
 {
     [self prepare];
     SGPlace *place = [SGPlace placeWithName:@"Simple Place"
-                                      point:[SGPoint pointWithLat:SGTestPlacesLatitude
-                                                              lon:SGTestPlacesLongitude]];
+                                      point:[SGPoint pointWithLat:SGTestPlacesEditLatitude
+                                                              lon:SGTestPlacesEditLongitude]];
     NSDictionary *classifier1 = [NSDictionary classifierWithType:SGFeatureTypePublicPlace
                                                         category:SGPlaceCategoryArtsAndPerformance
                                                      subcategory:SGPlaceCategoryArena];
@@ -72,115 +81,89 @@
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
 }
 
-@end
-
 #pragma mark Places Requests Tests
 
-@interface PlacesGetTests : SimpleGeoTest
-@end
-@implementation PlacesGetTests
-
-- (void)testGetSGPlaceAndConvert
+- (void)testGetSGPlaceAndConvertFeature
 {
     [self prepare];
-    [[self client] getFeatureWithHandle:SGTestFeatureHandleLegacyPoint
+    [[self client] getFeatureWithHandle:SGTestPlaceID
                                    zoom:nil
                                callback:[SGCallback callbackWithSuccessBlock:
                                          ^(id response) {
                                              SGPlace *place = [SGPlace placeWithGeoJSON:(NSDictionary *)response];
-                                             SGLog(@"SGPlace: %@", place);
                                              [self checkSGFeatureConversion:(NSDictionary *)response object:place];
                                              [self requestDidSucceed:response];
                                          } failureBlock:[self failureBlock]]];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
 }
 
-/* Places 1.2 Only */
-- (void)testGetFactualPlaceAndConvert
-{
-    [self prepare];
-    [[self client] getPlace:SGTestFeatureHandlePoint
-                   callback:[SGCallback callbackWithSuccessBlock:
-                             ^(id response) {
-                                 SGPlace *place = [SGPlace placeWithGeoJSON:(NSDictionary *)response];
-                                 SGLog(@"SGPlace: %@", place);
-                                 [self checkSGFeatureConversion:(NSDictionary *)response object:place];
-                                 [self requestDidSucceed:response];
-                             } failureBlock:[self failureBlock]]];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
-}
-
-- (void)testGetPlacesForPoint
+- (void)testGetSGPlacesForPoint
 {
     [self prepare];
     SGPlacesQuery *query = [SGPlacesQuery queryWithPoint:[self point]];
-    [[self client] getPlacesForQuery:query callback:[self delegateCallbacks]];
+    [[self client] getPlacesForQuery:query callback:[SGCallback callbackWithSuccessBlock:
+                                                     ^(id response) {
+                                                         GHAssertGreaterThan((int)[[response objectForKey:@"features"] count], 1,
+                                                                             @"Query should return at least one feature.");
+                                                         [self requestDidSucceed:response];
+                                                     } failureBlock:[self failureBlock]]];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
 }
 
-- (void)testGetPlacesForAddress
+- (void)testGetSGPlacesForAddress
 {
     [self prepare];
     SGPlacesQuery *query = [SGPlacesQuery queryWithAddress:SGTestAddress];
-    [[self client] getPlacesForQuery:query callback:[self delegateCallbacks]];
+    [[self client] getPlacesForQuery:query callback:[SGCallback callbackWithSuccessBlock:
+                                                     ^(id response) {
+                                                         GHAssertGreaterThan((int)[[response objectForKey:@"features"] count], 1,
+                                                                             @"Query should return at least one feature.");
+                                                         [self requestDidSucceed:response];
+                                                     } failureBlock:[self failureBlock]]];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
 }
 
-- (void)testGetPlacesForEnvelope
+- (void)testGetSGPlacesForEnvelope
 {
     [self prepare];
     SGPlacesQuery *query = [SGPlacesQuery queryWithEnvelope:[self envelope]];
-    [[self client] getPlacesForQuery:query callback:[self delegateCallbacks]];
+    [[self client] getPlacesForQuery:query callback:[SGCallback callbackWithSuccessBlock:
+                                                     ^(id response) {
+                                                         GHAssertGreaterThan((int)[[response objectForKey:@"features"] count], 1,
+                                                                             @"Query should return at least one feature.");
+                                                         [self requestDidSucceed:response];
+                                                     } failureBlock:[self failureBlock]]];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
 }
 
-- (void)testGetPlacesWithLimitsAndConvertFeatureCollection
+- (void)testGetSGPlacesWithFilters
 {
     [self prepare];
     SGPlacesQuery *query = [SGPlacesQuery queryWithPoint:[self point]];
-    [query setRadius:SGTestRadius];
+    [query setCategories:[NSArray arrayWithObject:SGTestPlaceCategory]];
+    [query setSearchString:SGTestPlaceSearchString];
+    [[self client] getPlacesForQuery:query
+                            callback:[SGCallback callbackWithSuccessBlock:
+                                      ^(id response) {
+                                          GHAssertEquals((int)[[response objectForKey:@"features"] count], 1,
+                                                         @"Query should return one matching place.");
+                                          [self requestDidSucceed:response];
+                                      } failureBlock:[self failureBlock]]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
+- (void)testGetSGPlacesWithLimitsAndConvertFeatureCollection
+{
+    [self prepare];
+    SGPlacesQuery *query = [SGPlacesQuery queryWithPoint:[self point]];
+    [query setRadius:SGTestPlacesRadius];
     [query setLimit:SGTestLimit];
     [[self client] getPlacesForQuery:query
                             callback:[SGCallback callbackWithSuccessBlock:
                                       ^(id response) {
-                                          GHTestLog(@"%@",response);
                                           NSArray *places = [NSArray arrayWithSGCollection:(NSDictionary *)response type:SGCollectionTypePlaces];
-                                          GHTestLog(@"%d %@",(int)[places count],places);
-                                          GHAssertEquals((int)[places count], SGTestLimit, @"query should return the limit");
+                                          GHAssertEquals((int)[places count], SGTestLimit, @"Query should return the limit.");
                                           [self checkSGCollectionConversion:(NSDictionary *)response type:SGCollectionTypePlaces];
-                                          [self requestDidSucceed:response];
-                                      } failureBlock:[self failureBlock]]];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
-}
-
-- (void)testGetPlacesWithFilters
-{
-    [self prepare];
-    SGPlacesQuery *query = [SGPlacesQuery queryWithPoint:[self point]];
-    [query setCategories:[NSArray arrayWithObject:SGPlaceSubcategoryOfficeBuilding]];
-    [query setSearchString:@"SimpleGeo"];
-    [[self client] getPlacesForQuery:query
-                            callback:[SGCallback callbackWithSuccessBlock:
-                                      ^(id response) {
-                                          NSArray *places = [NSArray arrayWithSGCollection:(NSDictionary *)response type:SGCollectionTypePlaces];
-                                          GHAssertEquals((int)[places count], 1, @"query should return one matching place");
-                                          [self requestDidSucceed:response];
-                                      } failureBlock:[self failureBlock]]];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
-}
-
-/* Places 1.2 Only */
-- (void)testFulltextSearchPlaces
-{
-    [self prepare];
-    SGPlacesQuery *query = [SGPlacesQuery query];
-    [query setCategories:[NSArray arrayWithObject:SGPlaceSubcategoryOfficeBuilding]];
-    [query setSearchString:@"SimpleGeo"];
-    [[self client] getPlacesForQuery:query
-                            callback:[SGCallback callbackWithSuccessBlock:
-                                      ^(id response) {
-                                          NSArray *places = [NSArray arrayWithSGCollection:(NSDictionary *)response type:SGCollectionTypePlaces];
-                                          GHAssertEquals((int)[places count], 2, @"query should return two matching places");
                                           [self requestDidSucceed:response];
                                       } failureBlock:[self failureBlock]]];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];

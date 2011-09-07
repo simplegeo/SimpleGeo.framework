@@ -38,8 +38,9 @@
 }
 @property (nonatomic, readonly) SGFailureBlock failureBlock;
 
-// Test client
+// Test clients
 - (SimpleGeo *)client;
+- (SimpleGeo *)placesClient:(NSString *)version;
 
 // Test objects
 - (SGPoint *)point;

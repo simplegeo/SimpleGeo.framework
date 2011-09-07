@@ -103,9 +103,10 @@
 		940B3EE813EA10E50022B5EF /* SGGeometryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B38A013EA09F90022B5EF /* SGGeometryTest.m */; };
 		940B3EEA13EA10E90022B5EF /* SimpleGeoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B38A213EA09F90022B5EF /* SimpleGeoTest.m */; };
 		940B3EEB13EA10EE0022B5EF /* SimpleGeoTest+Context.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B38A313EA09F90022B5EF /* SimpleGeoTest+Context.m */; };
-		940B3EED13EA10F20022B5EF /* SimpleGeoTest+Places.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B38A513EA09F90022B5EF /* SimpleGeoTest+Places.m */; };
+		940B3EED13EA10F20022B5EF /* SimpleGeoTest+Places10.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B38A513EA09F90022B5EF /* SimpleGeoTest+Places10.m */; };
 		940B3EEE13EA10F40022B5EF /* SimpleGeoTest+Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B38A613EA09F90022B5EF /* SimpleGeoTest+Storage.m */; };
 		940B3EF013EA113E0022B5EF /* RunTests.sh in Resources */ = {isa = PBXBuildFile; fileRef = 940B3EEF13EA113E0022B5EF /* RunTests.sh */; };
+		942AEF551417ACC400B5E69F /* SimpleGeoTest+Places12.m in Sources */ = {isa = PBXBuildFile; fileRef = 942AEF531417ACA300B5E69F /* SimpleGeoTest+Places12.m */; };
 		944FE58313CF4FA0009A1C2F /* SimpleGeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* SimpleGeo.framework */; };
 		944FE58413CF4FB6009A1C2F /* SimpleGeo.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* SimpleGeo.framework */; };
 		9487074613EA187900FDD91E /* SimpleGeo-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 9487074513EA187900FDD91E /* SimpleGeo-Prefix.pch */; settings = {ATTRIBUTES = (); }; };
@@ -192,7 +193,7 @@
 		940B38A113EA09F90022B5EF /* SimpleGeoTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleGeoTest.h; path = Tests/Classes/SimpleGeoTest.h; sourceTree = "<group>"; };
 		940B38A213EA09F90022B5EF /* SimpleGeoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleGeoTest.m; path = Tests/Classes/SimpleGeoTest.m; sourceTree = "<group>"; };
 		940B38A313EA09F90022B5EF /* SimpleGeoTest+Context.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SimpleGeoTest+Context.m"; path = "Tests/Classes/SimpleGeoTest+Context.m"; sourceTree = "<group>"; };
-		940B38A513EA09F90022B5EF /* SimpleGeoTest+Places.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SimpleGeoTest+Places.m"; path = "Tests/Classes/SimpleGeoTest+Places.m"; sourceTree = "<group>"; };
+		940B38A513EA09F90022B5EF /* SimpleGeoTest+Places10.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SimpleGeoTest+Places10.m"; path = "Tests/Classes/SimpleGeoTest+Places10.m"; sourceTree = "<group>"; };
 		940B38A613EA09F90022B5EF /* SimpleGeoTest+Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SimpleGeoTest+Storage.m"; path = "Tests/Classes/SimpleGeoTest+Storage.m"; sourceTree = "<group>"; };
 		940B38AF13EA0A010022B5EF /* Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Tests-Info.plist"; path = "Tests/Tests-Info.plist"; sourceTree = "<group>"; };
 		940B38B313EA0A180022B5EF /* SGCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGCategories.h; sourceTree = "<group>"; };
@@ -253,6 +254,7 @@
 		940B38F313EA0A180022B5EF /* SGLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLayer.m; sourceTree = "<group>"; };
 		940B399713EA0BFF0022B5EF /* GHUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnit.framework; path = Tests/Resources/GHUnit.framework; sourceTree = "<group>"; };
 		940B3EEF13EA113E0022B5EF /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = RunTests.sh; path = Tests/RunTests.sh; sourceTree = "<group>"; };
+		942AEF531417ACA300B5E69F /* SimpleGeoTest+Places12.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SimpleGeoTest+Places12.m"; path = "Tests/Classes/SimpleGeoTest+Places12.m"; sourceTree = "<group>"; };
 		9487074513EA187900FDD91E /* SimpleGeo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimpleGeo-Prefix.pch"; sourceTree = "<group>"; };
 		9487075313EA211800FDD91E /* SGHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGHTTPClient.h; sourceTree = "<group>"; };
 		9487075413EA211800FDD91E /* SGHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGHTTPClient.m; sourceTree = "<group>"; };
@@ -437,7 +439,8 @@
 				940B38A113EA09F90022B5EF /* SimpleGeoTest.h */,
 				940B38A213EA09F90022B5EF /* SimpleGeoTest.m */,
 				940B38A313EA09F90022B5EF /* SimpleGeoTest+Context.m */,
-				940B38A513EA09F90022B5EF /* SimpleGeoTest+Places.m */,
+				940B38A513EA09F90022B5EF /* SimpleGeoTest+Places10.m */,
+				942AEF531417ACA300B5E69F /* SimpleGeoTest+Places12.m */,
 				940B38A613EA09F90022B5EF /* SimpleGeoTest+Storage.m */,
 			);
 			name = Classes;
@@ -788,7 +791,8 @@
 				940B3EE813EA10E50022B5EF /* SGGeometryTest.m in Sources */,
 				940B3EEA13EA10E90022B5EF /* SimpleGeoTest.m in Sources */,
 				940B3EEB13EA10EE0022B5EF /* SimpleGeoTest+Context.m in Sources */,
-				940B3EED13EA10F20022B5EF /* SimpleGeoTest+Places.m in Sources */,
+				940B3EED13EA10F20022B5EF /* SimpleGeoTest+Places10.m in Sources */,
+				942AEF551417ACC400B5E69F /* SimpleGeoTest+Places12.m in Sources */,
 				940B3EEE13EA10F40022B5EF /* SimpleGeoTest+Storage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

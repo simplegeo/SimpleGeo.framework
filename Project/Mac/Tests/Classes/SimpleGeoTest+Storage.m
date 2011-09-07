@@ -183,11 +183,12 @@
 {
     [self prepare];
     SGStorageQuery *query = [SGStorageQuery queryWithPoint:[self point] layer:SGTestLayer];
+    [query setRadius:SGTestRadius];
     [[self client] getRecordsForQuery:query
                              callback:[SGCallback callbackWithSuccessBlock:
                                        ^(id response) {
-                                           GHAssertEquals((int)[[(NSDictionary *)response objectForKey:@"features"] count], SGTestNumRecords,
-                                                          @"Should return all records");
+                                           GHAssertGreaterThan((int)[[(NSDictionary *)response objectForKey:@"features"] count], 1,
+                                                          @"Should return at least one record.");
                                            [self checkSGCollectionConversion:response type:SGCollectionTypeRecords];
                                            [self requestDidSucceed:response];
                                        } failureBlock:[self failureBlock]]];

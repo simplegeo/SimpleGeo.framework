@@ -37,7 +37,7 @@
 
 @implementation SGPlace
 
-@synthesize address, tags, isPrivate;
+@synthesize address, tags, categories, isPrivate;
 
 #pragma mark -
 #pragma mark Instantiation
@@ -70,13 +70,23 @@
         // address
         address = SG_RETAIN([SGAddress addressStrippedFromDictionary:self.properties]);
         // tags
-        tags = [[NSMutableArray alloc] init];
-        [tags addObjectsFromArray:[self.properties objectForKey:@"tags"]];
-        [self.properties removeObjectForKey:@"tags"];
+        NSArray *placeTags = [self.properties objectForKey:@"tags"];
+        if (placeTags) {
+            tags = [[NSMutableArray arrayWithArray:placeTags] retain];
+            [self.properties removeObjectForKey:@"tags"];
+        }
+        // categories
+        NSArray *placeCategories = [self.properties objectForKey:@"categories"];
+        if (placeCategories) {
+            categories = [[NSMutableArray arrayWithArray:placeCategories] retain];
+            [self.properties removeObjectForKey:@"categories"];
+        }
         // visibility
         NSString *visibility = [self.properties objectForKey:@"private"];
-        if ([visibility isEqual:@"true"]) isPrivate = YES;
-        [self.properties removeObjectForKey:@"private"];
+        if (visibility) {
+            isPrivate = [visibility isEqual:@"true"];
+            [self.properties removeObjectForKey:@"private"];
+        }
     }
     return self;
 }
@@ -89,9 +99,9 @@
     return (SGPoint *)self.geometry;
 }
 
-- (void)setTags:(NSMutableArray *)someTags
+- (void)setTags:(NSArray *)someTags
 {
-    [self setMutableTags:[NSMutableArray arrayWithArray:someTags]];
+    [self setMutableTags:[[someTags mutableCopy] autorelease]];
 }
 
 - (void)setMutableTags:(NSMutableArray *)someTags
@@ -100,11 +110,23 @@
     tags = SG_RETAIN(someTags);
 }
 
+- (void)setCategories:(NSArray *)someCategories
+{
+    [self setMutableTags:[[someCategories mutableCopy] autorelease]];
+}
+
+- (void)setMutableCategories:(NSMutableArray *)someCategories
+{
+    SG_RELEASE(categories);
+    tags = SG_RETAIN(someCategories);
+}
+
 - (NSDictionary *)asGeoJSON
 {
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super asGeoJSON];
-    [[dictionary objectForKey:@"properties"] addEntriesFromDictionary:[address asDictionary]]; // address
+    [[dictionary objectForKey:@"properties"] addEntriesFromDictionary:address.addressDictionary]; // address
     [[dictionary objectForKey:@"properties"] setValue:tags forKey:@"tags"]; // tags
+    [[dictionary objectForKey:@"properties"] setValue:categories forKey:@"categories"]; // categories
     if (isPrivate) [[dictionary objectForKey:@"properties"] setValue:@"true" forKey:@"private"]; // visibility
     return dictionary;
 }
@@ -115,6 +137,7 @@
 - (void)dealloc
 {
     SG_RELEASE(tags);
+    SG_RELEASE(categories);
     [super dealloc];
 }
 

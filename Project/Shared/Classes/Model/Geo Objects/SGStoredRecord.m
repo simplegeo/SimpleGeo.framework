@@ -35,7 +35,7 @@
 
 @implementation SGStoredRecord
 
-@synthesize layer, created, layerLink;
+@synthesize layer, created;
 
 #pragma mark -
 #pragma mark Instantiation
@@ -76,9 +76,6 @@
         // created
         NSNumber *epoch = [geoJSONFeature objectForKey:@"created"];
         if (epoch) created = [[NSDate alloc] initWithTimeIntervalSince1970:[epoch intValue]];
-        // layerLink
-        NSDictionary *layerLinkDict = [geoJSONFeature objectForKey:@"layerLink"];
-        if (layerLinkDict) layerLink = SG_RETAIN([layerLinkDict objectForKey:@"href"]);
     }
     return self;
 }
@@ -96,7 +93,6 @@
     NSMutableDictionary *dictionary = (NSMutableDictionary *)[super asGeoJSON];    
     [[dictionary objectForKey:@"properties"] setValue:layer forKey:@"layer"]; // layer
     if (created) [dictionary setValue:[NSNumber numberWithDouble:[created timeIntervalSince1970]] forKey:@"created"]; // created
-    // if (layerLink) [dictionary setValue:[NSDictionary dictionaryWithObject:layerLink forKey:@"href"] forKey:@"layerLink"]; // layerLink
     return dictionary;
 }
 
@@ -123,7 +119,6 @@
 {
     SG_RELEASE(layer);
     SG_RELEASE(created);
-    SG_RELEASE(layerLink);
     [super dealloc];
 }
 

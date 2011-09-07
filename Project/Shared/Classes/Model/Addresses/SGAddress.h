@@ -48,31 +48,29 @@ typedef enum {
 @interface SGAddress : NSObject
 {
     @private
-    NSString *street;
-    NSString *city;
-    NSString *county;
-    NSString *province;
-    NSString *postalCode;
-    NSString *ISOcountryCode;
+    NSMutableDictionary *addressDictionary;
 }
 
+/// Address Dictionary
+@property (nonatomic, retain) NSMutableDictionary *addressDictionary;
+
 /// Street Address, eg. 41 Decatur St
-@property (nonatomic, retain) NSString *street;
+@property (nonatomic, readonly) NSString *street;
 
 /// City, eg. San Francisco
-@property (nonatomic, retain) NSString *city;
+@property (nonatomic, readonly) NSString *city;
 
 /// County, eg. Santa Clara
-@property (nonatomic, retain) NSString *county;
+@property (nonatomic, readonly) NSString *county;
 
 /// State, eg. CA
-@property (nonatomic, retain) NSString *province;
+@property (nonatomic, readonly) NSString *province;
 
 /// Zip code, eg. 94103
-@property (nonatomic, retain) NSString *postalCode;
+@property (nonatomic, readonly) NSString *postalCode;
 
 /// Country, eg. US
-@property (nonatomic, retain) NSString *ISOcountryCode;
+@property (nonatomic, readonly) NSString *country;
 
 #pragma mark -
 #pragma mark Instantiation
@@ -101,8 +99,8 @@ typedef enum {
                     withStreet:(BOOL)includeStreet;
 
 /**
- * Address dictionary
+ * Keys an inspected upon instantiation
  */
-- (NSDictionary *)asDictionary;
++ (NSArray *)candidateKeys;
 
 @end

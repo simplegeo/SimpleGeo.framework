@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.1.1 - 9/7/11
+
+* Updated SGObjCHTTP client
+
 ## 2.1.0 - 9/7/11
 
 * Storage property querying

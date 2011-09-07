@@ -57,8 +57,6 @@
 		940B3F4413EA13CF0022B5EF /* SGStorageQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B3F0413EA13CF0022B5EF /* SGStorageQuery.m */; };
 		940B3F4513EA13CF0022B5EF /* SimpleGeo+Context.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B3F0613EA13CF0022B5EF /* SimpleGeo+Context.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		940B3F4613EA13CF0022B5EF /* SimpleGeo+Context.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B3F0713EA13CF0022B5EF /* SimpleGeo+Context.m */; };
-		940B3F4713EA13CF0022B5EF /* SimpleGeo+Features.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B3F0813EA13CF0022B5EF /* SimpleGeo+Features.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		940B3F4813EA13CF0022B5EF /* SimpleGeo+Features.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B3F0913EA13CF0022B5EF /* SimpleGeo+Features.m */; };
 		940B3F4913EA13CF0022B5EF /* SimpleGeo+Places.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B3F0A13EA13CF0022B5EF /* SimpleGeo+Places.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		940B3F4A13EA13CF0022B5EF /* SimpleGeo+Places.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B3F0B13EA13CF0022B5EF /* SimpleGeo+Places.m */; };
 		940B3F4B13EA13CF0022B5EF /* SimpleGeo+Storage.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B3F0C13EA13CF0022B5EF /* SimpleGeo+Storage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -166,8 +164,6 @@
 		940B3F0413EA13CF0022B5EF /* SGStorageQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGStorageQuery.m; sourceTree = "<group>"; };
 		940B3F0613EA13CF0022B5EF /* SimpleGeo+Context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimpleGeo+Context.h"; sourceTree = "<group>"; };
 		940B3F0713EA13CF0022B5EF /* SimpleGeo+Context.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SimpleGeo+Context.m"; sourceTree = "<group>"; };
-		940B3F0813EA13CF0022B5EF /* SimpleGeo+Features.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimpleGeo+Features.h"; sourceTree = "<group>"; };
-		940B3F0913EA13CF0022B5EF /* SimpleGeo+Features.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SimpleGeo+Features.m"; sourceTree = "<group>"; };
 		940B3F0A13EA13CF0022B5EF /* SimpleGeo+Places.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimpleGeo+Places.h"; sourceTree = "<group>"; };
 		940B3F0B13EA13CF0022B5EF /* SimpleGeo+Places.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SimpleGeo+Places.m"; sourceTree = "<group>"; };
 		940B3F0C13EA13CF0022B5EF /* SimpleGeo+Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SimpleGeo+Storage.h"; sourceTree = "<group>"; };
@@ -419,8 +415,6 @@
 			children = (
 				940B3F0613EA13CF0022B5EF /* SimpleGeo+Context.h */,
 				940B3F0713EA13CF0022B5EF /* SimpleGeo+Context.m */,
-				940B3F0813EA13CF0022B5EF /* SimpleGeo+Features.h */,
-				940B3F0913EA13CF0022B5EF /* SimpleGeo+Features.m */,
 				940B3F0A13EA13CF0022B5EF /* SimpleGeo+Places.h */,
 				940B3F0B13EA13CF0022B5EF /* SimpleGeo+Places.m */,
 				940B3F0C13EA13CF0022B5EF /* SimpleGeo+Storage.h */,
@@ -554,7 +548,6 @@
 				940B3F4113EA13CF0022B5EF /* SGQuery.h in Headers */,
 				940B3F4313EA13CF0022B5EF /* SGStorageQuery.h in Headers */,
 				940B3F4513EA13CF0022B5EF /* SimpleGeo+Context.h in Headers */,
-				940B3F4713EA13CF0022B5EF /* SimpleGeo+Features.h in Headers */,
 				940B3F4913EA13CF0022B5EF /* SimpleGeo+Places.h in Headers */,
 				940B3F4B13EA13CF0022B5EF /* SimpleGeo+Storage.h in Headers */,
 				940B3F4E13EA13CF0022B5EF /* SimpleGeo.h in Headers */,
@@ -678,7 +671,6 @@
 				940B3F4213EA13CF0022B5EF /* SGQuery.m in Sources */,
 				940B3F4413EA13CF0022B5EF /* SGStorageQuery.m in Sources */,
 				940B3F4613EA13CF0022B5EF /* SimpleGeo+Context.m in Sources */,
-				940B3F4813EA13CF0022B5EF /* SimpleGeo+Features.m in Sources */,
 				940B3F4A13EA13CF0022B5EF /* SimpleGeo+Places.m in Sources */,
 				940B3F4C13EA13CF0022B5EF /* SimpleGeo+Storage.m in Sources */,
 				940B3F4F13EA13CF0022B5EF /* SimpleGeo.m in Sources */,

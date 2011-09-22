@@ -85,6 +85,14 @@
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
 }
 
+- (void)testGetContextForUnicodeAddress
+{
+    [self prepare];
+    SGContextQuery *query = [SGContextQuery queryWithAddress:@"282 Funston Ave San Francisco\u200e CA\u200e 94118 USA"];
+    [[self client] getContextForQuery:query callback:[self delegateCallbacks]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
 - (void)testGetContextForEnvelope
 {
     [self prepare];

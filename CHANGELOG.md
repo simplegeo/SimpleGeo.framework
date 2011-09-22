@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.1.2 - 9/22/11
+
+* Ensure UTF8 encoded strings work for address parameters
+
 ## 2.1.1 - 9/7/11
 
 * Updated SGObjCHTTP client

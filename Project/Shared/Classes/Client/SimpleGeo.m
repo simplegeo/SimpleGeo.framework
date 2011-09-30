@@ -45,7 +45,7 @@
     SimpleGeo *client = [[SimpleGeo alloc] initWithConsumerKey:key consumerSecret:secret];
     [client setStorageVersion:@"0.1"]; // Default Storage version
     [client setContextVersion:@"1.0"]; // Default Context version
-    [client setPlacesVersion:@"1.0"]; // Default Places version
+    [client setPlacesVersion:@"1.2"]; // Default Places version
     [client setApiURL:@"https://api.simplegeo.com"];
     return SG_AUTORELEASE(client);
 }

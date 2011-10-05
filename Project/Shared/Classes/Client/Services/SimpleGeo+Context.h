@@ -42,8 +42,8 @@
 
 /**
  * Get Context matching an SGContextQuery
- * @param query     Query for the request
- * @param callback  Request callback
+ * @param query         Query for the request
+ * @param callback      Request callback
  */
 - (void)getContextForQuery:(SGContextQuery *)query
                   callback:(SGCallback *)callback;
@@ -53,9 +53,9 @@
  * If requesting a place, please note: this method only works
  * for Places v1.0 (the old SimpleGeo dataset). To request a place
  * from the new Factual dataset, use getPlace:callback:
- * @param handle    Feature handle
- * @param zoom      Zoom (complexity of returned geometry) (optional)
- * @param callback  Request callback
+ * @param handle        Feature handle
+ * @param zoom          Zoom (complexity of returned geometry) (optional)
+ * @param callback      Request callback
  */
 - (void)getFeatureWithHandle:(NSString *)handle
                         zoom:(NSNumber *)zoom
@@ -64,9 +64,17 @@
 /**
  * Get annotations attached to a feature
  * @param handle        Feature handle
- * @param callback  Request callback
+ * @param callback      Request callback
  */
 - (void)getAnnotationsForFeature:(NSString *)handle
+                        callback:(SGCallback *)callback;
+
+/**
+ * Search ACS demographic tables
+ * @param searchString  Search string
+ * @param callback      Request callback
+ */
+- (void)searchDemographicsTables:(NSString *)searchString
                         callback:(SGCallback *)callback;
 
 #pragma mark -
@@ -77,7 +85,7 @@
  * @param handle        Feature handle
  * @param annotation    Annotation list
  * @param isPrivate     Annotation privacy
- * @param callback  Request callback
+ * @param callback      Request callback
  */
 - (void)annotateFeature:(NSString *)handle
          withAnnotation:(NSDictionary *)annotation

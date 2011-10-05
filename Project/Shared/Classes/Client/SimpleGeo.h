@@ -67,6 +67,7 @@
 // Helpers
 #import "SGTypes.h"
 #import "SGCategories.h"
+#import "FactualCategories.h"
 #import "NSArray+SGCollection.h"
 #import "NSDictionary+Classifier.h"
 

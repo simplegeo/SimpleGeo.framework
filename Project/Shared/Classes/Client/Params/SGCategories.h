@@ -32,8 +32,7 @@ typedef NSString * SGFeatureType;
 typedef NSString * SGFeatureCategory;
 typedef NSString * SGFeatureSubcategory;
 
-#pragma mark -
-#pragma mark Feature Types (Context)
+#pragma mark Feature Types
 
 #define SGFeatureTypeRegion @"Region"
 #define SGFeatureTypeEntertainment @"Entertainment"
@@ -45,7 +44,6 @@ typedef NSString * SGFeatureSubcategory;
 #define SGFeatureTypeServices @"Services"
 #define SGFeatureTypeTransportation @"Transportation"
 
-#pragma mark -
 #pragma mark Feature Categories (Context)
 
 #define SGFeatureCategoryAdministrative @"Administrative"
@@ -65,7 +63,6 @@ typedef NSString * SGFeatureSubcategory;
 #define SGFeatureCategoryTimeZone @"Time Zone"
 #define SGFeatureCategoryUSCensus @"US Census"
 
-#pragma mark -
 #pragma mark Feature Subcategories (Context)
 
 #define SGFeatureSubcategoryConsolidatedCity @"Consolidated City"
@@ -98,8 +95,7 @@ typedef NSString * SGFeatureSubcategory;
 #define SGFeatureSubcategoryMSA @"MSA"
 #define SGFeatureSubcategoryTract @"Tract"
 
-#pragma mark -
-#pragma mark Places Categories (Places 1.0)
+#pragma mark Place Categories (Places 1.0)
 
 #define SGPlaceCategoryArena @"Arena"
 #define SGPlaceCategoryArtsAndPerformance @"Arts & Performance"
@@ -596,8 +592,3 @@ typedef NSString * SGFeatureSubcategory;
 #define SGPlaceCategoryRail @"Rail"
 #define SGPlaceCategoryFreight @"Freight"
 #define SGPlaceCategoryPassenger @"Passenger"
-
-#pragma mark -
-#pragma mark Places Categories (Places 1.2)
-
-// TODO

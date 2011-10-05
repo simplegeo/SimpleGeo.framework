@@ -33,7 +33,7 @@
 
 #define SGTestPlaceID @"00000ba3-164c-45f9-b232-2bc5aac8f72a"
 #define SGTestPlaceSearchString @"Repair"
-#define SGTestPlaceCategory [NSArray arrayWithObject:@"Automotive"]
+#define SGTestPlaceCategory [NSArray arrayWithObject:FactualCategoryAutomotive]
 #define SGTestPlaceFullTextSearchString @"Maggianos"
 
 @interface Places12Tests : SimpleGeoTest

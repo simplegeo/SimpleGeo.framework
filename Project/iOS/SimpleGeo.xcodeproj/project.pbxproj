@@ -109,6 +109,7 @@
 		940B3F8613EA13E70022B5EF /* SGPolygon+Mapkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B3F7C13EA13E70022B5EF /* SGPolygon+Mapkit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		940B3F8713EA13E70022B5EF /* SGPolygon+Mapkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B3F7D13EA13E70022B5EF /* SGPolygon+Mapkit.m */; };
 		940B3F8913EA13F50022B5EF /* SimpleGeo-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 940B3F8813EA13F50022B5EF /* SimpleGeo-Prefix.pch */; settings = {ATTRIBUTES = (); }; };
+		94A6E2FC143CB55D00CF17A3 /* FactualCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A6E2FB143CB55D00CF17A3 /* FactualCategories.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -219,6 +220,7 @@
 		940B451B13EA150A0022B5EF /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Config/Debug.xcconfig; sourceTree = "<group>"; };
 		940B451C13EA150A0022B5EF /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Config/Release.xcconfig; sourceTree = "<group>"; };
 		940B451D13EA150A0022B5EF /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Shared.xcconfig; path = Config/Shared.xcconfig; sourceTree = "<group>"; };
+		94A6E2FB143CB55D00CF17A3 /* FactualCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactualCategories.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,6 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				940B3EF713EA13CF0022B5EF /* SGCategories.h */,
+				94A6E2FB143CB55D00CF17A3 /* FactualCategories.h */,
 				940B3EF813EA13CF0022B5EF /* SGTypes.h */,
 				940B3EF913EA13CF0022B5EF /* SGTypes.m */,
 			);
@@ -597,6 +600,7 @@
 				4A685D7D13FC290A0041F56E /* SGPreprocessorMacros.h in Headers */,
 				940B3F6B13EA13CF0022B5EF /* SGPolygon+Internal.h in Headers */,
 				940B3F8913EA13F50022B5EF /* SimpleGeo-Prefix.pch in Headers */,
+				94A6E2FC143CB55D00CF17A3 /* FactualCategories.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

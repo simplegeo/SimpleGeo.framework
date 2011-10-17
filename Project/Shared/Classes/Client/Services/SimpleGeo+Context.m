@@ -81,6 +81,16 @@
                  callback:callback];
 }
 
+- (void)searchDemographicsTables:(NSString *)searchString
+                        callback:(SGCallback *)callback
+{
+    [self sendHTTPRequest:@"GET"
+                   toFile:@"/context/demographics/search"
+               withParams:[NSDictionary dictionaryWithObject:searchString forKey:@"q"]
+                  version:self.contextVersion
+                 callback:callback];
+}
+
 #pragma mark -
 #pragma mark Manipulations
 

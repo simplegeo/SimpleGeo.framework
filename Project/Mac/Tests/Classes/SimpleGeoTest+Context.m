@@ -154,12 +154,22 @@
     [[self client] getContextForQuery:query
                              callback:[SGCallback callbackWithSuccessBlock:
                                        ^(id response) {
-                                           for (NSString *table in [query acsTableIDs]) {
-                                               GHAssertNotNil([[[(NSDictionary *)response objectForKey:@"demographics"] objectForKey:@"acs"] objectForKey:table],
-                                                              @"Response should contain specified demographics tables");
-                                           }
+                                           NSDictionary *acs = [[SGContext contextWithDictionary:response].demographics objectForKey:@"acs"];
+                                           GHAssertGreaterThan((int)[acs count], 0, @"Response should contain at least one table");
                                            [self requestDidSucceed:response];
                                        } failureBlock:[self failureBlock]]];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
+}
+
+- (void)testSearchDemographics
+{
+    [self prepare];
+    [[self client] searchDemographicsTables:@"test"
+                                   callback:[SGCallback callbackWithSuccessBlock:
+                                             ^(id response) {
+                                                 
+                                                 [self requestDidSucceed:response];
+                                             } failureBlock:[self failureBlock]]];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:SGTestTimeout];
 }
 

@@ -1,18 +1,27 @@
 import os
 import urllib2
 import json
+import re
+
+##### Convert a name to a variable name
 
 def cleanName(name):
-    return name.replace(' ','').replace('(','').replace(')','').replace(',','').replace('-','').replace('&','And')
+    return re.sub('[\W_]+', '', name.replace('&','And'))
+
+##### Load the categories endpoint
 
 file = urllib2.urlopen('http://api.simplegeo.com/1.0/features/categories.json')
 contents = json.loads(file.read())
+
+##### Instantiate the category lists
 
 types = []
 fcats = []
 fsubcats = []
 pcats = []
 psubcats = []
+
+##### Form the lists
 
 for entry in contents:
     thisType = entry['type']
@@ -43,17 +52,19 @@ for entry in contents:
         except:
             subcats.append(thisSubcat)
 
+##### Generate the file
+
 output = 'typedef NSString * SGFeatureType;\n\
 typedef NSString * SGFeatureCategory;\n\
 typedef NSString * SGFeatureSubcategory;\n'
 
-# feature types
+# Feature types
 
 output += '\n#pragma mark Feature Types\n\n'
 for typ in types:
     output += '#define SGFeatureType' + cleanName(typ) + ' @\"' + typ + '\"\n'
 
-# feature categories
+# Feature categories (Context)
 
 output += '\n#pragma mark Feature Categories (Context)\n\n'
 for cat in fcats:
@@ -63,17 +74,15 @@ output += '\n#pragma mark Feature Subcategories (Context)\n\n'
 for subcat in fsubcats:
     output += '#define SGFeatureSubcategory' + cleanName(subcat) + ' @\"' + subcat + '\"\n'
 
-# places categories
+# Feature categories (Places 1.0)
 
-output += '\n#pragma mark Feature Categories (Places)\n\n'
+output += '\n#pragma mark Place Categories (Places 1.0)\n\n'
 for cat in pcats:
     output += '#define SGPlaceCategory' + cleanName(cat) + ' @\"' + cat + '\"\n'
-
-output += '\n#pragma mark Feature Subcategories (Places)\n\n'
 for subcat in psubcats:
-    output += '#define SGPlaceSubcategory' + cleanName(subcat) + ' @\"' + subcat + '\"\n'
+    output += '#define SGPlaceCategory' + cleanName(subcat) + ' @\"' + subcat + '\"\n'
 
-# write file
+##### Write file
 
 output = '\
 //\n\

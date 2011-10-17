@@ -44,6 +44,7 @@
 		5D4A7BA212F2170C00A2C443 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674BA12909ABA006B7D51 /* libz.dylib */; };
 		5D4A7BA612F2172900A2C443 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8C15E6129DE86E002F8C01 /* AppKit.framework */; };
 		5D4A7BAD12F2174A00A2C443 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674B612909AAB006B7D51 /* SystemConfiguration.framework */; };
+		94075FE3143CB137004515D8 /* FactualCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 94075FE2143CB137004515D8 /* FactualCategories.h */; };
 		940B38F413EA0A180022B5EF /* SGCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B38B313EA0A180022B5EF /* SGCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		940B38F513EA0A180022B5EF /* SGTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B38B413EA0A180022B5EF /* SGTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		940B38F613EA0A180022B5EF /* SGTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B38B513EA0A180022B5EF /* SGTypes.m */; };
@@ -186,6 +187,7 @@
 		8DC2EF5A0486A6940098B216 /* SimpleGeo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SimpleGeo-Info.plist"; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* SimpleGeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleGeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9405B77F13D8F3C90088D7DF /* SimpleGeoTestSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleGeoTestSettings.h; path = Tests/SimpleGeoTestSettings.h; sourceTree = "<group>"; };
+		94075FE2143CB137004515D8 /* FactualCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactualCategories.h; sourceTree = "<group>"; };
 		940B389613EA09CA0022B5EF /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Config/Debug.xcconfig; sourceTree = "<group>"; };
 		940B389813EA09CA0022B5EF /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Config/Release.xcconfig; sourceTree = "<group>"; };
 		940B389913EA09CA0022B5EF /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Shared.xcconfig; path = Config/Shared.xcconfig; sourceTree = "<group>"; };
@@ -482,6 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				940B38B313EA0A180022B5EF /* SGCategories.h */,
+				94075FE2143CB137004515D8 /* FactualCategories.h */,
 				940B38B413EA0A180022B5EF /* SGTypes.h */,
 				940B38B513EA0A180022B5EF /* SGTypes.m */,
 			);
@@ -669,6 +672,7 @@
 				9487074613EA187900FDD91E /* SimpleGeo-Prefix.pch in Headers */,
 				4A685D8913FC40070041F56E /* SGPreprocessorMacros.h in Headers */,
 				4A051045140DA216008A4078 /* SGObjCHTTP-Prefix.pch in Headers */,
+				94075FE3143CB137004515D8 /* FactualCategories.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

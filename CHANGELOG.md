@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.2.0 - 10/17/11
+
+* Make Places 1.2 the default
+* Search ASC tables endpoint
+* Factual categories list
+* Bug fix for ampersands in Places category queries
+
 ## 2.1.2 - 9/22/11
 
 * Ensure UTF8 encoded strings work for address parameters

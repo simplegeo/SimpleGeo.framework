@@ -64,10 +64,7 @@
         [parameters setValue:radiusString forKey:@"radius"];
     }
     if (query.limit > 0) {
-        NSString *limitString;
-        if ([self.placesVersion isEqual:@"1.0"]) limitString = @"num";
-        else limitString = @"limit";
-        [parameters setValue:[NSString stringWithFormat:@"%d", query.limit] forKey:limitString];
+        [parameters setValue:[NSString stringWithFormat:@"%d", query.limit] forKey:@"limit"];
     }
 
     [self sendHTTPRequest:@"GET"

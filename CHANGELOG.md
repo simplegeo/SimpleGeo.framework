@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.2.1 - 10/25/11
+
+* Bug fix: added FactualCategories.h to Xcode projects
+
 ## 2.2.0 - 10/17/11
 
 * Make Places 1.2 the default

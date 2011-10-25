@@ -109,7 +109,7 @@
 		940B3F8613EA13E70022B5EF /* SGPolygon+Mapkit.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B3F7C13EA13E70022B5EF /* SGPolygon+Mapkit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		940B3F8713EA13E70022B5EF /* SGPolygon+Mapkit.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B3F7D13EA13E70022B5EF /* SGPolygon+Mapkit.m */; };
 		940B3F8913EA13F50022B5EF /* SimpleGeo-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 940B3F8813EA13F50022B5EF /* SimpleGeo-Prefix.pch */; settings = {ATTRIBUTES = (); }; };
-		94A6E2FC143CB55D00CF17A3 /* FactualCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A6E2FB143CB55D00CF17A3 /* FactualCategories.h */; };
+		94A6E2FC143CB55D00CF17A3 /* FactualCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A6E2FB143CB55D00CF17A3 /* FactualCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -544,6 +544,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				940B3F3813EA13CF0022B5EF /* SGCategories.h in Headers */,
+				94A6E2FC143CB55D00CF17A3 /* FactualCategories.h in Headers */,
 				940B3F3913EA13CF0022B5EF /* SGTypes.h in Headers */,
 				940B3F3B13EA13CF0022B5EF /* SGContextQuery.h in Headers */,
 				940B3F3D13EA13CF0022B5EF /* SGNearbyQuery.h in Headers */,
@@ -600,7 +601,6 @@
 				4A685D7D13FC290A0041F56E /* SGPreprocessorMacros.h in Headers */,
 				940B3F6B13EA13CF0022B5EF /* SGPolygon+Internal.h in Headers */,
 				940B3F8913EA13F50022B5EF /* SimpleGeo-Prefix.pch in Headers */,
-				94A6E2FC143CB55D00CF17A3 /* FactualCategories.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

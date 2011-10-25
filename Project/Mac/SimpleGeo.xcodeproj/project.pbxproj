@@ -44,7 +44,7 @@
 		5D4A7BA212F2170C00A2C443 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674BA12909ABA006B7D51 /* libz.dylib */; };
 		5D4A7BA612F2172900A2C443 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8C15E6129DE86E002F8C01 /* AppKit.framework */; };
 		5D4A7BAD12F2174A00A2C443 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7674B612909AAB006B7D51 /* SystemConfiguration.framework */; };
-		94075FE3143CB137004515D8 /* FactualCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 94075FE2143CB137004515D8 /* FactualCategories.h */; };
+		94075FE3143CB137004515D8 /* FactualCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 94075FE2143CB137004515D8 /* FactualCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		940B38F413EA0A180022B5EF /* SGCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B38B313EA0A180022B5EF /* SGCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		940B38F513EA0A180022B5EF /* SGTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B38B413EA0A180022B5EF /* SGTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		940B38F613EA0A180022B5EF /* SGTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B38B513EA0A180022B5EF /* SGTypes.m */; };
@@ -664,6 +664,7 @@
 				4A051043140DA216008A4078 /* SGJSONKit.h in Headers */,
 				940B392A13EA0A180022B5EF /* SGContext.h in Headers */,
 				940B392C13EA0A180022B5EF /* SGLayer.h in Headers */,
+				94075FE3143CB137004515D8 /* FactualCategories.h in Headers */,
 				940B390913EA0A180022B5EF /* SimpleGeo+Internal.h in Headers */,
 				940B391013EA0A180022B5EF /* SGAddress+Internal.h in Headers */,
 				940B391313EA0A180022B5EF /* SGPlacemark+Internal.h in Headers */,
@@ -672,7 +673,6 @@
 				9487074613EA187900FDD91E /* SimpleGeo-Prefix.pch in Headers */,
 				4A685D8913FC40070041F56E /* SGPreprocessorMacros.h in Headers */,
 				4A051045140DA216008A4078 /* SGObjCHTTP-Prefix.pch in Headers */,
-				94075FE3143CB137004515D8 /* FactualCategories.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

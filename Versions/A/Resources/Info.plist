@@ -21,20 +21,20 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2.2.1</string>
+	<string>2.2.2</string>
 	<key>DTCompiler</key>
 	<string></string>
 	<key>DTPlatformBuild</key>
-	<string>4D5163b</string>
+	<string>4D199</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>10J567</string>
+	<string>10K549</string>
 	<key>DTSDKName</key>
 	<string>macosx10.6</string>
 	<key>DTXcode</key>
 	<string>0420</string>
 	<key>DTXcodeBuild</key>
-	<string>4D5163b</string>
+	<string>4D199</string>
 </dict>
 </plist>

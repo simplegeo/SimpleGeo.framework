@@ -44,6 +44,7 @@
 {
     self = [super initWithConsumerKey:key consumerSecret:secret];
     if (self) {
+        apiURL = SG_RETAIN(@"https://api.simplegeo.com");
         storageVersion = SG_RETAIN(@"0.1"); // Default Storage version
         contextVersion = SG_RETAIN(@"1.0"); // Default Context version
         placesVersion = SG_RETAIN(@"1.2"); // Default Places version

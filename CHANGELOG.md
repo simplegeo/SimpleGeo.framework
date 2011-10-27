@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.2.3 - 10/27/11
+
+* Added missing API url
+
 ## 2.2.2 - 10/27/11
 
 * Bug fix: allow [[SimpleGeo alloc] initWithConsumerKey:key secret:secret]

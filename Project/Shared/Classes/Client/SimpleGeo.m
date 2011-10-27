@@ -39,15 +39,22 @@
 #pragma mark -
 #pragma mark Instantiation
 
+- (id)initWithConsumerKey:(NSString *)key
+           consumerSecret:(NSString *)secret
+{
+    self = [super initWithConsumerKey:key consumerSecret:secret];
+    if (self) {
+        storageVersion = SG_RETAIN(@"0.1"); // Default Storage version
+        contextVersion = SG_RETAIN(@"1.0"); // Default Context version
+        placesVersion = SG_RETAIN(@"1.2"); // Default Places version
+    }
+    return self;
+}
+
 + (SimpleGeo *)clientWithConsumerKey:(NSString *)key
                       consumerSecret:(NSString *)secret
 {
-    SimpleGeo *client = [[SimpleGeo alloc] initWithConsumerKey:key consumerSecret:secret];
-    [client setStorageVersion:@"0.1"]; // Default Storage version
-    [client setContextVersion:@"1.0"]; // Default Context version
-    [client setPlacesVersion:@"1.2"]; // Default Places version
-    [client setApiURL:@"https://api.simplegeo.com"];
-    return SG_AUTORELEASE(client);
+    return SG_AUTORELEASE([[self alloc] initWithConsumerKey:key consumerSecret:secret]);
 }
 
 #pragma mark -

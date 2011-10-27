@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.2.2 - 10/27/11
+
+* Bug fix: allow [[SimpleGeo alloc] initWithConsumerKey:key secret:secret]
+
 ## 2.2.1 - 10/25/11
 
 * Bug fix: added FactualCategories.h to Xcode projects

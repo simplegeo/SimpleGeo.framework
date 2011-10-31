@@ -4,14 +4,15 @@
 
 ## Downloading the Framework
 
-`SimpleGeo.framework` is available as either a [downloadable ZIP
-file](https://github.com/simplegeo/SimpleGeo.framework/downloads) or a branch suitable for use as a [git
-submodule](http://book.git-scm.com/5_submodules.html). In either case, you'll want to place the framework in a subdirectory beneath your app.
+`SimpleGeo.framework` is available as a branch suitable for use as a [git submodule](http://book.git-scm.com/5_submodules.html). In either case, you'll want to place the framework in a subdirectory beneath your app.
 
 Here's an example of adding `SimpleGeo.framework` as a submodule:
 
-    $ git submodule add -b framework-ios \
-      git://github.com/simplegeo/SimpleGeo.framework.git Resources/SimpleGeo.framework
+    $ git submodule add -b framework-ios git://github.com/simplegeo/SimpleGeo.framework.git Resources/SimpleGeo.framework
+
+You may also choose to simply download the ios-framework branch and drag the SimpleGeo.framework folder into your Xcode project:
+
+    $ git clone -b framework-ios git://github.com/simplegeo/SimpleGeo.framework.git Resources/SimpleGeo.framework
 
 ## Embedding in an iOS Application
 
